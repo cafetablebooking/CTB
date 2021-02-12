@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from 'react';
 import { auth, googleProvider } from '@ctb/firebase-auth';
 import React from 'react';
 
-export const AuthContext = React.createContext({});
+export const AuthContext = createContext({});
 
 interface Props {
   children: any;
