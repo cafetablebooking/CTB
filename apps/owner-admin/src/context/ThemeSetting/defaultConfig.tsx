@@ -20,7 +20,7 @@ const defaultConfig: any = {
         contrastText: '#fff',
       },
       secondary: {
-        main: '#F04F47',
+        main: '#1e976f',
       },
       sidebar: {
         bgColor: '#313541',
@@ -42,13 +42,13 @@ const defaultConfig: any = {
         A400: '#303030',
         A700: '#616161',
       },
-      text: {
-        primary: '#495057',
-        secondary: '#74788d',
-        disabled: '#909098',
-        hint: '#aeafb8',
-        white: '#fff',
-      },
+      // text: {
+      //   primary: '#495057',
+      //   secondary: '#74788d',
+      //   disabled: '#909098',
+      //   hint: '#aeafb8',
+      //   white: '#fff',
+      // },
     },
     status: {
       danger: 'orange',

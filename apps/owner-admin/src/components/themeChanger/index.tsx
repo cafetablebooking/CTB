@@ -5,28 +5,24 @@ import React, { useContext, useState } from 'react';
 import SettingsIcon from '@material-ui/icons/Settings';
 import Popover from '@material-ui/core/Popover';
 import IconButton from '@material-ui/core/IconButton';
-import Drawer from '@material-ui/core/Drawer';
 import classnames from 'classnames';
 import Box from '@material-ui/core/Box';
 import { AppContextPropsType } from '@ctb/types';
 import { ThemeMode } from '@ctb/types';
+import { Typography } from '@material-ui/core';
+import ToggleButton from '@material-ui/lab/ToggleButton';
 
 import AppContext from '../../context/appContext';
-import ToggleButton from '@material-ui/lab/ToggleButton';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 
 import useStyles from './index.style';
-import { Typography } from '@material-ui/core';
 import CustomColorCell from './customColorCell';
-
 import themeColorSets from '../../constants/ColorSets';
 
 interface ThemeSettingProps {}
 
 const ThemeSetting: React.FC<ThemeSettingProps> = () => {
-  // const [open, setCustomizerStatus] = useState(false);
-  // const [themeColor, setThemeColor] = useState('preset');
-  const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorEl, setAnchorEl] = useState(null);
   const {
     themeMode,
     updateThemeMode,
@@ -40,13 +36,6 @@ const ThemeSetting: React.FC<ThemeSettingProps> = () => {
   ) => {
     if (themeMode) updateThemeMode(themeMode);
   };
-
-  // const onSelectThemeColor = (
-  //   event: React.MouseEvent<HTMLElement>,
-  //   color: any
-  // ) => {
-  //   if (color) setThemeColor(color);
-  // };
 
   const updateThemeColors = (colorSet: any) => {
     theme.palette.primary.main = colorSet.PrimaryColor;
@@ -76,11 +65,14 @@ const ThemeSetting: React.FC<ThemeSettingProps> = () => {
           horizontal: 'left',
         }}
         transformOrigin={{
-          vertical: 'center',
+          vertical: 'top',
           horizontal: 'right',
         }}
       >
         <Box className={classes.customizerItem}>
+          <Box component="h2" mb={{ xs: 2, xl: 3 }}>
+            Customize the theme
+          </Box>
           <Box component="h4" mb={{ xs: 2, xl: 3 }}>
             Theme Mode
           </Box>
@@ -109,7 +101,10 @@ const ThemeSetting: React.FC<ThemeSettingProps> = () => {
               Dark Mode
             </ToggleButton>
           </ToggleButtonGroup>
-          <Box mt={4}>
+          <Box component="h4" mb={{ xs: 2, xl: 3 }}>
+            Theme Colors
+          </Box>
+          <Box>
             <Box component="ul" className={classes.colorOptionList}>
               {themeColorSets.map((colorSet, index) => (
                 <CustomColorCell

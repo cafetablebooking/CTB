@@ -1,7 +1,7 @@
 const colorSet = [
   {
     PrimaryColor: '#0A8FDC',
-    SecondaryColor: '#F04F47',
+    SecondaryColor: '#1e976f',
     SidebarColor: '#313541',
   },
   {

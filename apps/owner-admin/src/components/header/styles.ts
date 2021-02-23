@@ -1,11 +1,11 @@
+import { CTBtheme } from '@ctb/types';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { makeStyles } from '@material-ui/styles';
 import { fade } from '@material-ui/core/styles/colorManipulator';
-import { blue, orange } from '@material-ui/core/colors';
 
-export default makeStyles((theme: any) => ({
+export default makeStyles((theme: CTBtheme) => ({
   logotype: {
-    color: 'white',
+    color: theme.palette.text.secondary,
     marginLeft: theme.spacing(2.5),
     marginRight: theme.spacing(2.5),
     fontWeight: 500,
@@ -22,16 +22,7 @@ export default makeStyles((theme: any) => ({
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    // color: 'default',
-    // backgroundColor: 'default',
-    // backgroundColor: theme.primary.dark,
   },
-  // colorPrimary: {
-  //   backgroundColor: blue[400],
-  // },
-  // colorSecondary: {
-  //   backgroundColor: '#fff',
-  // },
   toolbar: {
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
@@ -70,6 +61,7 @@ export default makeStyles((theme: any) => ({
     alignItems: 'center',
     justifyContent: 'center',
     transition: theme.transitions.create('right'),
+    zIndex: 2,
     '&:hover': {
       cursor: 'pointer',
     },
@@ -86,6 +78,7 @@ export default makeStyles((theme: any) => ({
     padding: 0,
     paddingRight: 36 + theme.spacing(1.25),
     width: '100%',
+    cursor: 'pointer',
   },
   messageContent: {
     display: 'flex',
@@ -121,9 +114,11 @@ export default makeStyles((theme: any) => ({
   headerIcon: {
     fontSize: 28,
     color: 'rgba(255, 255, 255, 0.35)',
+    // cursor: 'pointer',
   },
   headerIconCollapse: {
-    color: 'white',
+    // color: 'white',
+    color: theme.palette.text.secondary,
   },
   profileMenu: {
     minWidth: 265,
@@ -132,6 +127,7 @@ export default makeStyles((theme: any) => ({
     display: 'flex',
     flexDirection: 'column',
     padding: theme.spacing(2),
+    marginLeft: 15,
   },
   profileMenuItem: {
     color: theme.palette.text.hint,
@@ -162,6 +158,7 @@ export default makeStyles((theme: any) => ({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    justifyContent: 'center',
     marginRight: theme.spacing(2),
   },
   messageNotificationBodySide: {

@@ -9,6 +9,7 @@ import {
   Fab,
   Button,
   useTheme,
+  Typography,
 } from '@material-ui/core';
 import {
   Menu as MenuIcon,
@@ -21,12 +22,12 @@ import {
 } from '@material-ui/icons';
 import { AppBarProps } from '@material-ui/core';
 import classNames from 'classnames';
-import { ThemeMode } from '@ctb/types';
+import { CTBtheme, ThemeMode } from '@ctb/types';
 // styles
 import useStyles from './styles';
 
 import Badge from '../badge';
-import Typography from '../typography';
+// import Typography from '../typography';
 import Notification from '../Notification/Notification';
 // import UserAvatar from '../UserAvatar/UserAvatar';
 import {
@@ -36,6 +37,7 @@ import {
 } from '../../context/layoutContext';
 import { AppContextPropsType } from '@ctb/types';
 import appContext from '../../context/appContext';
+import UserAvatar from '../user-avatar/user-avatar';
 
 const messages = [
   {
@@ -98,12 +100,10 @@ export interface HeaderProps extends AppBarProps {
 
 export function Header({ history }: HeaderProps) {
   const classes = useStyles();
-  const theme = useTheme();
-  // console.log(theme.palette.type);
+  const theme = useTheme<CTBtheme>();
   // global
   const layoutState = useLayoutState();
   const layoutDispatch = useLayoutDispatch();
-  // const userDispatch = useUserDispatch();
 
   // local
   const [mailMenu, setMailMenu] = useState(null);
@@ -148,7 +148,7 @@ export function Header({ history }: HeaderProps) {
             />
           )}
         </IconButton>
-        <Typography variant="h6" weight="medium" className={classes.logotype}>
+        <Typography variant="h6" className={classes.logotype}>
           CTB Admin
         </Typography>
         <div className={classes.grow} />
@@ -186,7 +186,16 @@ export function Header({ history }: HeaderProps) {
         >
           <Badge
             badgeContent={isNotificationsUnread ? notifications.length : null}
-            clr="warning"
+            clr={
+              themeMode === ThemeMode.DARK
+                ? theme.palette.primary.dark + '90'
+                : theme.palette.secondary.dark + '90'
+            }
+            bColor={
+              themeMode === ThemeMode.DARK
+                ? theme.palette.secondary.light
+                : theme.palette.primary.light
+            }
           >
             <NotificationsIcon classes={{ root: classes.headerIcon }} />
           </Badge>
@@ -204,7 +213,16 @@ export function Header({ history }: HeaderProps) {
         >
           <Badge
             badgeContent={isMailsUnread ? messages.length : null}
-            clr="secondary"
+            clr={
+              themeMode === ThemeMode.DARK
+                ? theme.palette.primary.dark + '90'
+                : theme.palette.secondary.dark + '90'
+            }
+            bColor={
+              themeMode === ThemeMode.DARK
+                ? theme.palette.secondary.light
+                : theme.palette.primary.light
+            }
           >
             <MailIcon classes={{ root: classes.headerIcon }} />
           </Badge>
@@ -229,12 +247,10 @@ export function Header({ history }: HeaderProps) {
           disableAutoFocusItem
         >
           <div className={classes.profileMenuUser}>
-            <Typography variant="h4" weight="medium">
-              New Messages
-            </Typography>
+            <Typography variant="h5">New Messages</Typography>
             <Typography
-              className={classes.profileMenuLink}
-              component="a"
+              // className={classes.profileMenuLink}
+              variant="subtitle2"
               color="secondary"
             >
               {messages.length} New Messages
@@ -243,10 +259,8 @@ export function Header({ history }: HeaderProps) {
           {messages.map((message) => (
             <MenuItem key={message.id} className={classes.messageNotification}>
               <div className={classes.messageNotificationSide}>
-                {/* <UserAvatar color={message.constiant} name={message.name} /> */}
-                <Typography size="sm" clr="text" colorBrightness="secondary">
-                  {message.time}
-                </Typography>
+                <UserAvatar size="small">{message.name}</UserAvatar>
+                <Typography>{message.time}</Typography>
               </div>
               <div
                 className={classNames(
@@ -254,19 +268,15 @@ export function Header({ history }: HeaderProps) {
                   classes.messageNotificationBodySide
                 )}
               >
-                <Typography weight="medium" gutterBottom>
-                  {message.name}
-                </Typography>
-                <Typography clr="text" colorBrightness="secondary">
-                  {message.message}
-                </Typography>
+                <Typography variant="subtitle2">{message.name}</Typography>
+                <Typography color="textSecondary">{message.message}</Typography>
               </div>
             </MenuItem>
           ))}
 
           <Fab
-            // constiant="extended"
-            color="primary"
+            variant="extended"
+            color="secondary"
             aria-label="Add"
             className={classes.sendMessageButton}
           >
@@ -302,14 +312,8 @@ export function Header({ history }: HeaderProps) {
           disableAutoFocusItem
         >
           <div className={classes.profileMenuUser}>
-            <Typography variant="h4" weight="medium">
-              Ramy Niranjan
-            </Typography>
-            <Typography
-              className={classes.profileMenuLink}
-              component="a"
-              clr="primary"
-            >
+            <Typography variant="h4">Ramy Niranjan</Typography>
+            <Typography className={classes.profileMenuLink}>
               Admin/Owner-Developer
             </Typography>
           </div>

@@ -8,9 +8,9 @@ const useStyles = makeStyles((theme: CTBtheme) => ({
     cursor: 'pointer',
     border: `1px solid ${theme.palette.text.primary}`,
   },
-  colorOptionTriangle: {
+  colorOptionDivider: {
     transform: 'rotate(180deg)',
-    marginTop: 13.5,
+    marginTop: 14,
   },
 
   colorOptionRightIcon: {

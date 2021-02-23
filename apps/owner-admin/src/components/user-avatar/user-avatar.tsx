@@ -1,19 +1,47 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { CTBtheme } from '@ctb/types';
+import { Avatar } from '@material-ui/core';
+import { green } from '@material-ui/core/colors';
+import classnames from 'classnames';
+import { makeStyles } from '@material-ui/core/styles';
 import React from 'react';
 
-import styled from 'styled-components';
-
 /* eslint-disable-next-line */
-export interface UserAvatarProps {}
+export interface UserAvatarProps {
+  children: string | React.ReactNode;
+  alt?: string;
+  size: 'large' | 'small';
+}
 
-const StyledUserAvatar = styled.div`
-  color: pink;
-`;
+const useStyles = makeStyles((theme: CTBtheme) => ({
+  small: ({ size }: any) => {
+    return (
+      size === 'small' && {
+        width: theme.spacing(8),
+        height: theme.spacing(8),
+      }
+    );
+  },
+  large: ({ size }: any) => {
+    return (
+      size === 'large' && {
+        width: theme.spacing(12),
+        height: theme.spacing(12),
+      }
+    );
+  },
+  circle: {
+    color: '#fff',
+    backgroundColor: theme.palette.primary.light,
+  },
+}));
 
-export function UserAvatar(props: UserAvatarProps) {
+export function UserAvatar({ children, alt, size }: UserAvatarProps) {
+  const classes = useStyles({ size });
   return (
-    <StyledUserAvatar>
-      <h1>Welcome to UserAvatar!</h1>
-    </StyledUserAvatar>
+    <Avatar alt={alt} className={classnames(classes.small, classes.circle)}>
+      {children[0]}
+    </Avatar>
   );
 }
 

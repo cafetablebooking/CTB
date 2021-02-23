@@ -34,6 +34,7 @@ interface CTBpalette extends Palette {
   background: {
     paper: string;
     default: string;
+    light?: string;
   };
   primary: {
     light: string;

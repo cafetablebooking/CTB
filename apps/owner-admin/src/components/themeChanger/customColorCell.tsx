@@ -39,7 +39,7 @@ const CustomColorCell: React.FC<CustomColorCellProps> = ({
           style={{
             backgroundColor: themeColorSet.SecondaryColor,
           }}
-          className={classes.colorOptionTriangle}
+          className={classes.colorOptionDivider}
         />
         <Box />
 

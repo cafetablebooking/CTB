@@ -28,23 +28,11 @@ export function contextReducer(state: any, action: any) {
           paper: '#313541',
           default: '#393D4B',
         };
-        theme.palette.text = {
-          primary: 'rgba(255, 255, 255, 0.87)',
-          secondary: 'rgba(255, 255, 255, 0.67)',
-          disabled: 'rgba(255, 255, 255, 0.38)',
-          hint: 'rgba(255, 255, 255, 0.38)',
-        };
       } else {
         theme.palette.type = ThemeMode.LIGHT;
         theme.palette.background = {
           paper: '#FFFFFF',
           default: '#f3f4f6',
-        };
-        theme.palette.text = {
-          primary: 'rgba(0, 0, 0, 0.87)',
-          secondary: 'rgba(0, 0, 0, 0.67)',
-          disabled: 'rgba(0, 0, 0, 0.38)',
-          hint: 'rgba(0, 0, 0, 0.38)',
         };
       }
       return {

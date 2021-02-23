@@ -1,5 +1,4 @@
 import { makeStyles } from '@material-ui/core/styles';
-import { orange } from '@material-ui/core/colors';
 import { CTBtheme } from '@ctb/types';
 
 const useStyles = makeStyles((theme: CTBtheme) => ({
@@ -14,9 +13,9 @@ const useStyles = makeStyles((theme: CTBtheme) => ({
   },
   customizerButton: {
     borderRadius: '30px 0 0 30px',
-    backgroundColor: orange[500],
+    backgroundColor: theme.palette.secondary.light,
     '&:hover': {
-      backgroundColor: orange[700],
+      backgroundColor: theme.palette.secondary.dark,
     },
     '& button': {
       borderRadius: '30px 0 0 30px',
@@ -26,25 +25,7 @@ const useStyles = makeStyles((theme: CTBtheme) => ({
       },
     },
   },
-  rightSidebar: {
-    width: 300,
-    [theme.breakpoints.up('xl')]: {
-      width: 400,
-    },
-  },
-  rightSidebarHeader: {
-    padding: '20px',
-    borderBottom: '1px solid #e0e0e0',
-    [theme.breakpoints.up('xl')]: {
-      padding: '28px 22px',
-    },
-  },
-  rightSidebarMain: {
-    padding: '20px',
-    [theme.breakpoints.up('xl')]: {
-      padding: '28px 22px',
-    },
-  },
+
   customizerItem: {
     '&:not(:last-child)': {
       borderBottom: ['1px solid #e0e0e0'],
@@ -55,44 +36,12 @@ const useStyles = makeStyles((theme: CTBtheme) => ({
         marginBottom: 30,
       },
     },
-  },
-  colorRow: {
     display: 'flex',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-    position: 'relative',
-  },
-  navOption: {
-    display: 'flex',
-    alignItems: 'center',
-    flexWrap: 'wrap',
-    marginLeft: '-10px',
-    marginRight: '-10px',
-  },
-  navOptionItem: {
-    paddingLeft: 10,
-    paddingRight: 10,
-    marginBottom: 20,
-  },
-  navOptionContent: {
-    position: 'relative',
-    cursor: 'pointer',
-  },
-  navOptionRightIcon: {
-    position: 'absolute',
-    left: '50%',
-    top: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 20,
-    height: 20,
-    borderRadius: '50%',
-    display: 'flex',
-    alignItems: 'center',
+    flexDirection: 'column',
     justifyContent: 'center',
-    overflow: 'hidden',
-    backgroundColor: theme.palette.primary.main,
-    color: '',
+    alignItems: 'center',
   },
+
   selectBox: {
     '& .MuiOutlinedInput-input': {
       padding: '12px 32px 12px 14px',
@@ -127,12 +76,14 @@ const useStyles = makeStyles((theme: CTBtheme) => ({
     display: 'flex',
     flexWrap: 'wrap',
     margin: '0 -5px',
-    padding: 0,
+    padding: 10,
     listStyle: 'none',
     '& > li': {
       padding: '0 5px',
       marginBottom: 10,
     },
+    width: '300px',
+    //width of the color-set
   },
   wFull: {
     width: '100%',

@@ -1,3 +1,4 @@
+import { CTBtheme } from '@ctb/types';
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { makeStyles } from '@material-ui/styles';
 
@@ -6,11 +7,11 @@ export interface SidebarLinkStyleProps {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export default makeStyles((theme: SidebarLinkStyleProps) => ({
+export default makeStyles((theme: CTBtheme) => ({
   link: {
     textDecoration: 'none',
     '&:hover, &:focus': {
-      backgroundColor: theme.palette.background.light,
+      backgroundColor: theme.palette.background.default,
     },
   },
   linkActive: {
@@ -24,7 +25,7 @@ export default makeStyles((theme: SidebarLinkStyleProps) => ({
   },
   linkIcon: {
     marginRight: theme.spacing(1),
-    color: theme.palette.text.secondary + '99',
+    color: theme.palette.text.secondary,
     transition: theme.transitions.create('color'),
     width: 24,
     display: 'flex',
@@ -35,7 +36,7 @@ export default makeStyles((theme: SidebarLinkStyleProps) => ({
   },
   linkText: {
     padding: 0,
-    color: theme.palette.text.secondary + 'CC',
+    color: theme.palette.text.secondary,
     transition: theme.transitions.create(['opacity', 'color']),
     fontSize: 16,
   },
