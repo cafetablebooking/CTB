@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import App from './app';
+import SidebarLink from './sidebar-link';
 
-describe('App', () => {
+describe('SidebarLinkJsx', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<App />);
+    const { baseElement } = render(<SidebarLink />);
     expect(baseElement).toBeTruthy();
   });
 });

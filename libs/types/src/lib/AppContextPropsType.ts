@@ -1,11 +1,12 @@
-import {
-  FooterType,
-  LayoutType,
-  NavStyle,
-  RouteTransition,
-  ThemeMode,
-  AuthType,
-} from '../../../../apps/owner-admin/src/constants/AppEnums';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+// import {
+//   FooterType,
+//   LayoutType,
+//   NavStyle,
+//   RouteTransition,
+//   ThemeMode,
+//   AuthType,
+// } from '../../../../apps/owner-admin/src/constants/AppEnums';
 
 import { PaletteType, Theme, Transitions } from '@material-ui/core';
 import { Direction } from '@material-ui/core/styles/createMuiTheme';
@@ -24,7 +25,7 @@ export interface AuthUser {
   email?: string;
   photoURL?: string;
   token?: string;
-  authType: AuthType;
+  // authType: AuthType;
   role: string[];
 }
 
@@ -46,7 +47,7 @@ interface CTBpalette extends Palette {
     dark: string;
     contrastText: string;
   };
-  sidebar: {
+  sidebar?: {
     bgColor: string;
     textColor: string;
   };
@@ -147,29 +148,30 @@ export interface CTBtheme extends Theme {
   shadows: Shadows;
   transitions: Transitions;
   zIndex: ZIndex;
+  unstable_strictMode?: boolean;
 }
 
-export default interface AppContextPropsType {
+export enum ThemeMode {
+  LIGHT = 'light',
+  DARK = 'dark',
+}
+
+export interface AppContextPropsType {
   user: AuthUser | null;
   theme: CTBtheme;
-  initialPath: string;
-  routes: any;
   themeMode: ThemeMode;
-  navStyle: NavStyle;
-  layoutType: LayoutType;
-  footerType: FooterType;
-  rtAnim: RouteTransition;
-  footer: boolean;
   locale: {
     languageId: string;
     locale: string;
     name: string;
     icon: string;
   };
-  rtlLocale: string[];
   primary?: string;
   secondary?: string;
-  isRTL?: boolean;
   sidebarColor?: string;
-  // routes,
+  updateSidebarColor?: (sidebarColor: string) => void;
+  updateThemeMode?: (themeMode: ThemeMode) => void;
+  updatePrimaryColor?: (primaryColor: string) => void;
+  updateSecondaryColor?: (secondaryColor: string) => void;
+  updateTheme?: (theme: any) => void;
 }
