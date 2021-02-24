@@ -27,6 +27,11 @@
     "client": { "tags": [] },
     "client-e2e": { "tags": [], "implicitDependencies": ["client"] },
     "firebase-auth": { "tags": [] },
-    "auth-context": { "tags": [] }
+    "auth-context": { "tags": [] },
+    "footer": { "tags": [] },
+    "theme-provider": { "tags": [] },
+    "dark-theme-provider": { "tags": [] },
+    "search-box-component": { "tags": [] },
+    "auto-complete": { "tags": [] }
   }
 }
