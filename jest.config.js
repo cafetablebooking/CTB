@@ -10,5 +10,6 @@ module.exports = {
     '<rootDir>/libs/dark-theme-provider',
     '<rootDir>/libs/search-box-component',
     '<rootDir>/libs/auto-complete',
+    '<rootDir>/libs/google-sign-in-button',
   ],
 };

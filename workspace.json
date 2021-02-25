@@ -393,6 +393,31 @@
           }
         }
       }
+    },
+    "google-sign-in-button": {
+      "root": "libs/google-sign-in-button",
+      "sourceRoot": "libs/google-sign-in-button/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/google-sign-in-button/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/google-sign-in-button"
+          ],
+          "options": {
+            "jestConfig": "libs/google-sign-in-button/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

@@ -16,6 +16,7 @@ import { useRouter } from 'next/router';
 import { ThemeProvider } from '@material-ui/core/styles';
 import { theme } from '@ctb/theme-provider';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 import { SearchBoxComponent } from '@ctb/search-box-component';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Marker from 'apps/client/components/Marker/Marker';
@@ -303,8 +304,7 @@ const Search = styled(Box)`
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
-    #c8dbe1;
+  background: #fff;
   @media (min-width: 768px) {
     margin-top: 86px;
     justify-content: space-between;

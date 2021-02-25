@@ -109,8 +109,7 @@ const Hero = styled(Box)`
 const Home = styled(Box)`
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, #ffffff 0%, rgba(255, 255, 255, 0) 100%),
-    #c8dbe1;
+  background: #fff;
   position: relative;
 `;
 

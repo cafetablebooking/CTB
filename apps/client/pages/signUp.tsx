@@ -1,17 +1,23 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { TextField, Button, Typography, Box, Divider } from '@material-ui/core';
+import { createMuiTheme } from '@material-ui/core/styles';
 
-import { AuthContext } from '@ctb/auth-context';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import Link from 'next/link';
+import { AuthContext } from '@ctb/auth-context';
 import { useRouter } from 'next/router';
 import * as Yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
-
+import LoginRoute from '../components/LoginRoute';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import Image from 'next/image';
+import { GoogleSignInButton } from '@ctb/google-sign-in-button';
 interface Props {}
 
 const signUp = (props: Props) => {
+  const isDesktop = useMediaQuery('(min-width:768px)');
+  const [error, setError] = useState<string>('');
   const registerSchema = Yup.object().shape({
     email: Yup.string()
       .email('Wrong email format')
@@ -53,76 +59,95 @@ const signUp = (props: Props) => {
   }
 
   return (
-    <SignIn>
-      <Typography style={{ textAlign: 'center', margin: '12px' }} variant="h4">
-        Create Account
-      </Typography>
-      <RedirectMessage style={{ display: 'flex', justifyContent: 'center' }}>
-        <Typography style={{ textAlign: 'center' }}>
-          Already have an account?
-        </Typography>
+    <SignInWrapper>
+      <RedirectMessage>
+        <Typography>Already have an account?</Typography>
         <Link href="/signIn">
           <a>Login here</a>
         </Link>
       </RedirectMessage>
-      <FormWrapper>
-        <Form>
-          <Typography variant="h5">Register With Google</Typography>
-          <Button
-            color="secondary"
-            variant="contained"
-            onClick={googleSignInHandler}
-            style={{ padding: '8px', backgroundColor: 'gray' }}
-          >
-            <Typography style={{ textAlign: 'center' }}>
-              Sign Up With Google
-            </Typography>
-          </Button>
-        </Form>
-        <Divider orientation="vertical" flexItem />
-        <Form onSubmit={handleSubmit(onSubmit)}>
-          <Typography variant="h5">Register With E-mail</Typography>
-          <TextField
-            style={{ marginTop: '10px' }}
-            placeholder="E-mail"
-            name="email"
-            inputRef={register({ required: true })}
-          />
-          <div style={{ color: 'red' }}>{errors.email?.message}</div>
-          <TextField
-            style={{ marginTop: '10px' }}
-            placeholder="Password"
-            name="password"
-            type="password"
-            inputRef={register({ required: true })}
-          />
-          <div style={{ color: 'red' }}>{errors.password?.message}</div>
-          <TextField
-            style={{ marginTop: '10px' }}
-            placeholder="Confirm Password"
-            name="confirmPassword"
-            type="password"
-            inputRef={register({ required: true })}
-          />
-          <div style={{ color: 'red' }}>{errors.confirmPassword?.message}</div>
+      <Typography style={{ textAlign: 'center', margin: 20 }} variant="h4">
+        Create Account
+      </Typography>
 
-          <Button
-            color="secondary"
-            variant="contained"
-            style={{ marginTop: '10px' }}
-            type="submit"
-          >
-            Submit
-          </Button>
-        </Form>
+      <FormWrapper>
+        <InnerFlexItem>
+          <Form>
+            <Typography variant="h5">Register With Google</Typography>
+            <GoogleSignInButton
+              text="Sign Up With Google"
+              googleSignInHandler={googleSignInHandler}
+            />
+          </Form>
+        </InnerFlexItem>
+        <Divider
+          style={{ margin: '30px 0 20px 0' }}
+          orientation={isDesktop ? 'vertical' : 'horizontal'}
+          flexItem={isDesktop ? true : false}
+        />
+        <InnerFlexItem style={{ flex: 1 }}>
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <Typography variant="h5">Register With E-mail</Typography>
+            <TextField
+              style={{ marginTop: '10px' }}
+              placeholder="E-mail"
+              name="email"
+              id="outlined-basic"
+              variant="outlined"
+              inputRef={register({ required: true })}
+            />
+            <div style={{ color: 'red' }}>{errors.email?.message}</div>
+            <TextField
+              style={{ marginTop: '10px' }}
+              placeholder="Password"
+              name="password"
+              type="password"
+              id="outlined-basic"
+              variant="outlined"
+              inputRef={register({ required: true })}
+            />
+            <div style={{ color: 'red' }}>{errors.password?.message}</div>
+            <TextField
+              style={{ minWidth: 284.6, marginTop: '10px' }}
+              placeholder="Confirm Password"
+              name="confirmPassword"
+              type="password"
+              id="outlined-basic"
+              variant="outlined"
+              inputRef={register({ required: true })}
+            />
+            <div style={{ color: 'red' }}>
+              {errors.confirmPassword?.message}
+            </div>
+
+            <Button
+              color="primary"
+              variant="contained"
+              style={{ marginTop: '10px' }}
+              type="submit"
+            >
+              Submit
+            </Button>
+          </Form>
+        </InnerFlexItem>
       </FormWrapper>
-    </SignIn>
+    </SignInWrapper>
   );
 };
 
-const RedirectMessage = styled(Box)`
+const InnerFlexItem = styled(Box)`
   display: flex;
-  margin: 10px;
+  justify-content: center;
+  flex: 1;
+  @media (min-width: 768px) {
+    margin-top: 40px;
+  }
+`;
+const RedirectMessage = styled(Box)`
+  justify-content: center;
+  display: flex;
+  background: #aaddd8;
+  padding: 20px;
   a {
     display: flex;
     align-items: center;
@@ -132,17 +157,28 @@ const RedirectMessage = styled(Box)`
 `;
 const Form = styled.form`
   display: flex;
+  max-width: 400px;
 
   flex-direction: column;
 `;
-const SignIn = styled(Box)`
+const SignInWrapper = styled(Box)`
+  background: #fff;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   min-height: 100vh;
 `;
 const FormWrapper = styled(Box)`
+  margin: 0 5vw 5vw 5vw;
   display: flex;
+
+  flex-direction: column;
   justify-content: space-evenly;
+
+  @media (min-width: 768px) {
+    min-height: 500px;
+    flex-direction: row;
+  }
 `;
+
 export default signUp;
