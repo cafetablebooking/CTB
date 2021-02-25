@@ -54,7 +54,7 @@ function OnboardingCard() {
           <Typography
             className={'MuiTypography--heading'}
             variant={'h6'}
-            style={{ fontSize: '24px' }}
+            style={{ fontSize: '24px', margin: 0 }}
             gutterBottom
           >
             Save time and money

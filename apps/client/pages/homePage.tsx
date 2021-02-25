@@ -29,7 +29,9 @@ const homePage = (props: Props) => {
           <OnboardingCard />
           <OnboardingRight>
             <OnboardingText>
-              <Typography variant="h5">Connect your Café</Typography>
+              <Typography variant="h6" style={{ fontSize: 24 }}>
+                Connect your business
+              </Typography>
               <Typography style={{ fontSize: '14px' }}>
                 We help 9 different service entrepreneurs with booking, payment
                 and marketing for their café or restaurant. Try and see how we
