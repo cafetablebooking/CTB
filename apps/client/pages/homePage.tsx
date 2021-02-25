@@ -49,7 +49,6 @@ const homePage = (props: Props) => {
             </ImgWrapper>
           </OnboardingRight>
         </OnboardingContent>
-        <div style={{ marginTop: 50 }}>
           <Marquee velocity={30} resetAfterTries={50}>
             {companiesMockData &&
               companiesMockData.map((item) => (
@@ -65,7 +64,6 @@ const homePage = (props: Props) => {
                 </Motion>
               ))}
           </Marquee>
-        </div>
       </Home>
     </ThemeProvider>
   );
