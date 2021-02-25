@@ -46,20 +46,20 @@ const SignIn = (props: Props) => {
   }
 
   return (
-    <SignInBox>
-      <Typography style={{ textAlign: 'center', margin: '12px' }} variant="h4">
-        Welcome
-      </Typography>
-      <RedirectMessage style={{ display: 'flex', justifyContent: 'center' }}>
-        <Typography style={{ textAlign: 'center' }}>
-          No user account?
-        </Typography>
+    <SignInWrapper>
+      <RedirectMessage>
+        <Typography>No user account?</Typography>
         <Link href="/signUp">
           <a>Please register here</a>
         </Link>
       </RedirectMessage>
+      <Typography style={{ textAlign: 'center' }} variant="h4">
+        Welcome
+      </Typography>
+
       <FormWrapper>
-        <Form>
+          <div>
+        <Form style={{ flex: 1 }}>
           <Typography variant="h5">Login With Google</Typography>
           <Button
             onClick={googleSignInHandler}
@@ -70,8 +70,9 @@ const SignIn = (props: Props) => {
             </Typography>
           </Button>
         </Form>
+        </div>
         <Divider orientation="vertical" flexItem />
-        <Form onSubmit={handleSubmit(onSubmit)}>
+        <Form style={{ flex: 1 }} onSubmit={handleSubmit(onSubmit)}>
           <Typography variant="h5">Login With E-mail</Typography>
           <TextField
             style={{ marginTop: '10px' }}
@@ -89,7 +90,7 @@ const SignIn = (props: Props) => {
           />
           <div style={{ color: 'red' }}>{errors.password?.message}</div>
           {error && <p style={{ color: 'red' }}>{error}</p>}
-          <RedirectMessage>
+          <RedirectMessage style={{ background: 'inherit' }}>
             <Typography>Forgot your password?</Typography>
             <Link href="/forgotpassword">
               <a>Click Here</a>
@@ -105,13 +106,15 @@ const SignIn = (props: Props) => {
           </Button>
         </Form>
       </FormWrapper>
-    </SignInBox>
+    </SignInWrapper>
   );
 };
 
 const RedirectMessage = styled(Box)`
+  justify-content: center;
   display: flex;
-  margin: 10px;
+  background: lightgray;
+  padding: 20px;
   a {
     display: flex;
     align-items: center;
@@ -124,15 +127,16 @@ const Form = styled.form`
 
   flex-direction: column;
 `;
-const SignInBox = styled(Box)`
+const SignInWrapper = styled(Box)`
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   flex-direction: column;
   min-height: 100vh;
 `;
 const FormWrapper = styled(Box)`
   display: flex;
   justify-content: space-evenly;
+  min-height: 400px;
 `;
 
 export default LoginRoute(SignIn);
