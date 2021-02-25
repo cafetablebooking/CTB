@@ -300,9 +300,7 @@ const StyledTransitionGroup = styled(TransitionGroup)`
 `;
 const Search = styled(Box)`
   display: flex;
-
   justify-content: center;
-  align-items: center;
   min-height: 100vh;
   background: #fff;
   @media (min-width: 768px) {
