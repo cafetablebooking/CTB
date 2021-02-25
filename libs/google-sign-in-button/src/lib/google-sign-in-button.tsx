@@ -20,7 +20,7 @@ const StyledGoogleSignInButton = styled(Button)`
 export function GoogleSignInButton(props: GoogleSignInButtonProps) {
   return (
     <StyledGoogleSignInButton
-      style={{ display: 'flex', justifyContent: 'flex-start' }}
+      style={{ display: 'flex', justifyContent: 'flex-start', marginTop: 20 }}
       variant="contained"
       color="default"
       onClick={props.googleSignInHandler}
