@@ -11,7 +11,7 @@ import { useRouter } from 'next/router';
 import * as Yup from 'yup';
 import LoginRoute from '../components/LoginRoute';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-
+import Image from 'next/image';
 interface Props {}
 
 const SignIn = (props: Props) => {
@@ -65,12 +65,21 @@ const SignIn = (props: Props) => {
           <Form>
             <Typography variant="h5">Login With Google</Typography>
             <Button
+              variant="contained"
               onClick={googleSignInHandler}
-              style={{ padding: '8px', backgroundColor: 'gray' }}
+              style={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                padding: '8px',
+                width: 240,
+              }}
             >
-              <Typography style={{ textAlign: 'center' }}>
-                Sign In With Google
-              </Typography>
+              <Image
+                src="/static/img/signin/Google.svg"
+                width="40"
+                height="40"
+              />
+              <p style={{ marginLeft: 10 }}>Sign In With Google</p>
             </Button>
           </Form>
         </InnerFlexItem>
@@ -157,7 +166,7 @@ const SignInWrapper = styled(Box)`
   min-height: 100vh;
 `;
 const FormWrapper = styled(Box)`
-  margin: 0 5vw 0 5vw;
+  margin: 0 5vw 5vw 5vw;
   display: flex;
 
   flex-direction: column;
