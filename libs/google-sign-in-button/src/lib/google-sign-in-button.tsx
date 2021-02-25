@@ -16,7 +16,7 @@ const StyledGoogleSignInButton = styled(Button)`
     margin-left: 10px;
   }
 `;
-
+//
 export function GoogleSignInButton(props: GoogleSignInButtonProps) {
   return (
     <StyledGoogleSignInButton
