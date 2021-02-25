@@ -12,6 +12,7 @@ import * as Yup from 'yup';
 import LoginRoute from '../components/LoginRoute';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Image from 'next/image';
+import { GoogleSignInButton } from '@ctb/google-sign-in-button';
 interface Props {}
 
 const signUp = (props: Props) => {
@@ -73,24 +74,10 @@ const signUp = (props: Props) => {
         <InnerFlexItem>
           <Form>
             <Typography variant="h5">Register With Google</Typography>
-            <Button
-              variant="contained"
-              color="default"
-              onClick={googleSignInHandler}
-              style={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                padding: '8px',
-                width: 240,
-              }}
-            >
-              <Image
-                src="/static/img/signin/Google.svg"
-                width="40"
-                height="40"
-              />
-              <p style={{ marginLeft: 10 }}>Sign Up With Google</p>
-            </Button>
+            <GoogleSignInButton
+              text="Sign Up With Google"
+              googleSignInHandler={googleSignInHandler}
+            />
           </Form>
         </InnerFlexItem>
         <Divider
