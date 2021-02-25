@@ -10,9 +10,12 @@ import { AuthContext } from '@ctb/auth-context';
 import { useRouter } from 'next/router';
 import * as Yup from 'yup';
 import LoginRoute from '../components/LoginRoute';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+
 interface Props {}
 
 const SignIn = (props: Props) => {
+  const isDesktop = useMediaQuery('(min-width:768px)');
   const [error, setError] = useState<string>('');
   const loginSchema = Yup.object().shape({
     email: Yup.string()
@@ -53,7 +56,7 @@ const SignIn = (props: Props) => {
           <a>Please register here</a>
         </Link>
       </RedirectMessage>
-      <Typography style={{ textAlign: 'center' }} variant="h4">
+      <Typography style={{ textAlign: 'center', margin: 20 }} variant="h4">
         Welcome
       </Typography>
 
@@ -71,7 +74,11 @@ const SignIn = (props: Props) => {
             </Button>
           </Form>
         </InnerFlexItem>
-        <Divider orientation="vertical" flexItem />
+        <Divider
+          style={{ margin: '30px 0 20px 0' }}
+          orientation={isDesktop ? 'vertical' : 'horizontal'}
+          flexItem={isDesktop ? true : false}
+        />
         <InnerFlexItem style={{ flex: 1 }}>
           <Form onSubmit={handleSubmit(onSubmit)}>
             <Typography variant="h5">Login With E-mail</Typography>
@@ -79,6 +86,8 @@ const SignIn = (props: Props) => {
               style={{ marginTop: '10px' }}
               placeholder="E-mail"
               name="email"
+              id="outlined-basic"
+              variant="outlined"
               inputRef={register({ required: true })}
             />
             <div style={{ color: 'red' }}>{errors.email?.message}</div>
@@ -87,6 +96,8 @@ const SignIn = (props: Props) => {
               placeholder="Password"
               name="password"
               type="password"
+              id="outlined-basic"
+              variant="outlined"
               inputRef={register({ required: true })}
             />
             <div style={{ color: 'red' }}>{errors.password?.message}</div>
@@ -98,7 +109,7 @@ const SignIn = (props: Props) => {
               </Link>
             </RedirectMessage>
             <Button
-              color="secondary"
+              color="primary"
               variant="contained"
               style={{ marginTop: '10px' }}
               type="submit"
@@ -116,11 +127,14 @@ const InnerFlexItem = styled(Box)`
   display: flex;
   justify-content: center;
   flex: 1;
+  @media (min-width: 768px) {
+    margin-top: 40px;
+  }
 `;
 const RedirectMessage = styled(Box)`
   justify-content: center;
   display: flex;
-  background: lightgray;
+  background: #aaddd8;
   padding: 20px;
   a {
     display: flex;
@@ -136,15 +150,23 @@ const Form = styled.form`
   flex-direction: column;
 `;
 const SignInWrapper = styled(Box)`
+  background: #fff;
   display: flex;
   justify-content: flex-start;
   flex-direction: column;
   min-height: 100vh;
 `;
 const FormWrapper = styled(Box)`
+  margin: 0 5vw 0 5vw;
   display: flex;
+
+  flex-direction: column;
   justify-content: space-evenly;
-  min-height: 400px;
+
+  @media (min-width: 768px) {
+    min-height: 500px;
+    flex-direction: row;
+  }
 `;
 
 export default LoginRoute(SignIn);
