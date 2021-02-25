@@ -58,58 +58,64 @@ const SignIn = (props: Props) => {
       </Typography>
 
       <FormWrapper>
-          <div>
-        <Form style={{ flex: 1 }}>
-          <Typography variant="h5">Login With Google</Typography>
-          <Button
-            onClick={googleSignInHandler}
-            style={{ padding: '8px', backgroundColor: 'gray' }}
-          >
-            <Typography style={{ textAlign: 'center' }}>
-              Sign In With Google
-            </Typography>
-          </Button>
-        </Form>
-        </div>
+        <InnerFlexItem>
+          <Form>
+            <Typography variant="h5">Login With Google</Typography>
+            <Button
+              onClick={googleSignInHandler}
+              style={{ padding: '8px', backgroundColor: 'gray' }}
+            >
+              <Typography style={{ textAlign: 'center' }}>
+                Sign In With Google
+              </Typography>
+            </Button>
+          </Form>
+        </InnerFlexItem>
         <Divider orientation="vertical" flexItem />
-        <Form style={{ flex: 1 }} onSubmit={handleSubmit(onSubmit)}>
-          <Typography variant="h5">Login With E-mail</Typography>
-          <TextField
-            style={{ marginTop: '10px' }}
-            placeholder="E-mail"
-            name="email"
-            inputRef={register({ required: true })}
-          />
-          <div style={{ color: 'red' }}>{errors.email?.message}</div>
-          <TextField
-            style={{ marginTop: '10px' }}
-            placeholder="Password"
-            name="password"
-            type="password"
-            inputRef={register({ required: true })}
-          />
-          <div style={{ color: 'red' }}>{errors.password?.message}</div>
-          {error && <p style={{ color: 'red' }}>{error}</p>}
-          <RedirectMessage style={{ background: 'inherit' }}>
-            <Typography>Forgot your password?</Typography>
-            <Link href="/forgotpassword">
-              <a>Click Here</a>
-            </Link>
-          </RedirectMessage>
-          <Button
-            color="secondary"
-            variant="contained"
-            style={{ marginTop: '10px' }}
-            type="submit"
-          >
-            Submit
-          </Button>
-        </Form>
+        <InnerFlexItem style={{ flex: 1 }}>
+          <Form onSubmit={handleSubmit(onSubmit)}>
+            <Typography variant="h5">Login With E-mail</Typography>
+            <TextField
+              style={{ marginTop: '10px' }}
+              placeholder="E-mail"
+              name="email"
+              inputRef={register({ required: true })}
+            />
+            <div style={{ color: 'red' }}>{errors.email?.message}</div>
+            <TextField
+              style={{ marginTop: '10px' }}
+              placeholder="Password"
+              name="password"
+              type="password"
+              inputRef={register({ required: true })}
+            />
+            <div style={{ color: 'red' }}>{errors.password?.message}</div>
+            {error && <p style={{ color: 'red' }}>{error}</p>}
+            <RedirectMessage style={{ background: 'inherit' }}>
+              <Typography>Forgot your password?</Typography>
+              <Link href="/forgotpassword">
+                <a>Click Here</a>
+              </Link>
+            </RedirectMessage>
+            <Button
+              color="secondary"
+              variant="contained"
+              style={{ marginTop: '10px' }}
+              type="submit"
+            >
+              Submit
+            </Button>
+          </Form>
+        </InnerFlexItem>
       </FormWrapper>
     </SignInWrapper>
   );
 };
-
+const InnerFlexItem = styled(Box)`
+  display: flex;
+  justify-content: center;
+  flex: 1;
+`;
 const RedirectMessage = styled(Box)`
   justify-content: center;
   display: flex;
@@ -124,6 +130,7 @@ const RedirectMessage = styled(Box)`
 `;
 const Form = styled.form`
   display: flex;
+  max-width: 400px;
 
   flex-direction: column;
 `;
