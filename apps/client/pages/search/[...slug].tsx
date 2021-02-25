@@ -76,7 +76,7 @@ const SearchPid = () => {
         } else {
           const response = await Geocode.fromAddress(`${pid}`);
           const { lat, lng } =
-            response && response.results[0].geometry.location; // DON'T FORGET TO UNCOMMENT OUT THIS LATER
+            response && response.results[0].geometry.location;
           latitude = lat;
           longitude = lng;
           zoom = 12;
@@ -95,7 +95,6 @@ const SearchPid = () => {
     let isOpen = false;
     var format = 'hh:mm:ss';
     var time = moment();
-    console.log(today);
 
     const beforeTime = moment(`${open}:00:00`, format);
     const afterTime = moment(`${closed}:00:00`, format);
@@ -122,7 +121,13 @@ const SearchPid = () => {
   };
   let filteredData = null;
   if (type === 'location') {
-    filteredData = companiesMockData && companiesMockData;
+    filteredData =
+      companiesMockData &&
+      companiesMockData.filter((item) => {
+        const adress = `${item.adress.city} ${item.adress.name} ${item.adress.postalCode}`;
+
+        return adress.toLowerCase().includes(pid.toLowerCase());
+      });
   } else {
     filteredData =
       companiesMockData &&
