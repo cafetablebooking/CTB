@@ -11,9 +11,13 @@ export interface GoogleSignInButtonProps {
 
 const StyledGoogleSignInButton = styled(Button)`
   padding: 8px;
-  width: 256px;
+
+  height: 56px;
   p {
     margin-left: 10px;
+  }
+  @media (min-width: 315px) {
+    width: 284.6px;
   }
 `;
 //

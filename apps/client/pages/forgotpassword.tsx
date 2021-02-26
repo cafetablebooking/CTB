@@ -70,7 +70,7 @@ const ForgotPassword = (props: Props) => {
           <Button
             color="secondary"
             variant="contained"
-            style={{ marginTop: '10px' }}
+            style={{ marginTop: '10px', height: '56px' }}
             type="submit"
           >
             Reset Password
