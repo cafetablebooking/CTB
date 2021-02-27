@@ -57,14 +57,8 @@ const connectCafe = (props: Props) => {
       const subtitle2: string = item.subtitle2;
 
       return (
-        <Box
-          marginTop={3}
-          maxWidth="615px"
-          display="flex"
-          flexDirection="column"
-          justifyContent="space-between"
-        >
-          <Box display="flex" flexDirection={isDesktop ? 'row' : 'column'}>
+        <BusinessInfoItem key={title}>
+          <BusinessInnerBox>
             <div style={{ position: 'relative', width: 50, height: 50 }}>
               <Image
                 src={image}
@@ -72,13 +66,7 @@ const connectCafe = (props: Props) => {
                 layout="fill"
               />
             </div>
-            <Box
-              marginLeft={isDesktop ? 3 : 0}
-              marginTop={!isDesktop ? 2 : 0}
-              maxWidth="450px"
-              display="flex"
-              flexDirection="column"
-            >
+            <BusinessTextBox>
               <Typography variant="h5" gutterBottom={true}>
                 {title}
               </Typography>
@@ -86,15 +74,15 @@ const connectCafe = (props: Props) => {
                 {subtitle1}
               </Typography>
               <Typography gutterBottom={true}>{subtitle2}</Typography>
-            </Box>
-          </Box>
+            </BusinessTextBox>
+          </BusinessInnerBox>
           <Divider
             style={{ marginTop: 24 }}
             light={false}
             flexItem={false}
             orientation="horizontal"
           />
-        </Box>
+        </BusinessInfoItem>
       );
     });
     return infoData;
@@ -104,13 +92,7 @@ const connectCafe = (props: Props) => {
   return (
     <Wrapper>
       <Hero></Hero>
-      <Box
-        bgcolor="#a13e3e"
-        color="white"
-        display="flex"
-        justifyContent="center"
-        padding={3}
-      >
+      <PaymentGuarantee>
         <TextBox>
           <Typography variant="h5">Novelty! Payment guarantee!</Typography>
           <ul>
@@ -120,14 +102,15 @@ const connectCafe = (props: Props) => {
               </Typography>
             </li>
             <li>
-              <Typography>
-                Up to 50% fewer cancellations • Get paid even at No-shows
-              </Typography>
+              <Typography>Up to 50% fewer cancellations</Typography>
+            </li>
+            <li>
+              <Typography>Get paid even at No-shows</Typography>
             </li>
             <a>Read more</a>
           </ul>
         </TextBox>
-      </Box>
+      </PaymentGuarantee>
 
       <OnboardingContent>
         <Typography variant="h6">CONNECT YOUR COMPANY</Typography>
@@ -207,6 +190,41 @@ const connectCafe = (props: Props) => {
     </Wrapper>
   );
 };
+
+const BusinessTextBox = styled(Box)`
+  margin-left: 0;
+  margin-top: 16px;
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    margin-left: 24px;
+    margin-top: 0;
+  }
+`;
+const BusinessInnerBox = styled(Box)`
+  display: flex;
+  flex-direction: column;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+`;
+const PaymentGuarantee = styled(Box)`
+  background-color: #a13e3e;
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+`;
+const BusinessInfoItem = styled(Box)`
+  margin-top: 24px;
+  max-width: 615px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
 const Form = styled.form`
   display: flex;
   max-width: 400px;
