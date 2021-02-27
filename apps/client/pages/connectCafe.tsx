@@ -28,8 +28,9 @@ const connectCafe = (props: Props) => {
       title: 'Being Available (Covid-19)',
       image: '/static/business-icons/Vector.svg',
       subtitle1:
-        "Since the pandemic started there are new rules and regulations to slow down the spread. As a restaurant/café business, it's important for you to keep your business running and to make sure there is room for everyone, so people can calmly enjoy their visit. This service makes it easier for customers as well as you to plan and manage adjustments for Covid-19.",
-      subtitle2: '',
+        'New rules and regulations requires foresight. We want to make sure there is room for everyone, so people can calmly enjoy their visit.',
+      subtitle2:
+        'Our service facilitates management and adjustment for both customers and businesses.',
     },
     {
       title: 'Manage table bookings',
@@ -60,25 +61,35 @@ const connectCafe = (props: Props) => {
           marginTop={3}
           maxWidth="615px"
           display="flex"
-          flexDirection={isDesktop ? 'row' : 'column'}
+          flexDirection="column"
+          justifyContent="space-between"
         >
-          <Image src={image} width="72" height="80" />
-          <Box
-            marginLeft={isDesktop ? 3 : 0}
-            marginTop={!isDesktop ? 2 : 0}
-            maxWidth="450px"
-            display="flex"
-            flexDirection="column"
-          >
-            <Typography variant="h5" gutterBottom={true}>
-              {title}
-            </Typography>
-            <Typography variant="subtitle1" gutterBottom={true}>
-              {subtitle1}
-            </Typography>
-            <Typography gutterBottom={true}>{subtitle2}</Typography>
+          <Box display="flex" flexDirection={isDesktop ? 'row' : 'column'}>
+            <div style={{ position: 'relative', width: 50, height: 50 }}>
+              <Image src={image} layout="fill" />
+            </div>
+            <Box
+              marginLeft={isDesktop ? 3 : 0}
+              marginTop={!isDesktop ? 2 : 0}
+              maxWidth="450px"
+              display="flex"
+              flexDirection="column"
+            >
+              <Typography variant="h5" gutterBottom={true}>
+                {title}
+              </Typography>
+              <Typography variant="subtitle1" gutterBottom={true}>
+                {subtitle1}
+              </Typography>
+              <Typography gutterBottom={true}>{subtitle2}</Typography>
+            </Box>
           </Box>
-          <Divider />
+          <Divider
+            style={{ marginTop: 24 }}
+            light={false}
+            flexItem={false}
+            orientation="horizontal"
+          />
         </Box>
       );
     });
@@ -87,53 +98,53 @@ const connectCafe = (props: Props) => {
 
   const onSubmit = (data) => {};
   return (
-    <ThemeProvider theme={darkTheme}>
-      <Wrapper>
-        <Hero></Hero>
-        <Box
-          bgcolor="#a13e3e"
-          color="white"
-          display="flex"
-          justifyContent="center"
-          padding={3}
-        >
-          <TextBox>
-            <Typography variant="h5">Novelty! Payment guarantee!</Typography>
-            <ul>
-              <li>
-                <Typography>
-                  100% payment guarantee for bookings from cafébooking.com
-                </Typography>
-              </li>
-              <li>
-                <Typography>
-                  Up to 50% fewer cancellations • Get paid even at No-shows
-                </Typography>
-              </li>
-              <a>Read more</a>
-            </ul>
-          </TextBox>
-        </Box>
+    <Wrapper>
+      <Hero></Hero>
+      <Box
+        bgcolor="#a13e3e"
+        color="white"
+        display="flex"
+        justifyContent="center"
+        padding={3}
+      >
+        <TextBox>
+          <Typography variant="h5">Novelty! Payment guarantee!</Typography>
+          <ul>
+            <li>
+              <Typography>
+                100% payment guarantee for bookings from cafébooking.com
+              </Typography>
+            </li>
+            <li>
+              <Typography>
+                Up to 50% fewer cancellations • Get paid even at No-shows
+              </Typography>
+            </li>
+            <a>Read more</a>
+          </ul>
+        </TextBox>
+      </Box>
 
-        <OnboardingContent>
-          <Typography variant="h6">CONNECT YOUR COMPANY</Typography>
-          <Typography variant="h3">We will help you</Typography>
-          <Box
-            marginTop={5}
-            flexWrap="wrap"
-            display="flex"
-            justifyContent="space-evenly"
-            flexDirection="row"
-          >
-            {renderConnectInfoData()}
-          </Box>
-          <div
-            style={{
-              display: 'flex',
-              justifyContent: 'center',
-              marginTop: 50,
-            }}
-          >
+      <OnboardingContent>
+        <Typography variant="h6">CONNECT YOUR COMPANY</Typography>
+        <Typography variant="h3">We will help you</Typography>
+        <Box
+          marginTop={5}
+          flexWrap="wrap"
+          display="flex"
+          justifyContent="space-evenly"
+          flexDirection="row"
+        >
+          {renderConnectInfoData()}
+        </Box>
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            marginTop: 50,
+          }}
+        >
+          <ThemeProvider theme={darkTheme}>
             <ConnectBusinessBox>
               <Typography align="center" variant="h4">
                 Connect Business
@@ -186,10 +197,10 @@ const connectCafe = (props: Props) => {
                 </Button>
               </Form>
             </ConnectBusinessBox>
-          </div>
-        </OnboardingContent>
-      </Wrapper>
-    </ThemeProvider>
+          </ThemeProvider>
+        </div>
+      </OnboardingContent>
+    </Wrapper>
   );
 };
 const Form = styled.form`
@@ -248,7 +259,7 @@ const Wrapper = styled(Box)`
 `;
 
 const OnboardingContent = styled(Box)`
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   display: flex;
 
   flex-direction: column;
