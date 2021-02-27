@@ -20,9 +20,9 @@ const SearchListItem = (props: Props) => {
       <ImageWrapper>
         <Image
           src={props.image}
-          layout="fill"
+          height="150"
+          width="150"
           alt="Avatar image of business"
-          objectfit="contain"
         />
       </ImageWrapper>
       <ListItemDetails>
@@ -54,13 +54,10 @@ const SearchListItem = (props: Props) => {
 };
 const ImageWrapper = styled.div`
   display: flex;
-  position: relative;
+  align-items: center;
   img {
     border-radius: 4px;
   }
-  align-items: center;
-  width: 150px;
-  height: 150px;
 `;
 
 const ListItem = styled(Box)`
