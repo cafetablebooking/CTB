@@ -29,7 +29,12 @@ export function GoogleSignInButton(props: GoogleSignInButtonProps) {
       color="default"
       onClick={props.googleSignInHandler}
     >
-      <Image src="/static/img/signin/Google.svg" width="40" height="40" />
+      <Image
+        src="/static/img/signin/Google.svg"
+        alt="Google sign-in image"
+        width="40"
+        height="40"
+      />
       <p>{props.text}</p>
     </StyledGoogleSignInButton>
   );

@@ -66,7 +66,11 @@ const connectCafe = (props: Props) => {
         >
           <Box display="flex" flexDirection={isDesktop ? 'row' : 'column'}>
             <div style={{ position: 'relative', width: 50, height: 50 }}>
-              <Image src={image} layout="fill" />
+              <Image
+                src={image}
+                alt="Icons for business descriptions"
+                layout="fill"
+              />
             </div>
             <Box
               marginLeft={isDesktop ? 3 : 0}

@@ -118,7 +118,7 @@ export function AutoCompleteInput(props: AutoCompleteInputProps) {
             <Image
               src="/static/arrow-nav.svg"
               layout="fill"
-              objectfit="contain"
+              alt="Arrow icon for checking position of user"
             />
           </ImageWrapper>
           <p>Check my position</p>

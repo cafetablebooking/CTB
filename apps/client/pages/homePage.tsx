@@ -42,28 +42,28 @@ const homePage = (props: Props) => {
             <ImgWrapper>
               <Image
                 src="/static/img/restaurantbusinesss.jpg"
-                alt="Picture of the author"
+                alt="Picture of café or restaurant business"
                 width={570}
                 height={370}
               />
             </ImgWrapper>
           </OnboardingRight>
         </OnboardingContent>
-          <Marquee velocity={30} resetAfterTries={50}>
-            {companiesMockData &&
-              companiesMockData.map((item) => (
-                <Motion key={`child-${item.id}`} velocity={0} radius={100}>
-                  <ImageWrapper>
-                    <Image
-                      src={item.image}
-                      alt="Picture of the author"
-                      width={570}
-                      height={370}
-                    />
-                  </ImageWrapper>
-                </Motion>
-              ))}
-          </Marquee>
+        <Marquee velocity={30} resetAfterTries={50}>
+          {companiesMockData &&
+            companiesMockData.map((item) => (
+              <Motion key={`child-${item.id}`} velocity={0} radius={100}>
+                <ImageWrapper>
+                  <Image
+                    src={item.image}
+                    alt="Avatar logotype of restaurant café company"
+                    width={570}
+                    height={370}
+                  />
+                </ImageWrapper>
+              </Motion>
+            ))}
+        </Marquee>
       </Home>
     </ThemeProvider>
   );

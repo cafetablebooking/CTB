@@ -18,7 +18,12 @@ const SearchListItem = (props: Props) => {
   return (
     <ListItem>
       <ImageWrapper>
-        <Image src={props.image} height="150" width="150" objectfit="contain" />
+        <Image
+          src={props.image}
+          layout="fill"
+          alt="Avatar image of business"
+          objectfit="contain"
+        />
       </ImageWrapper>
       <ListItemDetails>
         <Typography variant="h5">{props.companyName}</Typography>
@@ -41,8 +46,8 @@ const SearchListItem = (props: Props) => {
       <Image
         src={'/static/angle-right.svg'}
         height="20"
+        alt="Angle right for company cards"
         width="20"
-        objectfit="contain"
       />
     </ListItem>
   );
