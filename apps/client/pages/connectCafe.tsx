@@ -4,7 +4,7 @@ import { Typography, Box, TextField, Button, Divider } from '@material-ui/core';
 
 import { ThemeProvider } from '@material-ui/core/styles';
 import { darkTheme } from '@ctb/dark-theme-provider';
-
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { AuthContext } from '@ctb/auth-context';
 import Image from 'next/image';
 
@@ -14,6 +14,7 @@ interface Props {}
 const connectCafe = (props: Props) => {
   const { companiesMockData }: any = useContext(AuthContext);
   const { register, handleSubmit, watch, errors } = useForm({});
+  const isDesktop = useMediaQuery('(min-width:768px)');
   const onSubmit = (data) => {};
   return (
     <ThemeProvider theme={darkTheme}>
@@ -41,93 +42,136 @@ const connectCafe = (props: Props) => {
         <OnboardingContent>
           <Typography variant="h6">CONNECT YOUR COMPANY</Typography>
           <Typography variant="h3">We will help you</Typography>
-          <Box flexWrap="wrap" display="flex" flexDirection="row">
-            <Box maxWidth="615px" display="flex" flexDirection="row">
-              <Image src="/static/img/hero" width="30" height="30" />
-              <Box display="flex" flexDirection="column">
-                <Typography variant="h6" gutterBottom={true}>
-                  Fylla din kalender
+          <Box
+            marginTop={5}
+            flexWrap="wrap"
+            display="flex"
+            justifyContent="space-evenly"
+            flexDirection="row"
+          >
+            <Box
+              marginTop={3}
+              maxWidth="615px"
+              display="flex"
+              flexDirection={isDesktop ? 'row' : 'column'}
+            >
+              <Image
+                src="/static/business-icons/tables.svg"
+                width="72"
+                height="80"
+              />
+              <Box
+                marginLeft={3}
+                marginTop={!isDesktop ? 2 : 0}
+                maxWidth="450px"
+                display="flex"
+                flexDirection="column"
+              >
+                <Typography variant="h5" gutterBottom={true}>
+                  Fill your tables
                 </Typography>
                 <Typography variant="subtitle1" gutterBottom={true}>
-                  Bokadirekt är Sveriges största site för skönhet & hälsa. Över
-                  3,2 miljoner potentiella kunder söker och bokar tider här
-                  varje månad.
+                  CTB (Cafe Table Booking) is a universal table booking service
+                  where your customers can book their visit in advance.
                 </Typography>
                 <Typography gutterBottom={true}>
-                  Dina lediga tider blir automatiskt sökbara och du får en
-                  bokningsknapp på Hitta.se.
+                  Your free tables are automatically displayed and you will get
+                  a booking page on CTB.
                 </Typography>
               </Box>
               <Divider />
             </Box>
-            <Box maxWidth="615px" display="flex" flexDirection="row">
-              <Image src="/static/img/hero" width="30" height="30" />
-              <Box display="flex" flexDirection="column">
-                <Typography variant="h6" gutterBottom={true}>
-                  Fylla din kalender
+            <Box
+              marginTop={3}
+              maxWidth="615px"
+              display="flex"
+              flexDirection={isDesktop ? 'row' : 'column'}
+            >
+              <Image
+                src="/static/business-icons/Vector.svg"
+                width="72"
+                height="80"
+              />
+              <Box
+                marginLeft={3}
+                marginTop={!isDesktop ? 2 : 0}
+                maxWidth="450px"
+                display="flex"
+                flexDirection="column"
+              >
+                <Typography variant="h5" gutterBottom={true}>
+                  Being Available (Covid-19)
                 </Typography>
                 <Typography variant="subtitle1" gutterBottom={true}>
-                  Bokadirekt är Sveriges största site för skönhet & hälsa. Över
-                  3,2 miljoner potentiella kunder söker och bokar tider här
-                  varje månad.
+                  Since the pandemic started there are new rules and regulations
+                  to slow down the spread. As a restaurant/café business, it's
+                  important for you to keep your business running and to make
+                  sure there is room for everyone, so people can calmly enjoy
+                  their visit. This service makes it easier for customers as
+                  well as you to plan and manage adjustments for Covid-19.
+                </Typography>
+                <Typography gutterBottom={true}></Typography>
+              </Box>
+              <Divider />
+            </Box>
+            <Box
+              marginTop={3}
+              maxWidth="615px"
+              display="flex"
+              flexDirection={isDesktop ? 'row' : 'column'}
+            >
+              <Image
+                src="/static/business-icons/bookings.svg"
+                width="72"
+                height="80"
+              />
+              <Box
+                marginLeft={3}
+                marginTop={!isDesktop ? 2 : 0}
+                maxWidth="450px"
+                display="flex"
+                flexDirection="column"
+              >
+                <Typography variant="h5" gutterBottom={true}>
+                  Manage table bookings
+                </Typography>
+                <Typography variant="subtitle1" gutterBottom={true}>
+                  We will help you to organize your business in forms of
+                  offering a service to maintain a clear schedule of your
+                  bookings.
                 </Typography>
                 <Typography gutterBottom={true}>
-                  Dina lediga tider blir automatiskt sökbara och du får en
-                  bokningsknapp på Hitta.se.
+                  You will have an admin dashboard where you can manage your
+                  tables and see further details of your bookings.
                 </Typography>
               </Box>
               <Divider />
             </Box>
-            <Box maxWidth="615px" display="flex" flexDirection="row">
-              <Image src="/static/img/hero" width="30" height="30" />
-              <Box display="flex" flexDirection="column">
-                <Typography variant="h6" gutterBottom={true}>
-                  Fylla din kalender
+            <Box
+              marginTop={3}
+              maxWidth="615px"
+              display="flex"
+              flexDirection={isDesktop ? 'row' : 'column'}
+            >
+              <Image
+                src="/static/business-icons/money.svg"
+                width="72"
+                height="80"
+              />
+              <Box
+                marginLeft={3}
+                marginTop={!isDesktop ? 2 : 0}
+                maxWidth="450px"
+                display="flex"
+                flexDirection="column"
+              >
+                <Typography variant="h5" gutterBottom={true}>
+                  Increase your sales
                 </Typography>
                 <Typography variant="subtitle1" gutterBottom={true}>
-                  Bokadirekt är Sveriges största site för skönhet & hälsa. Över
-                  3,2 miljoner potentiella kunder söker och bokar tider här
-                  varje månad.
-                </Typography>
-                <Typography gutterBottom={true}>
-                  Dina lediga tider blir automatiskt sökbara och du får en
-                  bokningsknapp på Hitta.se.
-                </Typography>
-              </Box>
-              <Divider />
-            </Box>
-            <Box maxWidth="615px" display="flex" flexDirection="row">
-              <Image src="/static/img/hero" width="30" height="30" />
-              <Box display="flex" flexDirection="column">
-                <Typography variant="h6" gutterBottom={true}>
-                  Fylla din kalender
-                </Typography>
-                <Typography variant="subtitle1" gutterBottom={true}>
-                  Bokadirekt är Sveriges största site för skönhet & hälsa. Över
-                  3,2 miljoner potentiella kunder söker och bokar tider här
-                  varje månad.
-                </Typography>
-                <Typography gutterBottom={true}>
-                  Dina lediga tider blir automatiskt sökbara och du får en
-                  bokningsknapp på Hitta.se.
-                </Typography>
-              </Box>
-              <Divider />
-            </Box>
-            <Box maxWidth="615px" display="flex" flexDirection="row">
-              <Image src="/static/img/hero" width="30" height="30" />
-              <Box display="flex" flexDirection="column">
-                <Typography variant="h6" gutterBottom={true}>
-                  Fylla din kalender
-                </Typography>
-                <Typography variant="subtitle1" gutterBottom={true}>
-                  Bokadirekt är Sveriges största site för skönhet & hälsa. Över
-                  3,2 miljoner potentiella kunder söker och bokar tider här
-                  varje månad.
-                </Typography>
-                <Typography gutterBottom={true}>
-                  Dina lediga tider blir automatiskt sökbara och du får en
-                  bokningsknapp på Hitta.se.
+                  We will fill your calendar in advance so your staff also can
+                  plan in advance, this will improve structure. As well as
+                  increasing your sales.
                 </Typography>
               </Box>
               <Divider />
@@ -140,9 +184,9 @@ const connectCafe = (props: Props) => {
               marginTop: 50,
             }}
           >
-            <ConnectCafeBox>
+            <ConnectBusinessBox>
               <Typography align="center" variant="h4">
-                Connect Café
+                Connect Business
               </Typography>
               <Form onSubmit={handleSubmit(onSubmit)}>
                 <TextField
@@ -181,7 +225,7 @@ const connectCafe = (props: Props) => {
                   style={{
                     margin: '10px',
                     width: '242.5px',
-
+                    height: '56px',
                     alignSelf: 'center',
                   }}
                   color="primary"
@@ -191,7 +235,7 @@ const connectCafe = (props: Props) => {
                   Send A Request
                 </Button>
               </Form>
-            </ConnectCafeBox>
+            </ConnectBusinessBox>
           </div>
         </OnboardingContent>
       </Wrapper>
@@ -204,7 +248,7 @@ const Form = styled.form`
 
   flex-direction: column;
 `;
-const ConnectCafeBox = styled(Box)`
+const ConnectBusinessBox = styled(Box)`
   padding: 20px;
   border-radius: 4px;
   background: black;
