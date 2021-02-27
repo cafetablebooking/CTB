@@ -108,7 +108,7 @@ const SignIn = (props: Props) => {
             <Button
               color="primary"
               variant="contained"
-              style={{ marginTop: '10px' }}
+              style={{ marginTop: '10px', height: '56px' }}
               type="submit"
             >
               Submit

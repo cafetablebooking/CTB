@@ -134,6 +134,5 @@ const FontWrapper = styled.div`
 
   button {
     font-weight: bold;
-    height: 56px;
   }
 `;

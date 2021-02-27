@@ -88,7 +88,7 @@ export const SearchBoxComponent = (props: Props) => {
             style={{
               margin: '10px',
               width: '242.5px',
-
+              height: '56px',
               alignSelf: 'center',
             }}
             color="primary"
