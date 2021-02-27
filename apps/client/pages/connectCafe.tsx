@@ -15,6 +15,76 @@ const connectCafe = (props: Props) => {
   const { companiesMockData }: any = useContext(AuthContext);
   const { register, handleSubmit, watch, errors } = useForm({});
   const isDesktop = useMediaQuery('(min-width:768px)');
+  const connectInfoData = [
+    {
+      title: 'Fill your tables',
+      image: '/static/business-icons/tables.svg',
+      subtitle1:
+        'CTB (Cafe Table Booking) is a universal table booking service where your customers can book their visit in advance.',
+      subtitle2:
+        'Your free tables are automatically displayed and you will get a booking page on CTB.',
+    },
+    {
+      title: 'Being Available (Covid-19)',
+      image: '/static/business-icons/Vector.svg',
+      subtitle1:
+        "Since the pandemic started there are new rules and regulations to slow down the spread. As a restaurant/café business, it's important for you to keep your business running and to make sure there is room for everyone, so people can calmly enjoy their visit. This service makes it easier for customers as well as you to plan and manage adjustments for Covid-19.",
+      subtitle2: '',
+    },
+    {
+      title: 'Manage table bookings',
+      image: '/static/business-icons/bookings.svg',
+      subtitle1:
+        'We will help you to organize your business in forms of offering a service to maintain a clear schedule of your bookings.',
+      subtitle2:
+        'You will have an admin dashboard where you can manage your tables and see further details of your bookings.',
+    },
+    {
+      title: 'Increase your sales',
+      image: '/static/business-icons/money.svg',
+      subtitle1:
+        'We will fill your calendar in advance so your staff also can plan in advance, this will improve structure. As well as increasing your sales.',
+      subtitle2: '',
+    },
+  ];
+
+  const renderConnectInfoData = () => {
+    const infoData = connectInfoData.map((item) => {
+      const image: string = item.image;
+      const title: string = item.title;
+      const subtitle1: string = item.subtitle1;
+      const subtitle2: string = item.subtitle2;
+
+      return (
+        <Box
+          marginTop={3}
+          maxWidth="615px"
+          display="flex"
+          flexDirection={isDesktop ? 'row' : 'column'}
+        >
+          <Image src={image} width="72" height="80" />
+          <Box
+            marginLeft={3}
+            marginTop={!isDesktop ? 2 : 0}
+            maxWidth="450px"
+            display="flex"
+            flexDirection="column"
+          >
+            <Typography variant="h5" gutterBottom={true}>
+              {title}
+            </Typography>
+            <Typography variant="subtitle1" gutterBottom={true}>
+              {subtitle1}
+            </Typography>
+            <Typography gutterBottom={true}>{subtitle2}</Typography>
+          </Box>
+          <Divider />
+        </Box>
+      );
+    });
+    return infoData;
+  };
+
   const onSubmit = (data) => {};
   return (
     <ThemeProvider theme={darkTheme}>
@@ -49,133 +119,7 @@ const connectCafe = (props: Props) => {
             justifyContent="space-evenly"
             flexDirection="row"
           >
-            <Box
-              marginTop={3}
-              maxWidth="615px"
-              display="flex"
-              flexDirection={isDesktop ? 'row' : 'column'}
-            >
-              <Image
-                src="/static/business-icons/tables.svg"
-                width="72"
-                height="80"
-              />
-              <Box
-                marginLeft={3}
-                marginTop={!isDesktop ? 2 : 0}
-                maxWidth="450px"
-                display="flex"
-                flexDirection="column"
-              >
-                <Typography variant="h5" gutterBottom={true}>
-                  Fill your tables
-                </Typography>
-                <Typography variant="subtitle1" gutterBottom={true}>
-                  CTB (Cafe Table Booking) is a universal table booking service
-                  where your customers can book their visit in advance.
-                </Typography>
-                <Typography gutterBottom={true}>
-                  Your free tables are automatically displayed and you will get
-                  a booking page on CTB.
-                </Typography>
-              </Box>
-              <Divider />
-            </Box>
-            <Box
-              marginTop={3}
-              maxWidth="615px"
-              display="flex"
-              flexDirection={isDesktop ? 'row' : 'column'}
-            >
-              <Image
-                src="/static/business-icons/Vector.svg"
-                width="72"
-                height="80"
-              />
-              <Box
-                marginLeft={3}
-                marginTop={!isDesktop ? 2 : 0}
-                maxWidth="450px"
-                display="flex"
-                flexDirection="column"
-              >
-                <Typography variant="h5" gutterBottom={true}>
-                  Being Available (Covid-19)
-                </Typography>
-                <Typography variant="subtitle1" gutterBottom={true}>
-                  Since the pandemic started there are new rules and regulations
-                  to slow down the spread. As a restaurant/café business, it's
-                  important for you to keep your business running and to make
-                  sure there is room for everyone, so people can calmly enjoy
-                  their visit. This service makes it easier for customers as
-                  well as you to plan and manage adjustments for Covid-19.
-                </Typography>
-                <Typography gutterBottom={true}></Typography>
-              </Box>
-              <Divider />
-            </Box>
-            <Box
-              marginTop={3}
-              maxWidth="615px"
-              display="flex"
-              flexDirection={isDesktop ? 'row' : 'column'}
-            >
-              <Image
-                src="/static/business-icons/bookings.svg"
-                width="72"
-                height="80"
-              />
-              <Box
-                marginLeft={3}
-                marginTop={!isDesktop ? 2 : 0}
-                maxWidth="450px"
-                display="flex"
-                flexDirection="column"
-              >
-                <Typography variant="h5" gutterBottom={true}>
-                  Manage table bookings
-                </Typography>
-                <Typography variant="subtitle1" gutterBottom={true}>
-                  We will help you to organize your business in forms of
-                  offering a service to maintain a clear schedule of your
-                  bookings.
-                </Typography>
-                <Typography gutterBottom={true}>
-                  You will have an admin dashboard where you can manage your
-                  tables and see further details of your bookings.
-                </Typography>
-              </Box>
-              <Divider />
-            </Box>
-            <Box
-              marginTop={3}
-              maxWidth="615px"
-              display="flex"
-              flexDirection={isDesktop ? 'row' : 'column'}
-            >
-              <Image
-                src="/static/business-icons/money.svg"
-                width="72"
-                height="80"
-              />
-              <Box
-                marginLeft={3}
-                marginTop={!isDesktop ? 2 : 0}
-                maxWidth="450px"
-                display="flex"
-                flexDirection="column"
-              >
-                <Typography variant="h5" gutterBottom={true}>
-                  Increase your sales
-                </Typography>
-                <Typography variant="subtitle1" gutterBottom={true}>
-                  We will fill your calendar in advance so your staff also can
-                  plan in advance, this will improve structure. As well as
-                  increasing your sales.
-                </Typography>
-              </Box>
-              <Divider />
-            </Box>
+            {renderConnectInfoData()}
           </Box>
           <div
             style={{
