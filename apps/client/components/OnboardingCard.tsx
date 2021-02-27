@@ -77,6 +77,7 @@ function OnboardingCard() {
                 className={classes.avatar}
                 key={face}
                 src={face}
+                alt="User image for Café and restaurant businesses"
               />
             ))}
           </div>
