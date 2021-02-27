@@ -14,7 +14,7 @@ interface Props {}
 const connectCafe = (props: Props) => {
   const { companiesMockData }: any = useContext(AuthContext);
   const { register, handleSubmit, watch, errors } = useForm({});
-  const isDesktop = useMediaQuery('(min-width:768px)');
+
   const connectInfoData = [
     {
       title: 'Fill your tables',
@@ -73,7 +73,9 @@ const connectCafe = (props: Props) => {
               <Typography variant="subtitle1" gutterBottom={true}>
                 {subtitle1}
               </Typography>
-              <Typography gutterBottom={true}>{subtitle2}</Typography>
+              <Typography style={{ marginBottom: 0 }} gutterBottom={true}>
+                {subtitle2}
+              </Typography>
             </BusinessTextBox>
           </BusinessInnerBox>
           <Divider
@@ -113,8 +115,10 @@ const connectCafe = (props: Props) => {
       </PaymentGuarantee>
 
       <OnboardingContent>
-        <Typography variant="h6">CONNECT YOUR COMPANY</Typography>
-        <Typography variant="h3">We will help you</Typography>
+        <Typography variant="h6">CONNECT YOUR BUSINESS</Typography>
+        <Typography style={{ marginTop: 24 }} variant="h4">
+          We will help you
+        </Typography>
         <Box
           marginTop={5}
           flexWrap="wrap"
@@ -133,12 +137,22 @@ const connectCafe = (props: Props) => {
         >
           <ThemeProvider theme={darkTheme}>
             <ConnectBusinessBox>
-              <Typography align="center" variant="h4">
-                Connect Business
+              <Typography gutterBottom={true} align="center" variant="h4">
+                Get started
               </Typography>
+              <Typography align="center">
+                We will help you register so you can get started. Fill in the
+                form below and our staff will contact you within the next 24
+                hours.
+              </Typography>
+              <Divider
+                style={{ width: '80%', margin: '24px 0 24px 0' }}
+                light={false}
+                flexItem={false}
+                orientation="horizontal"
+              />
               <Form onSubmit={handleSubmit(onSubmit)}>
                 <TextField
-                  style={{ minWidth: '242.5px', marginTop: 20 }}
                   id="outlined-basic"
                   label="Company name"
                   variant="outlined"
@@ -146,7 +160,7 @@ const connectCafe = (props: Props) => {
                   inputRef={register()}
                 />
                 <TextField
-                  style={{ minWidth: '242.5px', marginTop: 10 }}
+                  style={{ marginTop: 10 }}
                   id="outlined-basic"
                   label="VAT Nr"
                   variant="outlined"
@@ -154,7 +168,7 @@ const connectCafe = (props: Props) => {
                   inputRef={register()}
                 />
                 <TextField
-                  style={{ minWidth: '242.5px', marginTop: 10 }}
+                  style={{ marginTop: 10 }}
                   id="outlined-basic"
                   label="E-mail"
                   variant="outlined"
@@ -162,16 +176,17 @@ const connectCafe = (props: Props) => {
                   inputRef={register()}
                 />
                 <TextField
-                  style={{ minWidth: '242.5px', marginTop: 10 }}
+                  style={{ marginTop: 10 }}
                   id="outlined-basic"
                   label="Phone number"
                   variant="outlined"
                   name="cafe"
                   inputRef={register()}
                 />
+
                 <Button
                   style={{
-                    margin: '10px',
+                    marginTop: 24,
                     width: '242.5px',
                     height: '56px',
                     alignSelf: 'center',
@@ -180,7 +195,7 @@ const connectCafe = (props: Props) => {
                   variant="contained"
                   type="submit"
                 >
-                  Send A Request
+                  Send
                 </Button>
               </Form>
             </ConnectBusinessBox>
@@ -227,19 +242,27 @@ const BusinessInfoItem = styled(Box)`
 `;
 const Form = styled.form`
   display: flex;
-  max-width: 400px;
-
+  max-width: 300px;
+  width: 100%;
+  div {
+    @media (min-width: 768px) {
+      min-width: 262px;
+    }
+  }
   flex-direction: column;
 `;
 const ConnectBusinessBox = styled(Box)`
+  filter: drop-shadow(0px 12px 20px rgba(0, 0, 0, 0.6));
+  max-width: 600px;
+  justify-content: center;
+  align-items: center;
   padding: 20px;
   border-radius: 4px;
-  background: black;
+  background-color: #424242;
   color: white;
   display: flex;
 
   flex-direction: column;
-  min-width: 300px;
 `;
 const TextBox = styled(Box)`
   ul {
@@ -278,6 +301,7 @@ const Wrapper = styled(Box)`
   flex-direction: column;
   background: #fff;
   position: relative;
+  margin-bottom: 50px;
 `;
 
 const OnboardingContent = styled(Box)`

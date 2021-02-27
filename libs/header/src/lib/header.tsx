@@ -59,9 +59,9 @@ export function Header(props: HeaderProps) {
             </li>
             {isDesktop && (
               <li>
-                <Link href="/connectCafe">
-                  <Anchor active={isActive('/connectCafe')}>
-                    {renderAnchorContent('Connect Cafe')}
+                <Link href="/connectBusiness">
+                  <Anchor active={isActive('/connectBusiness')}>
+                    {renderAnchorContent('Connect')}
                   </Anchor>
                 </Link>
               </li>

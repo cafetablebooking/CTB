@@ -154,7 +154,7 @@ const SignInWrapper = styled(Box)`
   min-height: 100vh;
 `;
 const FormWrapper = styled(Box)`
-  margin: 0 5vw 5vw 5vw;
+  margin: 0 5vw 50px 5vw;
   display: flex;
 
   flex-direction: column;
