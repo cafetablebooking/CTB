@@ -64,7 +64,7 @@ const connectCafe = (props: Props) => {
         >
           <Image src={image} width="72" height="80" />
           <Box
-            marginLeft={3}
+            marginLeft={isDesktop ? 3 : 0}
             marginTop={!isDesktop ? 2 : 0}
             maxWidth="450px"
             display="flex"
@@ -90,7 +90,13 @@ const connectCafe = (props: Props) => {
     <ThemeProvider theme={darkTheme}>
       <Wrapper>
         <Hero></Hero>
-        <PaymentGuarantee>
+        <Box
+          bgcolor="#a13e3e"
+          color="white"
+          display="flex"
+          justifyContent="center"
+          padding={3}
+        >
           <TextBox>
             <Typography variant="h5">Novelty! Payment guarantee!</Typography>
             <ul>
@@ -107,7 +113,7 @@ const connectCafe = (props: Props) => {
               <a>Read more</a>
             </ul>
           </TextBox>
-        </PaymentGuarantee>
+        </Box>
 
         <OnboardingContent>
           <Typography variant="h6">CONNECT YOUR COMPANY</Typography>
@@ -208,15 +214,7 @@ const TextBox = styled(Box)`
     margin: 0;
   }
 `;
-const PaymentGuarantee = styled(Box)`
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #a13e3e;
-  height: 202px;
-  width: 100%;
-`;
+
 const Hero = styled(Box)`
   color: white;
   display: flex;
