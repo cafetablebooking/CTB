@@ -15,7 +15,7 @@ export const AuthContextProvider = (props: Props) => {
   const [navigatorPosition, setNavigatorPosition] = useState<any>(null);
   const [companies, setCompanies] = useState<any>([]);
   const router = useRouter();
-  
+
   Geocode.setApiKey(process.env.NEXT_PUBLIC_CLIENT_GOOGLE_MAPS_API_KEY);
 
   const signup = (email, password) => {
@@ -46,7 +46,7 @@ export const AuthContextProvider = (props: Props) => {
       const crd = pos.coords;
       const latitude = crd.latitude;
       const longitude = crd.longitude;
-      const accuracy = crd.accuracy;
+    //   const accuracy = crd.accuracy;
 
       setNavigatorPosition({
         lat: latitude,
