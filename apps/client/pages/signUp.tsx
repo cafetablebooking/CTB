@@ -20,6 +20,7 @@ const signUp = (props: Props) => {
   const { signInWithGoogle }: any = useContext(AuthContext);
   const isDesktop = useMediaQuery('(min-width:768px)');
   const [error, setError] = useState<string>('');
+  const router = useRouter();
   const registerSchema = Yup.object().shape({
     email: Yup.string()
       .email('Wrong email format')
@@ -42,8 +43,6 @@ const signUp = (props: Props) => {
         ),
       }),
   });
-
-  const router = useRouter();
 
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(registerSchema),
