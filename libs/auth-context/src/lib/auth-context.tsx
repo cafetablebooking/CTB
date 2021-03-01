@@ -76,7 +76,16 @@ export const AuthContextProvider = (props: Props) => {
         });
       });
   };
-
+  const signInWithGoogle = () => {
+    return auth
+      .signInWithPopup(googleProvider)
+      .then((res) => {
+        setCurrentUser(res.user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   useEffect(() => {
     router.events.on('routeChangeComplete', () => {
       window.scrollTo(0, 0);

@@ -1,22 +1,23 @@
 import React, { useContext, useState } from 'react';
 import { TextField, Button, Typography, Box, Divider } from '@material-ui/core';
-import { createMuiTheme } from '@material-ui/core/styles';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { AuthContext } from '@ctb/auth-context';
+
 import { useRouter } from 'next/router';
 import * as Yup from 'yup';
-import LoginRoute from '../components/LoginRoute';
+
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import Image from 'next/image';
+
 import { GoogleSignInButton } from '@ctb/google-sign-in-button';
 import { registerAccount } from '@ctb/auth-crud';
+import { AuthContext } from '@ctb/auth-context';
 interface Props {}
 
 const signUp = (props: Props) => {
+  const { signInWithGoogle }: any = useContext(AuthContext);
   const isDesktop = useMediaQuery('(min-width:768px)');
   const [error, setError] = useState<string>('');
   const registerSchema = Yup.object().shape({
@@ -47,7 +48,7 @@ const signUp = (props: Props) => {
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(registerSchema),
   });
-  const { signInWithGoogle }: any = useContext(AuthContext);
+
   const googleSignInHandler = () => {
     signInWithGoogle();
     router.push('/dashboard');

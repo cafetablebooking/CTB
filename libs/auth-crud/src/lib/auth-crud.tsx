@@ -1,4 +1,5 @@
 import { auth, googleProvider } from '@ctb/firebase-auth';
+import { AuthContext } from '@ctb/auth-context';
 import { useContext } from 'react';
 
 export const registerAccount = (email, password) => {
@@ -12,14 +13,4 @@ export const logout = () => {
 };
 export const resetPassword = (email) => {
   return auth.sendPasswordResetEmail(email);
-};
-export const signInWithGoogle = () => {
-  return auth
-    .signInWithPopup(googleProvider)
-    .then((res) => {
-      setCurrentUser(res.user);
-    })
-    .catch((error) => {
-      console.log(error.message);
-    });
 };
