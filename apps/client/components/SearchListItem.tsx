@@ -5,7 +5,7 @@ import {
   ImageWrapper,
   ListItem,
   ListItemDetails,
-} from './styles/SearchListItemStyles';
+} from '../styles/SearchListItemStyles';
 interface Props {
   companyName: string;
   vatNr: string;

@@ -20,7 +20,7 @@ import {
   ImageWrapper,
   ImgWrapper,
   MarqueeWrapper,
-} from './styles/homePageStyles';
+} from '../styles/homePageStyles';
 interface Props {}
 
 const homePage = (props: Props) => {

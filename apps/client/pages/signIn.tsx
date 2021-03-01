@@ -18,7 +18,7 @@ import {
   FormWrapper,
   InnerFlexItem,
   Form,
-} from './styles/authStyles';
+} from '../styles/authStyles';
 interface Props {}
 
 const SignIn = (props: Props) => {

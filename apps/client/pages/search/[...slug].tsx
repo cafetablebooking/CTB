@@ -26,7 +26,7 @@ import {
   SearchListTop,
   StyledTransitionGroup,
   Wrapper,
-} from './styles/SearchStyles';
+} from '../../styles/SearchStyles';
 const SearchPid = () => {
   const { navigatorPosition, companies }: any = useContext(AuthContext);
   const router = useRouter();

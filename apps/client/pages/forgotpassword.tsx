@@ -19,7 +19,7 @@ import {
   FormWrapper,
   Form,
   RedirectMessage,
-} from './styles/forgotPasswordStyles';
+} from '../styles/forgotPasswordStyles';
 interface Props {}
 
 const ForgotPassword = (props: Props) => {

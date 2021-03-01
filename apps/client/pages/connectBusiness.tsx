@@ -17,7 +17,7 @@ import {
   ConnectBusinessBox,
   OnboardingContent,
   TextBox,
-} from './styles/connectBusinessStyles';
+} from '../styles/connectBusinessStyles';
 interface Props {}
 
 const connectCafe = (props: Props) => {
