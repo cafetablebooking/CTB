@@ -2,13 +2,14 @@
 import React from 'react';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import classnames from 'classnames';
+import { CTBtheme } from '@ctb/types';
 
 // styles
-const useStyles = makeStyles((theme: any) => ({
+const useStyles = makeStyles((theme: CTBtheme) => ({
   dotBase: {
     width: 8,
     height: 8,
-    backgroundColor: theme.palette.text.hint,
+    backgroundColor: theme.palette.primary.main,
     borderRadius: '50%',
     transition: theme.transitions.create('background-color'),
   },
@@ -21,8 +22,6 @@ const useStyles = makeStyles((theme: any) => ({
     height: 11,
   },
 }));
-
-
 
 /* eslint-disable-next-line */
 export interface DotProps {

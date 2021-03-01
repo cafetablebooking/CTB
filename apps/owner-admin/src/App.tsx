@@ -1,9 +1,8 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-
-// components
-import Layout from './layout/layout';
+import Dashboard from './pages/dashboard/dashboard';
+import Reservation from './pages/reservation/reservation';
 
 interface AppProps {}
 
@@ -11,7 +10,14 @@ export const App: React.FC<AppProps> = () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={Layout} />
+        <Route exact path="/" render={() => <Redirect to="/dashboard" />} />
+        <Route exact path="/dashboard" component={Dashboard} />
+        <Route path="/reservation" component={Reservation} />
+        <Route path="/users" component={Reservation} />
+        <Route path="/companies" component={Reservation} />
+        <Route path="/settings" component={Reservation} />
+        <Route path="/support" component={Reservation} />
+        <Route path="/faq" component={Reservation} />
         {/* <Route
             exact
             path="/app"

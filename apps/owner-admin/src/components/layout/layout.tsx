@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Children } from 'react';
 import { Route, Switch, Redirect, withRouter } from 'react-router-dom';
 import classnames from 'classnames';
 import { Box, IconButton, Link, Paper } from '@material-ui/core';
@@ -13,9 +13,10 @@ import ThemeSetting from '../themeChanger';
 /* eslint-disable-next-line */
 export interface LayoutProps {
   history?: string;
+  children: React.ReactNode;
 }
 
-export function Layout({ history }: LayoutProps) {
+export function Layout({ history, children }: LayoutProps) {
   const classes = useStyles();
 
   // global
@@ -31,20 +32,7 @@ export function Layout({ history }: LayoutProps) {
       >
         <ThemeSetting />
         <div className={classes.fakeToolbar} />
-        {/* <Switch>
-          <Route path="/app/dashboard" component={Dashboard} />
-          <Route path="/app/typography" component={Typography} />
-            <Route path="/app/tables" component={Tables} />
-            <Route path="/app/notifications" component={Notifications} />
-            <Route
-              exact
-              path="/app/ui"
-              render={() => <Redirect to="/app/ui/icons" />}
-            />
-            <Route path="/app/ui/maps" component={Maps} />
-            <Route path="/app/ui/icons" component={Icons} />
-            <Route path="/app/ui/charts" component={Charts} />
-        </Switch> */}
+        {children}
         <Box
           mt={5}
           width={'100%'}

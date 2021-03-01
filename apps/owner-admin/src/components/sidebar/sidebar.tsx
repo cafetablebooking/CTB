@@ -11,7 +11,14 @@ import {
   LibraryBooks as LibraryIcon,
   HelpOutline as FAQIcon,
   ArrowBack as ArrowBackIcon,
+  // EventSeatOutlinedIcon,
+  AppsOutlined,
 } from '@material-ui/icons';
+import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
+import EventSeatOutlinedIcon from '@material-ui/icons/EventSeatOutlined';
+import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined';
+import QuestionAnswerOutlinedIcon from '@material-ui/icons/QuestionAnswerOutlined';
+import BusinessOutlinedIcon from '@material-ui/icons/BusinessOutlined';
 import { useTheme } from '@material-ui/styles';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames';
@@ -34,57 +41,41 @@ export interface SidebarProps {
 }
 
 const structure = [
-  { id: 0, label: 'Dashboard', link: '/app/dashboard', icon: <HomeIcon /> },
+  { id: 0, label: 'Dashboard', link: '/dashboard', icon: <AppsOutlined /> },
   {
     id: 1,
-    label: 'Reservation',
-    link: '/app/typography',
-    icon: <TypographyIcon />,
+    label: 'Reservations',
+    link: '/reservation',
+    icon: <EventSeatOutlinedIcon />,
   },
-  { id: 2, label: 'Tables', link: '/app/tables', icon: <TableIcon /> },
+  {
+    id: 2,
+    label: 'Users',
+    link: '/users',
+    icon: <PeopleAltOutlinedIcon />,
+  },
   {
     id: 3,
-    label: 'Users',
-    link: '/app/notifications',
-    icon: <NotificationsIcon />,
+    label: 'Company/Users',
+    link: '/companies',
+    icon: <BusinessOutlinedIcon />,
   },
   {
     id: 4,
-    label: 'Tables',
-    link: '/app/ui',
-    icon: <UIElementsIcon />,
-    children: [
-      { label: 'Icons', link: '/app/ui/icons' },
-      { label: 'Charts', link: '/app/ui/charts' },
-      { label: 'Maps', link: '/app/ui/maps' },
-    ],
+    label: 'Settings',
+    link: '/settings',
+    icon: <SettingsOutlinedIcon />,
   },
   { id: 5, type: 'divider' },
   { id: 6, type: 'title', label: 'HELP' },
-  { id: 7, label: 'Library', link: '', icon: <LibraryIcon /> },
-  { id: 8, label: 'Support', link: '', icon: <SupportIcon /> },
-  { id: 9, label: 'FAQ', link: '', icon: <FAQIcon /> },
-  { id: 10, type: 'divider' },
-
-  { id: 11, type: 'title', label: 'Upcoming' },
   {
-    id: 12,
-    label: 'My recent',
-    link: '',
-    icon: <Dot size="small" color="warning" />,
+    id: 7,
+    label: 'Support',
+    link: '/support',
+    icon: <QuestionAnswerOutlinedIcon />,
   },
-  {
-    id: 13,
-    label: 'Starred',
-    link: '',
-    icon: <Dot size="small" color="primary" />,
-  },
-  {
-    id: 14,
-    label: 'Background',
-    link: '',
-    icon: <Dot size="small" color="secondary" />,
-  },
+  { id: 8, label: 'FAQ', link: '/faq', icon: <FAQIcon /> },
+  { id: 9, type: 'divider' },
 ];
 
 export function Sidebar({ location }: SidebarProps) {
@@ -135,14 +126,9 @@ export function Sidebar({ location }: SidebarProps) {
       <div className={classes.toolbar} />
       <div className={classes.mobileBackButton}>
         <IconButton onClick={() => toggleSidebar(layoutDispatch)}>
-          <ArrowBackIcon
-          // classes={{
-          //   root: classNames(classes.headerIcon, classes.headerIconCollapse),
-          // }}
-          />
+          <ArrowBackIcon />
         </IconButton>
       </div>
-      {/* <List className={classes.sidebarList}> */}
       <List>
         {structure.map((link) => (
           <SidebarLink
