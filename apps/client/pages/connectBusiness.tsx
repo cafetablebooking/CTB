@@ -1,18 +1,15 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Typography, Box, TextField, Button, Divider } from '@material-ui/core';
 
 import { ThemeProvider } from '@material-ui/core/styles';
 import { darkTheme } from '@ctb/dark-theme-provider';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { AuthContext } from '@ctb/auth-context';
 import Image from 'next/image';
 
 import { useForm } from 'react-hook-form';
 interface Props {}
 
 const connectCafe = (props: Props) => {
-  const { companies }: any = useContext(AuthContext);
   const { register, handleSubmit, watch, errors } = useForm({});
   const [connectInfoData, setConnectInfoData] = useState(null);
 
