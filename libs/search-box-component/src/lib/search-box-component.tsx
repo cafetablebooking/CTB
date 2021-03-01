@@ -63,7 +63,7 @@ export const SearchBoxComponent = (props: Props) => {
     >
       <>
         <Form isheader={isHeader} onSubmit={handleSubmit(onSubmit)}>
-          <TextFieldWrapper isheader={isHeader}>
+          <TextFieldWrapper issearch={isSearch} isheader={isHeader}>
             <TextField
               style={{ minWidth: '242.5px' }}
               id="outlined-basic"
@@ -84,19 +84,18 @@ export const SearchBoxComponent = (props: Props) => {
           </TextFieldWrapper>
           {/* <div style={{ color: 'red' }}>{errors.email?.message}</div> */}
 
-          <Button
-            style={{
-              margin: '10px',
-              width: '242.5px',
-              height: '56px',
-              alignSelf: 'center',
-            }}
+          <SearchBoxButton
+            style={
+              isSearch === 'false' && isHeader === 'false'
+                ? { margin: '10px 0 0 0' }
+                : { margin: 10 }
+            }
             color="primary"
             variant="contained"
             type="submit"
           >
             Search café
-          </Button>
+          </SearchBoxButton>
         </Form>
       </>
     </SearchBox>
@@ -111,7 +110,11 @@ export const SearchBoxComponent = (props: Props) => {
     </ThemeProvider>
   );
 };
-
+export const SearchBoxButton = styled(Button)`
+  width: 242.5px;
+  height: 56px;
+  align-self: center;
+`;
 export const SearchBox = styled(Paper)`
   display: flex;
 
@@ -132,7 +135,10 @@ export const SearchBox = styled(Paper)`
 export const TextFieldWrapper = styled.div`
   margin-left: ${(props) => (props.isheader === 'true' ? '10px' : '0')};
   display: flex;
-
+  width: ${(props) =>
+    props.isheader === 'false' && props.issearch === 'false'
+      ? '100%'
+      : 'inherit'};
   flex-direction: ${(props) => (props.isheader === 'true' ? 'row' : 'column')};
 
   input {
@@ -147,7 +153,8 @@ export const Form = styled.form`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-
+  button {
+  }
   @media (min-width: 768px) {
     flex-direction: ${(props) =>
       props.isheader === 'true' ? 'row' : 'column'};
