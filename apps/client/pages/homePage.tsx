@@ -31,7 +31,7 @@ const homePage = (props: Props) => {
       <Home>
         <Hero>
           <OnboardingMessage>
-            <Typography variant="h4">Find a café - order on the go!</Typography>
+            <Typography variant="h4">Find a table - order on the go!</Typography>
           </OnboardingMessage>
           <SearchBoxComponent isHeader={false} />
         </Hero>
