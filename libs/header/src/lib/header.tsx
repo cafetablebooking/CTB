@@ -45,13 +45,15 @@ export function Header(props: HeaderProps) {
   return (
     <StyledHeader>
       <HeaderUpper>
-        <div style={{ marginLeft: '4vw' }}>
-          <Image
-            width="70"
-            height="70"
-            src="/static/img/logo/header-logotype.png"
-          />
-        </div>
+        <Logotype>
+          <Link href="/">
+            <Image
+              width="70"
+              height="70"
+              src="/static/img/logo/header-logotype.png"
+            />
+          </Link>
+        </Logotype>
         <nav>
           <ul>
             <li>
@@ -85,6 +87,10 @@ export function Header(props: HeaderProps) {
     </StyledHeader>
   );
 }
+const Logotype = styled.div`
+  margin-left: 4vw;
+  cursor: pointer;
+`;
 const LinkIcon = styled.div`
   clip-path: circle(50%);
   padding: 6px;
@@ -125,9 +131,7 @@ const Anchor = styled.a`
   text-decoration: none;
   cursor: pointer;
 `;
-const Logotype = styled.div`
-  margin-left: 4vw;
-`;
+
 const HeaderUpper = styled.div`
   display: flex;
   justify-content: space-between;
