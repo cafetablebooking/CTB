@@ -4,7 +4,7 @@ import SignIn from '../pages/signIn';
 
 const PrivateRoute = (Component) => {
   const Auth = (props) => {
-    const { currentUser }: any = useContext(AuthContext);
+    const { currentUser }: any = o(AuthContext);
 
     if (!currentUser) {
       return <SignIn />;

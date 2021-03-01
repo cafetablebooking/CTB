@@ -12,5 +12,6 @@ module.exports = {
     '<rootDir>/libs/auto-complete',
     '<rootDir>/libs/google-sign-in-button',
     '<rootDir>/libs/auth-crud',
+    '<rootDir>/libs/utils',
   ],
 };

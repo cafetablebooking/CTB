@@ -34,6 +34,7 @@
     "search-box-component": { "tags": [] },
     "auto-complete": { "tags": [] },
     "google-sign-in-button": { "tags": [] },
-    "auth-crud": { "tags": [] }
+    "auth-crud": { "tags": [] },
+    "utils": { "tags": [] }
   }
 }
