@@ -21,7 +21,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
 
       <AuthContextProvider>
         <Header />
-        <main style={{ top: '60.8px', position: 'relative' }}>
+        <main style={{ top: '73.6px', position: 'relative' }}>
           <ThemeProvider theme={theme}>
             <Component {...pageProps} />
           </ThemeProvider>
