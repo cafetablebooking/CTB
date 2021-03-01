@@ -100,7 +100,7 @@ const connectCafe = (props: Props) => {
           <ul>
             <li>
               <Typography>
-                100% payment guarantee for bookings from cafébooking.com
+                100% payment guarantee for bookings from tablebooking.com
               </Typography>
             </li>
             <li>

@@ -44,7 +44,7 @@ const StyledFooter = styled.footer`
 export function Footer(props: FooterProps) {
   return (
     <StyledFooter>
-      <p style={{ fontSize: '12px' }}>© Café Table Booking 2021</p>
+      <p style={{ fontSize: '12px' }}>© Table Booking 2021</p>
     </StyledFooter>
   );
 }

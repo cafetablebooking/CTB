@@ -72,7 +72,7 @@ export const SearchBoxComponent = (props: Props) => {
             <TextField
               style={{ minWidth: '242.5px' }}
               id="outlined-basic"
-              label="Enter café"
+              label="Enter café or restaurant"
               defaultValue={type === 'cafe' ? pid : ''}
               variant="outlined"
               name="cafe"
@@ -99,7 +99,7 @@ export const SearchBoxComponent = (props: Props) => {
             variant="contained"
             type="submit"
           >
-            Search café
+            Search
           </SearchBoxButton>
         </Form>
       </>
