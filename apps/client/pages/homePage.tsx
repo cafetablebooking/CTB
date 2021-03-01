@@ -94,15 +94,18 @@ const Hero = styled(Box)`
   flex-direction: column;
 
   align-items: center;
+  margin-top: -73.6px;
+  padding-top: 73.6px;
 
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: flex-start;
   background: url('/static/img/hero/coffee-hero.jpg') no-repeat center;
   background-size: cover;
   max-width: 100vw;
-  min-height: 470px;
+  min-height: 90vh;
   @media (min-width: 768px) {
     min-height: 44vw;
+    justify-content: space-evenly;
   }
 
   @media (min-width: 970px) {
