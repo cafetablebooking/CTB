@@ -49,31 +49,40 @@ const homePage = (props: Props) => {
             </ImgWrapper>
           </OnboardingRight>
         </OnboardingContent>
-        <Marquee velocity={30} resetAfterTries={50}>
-          {companiesMockData &&
-            companiesMockData.map((item) => (
-              <Motion key={`child-${item.id}`} velocity={0} radius={100}>
-                <ImageWrapper>
-                  <Image
-                    src={item.image}
-                    alt="Avatar logotype of restaurant café company"
-                    width={570}
-                    height={370}
-                  />
-                </ImageWrapper>
-              </Motion>
-            ))}
-        </Marquee>
+        <MarqueeWrapper>
+          <Marquee velocity={30} resetAfterTries={50}>
+            {companiesMockData &&
+              companiesMockData.map((item) => (
+                <Motion key={`child-${item.id}`} velocity={0} radius={100}>
+                  <ImageWrapper>
+                    <Image
+                      src={item.image}
+                      alt="Avatar logotype of restaurant café company"
+                      width={570}
+                      height={370}
+                    />
+                  </ImageWrapper>
+                </Motion>
+              ))}
+          </Marquee>
+        </MarqueeWrapper>
       </Home>
     </ThemeProvider>
   );
 };
+const MarqueeWrapper = styled.div`
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+`;
 const OnboardingRight = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 5vw;
   @media (min-width: 930px) {
     margin-top: 0;
     margin-left: 100px;
@@ -118,13 +127,10 @@ const OnboardingText = styled(Box)`
   border: 1px solid gold;
   padding: 20px;
 
-  margin: 0 0 50px 0;
+  margin: 0 0 5vw 0;
   max-width: 100%;
   @media (min-width: 480px) {
     max-width: 500px;
-  }
-  @media (min-width: 708px) {
-    margin-bottom: 90px;
   }
 `;
 
