@@ -18,6 +18,8 @@ interface Props {}
 const SignIn = (props: Props) => {
   const isDesktop = useMediaQuery('(min-width:768px)');
   const [error, setError] = useState<string>('');
+  const { signInWithGoogle }: any = useContext(AuthContext);
+  const router = useRouter();
   const loginSchema = Yup.object().shape({
     email: Yup.string()
       .email('Wrong email format')
@@ -29,10 +31,6 @@ const SignIn = (props: Props) => {
       .max(60, 'Maximum 60 symbols')
       .required('This field is required.'),
   });
-
-  const { signInWithGoogle }: any = useContext(AuthContext);
-  const router = useRouter();
-
   const { register, handleSubmit, watch, errors } = useForm({
     resolver: yupResolver(loginSchema),
   });
