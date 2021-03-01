@@ -1,6 +1,4 @@
-import { auth, googleProvider } from '@ctb/firebase-auth';
-import { AuthContext } from '@ctb/auth-context';
-import { useContext } from 'react';
+import { auth } from '@ctb/firebase-auth';
 
 export const registerAccount = (email, password) => {
   return auth.createUserWithEmailAndPassword(email, password);
