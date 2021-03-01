@@ -4,7 +4,6 @@ import moment from 'moment';
 import GoogleMapReact from 'google-map-react';
 import { AuthContext } from '@ctb/auth-context';
 import {
-  Box,
   FormControl,
   NativeSelect,
   InputLabel,
@@ -18,10 +17,16 @@ import { theme } from '@ctb/theme-provider';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import { SearchBoxComponent } from '@ctb/search-box-component';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import { CSSTransition } from 'react-transition-group';
 import Marker from 'apps/client/components/Marker/Marker';
 import Geocode from 'react-geocode';
-
+import {
+  Search,
+  SearchList,
+  SearchListTop,
+  StyledTransitionGroup,
+  Wrapper,
+} from './styles/SearchStyles';
 const SearchPid = () => {
   const { navigatorPosition, companies }: any = useContext(AuthContext);
   const router = useRouter();
@@ -273,57 +278,5 @@ const SearchPid = () => {
     </ThemeProvider>
   );
 };
-const StyledTransitionGroup = styled(TransitionGroup)`
-  .remove-btn {
-    margin-right: 0.5rem;
-  }
 
-  .item-enter {
-    opacity: 0;
-  }
-  .item-enter-active {
-    opacity: 1;
-    transition: opacity 500ms ease-in;
-  }
-  .item-exit {
-    opacity: 1;
-  }
-  .item-exit-active {
-    opacity: 0;
-    transition: opacity 500ms ease-in;
-  }
-`;
-const Search = styled(Box)`
-  display: flex;
-  justify-content: center;
-  min-height: 100vh;
-  background: #fff;
-  @media (min-width: 768px) {
-    margin-top: 86px;
-    justify-content: space-between;
-    align-items: flex-start;
-  }
-`;
-const SearchList = styled(Box)`
-  min-width: 300px;
-  width: 40%;
-  margin: 1rem 3em 0 3em;
-`;
-const SearchListTop = styled(Box)`
-  display: flex;
-
-  justify-content: space-between;
-  margin: 10px 10px 50px 10px;
-`;
-
-const Wrapper = styled.div`
-  position: fixed;
-  display: none;
-  width: 50vw;
-  @media (min-width: 768px) {
-    display: block;
-  }
-  height: 700px;
-  right: 0;
-`;
 export default SearchPid;
