@@ -68,9 +68,9 @@ const ForgotPassword = (props: Props) => {
           <div style={{ color: 'red' }}>{errors.email?.message}</div>
           {loading ? <CircularProgress /> : <p>{message}</p>}
           <Button
-            color="secondary"
+            color="primary"
             variant="contained"
-            style={{ marginTop: '10px', height: '56px' }}
+            style={{ marginTop: '10px', height: '56px', width: 245.2 }}
             type="submit"
           >
             Reset Password

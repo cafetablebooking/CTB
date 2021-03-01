@@ -21,12 +21,10 @@ import { SearchBoxComponent } from '@ctb/search-box-component';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Marker from 'apps/client/components/Marker/Marker';
 import Geocode from 'react-geocode';
-// import 'google-map-react/dist/index.css'
 
 const SearchPid = () => {
   const {
     navigatorPosition,
-    triggerNavigator,
     companiesMockData,
   }: any = useContext(AuthContext);
   const router = useRouter();
@@ -40,9 +38,9 @@ const SearchPid = () => {
   const [zoom, setZoom] = useState(0);
 
   useEffect(() => {
-    getLatLng();
+    getCoordinates();
   }, [pid, type]);
-  const getLatLng = async () => {
+  const getCoordinates = async () => {
     let latitude = 0;
     let longitude = 0;
     let zoom = 0;
