@@ -46,35 +46,32 @@ export const AuthContextProvider = (props: Props) => {
       navigator.geolocation.getCurrentPosition(success, error, options);
     }
   };
-  const getCompanies = () => {
-    fetch('/mock/companies.json')
-      .then((data) => data.json())
-      .then((data) => {
-        data.map(async (item) => {
-          //   const response = await Geocode.fromAddress(
-          //     `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
-          //   );
+  const getCompanies = async () => {
+    const res = await fetch('/mock/companies.json');
+    const data = await res.json();
+    data.map(async (item) => {
+      //   const response = await Geocode.fromAddress(
+      //     `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
+      //   );
 
-          //   const { lat, lng } =
-          //     response && response.results[0].geometry.location;
+      //   const { lat, lng } = response && response.results[0].geometry.location;
 
-          const options = {
-            id: item.id,
-            companyName: item.companyName,
-            vatNr: item.vatNr,
-            phoneNumber: item.phoneNumber,
-            email: item.email,
-            image: item.image,
-            openingHours: item.openingHours,
-            adress: item.adress,
-            coordinates: {
-              lat: 59,
-              lng: 16,
-            },
-          };
-          setCompanies((prevState) => [...prevState, options]);
-        });
-      });
+      const options = {
+        id: item.id,
+        companyName: item.companyName,
+        vatNr: item.vatNr,
+        phoneNumber: item.phoneNumber,
+        email: item.email,
+        image: item.image,
+        openingHours: item.openingHours,
+        adress: item.adress,
+        coordinates: {
+          lat: 59,
+          lng: 18,
+        },
+      };
+      setCompanies((prevState) => [...prevState, options]);
+    });
   };
   const signInWithGoogle = () => {
     return auth
