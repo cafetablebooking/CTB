@@ -20,6 +20,7 @@ interface Props {}
 const ForgotPassword = (props: Props) => {
   const [message, setMessage] = useState<string>('');
   const [error, setError] = useState<string>('');
+  const { loading, setLoading }: any = useContext(AuthContext);
   const forgotPasswordSchema = Yup.object().shape({
     email: Yup.string()
       .email('Wrong email format')
@@ -27,8 +28,6 @@ const ForgotPassword = (props: Props) => {
       .max(50, 'Maximum 50 symbols')
       .required('This field is required.'),
   });
-
-  const { loading, setLoading }: any = useContext(AuthContext);
 
   const { register, handleSubmit, watch, errors } = useForm({
     resolver: yupResolver(forgotPasswordSchema),
