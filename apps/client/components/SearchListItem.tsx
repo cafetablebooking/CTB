@@ -1,8 +1,11 @@
 import React from 'react';
 import { Box, Typography } from '@material-ui/core';
-import styled from 'styled-components';
 import Image from 'next/image';
-
+import {
+  ImageWrapper,
+  ListItem,
+  ListItemDetails,
+} from '../styles/SearchListItemStyles';
 interface Props {
   companyName: string;
   vatNr: string;
@@ -52,29 +55,5 @@ const SearchListItem = (props: Props) => {
     </ListItem>
   );
 };
-const ImageWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  img {
-    border-radius: 4px;
-  }
-`;
 
-const ListItem = styled(Box)`
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 40px;
-  filter: drop-shadow(0px 6px 10px rgba(0, 0, 0, 0.6));
-  transition: all 0.1s ease-in;
-`;
-const ListItemDetails = styled(Box)`
-  margin: 20px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-`;
 export default SearchListItem;

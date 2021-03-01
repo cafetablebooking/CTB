@@ -14,38 +14,16 @@ export const AuthContextProvider = (props: Props) => {
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [navigatorPosition, setNavigatorPosition] = useState<any>(null);
   const [companies, setCompanies] = useState<any>([]);
+  const router = useRouter();
 
   Geocode.setApiKey(process.env.NEXT_PUBLIC_CLIENT_GOOGLE_MAPS_API_KEY);
-
-  const signup = (email, password) => {
-    return auth.createUserWithEmailAndPassword(email, password);
-  };
-  const login = (email, password) => {
-    return auth.signInWithEmailAndPassword(email, password);
-  };
-  const logout = () => {
-    return auth.signOut();
-  };
-  const resetPassword = (email) => {
-    return auth.sendPasswordResetEmail(email);
-  };
-  const signInWithGoogle = () => {
-    return auth
-      .signInWithPopup(googleProvider)
-      .then((res) => {
-        setCurrentUser(res.user);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
 
   const triggerNavigator = () => {
     function success(pos) {
       const crd = pos.coords;
       const latitude = crd.latitude;
       const longitude = crd.longitude;
-      const accuracy = crd.accuracy;
+      //   const accuracy = crd.accuracy;
 
       setNavigatorPosition({
         lat: latitude,
@@ -68,39 +46,49 @@ export const AuthContextProvider = (props: Props) => {
       navigator.geolocation.getCurrentPosition(success, error, options);
     }
   };
-  const router = useRouter();
+  const getCompanies = async () => {
+    const res = await fetch('/mock/companies.json');
+    const data = await res.json();
+    data.map(async (item) => {
+      //   const response = await Geocode.fromAddress(
+      //     `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
+      //   );
+
+      //   const { lat, lng } = response && response.results[0].geometry.location;
+
+      const options = {
+        id: item.id,
+        companyName: item.companyName,
+        vatNr: item.vatNr,
+        phoneNumber: item.phoneNumber,
+        email: item.email,
+        image: item.image,
+        openingHours: item.openingHours,
+        adress: item.adress,
+        coordinates: {
+          lat: 59,
+          lng: 18,
+        },
+      };
+      setCompanies((prevState) => [...prevState, options]);
+    });
+  };
+  const signInWithGoogle = () => {
+    return auth
+      .signInWithPopup(googleProvider)
+      .then((res) => {
+        setCurrentUser(res.user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   useEffect(() => {
     router.events.on('routeChangeComplete', () => {
       window.scrollTo(0, 0);
     });
-    fetch('/mock/companies.json')
-      .then((data) => data.json())
-      .then((data) => {
-        data.map(async (item) => {
-          //   const response = await Geocode.fromAddress(
-          //     `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
-          //   );
+    getCompanies();
 
-          //   const { lat, lng } =
-          //     response && response.results[0].geometry.location;
-
-          const options = {
-            id: item.id,
-            companyName: item.companyName,
-            vatNr: item.vatNr,
-            phoneNumber: item.phoneNumber,
-            email: item.email,
-            image: item.image,
-            openingHours: item.openingHours,
-            adress: item.adress,
-            coordinates: {
-              lat: 59,
-              lng: 16,
-            },
-          };
-          setCompanies((prevState) => [...prevState, options]);
-        });
-      });
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
     });
@@ -112,10 +100,6 @@ export const AuthContextProvider = (props: Props) => {
       value={{
         currentUser,
         setCurrentUser,
-        signup,
-        login,
-        logout,
-        resetPassword,
         loading,
         setLoading,
         signInWithGoogle,

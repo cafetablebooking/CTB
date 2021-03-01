@@ -1,60 +1,46 @@
 import React, { useContext, useState } from 'react';
 import { TextField, Button, Typography, Box, Divider } from '@material-ui/core';
-import { createMuiTheme } from '@material-ui/core/styles';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import Link from 'next/link';
-import { AuthContext } from '@ctb/auth-context';
+
 import { useRouter } from 'next/router';
-import * as Yup from 'yup';
-import LoginRoute from '../components/LoginRoute';
+
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import Image from 'next/image';
+
 import { GoogleSignInButton } from '@ctb/google-sign-in-button';
+import { registerAccount } from '@ctb/auth-crud';
+import { AuthContext } from '@ctb/auth-context';
+import { registerSchema } from '@ctb/utils';
+import {
+  SignInWrapper,
+  RedirectMessage,
+  FormWrapper,
+  InnerFlexItem,
+  Form,
+} from '../styles/authStyles';
 interface Props {}
 
 const signUp = (props: Props) => {
+  const { signInWithGoogle }: any = useContext(AuthContext);
   const isDesktop = useMediaQuery('(min-width:768px)');
   const [error, setError] = useState<string>('');
-  const registerSchema = Yup.object().shape({
-    email: Yup.string()
-      .email('Wrong email format')
-      .min(3, 'Minimum 3 symbols')
-      .max(60, 'Maximum 60 symbols')
-      .required('This field is required.'),
-    password: Yup.string()
-      .min(8, 'Minimum 8 symbols')
-      .max(60, 'Maximum 60 symbols')
-      .required('This field is required.'),
-    confirmPassword: Yup.string()
-      .min(8, 'Minimum 8 symbols')
-      .max(60, 'Maximum 60 symbols')
-      .required('This field is required.')
-      .when('password', {
-        is: (val) => (val && val.length > 0 ? true : false),
-        then: Yup.string().oneOf(
-          [Yup.ref('password')],
-          "Password and Confirm Password didn't match"
-        ),
-      }),
-  });
-
   const router = useRouter();
 
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(registerSchema),
   });
-  const { signup, signInWithGoogle }: any = useContext(AuthContext);
+
   const googleSignInHandler = () => {
     signInWithGoogle();
     router.push('/dashboard');
   };
   async function onSubmit(data) {
     try {
-      await signup(data.email, data.password);
-      router.push('/signin');
+      await registerAccount(data.email, data.password);
+      router.push('/signIn');
     } catch {}
   }
 
@@ -134,51 +120,5 @@ const signUp = (props: Props) => {
     </SignInWrapper>
   );
 };
-
-const InnerFlexItem = styled(Box)`
-  display: flex;
-  justify-content: center;
-  flex: 1;
-  @media (min-width: 768px) {
-    margin-top: 40px;
-  }
-`;
-const RedirectMessage = styled(Box)`
-  justify-content: center;
-  display: flex;
-  background: #aaddd8;
-  padding: 20px;
-  a {
-    display: flex;
-    align-items: center;
-    margin-left: 4px;
-    text-decoration: none;
-  }
-`;
-const Form = styled.form`
-  display: flex;
-  max-width: 400px;
-
-  flex-direction: column;
-`;
-const SignInWrapper = styled(Box)`
-  background: #fff;
-  display: flex;
-  justify-content: flex-start;
-  flex-direction: column;
-  min-height: 100vh;
-`;
-const FormWrapper = styled(Box)`
-  margin: 0 5vw 50px 5vw;
-  display: flex;
-
-  flex-direction: column;
-  justify-content: space-evenly;
-
-  @media (min-width: 768px) {
-    min-height: 500px;
-    flex-direction: row;
-  }
-`;
 
 export default signUp;

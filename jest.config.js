@@ -11,5 +11,7 @@ module.exports = {
     '<rootDir>/libs/search-box-component',
     '<rootDir>/libs/auto-complete',
     '<rootDir>/libs/google-sign-in-button',
+    '<rootDir>/libs/auth-crud',
+    '<rootDir>/libs/utils',
   ],
 };
