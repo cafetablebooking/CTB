@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Typography, Box, TextField, Button, Divider } from '@material-ui/core';
 
@@ -14,79 +14,58 @@ interface Props {}
 const connectCafe = (props: Props) => {
   const { companies }: any = useContext(AuthContext);
   const { register, handleSubmit, watch, errors } = useForm({});
+  const [connectInfoData, setConnectInfoData] = useState(null);
 
-  const connectInfoData = [
-    {
-      title: 'Fill your tables',
-      image: '/static/business-icons/tables.svg',
-      subtitle1:
-        'CTB (Cafe Table Booking) is a universal table booking service where your customers can book their visit in advance.',
-      subtitle2:
-        'Your free tables are automatically displayed and you will get a booking page on CTB.',
-    },
-    {
-      title: 'Being Available (Covid-19)',
-      image: '/static/business-icons/Vector.svg',
-      subtitle1:
-        'New rules and regulations requires foresight. We want to make sure there is room for everyone, so people can calmly enjoy their visit.',
-      subtitle2:
-        'Our service facilitates management and adjustment for both customers and businesses.',
-    },
-    {
-      title: 'Manage table bookings',
-      image: '/static/business-icons/bookings.svg',
-      subtitle1:
-        'We will help you to organize your business in forms of offering a service to maintain a clear schedule of your bookings.',
-      subtitle2:
-        'You will have an admin dashboard where you can manage your tables and see further details of your bookings.',
-    },
-    {
-      title: 'Increase your sales',
-      image: '/static/business-icons/money.svg',
-      subtitle1:
-        'We will fill your calendar in advance so your staff also can plan in advance, this will improve structure. As well as increasing your sales.',
-      subtitle2: '',
-    },
-  ];
+  const getInfoData = async () => {
+    const res = await fetch('/mock/connectInfo.json');
+    const data = await res.json();
+    setConnectInfoData(data);
+  };
+
+  useEffect(() => {
+    getInfoData();
+  }, []);
 
   const renderConnectInfoData = () => {
-    const infoData = connectInfoData.map((item) => {
-      const image: string = item.image;
-      const title: string = item.title;
-      const subtitle1: string = item.subtitle1;
-      const subtitle2: string = item.subtitle2;
+    const infoData =
+      connectInfoData &&
+      connectInfoData.map((item) => {
+        const image: string = item.image;
+        const title: string = item.title;
+        const subtitle1: string = item.subtitle1;
+        const subtitle2: string = item.subtitle2;
 
-      return (
-        <BusinessInfoItem key={title}>
-          <BusinessInnerBox>
-            <div style={{ position: 'relative', width: 50, height: 50 }}>
-              <Image
-                src={image}
-                alt="Icons for business descriptions"
-                layout="fill"
-              />
-            </div>
-            <BusinessTextBox>
-              <Typography variant="h5" gutterBottom={true}>
-                {title}
-              </Typography>
-              <Typography variant="subtitle1" gutterBottom={true}>
-                {subtitle1}
-              </Typography>
-              <Typography style={{ marginBottom: 0 }} gutterBottom={true}>
-                {subtitle2}
-              </Typography>
-            </BusinessTextBox>
-          </BusinessInnerBox>
-          <Divider
-            style={{ marginTop: 24 }}
-            light={false}
-            flexItem={false}
-            orientation="horizontal"
-          />
-        </BusinessInfoItem>
-      );
-    });
+        return (
+          <BusinessInfoItem key={title}>
+            <BusinessInnerBox>
+              <div style={{ position: 'relative', width: 50, height: 50 }}>
+                <Image
+                  src={image}
+                  alt="Icons for business descriptions"
+                  layout="fill"
+                />
+              </div>
+              <BusinessTextBox>
+                <Typography variant="h5" gutterBottom={true}>
+                  {title}
+                </Typography>
+                <Typography variant="subtitle1" gutterBottom={true}>
+                  {subtitle1}
+                </Typography>
+                <Typography style={{ marginBottom: 0 }} gutterBottom={true}>
+                  {subtitle2}
+                </Typography>
+              </BusinessTextBox>
+            </BusinessInnerBox>
+            <Divider
+              style={{ marginTop: 24 }}
+              light={false}
+              flexItem={false}
+              orientation="horizontal"
+            />
+          </BusinessInfoItem>
+        );
+      });
     return infoData;
   };
 
