@@ -7,13 +7,13 @@ import styled from 'styled-components';
 import Link from 'next/link';
 
 import { useRouter } from 'next/router';
-import * as Yup from 'yup';
 
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import { GoogleSignInButton } from '@ctb/google-sign-in-button';
 import { registerAccount } from '@ctb/auth-crud';
 import { AuthContext } from '@ctb/auth-context';
+import { registerSchema } from '@ctb/utils';
 interface Props {}
 
 const signUp = (props: Props) => {
@@ -21,28 +21,6 @@ const signUp = (props: Props) => {
   const isDesktop = useMediaQuery('(min-width:768px)');
   const [error, setError] = useState<string>('');
   const router = useRouter();
-  const registerSchema = Yup.object().shape({
-    email: Yup.string()
-      .email('Wrong email format')
-      .min(3, 'Minimum 3 symbols')
-      .max(60, 'Maximum 60 symbols')
-      .required('This field is required.'),
-    password: Yup.string()
-      .min(8, 'Minimum 8 symbols')
-      .max(60, 'Maximum 60 symbols')
-      .required('This field is required.'),
-    confirmPassword: Yup.string()
-      .min(8, 'Minimum 8 symbols')
-      .max(60, 'Maximum 60 symbols')
-      .required('This field is required.')
-      .when('password', {
-        is: (val) => (val && val.length > 0 ? true : false),
-        then: Yup.string().oneOf(
-          [Yup.ref('password')],
-          "Password and Confirm Password didn't match"
-        ),
-      }),
-  });
 
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(registerSchema),

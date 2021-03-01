@@ -13,7 +13,7 @@ import styled from 'styled-components';
 import Link from 'next/link';
 import { AuthContext } from '@ctb/auth-context';
 import { resetPassword } from '@ctb/auth-crud';
-import * as Yup from 'yup';
+import { forgotPasswordSchema } from '@ctb/utils';
 
 interface Props {}
 
@@ -21,13 +21,6 @@ const ForgotPassword = (props: Props) => {
   const [message, setMessage] = useState<string>('');
   const [error, setError] = useState<string>('');
   const { loading, setLoading }: any = useContext(AuthContext);
-  const forgotPasswordSchema = Yup.object().shape({
-    email: Yup.string()
-      .email('Wrong email format')
-      .min(3, 'Minimum 3 symbols')
-      .max(50, 'Maximum 50 symbols')
-      .required('This field is required.'),
-  });
 
   const { register, handleSubmit, watch, errors } = useForm({
     resolver: yupResolver(forgotPasswordSchema),
