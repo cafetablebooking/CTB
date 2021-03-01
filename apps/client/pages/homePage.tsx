@@ -156,12 +156,9 @@ const ImageWrapper = styled.div`
 
   img {
     border-radius: 4px;
-    width: 130px;
-    height: 100px;
-    @media (min-width: 768px) {
-      width: 170px;
-      height: 130px;
-    }
+
+    width: 170px;
+    height: 130px;
   }
 `;
 
