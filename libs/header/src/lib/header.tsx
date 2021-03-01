@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { useRouter } from 'next/router';
 import { SearchBoxComponent } from '@ctb/search-box-component';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-
+import Image from 'next/image';
 /* eslint-disable-next-line */
 export interface HeaderProps {}
 
@@ -36,7 +36,7 @@ export function Header(props: HeaderProps) {
           ? (imageSrc = '/static/links/User-active.svg')
           : (imageSrc = '/static/links/User.svg');
       }
-      renderAnchorContent = <Image image={imageSrc} />;
+      renderAnchorContent = <LinkIcon image={imageSrc} />;
     } else {
       renderAnchorContent = string;
     }
@@ -45,9 +45,13 @@ export function Header(props: HeaderProps) {
   return (
     <StyledHeader>
       <HeaderUpper>
-        <Logotype>
-          <p>Logotype</p>
-        </Logotype>
+        <div style={{ marginLeft: '4vw' }}>
+          <Image
+            width="70"
+            height="70"
+            src="/static/img/logo/header-logotype.png"
+          />
+        </div>
         <nav>
           <ul>
             <li>
@@ -81,7 +85,7 @@ export function Header(props: HeaderProps) {
     </StyledHeader>
   );
 }
-const Image = styled.div`
+const LinkIcon = styled.div`
   clip-path: circle(50%);
   padding: 6px;
   background: ${(props) => `url(${props.image}) no-repeat center`};
@@ -122,7 +126,7 @@ const Anchor = styled.a`
   cursor: pointer;
 `;
 const Logotype = styled.div`
-  margin: 10px 0 0 4vw;
+  margin-left: 4vw;
 `;
 const HeaderUpper = styled.div`
   display: flex;
