@@ -1,0 +1,200 @@
+[
+  {
+    "id": 0,
+    "email": "company@email.com",
+    "image": "/static/img/marquee/espressohouse.png",
+    "vatNr": 32323,
+    "adress": {
+      "city": "Stockholm",
+      "name": "Odengatan 94",
+      "postalCode": "11322"
+    },
+    "companyName": "Espresso House",
+    "phoneNumber": "+46434234234",
+    "openingHours": [
+      { "day": "Sun", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Mon", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Tue", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Wed", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Thu", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Fri", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Sat", "open": 9, "closed": 21, "isClosed": false }
+    ]
+  },
+  {
+    "id": 1,
+    "email": "company@email.com",
+    "image": "/static/img/marquee/dunkin.svg",
+    "vatNr": 32323,
+    "adress": {
+      "city": "Stockholm",
+      "name": "Teknologgatan 4",
+      "postalCode": "11322"
+    },
+    "companyName": "Dunkin Donuts",
+    "phoneNumber": "+46434234234",
+    "openingHours": [
+      { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Tue", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Wed", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Thu", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Fri", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Sat", "open": 9, "closed": 21, "isClosed": false }
+    ]
+  },
+  {
+    "id": 3,
+    "email": "company@email.com",
+    "image": "/static/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
+    "vatNr": 32323,
+    "adress": {
+      "city": "Stockholm",
+      "name": "Torsgatan 34",
+      "postalCode": "11322"
+    },
+    "companyName": "Starbucks",
+    "phoneNumber": "+46434234234",
+    "openingHours": [
+      { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Tue", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Wed", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Thu", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Fri", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Sat", "open": 9, "closed": 21, "isClosed": false }
+    ]
+  },
+  {
+    "id": 4,
+    "email": "company@email.com",
+    "image": "/static/img/marquee/tim-hortons.png",
+    "vatNr": 32323,
+    "adress": {
+      "city": "Stockholm",
+      "name": "Sveavägen 12",
+      "postalCode": "11322"
+    },
+    "companyName": "Tim Hortons",
+    "phoneNumber": "+46434234234",
+    "openingHours": [
+      { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Tue", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Wed", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Thu", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Fri", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Sat", "open": 9, "closed": 21, "isClosed": false }
+    ]
+  },
+  {
+    "id": 5,
+    "email": "company@email.com",
+    "image": "/static/img/marquee/caribou-cafe.png",
+    "vatNr": 32323,
+    "adress": {
+      "city": "Stockholm",
+      "name": "Rörstrandsgatan 44",
+      "postalCode": "11322"
+    },
+    "companyName": "Waynes Coffee",
+    "phoneNumber": "+46434234234",
+    "openingHours": [
+      { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Tue", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Wed", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Thu", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Fri", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Sat", "open": 9, "closed": 21, "isClosed": false }
+    ]
+  },
+  {
+    "id": 6,
+    "email": "company@email.com",
+    "image": "/static/img/marquee/luckin-coffee.svg",
+    "vatNr": 32323,
+    "adress": {
+      "city": "Stockholm",
+      "name": "Dalagatan 12",
+      "postalCode": "11322"
+    },
+    "companyName": "Luckin Coffee",
+    "phoneNumber": "+46434234234",
+    "openingHours": [
+      { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Tue", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Wed", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Thu", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Fri", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Sat", "open": 9, "closed": 21, "isClosed": false }
+    ]
+  },
+  {
+    "id": 7,
+    "email": "company@email.com",
+    "image": "/static/img/marquee/tom-n-toms.jpg",
+    "vatNr": 32323,
+    "adress": {
+      "city": "Stockholm",
+      "name": "Dalagatan 67",
+      "postalCode": "11322"
+    },
+    "companyName": "Tom 'N Toms",
+    "phoneNumber": "+46434234234",
+    "openingHours": [
+      { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Tue", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Wed", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Thu", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Fri", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Sat", "open": 9, "closed": 21, "isClosed": false }
+    ]
+  },
+  {
+    "id": 8,
+    "email": "company@email.com",
+    "image": "/static/img/marquee/costa-coffee.svg",
+    "vatNr": 32323,
+    "adress": {
+      "city": "Stockholm",
+      "name": "Dalagatan 22",
+      "postalCode": "11322"
+    },
+    "companyName": "Costa Café",
+    "phoneNumber": "+46434234234",
+    "openingHours": [
+      { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Tue", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Wed", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Thu", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Fri", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Sat", "open": 9, "closed": 21, "isClosed": false }
+    ]
+  },
+  {
+    "id": 9,
+    "email": "company@email.com",
+    "image": "/static/img/marquee/tchibo-coffee.png",
+    "vatNr": 32323,
+    "adress": {
+      "city": "Stockholm",
+      "name": "Dalagatan 12",
+      "postalCode": "11322"
+    },
+    "companyName": "Tchibo",
+    "phoneNumber": "+46434234234",
+    "openingHours": [
+      { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Tue", "open": 14, "closed": 21, "isClosed": false },
+      { "day": "Wed", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Thu", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Fri", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Sat", "open": 9, "closed": 21, "isClosed": false }
+    ]
+  }
+]

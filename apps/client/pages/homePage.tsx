@@ -14,7 +14,7 @@ import OnboardingCard from '../components/OnboardingCard';
 interface Props {}
 
 const homePage = (props: Props) => {
-  const { companiesMockData }: any = useContext(AuthContext);
+  const { companies }: any = useContext(AuthContext);
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -51,8 +51,8 @@ const homePage = (props: Props) => {
         </OnboardingContent>
         <MarqueeWrapper>
           <Marquee velocity={30} resetAfterTries={50}>
-            {companiesMockData &&
-              companiesMockData.map((item) => (
+            {companies &&
+              companies.map((item) => (
                 <Motion key={`child-${item.id}`} velocity={0} radius={100}>
                   <ImageWrapper>
                     <Image

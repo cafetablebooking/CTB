@@ -23,10 +23,7 @@ import Marker from 'apps/client/components/Marker/Marker';
 import Geocode from 'react-geocode';
 
 const SearchPid = () => {
-  const {
-    navigatorPosition,
-    companiesMockData,
-  }: any = useContext(AuthContext);
+  const { navigatorPosition, companies }: any = useContext(AuthContext);
   const router = useRouter();
   const isDesktop = useMediaQuery('(min-width:768px)');
   const [filter, setFilter] = React.useState<string>('');
@@ -121,23 +118,23 @@ const SearchPid = () => {
   let filteredData = null;
   if (type === 'location') {
     filteredData =
-      companiesMockData &&
-      companiesMockData.filter((item) => {
+      companies &&
+      companies.filter((item) => {
         const adress = `${item.adress.city} ${item.adress.name} ${item.adress.postalCode}`;
 
         return adress.toLowerCase().includes(pid.toLowerCase());
       });
   } else {
     filteredData =
-      companiesMockData &&
-      companiesMockData.filter((item) => {
+      companies &&
+      companies.filter((item) => {
         return item.companyName.toLowerCase().includes(pid.toLowerCase());
       });
   }
   if (filter) {
     filteredData =
-      companiesMockData &&
-      companiesMockData.filter((item) => {
+      companies &&
+      companies.filter((item) => {
         const pidItem = item.companyName
           .toLowerCase()
           .includes(pid.toLowerCase());

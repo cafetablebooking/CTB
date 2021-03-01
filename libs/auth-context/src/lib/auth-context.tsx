@@ -13,7 +13,7 @@ export const AuthContextProvider = (props: Props) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [currentUser, setCurrentUser] = useState<any>(null);
   const [navigatorPosition, setNavigatorPosition] = useState<any>(null);
-  const [companiesMockData, setCompaniesMockData] = useState<any>([]);
+  const [companies, setCompanies] = useState<any>([]);
 
   Geocode.setApiKey(process.env.NEXT_PUBLIC_CLIENT_GOOGLE_MAPS_API_KEY);
 
@@ -73,16 +73,16 @@ export const AuthContextProvider = (props: Props) => {
     router.events.on('routeChangeComplete', () => {
       window.scrollTo(0, 0);
     });
-    fetch('https://api.npoint.io/c07c4cf6f0190a621db1')
+    fetch('/mock/companies.json')
       .then((data) => data.json())
       .then((data) => {
         data.map(async (item) => {
-          const response = await Geocode.fromAddress(
-            `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
-          );
+          //   const response = await Geocode.fromAddress(
+          //     `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
+          //   );
 
-          const { lat, lng } =
-            response && response.results[0].geometry.location;
+          //   const { lat, lng } =
+          //     response && response.results[0].geometry.location;
 
           const options = {
             id: item.id,
@@ -94,11 +94,11 @@ export const AuthContextProvider = (props: Props) => {
             openingHours: item.openingHours,
             adress: item.adress,
             coordinates: {
-              lat,
-              lng,
+              lat: 59,
+              lng: 16,
             },
           };
-          setCompaniesMockData((prevState) => [...prevState, options]);
+          setCompanies((prevState) => [...prevState, options]);
         });
       });
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -122,7 +122,7 @@ export const AuthContextProvider = (props: Props) => {
         navigatorPosition,
         setNavigatorPosition,
         triggerNavigator,
-        companiesMockData,
+        companies,
       }}
     >
       <FontWrapper>{props.children}</FontWrapper>

@@ -12,7 +12,7 @@ import { useForm } from 'react-hook-form';
 interface Props {}
 
 const connectCafe = (props: Props) => {
-  const { companiesMockData }: any = useContext(AuthContext);
+  const { companies }: any = useContext(AuthContext);
   const { register, handleSubmit, watch, errors } = useForm({});
 
   const connectInfoData = [
