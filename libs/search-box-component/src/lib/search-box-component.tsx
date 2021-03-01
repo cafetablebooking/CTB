@@ -45,10 +45,15 @@ export const SearchBoxComponent = (props: Props) => {
   const [inputValue, setInputValue] = React.useState('');
   const isDesktop = useMediaQuery('(min-width:768px)');
   const onSubmit = (data) => {
-    if (inputValue) {
-      router.push(`/search/[...slug]`, `/search/${inputValue}/location`);
-    } else {
+    if (inputValue && data.cafe) {
       router.push(`/search/[...slug]`, `/search/${data.cafe}/cafe`);
+    } else {
+      if (inputValue) {
+        router.push(`/search/[...slug]`, `/search/${inputValue}/location`);
+      } else {
+        setInputValue('');
+        router.push(`/search/[...slug]`, `/search/${data.cafe}/cafe`);
+      }
     }
   };
   const isHeader: string = props.isHeader ? 'true' : 'false';
