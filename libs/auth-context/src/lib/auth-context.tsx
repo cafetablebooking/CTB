@@ -68,11 +68,7 @@ export const AuthContextProvider = (props: Props) => {
       navigator.geolocation.getCurrentPosition(success, error, options);
     }
   };
-  const router = useRouter();
-  useEffect(() => {
-    router.events.on('routeChangeComplete', () => {
-      window.scrollTo(0, 0);
-    });
+  const getCompanies = () => {
     fetch('/mock/companies.json')
       .then((data) => data.json())
       .then((data) => {
@@ -101,6 +97,14 @@ export const AuthContextProvider = (props: Props) => {
           setCompanies((prevState) => [...prevState, options]);
         });
       });
+  };
+  const router = useRouter();
+  useEffect(() => {
+    router.events.on('routeChangeComplete', () => {
+      window.scrollTo(0, 0);
+    });
+    getCompanies();
+
     const unsubscribe = auth.onAuthStateChanged((user) => {
       setCurrentUser(user);
     });
