@@ -12,7 +12,7 @@ import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import Link from 'next/link';
 import { AuthContext } from '@ctb/auth-context';
-import { useRouter } from 'next/router';
+import { resetPassword } from '@ctb/auth-crud';
 import * as Yup from 'yup';
 
 interface Props {}
@@ -28,8 +28,7 @@ const ForgotPassword = (props: Props) => {
       .required('This field is required.'),
   });
 
-  const { resetPassword, loading, setLoading }: any = useContext(AuthContext);
-  const router = useRouter();
+  const { loading, setLoading }: any = useContext(AuthContext);
 
   const { register, handleSubmit, watch, errors } = useForm({
     resolver: yupResolver(forgotPasswordSchema),

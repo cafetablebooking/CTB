@@ -18,35 +18,12 @@ export const AuthContextProvider = (props: Props) => {
 
   Geocode.setApiKey(process.env.NEXT_PUBLIC_CLIENT_GOOGLE_MAPS_API_KEY);
 
-  const signup = (email, password) => {
-    return auth.createUserWithEmailAndPassword(email, password);
-  };
-  const login = (email, password) => {
-    return auth.signInWithEmailAndPassword(email, password);
-  };
-  const logout = () => {
-    return auth.signOut();
-  };
-  const resetPassword = (email) => {
-    return auth.sendPasswordResetEmail(email);
-  };
-  const signInWithGoogle = () => {
-    return auth
-      .signInWithPopup(googleProvider)
-      .then((res) => {
-        setCurrentUser(res.user);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
-
   const triggerNavigator = () => {
     function success(pos) {
       const crd = pos.coords;
       const latitude = crd.latitude;
       const longitude = crd.longitude;
-    //   const accuracy = crd.accuracy;
+      //   const accuracy = crd.accuracy;
 
       setNavigatorPosition({
         lat: latitude,
@@ -99,7 +76,16 @@ export const AuthContextProvider = (props: Props) => {
         });
       });
   };
-
+  const signInWithGoogle = () => {
+    return auth
+      .signInWithPopup(googleProvider)
+      .then((res) => {
+        setCurrentUser(res.user);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  };
   useEffect(() => {
     router.events.on('routeChangeComplete', () => {
       window.scrollTo(0, 0);
@@ -117,10 +103,8 @@ export const AuthContextProvider = (props: Props) => {
       value={{
         currentUser,
         setCurrentUser,
-        signup,
-        login,
-        logout,
-        resetPassword,
+
+        // resetPassword,
         loading,
         setLoading,
         signInWithGoogle,

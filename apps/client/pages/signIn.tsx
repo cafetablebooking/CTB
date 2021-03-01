@@ -11,8 +11,8 @@ import { useRouter } from 'next/router';
 import * as Yup from 'yup';
 import LoginRoute from '../components/LoginRoute';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-
 import { GoogleSignInButton } from '@ctb/google-sign-in-button';
+import { login } from '@ctb/auth-crud';
 interface Props {}
 
 const SignIn = (props: Props) => {
@@ -30,7 +30,7 @@ const SignIn = (props: Props) => {
       .required('This field is required.'),
   });
 
-  const { login, signInWithGoogle }: any = useContext(AuthContext);
+  const { signInWithGoogle }: any = useContext(AuthContext);
   const router = useRouter();
 
   const { register, handleSubmit, watch, errors } = useForm({

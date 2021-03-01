@@ -33,6 +33,7 @@
     "dark-theme-provider": { "tags": [] },
     "search-box-component": { "tags": [] },
     "auto-complete": { "tags": [] },
-    "google-sign-in-button": { "tags": [] }
+    "google-sign-in-button": { "tags": [] },
+    "auth-crud": { "tags": [] }
   }
 }

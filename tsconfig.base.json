@@ -23,7 +23,8 @@
       "@ctb/dark-theme-provider": ["libs/dark-theme-provider/src/index.ts"],
       "@ctb/search-box-component": ["libs/search-box-component/src/index.ts"],
       "@ctb/auto-complete": ["libs/auto-complete/src/index.ts"],
-      "@ctb/google-sign-in-button": ["libs/google-sign-in-button/src/index.ts"]
+      "@ctb/google-sign-in-button": ["libs/google-sign-in-button/src/index.ts"],
+      "@ctb/auth-crud": ["libs/auth-crud/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

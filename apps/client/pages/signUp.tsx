@@ -13,6 +13,7 @@ import LoginRoute from '../components/LoginRoute';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Image from 'next/image';
 import { GoogleSignInButton } from '@ctb/google-sign-in-button';
+import { registerAccount } from '@ctb/auth-crud';
 interface Props {}
 
 const signUp = (props: Props) => {
@@ -46,15 +47,15 @@ const signUp = (props: Props) => {
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(registerSchema),
   });
-  const { signup, signInWithGoogle }: any = useContext(AuthContext);
+  const { signInWithGoogle }: any = useContext(AuthContext);
   const googleSignInHandler = () => {
     signInWithGoogle();
     router.push('/dashboard');
   };
   async function onSubmit(data) {
     try {
-      await signup(data.email, data.password);
-      router.push('/signin');
+      await registerAccount(data.email, data.password);
+      router.push('/signIn');
     } catch {}
   }
 
