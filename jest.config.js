@@ -7,5 +7,7 @@ module.exports = {
     '<rootDir>/libs/auth-context',
     '<rootDir>/libs/types',
     '<rootDir>/apps/test-admin',
+    '<rootDir>/apps/functions',
+    '<rootDir>/apps/cloud-functions',
   ],
 };

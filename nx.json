@@ -28,6 +28,7 @@
     "client-e2e": { "tags": [], "implicitDependencies": ["client"] },
     "firebase-auth": { "tags": [] },
     "auth-context": { "tags": [] },
-    "types": { "tags": [] }
+    "types": { "tags": [] },
+    "functions": { "tags": [] }
   }
 }
