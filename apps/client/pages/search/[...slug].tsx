@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import styled from 'styled-components';
 import moment from 'moment';
-import GoogleMapReact from 'google-map-react';
+
 import { AuthContext } from '@ctb/auth-context';
 import {
   FormControl,
@@ -18,15 +18,16 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import { SearchBoxComponent } from '@ctb/search-box-component';
 import { CSSTransition } from 'react-transition-group';
-import Marker from 'apps/client/components/Marker/Marker';
+
 import Geocode from 'react-geocode';
 import {
   Search,
   SearchList,
   SearchListTop,
   StyledTransitionGroup,
-  Wrapper,
 } from '../../styles/SearchStyles';
+
+import GoogleMapComponent from 'apps/client/components/GoogleMapComponent';
 const SearchPid = () => {
   const { navigatorPosition, companies }: any = useContext(AuthContext);
   const router = useRouter();
@@ -247,32 +248,14 @@ const SearchPid = () => {
           </StyledTransitionGroup>
         </SearchList>
         {zoom > 0 && (
-          <Wrapper>
-            <GoogleMapReact
-              bootstrapURLKeys={{
-                key: process.env.NEXT_PUBLIC_CLIENT_GOOGLE_MAPS_API_KEY,
-              }}
-              defaultZoom={13}
-              zoom={zoom}
-              center={[latitude, longitude]}
-            >
-              {filteredData.map((place) => {
-                return (
-                  <Marker
-                    key={place.id}
-                    companyName={place.companyName}
-                    phoneNumber={place.phoneNumber}
-                    adress={place.adress}
-                    image={place.image}
-                    openingHours={place.openingHours}
-                    distance={navigatorPosition && getDistance(place)}
-                    lat={place.coordinates.lat}
-                    lng={place.coordinates.lng}
-                  />
-                );
-              })}
-            </GoogleMapReact>
-          </Wrapper>
+          <GoogleMapComponent
+            zoom={zoom}
+            latitude={latitude}
+            longitude={longitude}
+            navigatorPosition={navigatorPosition}
+            getDistance={getDistance}
+            filteredData={filteredData}
+          />
         )}
       </Search>
     </ThemeProvider>
