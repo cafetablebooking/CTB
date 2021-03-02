@@ -27,6 +27,10 @@ export const Search = styled(Box)`
   justify-content: center;
   min-height: 100vh;
   background: #fff;
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
   @media (min-width: 768px) {
     margin-top: 86px;
     justify-content: space-between;

@@ -27,7 +27,7 @@ import {
 import GoogleMapComponent from 'apps/client/components/GoogleMapComponent';
 
 import { getDistance, getOpeningHours } from '@ctb/utils';
-
+import Link from 'next/link';
 const SearchPid = () => {
   const { navigatorPosition, companies }: any = useContext(AuthContext);
   const router = useRouter();
@@ -207,24 +207,28 @@ const SearchPid = () => {
               filteredData.map((item) => {
                 return (
                   <CSSTransition key={item.id} timeout={500} classNames="item">
-                    <SearchListItem
-                      companyName={item.companyName}
-                      vatNr={item.vatNr}
-                      phoneNumber={item.phoneNumber}
-                      email={item.email}
-                      image={item.image}
-                      openingHours={getOpeningHours(item.openingHours)}
-                      adress={item.adress}
-                      distance={
-                        navigatorPosition &&
-                        getDistance(
-                          item,
-                          navigatorPosition.lat,
-                          navigatorPosition.lng
-                        )
-                      }
-                      key={item.id}
-                    />
+                    <Link href={`/cafe/${item.id}`}>
+                      <a>
+                        <SearchListItem
+                          companyName={item.companyName}
+                          vatNr={item.vatNr}
+                          phoneNumber={item.phoneNumber}
+                          email={item.email}
+                          image={item.image}
+                          openingHours={getOpeningHours(item.openingHours)}
+                          adress={item.adress}
+                          distance={
+                            navigatorPosition &&
+                            getDistance(
+                              item,
+                              navigatorPosition.lat,
+                              navigatorPosition.lng
+                            )
+                          }
+                          key={item.id}
+                        />
+                      </a>
+                    </Link>
                   </CSSTransition>
                 );
               })}
