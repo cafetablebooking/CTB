@@ -7,7 +7,7 @@ interface Props {
   zoom: number;
   latitude: number;
   longitude: number;
-  navigatorPosition: Object;
+  navigatorPosition: any;
   getDistance: any;
   filteredData: any;
 }
@@ -40,7 +40,10 @@ const GoogleMapComponent = (props: Props) => {
               adress={place.adress}
               image={place.image}
               openingHours={place.openingHours}
-              distance={navigatorPosition && getDistance(place)}
+              distance={
+                navigatorPosition &&
+                getDistance(place, navigatorPosition.lat, navigatorPosition.lng)
+              }
               lat={place.coordinates.lat}
               lng={place.coordinates.lng}
             />

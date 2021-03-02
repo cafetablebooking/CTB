@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import styled from 'styled-components';
-import moment from 'moment';
 
 import { AuthContext } from '@ctb/auth-context';
 import {
@@ -9,7 +7,7 @@ import {
   InputLabel,
   Typography,
 } from '@material-ui/core';
-import * as geolib from 'geolib';
+
 import SearchListItem from 'apps/client/components/SearchListItem';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -26,8 +24,10 @@ import {
   SearchListTop,
   StyledTransitionGroup,
 } from '../../styles/SearchStyles';
-
 import GoogleMapComponent from 'apps/client/components/GoogleMapComponent';
+
+import { getDistance, getOpeningHours } from '@ctb/utils';
+
 const SearchPid = () => {
   const { navigatorPosition, companies }: any = useContext(AuthContext);
   const router = useRouter();
@@ -74,7 +74,7 @@ const SearchPid = () => {
             response && response.results[0].geometry.location;
           latitude = lat;
           longitude = lng;
-          zoom = 5;
+          zoom = 7;
         } else {
           const response = await Geocode.fromAddress(`${pid}`);
           const { lat, lng } =
@@ -89,40 +89,9 @@ const SearchPid = () => {
     setLng(longitude);
     setZoom(zoom);
   };
-  const getOpeningHours = (day) => {
-    const date = new Date();
-    const getDay = date.getDay();
-    const today = day[getDay];
-    const { open, closed } = today;
-    let isOpen = false;
-    var format = 'hh:mm:ss';
-    var time = moment();
 
-    const beforeTime = moment(`${open}:00:00`, format);
-    const afterTime = moment(`${closed}:00:00`, format);
-
-    if (time.isBetween(beforeTime, afterTime)) {
-      isOpen = true;
-    } else {
-      isOpen = false;
-    }
-
-    return isOpen ? today : null;
-  };
-  const getDistance = (item) => {
-    return geolib.getDistance(
-      {
-        latitude: navigatorPosition.lat,
-        longitude: navigatorPosition.lng,
-      },
-      {
-        latitude: item.coordinates.lat,
-        longitude: item.coordinates.lng,
-      }
-    );
-  };
   let filteredData = null;
-  if (type === 'location') {
+  if (type === 'location' && pid !== 'Check my position') {
     filteredData =
       companies &&
       companies.filter((item) => {
@@ -131,11 +100,15 @@ const SearchPid = () => {
         return adress.toLowerCase().includes(pid.toLowerCase());
       });
   } else {
-    filteredData =
-      companies &&
-      companies.filter((item) => {
-        return item.companyName.toLowerCase().includes(pid.toLowerCase());
-      });
+    if (pid === 'Check my position') {
+      filteredData = companies && companies;
+    } else {
+      filteredData =
+        companies &&
+        companies.filter((item) => {
+          return item.companyName.toLowerCase().includes(pid.toLowerCase());
+        });
+    }
   }
   if (filter) {
     filteredData =
@@ -156,7 +129,10 @@ const SearchPid = () => {
   if (sortBy) {
     filteredData.sort(function (a, b) {
       if (navigatorPosition && sortBy === 'distance') {
-        return getDistance(a) - getDistance(b);
+        return (
+          getDistance(a, navigatorPosition.lat, navigatorPosition.lng) -
+          getDistance(b, navigatorPosition.lat, navigatorPosition.lng)
+        );
       } else if (sortBy === 'az' || sortBy === 'za') {
         let nameA;
         let nameB;
@@ -239,7 +215,14 @@ const SearchPid = () => {
                       image={item.image}
                       openingHours={getOpeningHours(item.openingHours)}
                       adress={item.adress}
-                      distance={navigatorPosition && getDistance(item)}
+                      distance={
+                        navigatorPosition &&
+                        getDistance(
+                          item,
+                          navigatorPosition.lat,
+                          navigatorPosition.lng
+                        )
+                      }
                       key={item.id}
                     />
                   </CSSTransition>
