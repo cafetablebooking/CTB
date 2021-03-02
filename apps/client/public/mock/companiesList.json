@@ -3,6 +3,7 @@
     "id": 0,
     "email": "company@email.com",
     "image": "/static/img/marquee/espressohouse.png",
+    "coverImage": "/static/img/hero/cover-image.jpg",
     "vatNr": 32323,
     "adress": {
       "city": "Stockholm",
@@ -25,6 +26,7 @@
     "id": 1,
     "email": "company@email.com",
     "image": "/static/img/marquee/dunkin.svg",
+    "coverImage": "/static/img/hero/cover-image.jpg",
     "vatNr": 32323,
     "adress": {
       "city": "Stockholm",
@@ -47,6 +49,7 @@
     "id": 3,
     "email": "company@email.com",
     "image": "/static/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
+    "coverImage": "/static/img/hero/cover-image.jpg",
     "vatNr": 32323,
     "adress": {
       "city": "Stockholm",
@@ -69,6 +72,7 @@
     "id": 4,
     "email": "company@email.com",
     "image": "/static/img/marquee/tim-hortons.png",
+    "coverImage": "/static/img/hero/cover-image.jpg",
     "vatNr": 32323,
     "adress": {
       "city": "Stockholm",
@@ -91,6 +95,7 @@
     "id": 5,
     "email": "company@email.com",
     "image": "/static/img/marquee/caribou-cafe.png",
+    "coverImage": "/static/img/hero/cover-image.jpg",
     "vatNr": 32323,
     "adress": {
       "city": "Stockholm",
@@ -113,6 +118,7 @@
     "id": 6,
     "email": "company@email.com",
     "image": "/static/img/marquee/luckin-coffee.svg",
+    "coverImage": "/static/img/hero/cover-image.jpg",
     "vatNr": 32323,
     "adress": {
       "city": "Stockholm",
@@ -135,6 +141,7 @@
     "id": 7,
     "email": "company@email.com",
     "image": "/static/img/marquee/tom-n-toms.jpg",
+    "coverImage": "/static/img/hero/cover-image.jpg",
     "vatNr": 32323,
     "adress": {
       "city": "Stockholm",
@@ -157,6 +164,7 @@
     "id": 8,
     "email": "company@email.com",
     "image": "/static/img/marquee/costa-coffee.svg",
+    "coverImage": "/static/img/hero/cover-image.jpg",
     "vatNr": 32323,
     "adress": {
       "city": "Stockholm",
@@ -179,6 +187,7 @@
     "id": 9,
     "email": "company@email.com",
     "image": "/static/img/marquee/tchibo-coffee.png",
+    "coverImage": "/static/img/hero/cover-image.jpg",
     "vatNr": 32323,
     "adress": {
       "city": "Stockholm",

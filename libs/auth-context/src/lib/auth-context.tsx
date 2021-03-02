@@ -47,7 +47,7 @@ export const AuthContextProvider = (props: Props) => {
     }
   };
   const getCompanies = async () => {
-    const res = await fetch('/mock/companies.json');
+    const res = await fetch('/mock/companiesList.json');
     const data = await res.json();
     data.map(async (item) => {
       //   const response = await Geocode.fromAddress(
@@ -63,6 +63,7 @@ export const AuthContextProvider = (props: Props) => {
         phoneNumber: item.phoneNumber,
         email: item.email,
         image: item.image,
+        coverImage: item.coverImage,
         openingHours: item.openingHours,
         adress: item.adress,
         coordinates: {

@@ -207,7 +207,7 @@ const SearchPid = () => {
               filteredData.map((item) => {
                 return (
                   <CSSTransition key={item.id} timeout={500} classNames="item">
-                    <Link href={`/cafe/${item.id}`}>
+                    <Link href={`/company/${item.id}`}>
                       <a>
                         <SearchListItem
                           companyName={item.companyName}
