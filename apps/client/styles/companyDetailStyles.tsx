@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Box } from '@material-ui/core';
+
 export const BusinessTextBox = styled(Box)`
   margin-left: 0;
   margin-top: 16px;
@@ -21,10 +22,11 @@ export const BusinessInnerBox = styled(Box)`
   }
 `;
 export const PaymentGuarantee = styled(Box)`
+  align-items: center;
   background-color: #a13e3e;
   color: white;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   padding: 24px;
 `;
 export const BusinessInfoItem = styled(Box)`
@@ -59,10 +61,7 @@ export const ConnectBusinessBox = styled(Box)`
   flex-direction: column;
 `;
 export const TextBox = styled(Box)`
-  ul {
-    padding-left: 15px;
-    margin: 0;
-  }
+  margin-left: 20px;
 `;
 
 export const CoverImage = styled(Box)`
@@ -96,7 +95,19 @@ export const Wrapper = styled(Box)`
   position: relative;
   margin-bottom: 50px;
 `;
-
+export const ImageWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  background: #d6d6d6;
+  justify-content: center;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  clip-path: circle(50%);
+  img {
+    border-radius: 4px;
+  }
+`;
 export const OnboardingContent = styled(Box)`
   flex-wrap: wrap;
   display: flex;

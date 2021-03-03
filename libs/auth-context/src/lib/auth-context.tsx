@@ -5,6 +5,7 @@ import Geocode from 'react-geocode';
 import { useRouter } from 'next/router';
 export const AuthContext = React.createContext({});
 import styled from 'styled-components';
+import moment from 'moment';
 interface Props {
   children: any;
 }
@@ -47,7 +48,7 @@ export const AuthContextProvider = (props: Props) => {
     }
   };
   const getCompanies = async () => {
-    const res = await fetch('/mock/companiesList.json');
+    const res = await fetch('/mock/companies.json');
     const data = await res.json();
     data.map(async (item) => {
       //   const response = await Geocode.fromAddress(
@@ -55,6 +56,18 @@ export const AuthContextProvider = (props: Props) => {
       //   );
 
       //   const { lat, lng } = response && response.results[0].geometry.location;
+      let arr = [];
+      item.tables.map((table) => {
+        const startTime = moment(table.start, 'YYYY-MM-DD HH:mm:ss').toDate();
+        const endTime = moment(table.end, 'YYYY-MM-DD HH:mm:ss').toDate();
+
+        arr.push({
+          title: table.title,
+          allDay: table.allDay,
+          start: startTime,
+          end: endTime,
+        });
+      });
 
       const options = {
         id: item.id,
@@ -64,6 +77,7 @@ export const AuthContextProvider = (props: Props) => {
         email: item.email,
         image: item.image,
         coverImage: item.coverImage,
+        tables: arr,
         openingHours: item.openingHours,
         adress: item.adress,
         coordinates: {
