@@ -27,7 +27,6 @@
     "client-e2e": { "tags": [], "implicitDependencies": ["client"] },
     "firebase-auth": { "tags": [] },
     "auth-context": { "tags": [] },
-    "auth-crud": { "tags": [] },
-    "utils": { "tags": [] }
+    "auth-crud": { "tags": [] }
   }
 }

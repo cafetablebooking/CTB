@@ -26,7 +26,7 @@ import {
 } from '../../styles/SearchStyles';
 import GoogleMapComponent from 'apps/client/components/GoogleMapComponent';
 
-import { getDistance, getOpeningHours } from '@ctb/utils';
+import { getDistance, getOpeningHours } from '../../components/utils';
 import Link from 'next/link';
 import { ClientContext } from 'apps/client/contexts/ClientContext';
 const SearchPid = () => {
