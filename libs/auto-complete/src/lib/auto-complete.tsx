@@ -54,7 +54,7 @@ interface PlaceType {
 }
 
 export function AutoCompleteInput(props: AutoCompleteInputProps) {
-  const { navigatorPosition, triggerNavigator }: any = useContext(AuthContext);
+  const { triggerNavigator }: any = useContext(AuthContext);
   const classes = useStyles();
   const inputValue = props.inputValue;
   const setInputValue = props.setInputValue;

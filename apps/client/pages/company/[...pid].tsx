@@ -20,6 +20,7 @@ import { Calendar, momentLocalizer } from 'react-big-calendar';
 import moment from 'moment';
 import PrivateRoute from '../../components/PrivateRoute';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { ClientContext } from 'apps/client/contexts/ClientContext';
 
 const localizer = momentLocalizer(moment);
 
@@ -38,7 +39,7 @@ const ValueMap: { [value in WeekDay]: string } = {
 
 const companyDetail = (props: Props) => {
   const { register, handleSubmit, watch, errors } = useForm({});
-  const { companies }: any = useContext(AuthContext);
+  const { companies }: any = useContext(ClientContext);
   const router = useRouter();
   const companyId = router.query.pid && router.query.pid[0];
 

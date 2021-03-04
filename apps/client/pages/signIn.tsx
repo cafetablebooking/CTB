@@ -19,12 +19,13 @@ import {
   InnerFlexItem,
   Form,
 } from '../styles/authStyles';
+import { ClientContext } from '../contexts/ClientContext';
 interface Props {}
 
 const SignIn = (props: Props) => {
   const isDesktop = useMediaQuery('(min-width:768px)');
   const [error, setError] = useState<string>('');
-  const { signInWithGoogle }: any = useContext(AuthContext);
+  const { signInWithGoogle }: any = useContext(ClientContext);
   const router = useRouter();
 
   const { register, handleSubmit, watch, errors } = useForm({
