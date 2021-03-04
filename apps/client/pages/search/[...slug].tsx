@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import styled from 'styled-components';
-import moment from 'moment';
-import GoogleMapReact from 'google-map-react';
+
 import { AuthContext } from '@ctb/auth-context';
 import {
   FormControl,
@@ -9,7 +7,7 @@ import {
   InputLabel,
   Typography,
 } from '@material-ui/core';
-import * as geolib from 'geolib';
+
 import SearchListItem from 'apps/client/components/SearchListItem';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from '@material-ui/core/styles';
@@ -18,15 +16,18 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import { SearchBoxComponent } from '@ctb/search-box-component';
 import { CSSTransition } from 'react-transition-group';
-import Marker from 'apps/client/components/Marker/Marker';
+
 import Geocode from 'react-geocode';
 import {
   Search,
   SearchList,
   SearchListTop,
   StyledTransitionGroup,
-  Wrapper,
 } from '../../styles/SearchStyles';
+import GoogleMapComponent from 'apps/client/components/GoogleMapComponent';
+
+import { getDistance, getOpeningHours } from '@ctb/utils';
+import Link from 'next/link';
 const SearchPid = () => {
   const { navigatorPosition, companies }: any = useContext(AuthContext);
   const router = useRouter();
@@ -73,7 +74,7 @@ const SearchPid = () => {
             response && response.results[0].geometry.location;
           latitude = lat;
           longitude = lng;
-          zoom = 5;
+          zoom = 7;
         } else {
           const response = await Geocode.fromAddress(`${pid}`);
           const { lat, lng } =
@@ -88,40 +89,9 @@ const SearchPid = () => {
     setLng(longitude);
     setZoom(zoom);
   };
-  const getOpeningHours = (day) => {
-    const date = new Date();
-    const getDay = date.getDay();
-    const today = day[getDay];
-    const { open, closed } = today;
-    let isOpen = false;
-    var format = 'hh:mm:ss';
-    var time = moment();
 
-    const beforeTime = moment(`${open}:00:00`, format);
-    const afterTime = moment(`${closed}:00:00`, format);
-
-    if (time.isBetween(beforeTime, afterTime)) {
-      isOpen = true;
-    } else {
-      isOpen = false;
-    }
-
-    return isOpen ? today : null;
-  };
-  const getDistance = (item) => {
-    return geolib.getDistance(
-      {
-        latitude: navigatorPosition.lat,
-        longitude: navigatorPosition.lng,
-      },
-      {
-        latitude: item.coordinates.lat,
-        longitude: item.coordinates.lng,
-      }
-    );
-  };
   let filteredData = null;
-  if (type === 'location') {
+  if (type === 'location' && pid !== 'Check my position') {
     filteredData =
       companies &&
       companies.filter((item) => {
@@ -130,11 +100,15 @@ const SearchPid = () => {
         return adress.toLowerCase().includes(pid.toLowerCase());
       });
   } else {
-    filteredData =
-      companies &&
-      companies.filter((item) => {
-        return item.companyName.toLowerCase().includes(pid.toLowerCase());
-      });
+    if (pid === 'Check my position') {
+      filteredData = companies && companies;
+    } else {
+      filteredData =
+        companies &&
+        companies.filter((item) => {
+          return item.companyName.toLowerCase().includes(pid.toLowerCase());
+        });
+    }
   }
   if (filter) {
     filteredData =
@@ -155,7 +129,10 @@ const SearchPid = () => {
   if (sortBy) {
     filteredData.sort(function (a, b) {
       if (navigatorPosition && sortBy === 'distance') {
-        return getDistance(a) - getDistance(b);
+        return (
+          getDistance(a, navigatorPosition.lat, navigatorPosition.lng) -
+          getDistance(b, navigatorPosition.lat, navigatorPosition.lng)
+        );
       } else if (sortBy === 'az' || sortBy === 'za') {
         let nameA;
         let nameB;
@@ -230,49 +207,42 @@ const SearchPid = () => {
               filteredData.map((item) => {
                 return (
                   <CSSTransition key={item.id} timeout={500} classNames="item">
-                    <SearchListItem
-                      companyName={item.companyName}
-                      vatNr={item.vatNr}
-                      phoneNumber={item.phoneNumber}
-                      email={item.email}
-                      image={item.image}
-                      openingHours={getOpeningHours(item.openingHours)}
-                      adress={item.adress}
-                      distance={navigatorPosition && getDistance(item)}
-                      key={item.id}
-                    />
+                    <Link href={`/company/${item.id}`}>
+                      <a>
+                        <SearchListItem
+                          companyName={item.companyName}
+                          vatNr={item.vatNr}
+                          phoneNumber={item.phoneNumber}
+                          email={item.email}
+                          image={item.image}
+                          openingHours={getOpeningHours(item.openingHours)}
+                          adress={item.adress}
+                          distance={
+                            navigatorPosition &&
+                            getDistance(
+                              item,
+                              navigatorPosition.lat,
+                              navigatorPosition.lng
+                            )
+                          }
+                          key={item.id}
+                        />
+                      </a>
+                    </Link>
                   </CSSTransition>
                 );
               })}
           </StyledTransitionGroup>
         </SearchList>
         {zoom > 0 && (
-          <Wrapper>
-            <GoogleMapReact
-              bootstrapURLKeys={{
-                key: process.env.NEXT_PUBLIC_CLIENT_GOOGLE_MAPS_API_KEY,
-              }}
-              defaultZoom={13}
-              zoom={zoom}
-              center={[latitude, longitude]}
-            >
-              {filteredData.map((place) => {
-                return (
-                  <Marker
-                    key={place.id}
-                    companyName={place.companyName}
-                    phoneNumber={place.phoneNumber}
-                    adress={place.adress}
-                    image={place.image}
-                    openingHours={place.openingHours}
-                    distance={navigatorPosition && getDistance(place)}
-                    lat={place.coordinates.lat}
-                    lng={place.coordinates.lng}
-                  />
-                );
-              })}
-            </GoogleMapReact>
-          </Wrapper>
+          <GoogleMapComponent
+            zoom={zoom}
+            latitude={latitude}
+            longitude={longitude}
+            navigatorPosition={navigatorPosition}
+            getDistance={getDistance}
+            filteredData={filteredData}
+          />
         )}
       </Search>
     </ThemeProvider>

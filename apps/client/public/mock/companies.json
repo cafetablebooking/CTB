@@ -3,7 +3,28 @@
     "id": 0,
     "email": "company@email.com",
     "image": "/static/img/marquee/espressohouse.png",
+    "coverImage": "/static/img/hero/cover-image.jpg",
     "vatNr": 32323,
+    "tables": [
+      {
+        "title": "Table 1",
+        "allDay": false,
+        "start": "2021-03-18T11:00:00",
+        "end": "2021-03-18T12:00:00"
+      },
+      {
+        "title": "Table 2",
+        "allDay": false,
+        "start": "2021-03-18T12:00:00",
+        "end": "2021-03-18T14:00:00"
+      },
+      {
+        "title": "Table 3",
+        "allDay": false,
+        "start": "2021-03-18T14:00:00",
+        "end": "2021-03-18T15:00:00"
+      }
+    ],
     "adress": {
       "city": "Stockholm",
       "name": "Odengatan 94",
@@ -13,11 +34,11 @@
     "phoneNumber": "+46434234234",
     "openingHours": [
       { "day": "Sun", "open": 9, "closed": 21, "isClosed": false },
-      { "day": "Mon", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Mon", "open": 13, "closed": 21, "isClosed": false },
       { "day": "Tue", "open": 9, "closed": 21, "isClosed": false },
-      { "day": "Wed", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Wed", "open": 14, "closed": 21, "isClosed": false },
       { "day": "Thu", "open": 9, "closed": 21, "isClosed": false },
-      { "day": "Fri", "open": 9, "closed": 21, "isClosed": false },
+      { "day": "Fri", "open": 15, "closed": 21, "isClosed": false },
       { "day": "Sat", "open": 9, "closed": 21, "isClosed": false }
     ]
   },
@@ -25,7 +46,28 @@
     "id": 1,
     "email": "company@email.com",
     "image": "/static/img/marquee/dunkin.svg",
+    "coverImage": "/static/img/hero/cover-image.jpg",
     "vatNr": 32323,
+    "tables": [
+      {
+        "title": "Table 1",
+        "allDay": false,
+        "start": "2021-03-18T11:00:00",
+        "end": "2021-03-18T12:00:00"
+      },
+      {
+        "title": "Table 2",
+        "allDay": false,
+        "start": "2021-03-18T12:00:00",
+        "end": "2021-03-18T14:00:00"
+      },
+      {
+        "title": "Table 3",
+        "allDay": false,
+        "start": "2021-03-18T14:00:00",
+        "end": "2021-03-18T15:00:00"
+      }
+    ],
     "adress": {
       "city": "Stockholm",
       "name": "Teknologgatan 4",
@@ -47,7 +89,16 @@
     "id": 3,
     "email": "company@email.com",
     "image": "/static/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
+    "coverImage": "/static/img/hero/cover-image.jpg",
     "vatNr": 32323,
+    "tables": [
+      {
+        "title": "My event",
+        "allDay": false,
+        "start": "2014-08-18T21:11:54",
+        "end": "2014-08-18T21:11:54"
+      }
+    ],
     "adress": {
       "city": "Stockholm",
       "name": "Torsgatan 34",
@@ -69,7 +120,28 @@
     "id": 4,
     "email": "company@email.com",
     "image": "/static/img/marquee/tim-hortons.png",
+    "coverImage": "/static/img/hero/cover-image.jpg",
     "vatNr": 32323,
+    "tables": [
+      {
+        "title": "Table 1",
+        "allDay": false,
+        "start": "2021-03-18T11:00:00",
+        "end": "2021-03-18T12:00:00"
+      },
+      {
+        "title": "Table 2",
+        "allDay": false,
+        "start": "2021-03-18T12:00:00",
+        "end": "2021-03-18T14:00:00"
+      },
+      {
+        "title": "Table 3",
+        "allDay": false,
+        "start": "2021-03-18T14:00:00",
+        "end": "2021-03-18T15:00:00"
+      }
+    ],
     "adress": {
       "city": "Stockholm",
       "name": "Sveavägen 12",
@@ -91,7 +163,28 @@
     "id": 5,
     "email": "company@email.com",
     "image": "/static/img/marquee/caribou-cafe.png",
+    "coverImage": "/static/img/hero/cover-image.jpg",
     "vatNr": 32323,
+    "tables": [
+      {
+        "title": "Table 1",
+        "allDay": false,
+        "start": "2021-03-18T11:00:00",
+        "end": "2021-03-18T12:00:00"
+      },
+      {
+        "title": "Table 2",
+        "allDay": false,
+        "start": "2021-03-18T12:00:00",
+        "end": "2021-03-18T14:00:00"
+      },
+      {
+        "title": "Table 3",
+        "allDay": false,
+        "start": "2021-03-18T14:00:00",
+        "end": "2021-03-18T15:00:00"
+      }
+    ],
     "adress": {
       "city": "Stockholm",
       "name": "Rörstrandsgatan 44",
@@ -113,7 +206,28 @@
     "id": 6,
     "email": "company@email.com",
     "image": "/static/img/marquee/luckin-coffee.svg",
+    "coverImage": "/static/img/hero/cover-image.jpg",
     "vatNr": 32323,
+    "tables": [
+      {
+        "title": "Table 1",
+        "allDay": false,
+        "start": "2021-03-18T11:00:00",
+        "end": "2021-03-18T12:00:00"
+      },
+      {
+        "title": "Table 2",
+        "allDay": false,
+        "start": "2021-03-18T12:00:00",
+        "end": "2021-03-18T14:00:00"
+      },
+      {
+        "title": "Table 3",
+        "allDay": false,
+        "start": "2021-03-18T14:00:00",
+        "end": "2021-03-18T15:00:00"
+      }
+    ],
     "adress": {
       "city": "Stockholm",
       "name": "Dalagatan 12",
@@ -135,7 +249,28 @@
     "id": 7,
     "email": "company@email.com",
     "image": "/static/img/marquee/tom-n-toms.jpg",
+    "coverImage": "/static/img/hero/cover-image.jpg",
     "vatNr": 32323,
+    "tables": [
+      {
+        "title": "Table 1",
+        "allDay": false,
+        "start": "2021-03-18T11:00:00",
+        "end": "2021-03-18T12:00:00"
+      },
+      {
+        "title": "Table 2",
+        "allDay": false,
+        "start": "2021-03-18T12:00:00",
+        "end": "2021-03-18T14:00:00"
+      },
+      {
+        "title": "Table 3",
+        "allDay": false,
+        "start": "2021-03-18T14:00:00",
+        "end": "2021-03-18T15:00:00"
+      }
+    ],
     "adress": {
       "city": "Stockholm",
       "name": "Dalagatan 67",
@@ -157,7 +292,28 @@
     "id": 8,
     "email": "company@email.com",
     "image": "/static/img/marquee/costa-coffee.svg",
+    "coverImage": "/static/img/hero/cover-image.jpg",
     "vatNr": 32323,
+    "tables": [
+      {
+        "title": "Table 1",
+        "allDay": false,
+        "start": "2021-03-18T11:00:00",
+        "end": "2021-03-18T12:00:00"
+      },
+      {
+        "title": "Table 2",
+        "allDay": false,
+        "start": "2021-03-18T12:00:00",
+        "end": "2021-03-18T14:00:00"
+      },
+      {
+        "title": "Table 3",
+        "allDay": false,
+        "start": "2021-03-18T14:00:00",
+        "end": "2021-03-18T15:00:00"
+      }
+    ],
     "adress": {
       "city": "Stockholm",
       "name": "Dalagatan 22",
@@ -179,7 +335,28 @@
     "id": 9,
     "email": "company@email.com",
     "image": "/static/img/marquee/tchibo-coffee.png",
+    "coverImage": "/static/img/hero/cover-image.jpg",
     "vatNr": 32323,
+    "tables": [
+      {
+        "title": "Table 1",
+        "allDay": false,
+        "start": "2021-03-18T11:00:00",
+        "end": "2021-03-18T12:00:00"
+      },
+      {
+        "title": "Table 2",
+        "allDay": false,
+        "start": "2021-03-18T12:00:00",
+        "end": "2021-03-18T14:00:00"
+      },
+      {
+        "title": "Table 3",
+        "allDay": false,
+        "start": "2021-03-18T14:00:00",
+        "end": "2021-03-18T15:00:00"
+      }
+    ],
     "adress": {
       "city": "Stockholm",
       "name": "Dalagatan 12",
