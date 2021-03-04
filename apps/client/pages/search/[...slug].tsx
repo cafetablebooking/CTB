@@ -11,7 +11,7 @@ import {
 import SearchListItem from 'apps/client/components/SearchListItem';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { theme } from '@ctb/theme-provider';
+import theme from '../../components/ThemeProviders/LightThemeProvider';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import SearchBoxComponent from '../../components/Header/SearchBoxComponent';

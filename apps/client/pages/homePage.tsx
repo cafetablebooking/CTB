@@ -5,7 +5,7 @@ import { Typography, Box } from '@material-ui/core';
 import Marquee, { Motion } from 'react-marquee-slider';
 import Image from 'next/image';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { darkTheme } from '@ctb/dark-theme-provider';
+import darkTheme from '../components/ThemeProviders/DarkThemeProvider';
 
 import SearchBoxComponent from '../components/Header/SearchBoxComponent';
 import { AuthContext } from '@ctb/auth-context';

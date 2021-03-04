@@ -3,7 +3,7 @@ import Link from 'next/link';
 import styled from 'styled-components';
 
 /* eslint-disable-next-line */
-export interface FooterProps {}
+interface FooterProps {}
 
 const StyledFooter = styled.footer`
   top: 61px;
@@ -41,7 +41,7 @@ const StyledFooter = styled.footer`
   }
 `;
 
-export function Footer(props: FooterProps) {
+function Footer(props: FooterProps) {
   return (
     <StyledFooter>
       <p style={{ fontSize: '12px' }}>© Table Booking 2021</p>

@@ -23,15 +23,10 @@
   "projects": {
     "owner-admin": { "tags": [] },
     "owner-admin-e2e": { "tags": [], "implicitDependencies": ["owner-admin"] },
-    "header": { "tags": [] },
     "client": { "tags": [] },
     "client-e2e": { "tags": [], "implicitDependencies": ["client"] },
     "firebase-auth": { "tags": [] },
     "auth-context": { "tags": [] },
-    "footer": { "tags": [] },
-    "theme-provider": { "tags": [] },
-    "dark-theme-provider": { "tags": [] },
-    "search-box-component": { "tags": [] },
     "google-sign-in-button": { "tags": [] },
     "auth-crud": { "tags": [] },
     "utils": { "tags": [] }

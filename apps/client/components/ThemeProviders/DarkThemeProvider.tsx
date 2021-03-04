@@ -1,14 +1,12 @@
 import { createMuiTheme } from '@material-ui/core/styles';
 /* eslint-disable-next-line */
 
-export const theme = createMuiTheme({
+const darkTheme = createMuiTheme({
   palette: {
     primary: {
       main: '#4CADC0',
     },
-    success: {
-      main: '#47b426',
-    },
+    type: 'dark',
   },
 });
-export default theme;
+export default darkTheme;

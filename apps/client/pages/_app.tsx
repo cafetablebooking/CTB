@@ -3,9 +3,9 @@ import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { AuthContextProvider } from '@ctb/auth-context';
 import Header from '../components/Header/Header';
-import { Footer } from '@ctb/footer';
+import Footer from '../components/Footer/Footer';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { theme } from '@ctb/theme-provider';
+import theme from '../components/ThemeProviders/LightThemeProvider';
 import { ClientContextProvider } from '../contexts/ClientContext';
 
 function CustomApp({ Component, pageProps }: AppProps) {

@@ -101,27 +101,7 @@
         }
       }
     },
-    "header": {
-      "root": "libs/header",
-      "sourceRoot": "libs/header/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/header/**/*.{ts,tsx,js,jsx}"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/header"],
-          "options": {
-            "jestConfig": "libs/header/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
+
     "client": {
       "root": "apps/client",
       "sourceRoot": "apps/client",
@@ -236,94 +216,6 @@
           "outputs": ["coverage/libs/auth-context"],
           "options": {
             "jestConfig": "libs/auth-context/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "footer": {
-      "root": "libs/footer",
-      "sourceRoot": "libs/footer/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/footer/**/*.{ts,tsx,js,jsx}"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/footer"],
-          "options": {
-            "jestConfig": "libs/footer/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "theme-provider": {
-      "root": "libs/theme-provider",
-      "sourceRoot": "libs/theme-provider/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": ["libs/theme-provider/**/*.{ts,tsx,js,jsx}"]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/theme-provider"],
-          "options": {
-            "jestConfig": "libs/theme-provider/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "dark-theme-provider": {
-      "root": "libs/dark-theme-provider",
-      "sourceRoot": "libs/dark-theme-provider/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/dark-theme-provider/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/dark-theme-provider"],
-          "options": {
-            "jestConfig": "libs/dark-theme-provider/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "search-box-component": {
-      "root": "libs/search-box-component",
-      "sourceRoot": "libs/search-box-component/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/search-box-component/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/search-box-component"],
-          "options": {
-            "jestConfig": "libs/search-box-component/jest.config.js",
             "passWithNoTests": true
           }
         }
