@@ -1,9 +1,8 @@
 import React, { useContext, useState } from 'react';
-import { TextField, Button, Typography, Box, Divider } from '@material-ui/core';
+import { TextField, Button, Typography, Divider } from '@material-ui/core';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import styled from 'styled-components';
 import Link from 'next/link';
 
 import { useRouter } from 'next/router';
@@ -12,7 +11,6 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import GoogleSignInButton from '../components/GoogleSignInButton';
 import { registerAccount } from '@ctb/auth-crud';
-import { AuthContext } from '@ctb/auth-context';
 import { registerSchema } from '@ctb/utils';
 import {
   SignInWrapper,
