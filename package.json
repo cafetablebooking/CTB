@@ -33,6 +33,7 @@
     "@material-ui/lab": "^4.0.0-alpha.57",
     "@material-ui/pickers": "^3.2.10",
     "@nrwl/next": "^11.2.11",
+    "@nrwl/nx": "^7.8.7",
     "@nrwl/react": "^11.2.11",
     "@reach/combobox": "^0.13.0",
     "@react-firebase/auth": "^0.2.10",

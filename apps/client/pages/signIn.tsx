@@ -1,17 +1,15 @@
 import React, { useContext, useState } from 'react';
-import { TextField, Button, Typography, Box, Divider } from '@material-ui/core';
+import { TextField, Button, Typography, Divider } from '@material-ui/core';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import styled from 'styled-components';
 import Link from 'next/link';
-import { AuthContext } from '@ctb/auth-context';
 import { useRouter } from 'next/router';
 import LoginRoute from '../components/LoginRoute';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { GoogleSignInButton } from '@ctb/google-sign-in-button';
+import GoogleSignInButton from '../components/GoogleSignInButton';
 import { login } from '@ctb/auth-crud';
-import { loginSchema } from '@ctb/utils';
+import { loginSchema } from '@ctb/yup-resolvers';
 import {
   SignInWrapper,
   RedirectMessage,
@@ -19,12 +17,13 @@ import {
   InnerFlexItem,
   Form,
 } from '../styles/authStyles';
+import { ClientContext } from '../contexts/ClientContext';
 interface Props {}
 
 const SignIn = (props: Props) => {
   const isDesktop = useMediaQuery('(min-width:768px)');
   const [error, setError] = useState<string>('');
-  const { signInWithGoogle }: any = useContext(AuthContext);
+  const { signInWithGoogle }: any = useContext(ClientContext);
   const router = useRouter();
 
   const { register, handleSubmit, watch, errors } = useForm({

@@ -5,9 +5,9 @@ import { Typography, Box } from '@material-ui/core';
 import Marquee, { Motion } from 'react-marquee-slider';
 import Image from 'next/image';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { darkTheme } from '@ctb/dark-theme-provider';
+import darkTheme from '../components/ThemeProviders/DarkThemeProvider';
 
-import { SearchBoxComponent } from '@ctb/search-box-component';
+import SearchBoxComponent from '../components/Header/SearchBoxComponent';
 import { AuthContext } from '@ctb/auth-context';
 import OnboardingCard from '../components/OnboardingCard';
 import {
@@ -21,17 +21,20 @@ import {
   ImgWrapper,
   MarqueeWrapper,
 } from '../styles/homePageStyles';
+import { ClientContext } from '../contexts/ClientContext';
 interface Props {}
 
 const homePage = (props: Props) => {
-  const { companies }: any = useContext(AuthContext);
+  const { companies }: any = useContext(ClientContext);
 
   return (
     <ThemeProvider theme={darkTheme}>
       <Home>
         <Hero>
           <OnboardingMessage>
-            <Typography variant="h4">Find a table - order on the go!</Typography>
+            <Typography variant="h4">
+              Find a table - order on the go!
+            </Typography>
           </OnboardingMessage>
           <SearchBoxComponent isHeader={false} />
         </Hero>

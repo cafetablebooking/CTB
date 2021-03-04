@@ -3,17 +3,15 @@ import {
   TextField,
   Button,
   Typography,
-  Box,
   CircularProgress,
 } from '@material-ui/core';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import styled from 'styled-components';
 import Link from 'next/link';
 import { AuthContext } from '@ctb/auth-context';
 import { resetPassword } from '@ctb/auth-crud';
-import { forgotPasswordSchema } from '@ctb/utils';
+import { forgotPasswordSchema } from '@ctb/yup-resolvers';
 import {
   SignInBox,
   FormWrapper,

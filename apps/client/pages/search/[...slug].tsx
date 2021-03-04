@@ -11,10 +11,10 @@ import {
 import SearchListItem from 'apps/client/components/SearchListItem';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { theme } from '@ctb/theme-provider';
+import theme from '../../components/ThemeProviders/LightThemeProvider';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-import { SearchBoxComponent } from '@ctb/search-box-component';
+import SearchBoxComponent from '../../components/Header/SearchBoxComponent';
 import { CSSTransition } from 'react-transition-group';
 
 import Geocode from 'react-geocode';
@@ -26,10 +26,12 @@ import {
 } from '../../styles/SearchStyles';
 import GoogleMapComponent from 'apps/client/components/GoogleMapComponent';
 
-import { getDistance, getOpeningHours } from '@ctb/utils';
+import { getDistance, getOpeningHours } from '../../components/utils';
 import Link from 'next/link';
+import { ClientContext } from 'apps/client/contexts/ClientContext';
 const SearchPid = () => {
-  const { navigatorPosition, companies }: any = useContext(AuthContext);
+  const { navigatorPosition }: any = useContext(AuthContext);
+  const { companies }: any = useContext(ClientContext);
   const router = useRouter();
   const isDesktop = useMediaQuery('(min-width:768px)');
   const [filter, setFilter] = React.useState<string>('');

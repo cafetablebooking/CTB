@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { auth, googleProvider } from '@ctb/firebase-auth';
 import React from 'react';
 import Geocode from 'react-geocode';
@@ -6,16 +6,14 @@ import { useRouter } from 'next/router';
 
 import styled from 'styled-components';
 import moment from 'moment';
+import { AuthContext } from '@ctb/auth-context';
 interface Props {
   children: any;
 }
 export const ClientContext = React.createContext({});
 export const ClientContextProvider = (props: Props) => {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [currentUser, setCurrentUser] = useState<any>(null);
-  const [navigatorPosition, setNavigatorPosition] = useState<any>(null);
   const [companies, setCompanies] = useState<any>([]);
-  const router = useRouter();
+  const { setCurrentUser }: any = useContext(AuthContext);
 
   Geocode.setApiKey(process.env.NEXT_PUBLIC_CLIENT_GOOGLE_MAPS_API_KEY);
 
@@ -71,27 +69,13 @@ export const ClientContextProvider = (props: Props) => {
       });
   };
   useEffect(() => {
-    router.events.on('routeChangeComplete', () => {
-      window.scrollTo(0, 0);
-    });
     getCompanies();
-
-    const unsubscribe = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user);
-    });
-    return unsubscribe;
   }, []);
 
   return (
     <ClientContext.Provider
       value={{
-        currentUser,
-        setCurrentUser,
-        loading,
-        setLoading,
         signInWithGoogle,
-        navigatorPosition,
-        setNavigatorPosition,
         companies,
       }}
     >
