@@ -9,7 +9,7 @@ import { useForm } from 'react-hook-form';
 import { AuthContext } from '@ctb/auth-context';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { makeStyles } from '@material-ui/core/styles';
-import { AutoCompleteInput } from '@ctb/auto-complete';
+import AutoCompleteInput from './AutoCompleteInput';
 import Paper from '@material-ui/core/Paper';
 interface Props {
   isHeader: boolean;
