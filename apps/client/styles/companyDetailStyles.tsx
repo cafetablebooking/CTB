@@ -108,11 +108,19 @@ export const ImageWrapper = styled.div`
     border-radius: 4px;
   }
 `;
-export const OnboardingContent = styled(Box)`
+export const OpeningHours = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+export const CalendarWrapper = styled.div`
+  position: relative;
+
+  margin: auto;
+`;
+export const CompanyContent = styled(Box)`
   flex-wrap: wrap;
   display: flex;
 
-  flex-direction: column;
   min-height: 60vh;
   margin: 5vw 5vw 5vw 5vw;
   @media (min-width: 930px) {

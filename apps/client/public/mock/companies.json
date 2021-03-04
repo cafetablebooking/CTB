@@ -7,10 +7,22 @@
     "vatNr": 32323,
     "tables": [
       {
-        "title": "My event",
+        "title": "Table 1",
         "allDay": false,
-        "start": "2021-03-18T21:11:54",
-        "end": "2021-03-18T22:11:54"
+        "start": "2021-03-18T11:00:00",
+        "end": "2021-03-18T12:00:00"
+      },
+      {
+        "title": "Table 2",
+        "allDay": false,
+        "start": "2021-03-18T12:00:00",
+        "end": "2021-03-18T14:00:00"
+      },
+      {
+        "title": "Table 3",
+        "allDay": false,
+        "start": "2021-03-18T14:00:00",
+        "end": "2021-03-18T15:00:00"
       }
     ],
     "adress": {
@@ -38,10 +50,22 @@
     "vatNr": 32323,
     "tables": [
       {
-        "title": "My event",
+        "title": "Table 1",
         "allDay": false,
-        "start": "2014-08-18T21:11:54",
-        "end": "2014-08-18T21:11:54"
+        "start": "2021-03-18T11:00:00",
+        "end": "2021-03-18T12:00:00"
+      },
+      {
+        "title": "Table 2",
+        "allDay": false,
+        "start": "2021-03-18T12:00:00",
+        "end": "2021-03-18T14:00:00"
+      },
+      {
+        "title": "Table 3",
+        "allDay": false,
+        "start": "2021-03-18T14:00:00",
+        "end": "2021-03-18T15:00:00"
       }
     ],
     "adress": {
@@ -100,10 +124,22 @@
     "vatNr": 32323,
     "tables": [
       {
-        "title": "My event",
+        "title": "Table 1",
         "allDay": false,
-        "start": "2014-08-18T21:11:54",
-        "end": "2014-08-18T21:11:54"
+        "start": "2021-03-18T11:00:00",
+        "end": "2021-03-18T12:00:00"
+      },
+      {
+        "title": "Table 2",
+        "allDay": false,
+        "start": "2021-03-18T12:00:00",
+        "end": "2021-03-18T14:00:00"
+      },
+      {
+        "title": "Table 3",
+        "allDay": false,
+        "start": "2021-03-18T14:00:00",
+        "end": "2021-03-18T15:00:00"
       }
     ],
     "adress": {
@@ -131,10 +167,22 @@
     "vatNr": 32323,
     "tables": [
       {
-        "title": "My event",
+        "title": "Table 1",
         "allDay": false,
-        "start": "2014-08-18T21:11:54",
-        "end": "2014-08-18T21:11:54"
+        "start": "2021-03-18T11:00:00",
+        "end": "2021-03-18T12:00:00"
+      },
+      {
+        "title": "Table 2",
+        "allDay": false,
+        "start": "2021-03-18T12:00:00",
+        "end": "2021-03-18T14:00:00"
+      },
+      {
+        "title": "Table 3",
+        "allDay": false,
+        "start": "2021-03-18T14:00:00",
+        "end": "2021-03-18T15:00:00"
       }
     ],
     "adress": {
@@ -162,10 +210,22 @@
     "vatNr": 32323,
     "tables": [
       {
-        "title": "My event",
+        "title": "Table 1",
         "allDay": false,
-        "start": "2014-08-18T21:11:54",
-        "end": "2014-08-18T21:11:54"
+        "start": "2021-03-18T11:00:00",
+        "end": "2021-03-18T12:00:00"
+      },
+      {
+        "title": "Table 2",
+        "allDay": false,
+        "start": "2021-03-18T12:00:00",
+        "end": "2021-03-18T14:00:00"
+      },
+      {
+        "title": "Table 3",
+        "allDay": false,
+        "start": "2021-03-18T14:00:00",
+        "end": "2021-03-18T15:00:00"
       }
     ],
     "adress": {
@@ -193,10 +253,22 @@
     "vatNr": 32323,
     "tables": [
       {
-        "title": "My event",
+        "title": "Table 1",
         "allDay": false,
-        "start": "2014-08-18T21:11:54",
-        "end": "2014-08-18T21:11:54"
+        "start": "2021-03-18T11:00:00",
+        "end": "2021-03-18T12:00:00"
+      },
+      {
+        "title": "Table 2",
+        "allDay": false,
+        "start": "2021-03-18T12:00:00",
+        "end": "2021-03-18T14:00:00"
+      },
+      {
+        "title": "Table 3",
+        "allDay": false,
+        "start": "2021-03-18T14:00:00",
+        "end": "2021-03-18T15:00:00"
       }
     ],
     "adress": {
@@ -224,10 +296,22 @@
     "vatNr": 32323,
     "tables": [
       {
-        "title": "My event",
+        "title": "Table 1",
         "allDay": false,
-        "start": "2014-08-18T21:11:54",
-        "end": "2014-08-18T21:11:54"
+        "start": "2021-03-18T11:00:00",
+        "end": "2021-03-18T12:00:00"
+      },
+      {
+        "title": "Table 2",
+        "allDay": false,
+        "start": "2021-03-18T12:00:00",
+        "end": "2021-03-18T14:00:00"
+      },
+      {
+        "title": "Table 3",
+        "allDay": false,
+        "start": "2021-03-18T14:00:00",
+        "end": "2021-03-18T15:00:00"
       }
     ],
     "adress": {
@@ -255,10 +339,22 @@
     "vatNr": 32323,
     "tables": [
       {
-        "title": "My event",
+        "title": "Table 1",
         "allDay": false,
-        "start": "2014-08-18T21:11:54",
-        "end": "2014-08-18T21:11:54"
+        "start": "2021-03-18T11:00:00",
+        "end": "2021-03-18T12:00:00"
+      },
+      {
+        "title": "Table 2",
+        "allDay": false,
+        "start": "2021-03-18T12:00:00",
+        "end": "2021-03-18T14:00:00"
+      },
+      {
+        "title": "Table 3",
+        "allDay": false,
+        "start": "2021-03-18T14:00:00",
+        "end": "2021-03-18T15:00:00"
       }
     ],
     "adress": {
