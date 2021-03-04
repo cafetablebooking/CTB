@@ -10,7 +10,7 @@ import { useRouter } from 'next/router';
 
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-import { GoogleSignInButton } from '@ctb/google-sign-in-button';
+import GoogleSignInButton from '../components/GoogleSignInButton';
 import { registerAccount } from '@ctb/auth-crud';
 import { AuthContext } from '@ctb/auth-context';
 import { registerSchema } from '@ctb/utils';

@@ -1,10 +1,10 @@
 import React from 'react';
 
 import styled from 'styled-components';
-import { Button, Typography } from '@material-ui/core';
+import { Button } from '@material-ui/core';
 import Image from 'next/image';
 /* eslint-disable-next-line */
-export interface GoogleSignInButtonProps {
+interface GoogleSignInButtonProps {
   googleSignInHandler: any;
   text: string;
 }
@@ -21,7 +21,7 @@ const StyledGoogleSignInButton = styled(Button)`
   }
 `;
 //
-export function GoogleSignInButton(props: GoogleSignInButtonProps) {
+function GoogleSignInButton(props: GoogleSignInButtonProps) {
   return (
     <StyledGoogleSignInButton
       style={{ display: 'flex', justifyContent: 'flex-start', marginTop: 20 }}

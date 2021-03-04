@@ -17,7 +17,6 @@
     "paths": {
       "@ctb/firebase-auth": ["libs/firebase-auth/src/index.ts"],
       "@ctb/auth-context": ["libs/auth-context/src/index.ts"],
-      "@ctb/google-sign-in-button": ["libs/google-sign-in-button/src/index.ts"],
       "@ctb/auth-crud": ["libs/auth-crud/src/index.ts"],
       "@ctb/utils": ["libs/utils/src/index.ts"]
     }

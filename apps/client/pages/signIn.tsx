@@ -9,7 +9,7 @@ import { AuthContext } from '@ctb/auth-context';
 import { useRouter } from 'next/router';
 import LoginRoute from '../components/LoginRoute';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { GoogleSignInButton } from '@ctb/google-sign-in-button';
+import GoogleSignInButton from '../components/GoogleSignInButton';
 import { login } from '@ctb/auth-crud';
 import { loginSchema } from '@ctb/utils';
 import {
