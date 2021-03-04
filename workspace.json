@@ -8,9 +8,7 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/owner-admin",
             "index": "apps/owner-admin/src/index.html",
@@ -64,16 +62,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/owner-admin/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["apps/owner-admin/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/owner-admin"
-          ],
+          "outputs": ["coverage/apps/owner-admin"],
           "options": {
             "jestConfig": "apps/owner-admin/jest.config.js",
             "passWithNoTests": true
@@ -102,9 +96,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/owner-admin-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/owner-admin-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -117,16 +109,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/header/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["libs/header/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/header"
-          ],
+          "outputs": ["coverage/libs/header"],
           "options": {
             "jestConfig": "libs/header/jest.config.js",
             "passWithNoTests": true
@@ -141,9 +129,7 @@
       "targets": {
         "build": {
           "executor": "@nrwl/next:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "root": "apps/client",
             "outputPath": "dist/apps/client"
@@ -174,16 +160,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/client/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["apps/client/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/client"
-          ],
+          "outputs": ["coverage/apps/client"],
           "options": {
             "jestConfig": "apps/client/jest.config.js",
             "passWithNoTests": true
@@ -212,9 +194,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/client-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/client-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -227,16 +207,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/firebase-auth/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["libs/firebase-auth/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/firebase-auth"
-          ],
+          "outputs": ["coverage/libs/firebase-auth"],
           "options": {
             "jestConfig": "libs/firebase-auth/jest.config.js",
             "passWithNoTests": true
@@ -252,16 +228,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/auth-context/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["libs/auth-context/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/auth-context"
-          ],
+          "outputs": ["coverage/libs/auth-context"],
           "options": {
             "jestConfig": "libs/auth-context/jest.config.js",
             "passWithNoTests": true
@@ -277,16 +249,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/footer/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["libs/footer/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/footer"
-          ],
+          "outputs": ["coverage/libs/footer"],
           "options": {
             "jestConfig": "libs/footer/jest.config.js",
             "passWithNoTests": true
@@ -302,16 +270,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/theme-provider/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["libs/theme-provider/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/theme-provider"
-          ],
+          "outputs": ["coverage/libs/theme-provider"],
           "options": {
             "jestConfig": "libs/theme-provider/jest.config.js",
             "passWithNoTests": true
@@ -334,9 +298,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/dark-theme-provider"
-          ],
+          "outputs": ["coverage/libs/dark-theme-provider"],
           "options": {
             "jestConfig": "libs/dark-theme-provider/jest.config.js",
             "passWithNoTests": true
@@ -359,9 +321,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/search-box-component"
-          ],
+          "outputs": ["coverage/libs/search-box-component"],
           "options": {
             "jestConfig": "libs/search-box-component/jest.config.js",
             "passWithNoTests": true
@@ -369,31 +329,7 @@
         }
       }
     },
-    "auto-complete": {
-      "root": "libs/auto-complete",
-      "sourceRoot": "libs/auto-complete/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/auto-complete/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/auto-complete"
-          ],
-          "options": {
-            "jestConfig": "libs/auto-complete/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
+
     "google-sign-in-button": {
       "root": "libs/google-sign-in-button",
       "sourceRoot": "libs/google-sign-in-button/src",
@@ -409,9 +345,7 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/google-sign-in-button"
-          ],
+          "outputs": ["coverage/libs/google-sign-in-button"],
           "options": {
             "jestConfig": "libs/google-sign-in-button/jest.config.js",
             "passWithNoTests": true
@@ -427,16 +361,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/auth-crud/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["libs/auth-crud/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/auth-crud"
-          ],
+          "outputs": ["coverage/libs/auth-crud"],
           "options": {
             "jestConfig": "libs/auth-crud/jest.config.js",
             "passWithNoTests": true
@@ -452,16 +382,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/utils/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["libs/utils/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/utils"
-          ],
+          "outputs": ["coverage/libs/utils"],
           "options": {
             "jestConfig": "libs/utils/jest.config.js",
             "passWithNoTests": true
