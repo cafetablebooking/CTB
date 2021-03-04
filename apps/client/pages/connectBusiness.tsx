@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Typography, Box, TextField, Button, Divider } from '@material-ui/core';
 
 import { ThemeProvider } from '@material-ui/core/styles';
-import { darkTheme } from '../components/ThemeProviders/DarkThemeProvider';
+import darkTheme from '../components/ThemeProviders/DarkThemeProvider';
 import Image from 'next/image';
 
 import { useForm } from 'react-hook-form';
