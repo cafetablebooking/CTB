@@ -1,9 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { makeStyles, useTheme } from '@material-ui/core/styles';
+import { makeStyles } from '@material-ui/core/styles';
 import { Badge as BadgeBase, BadgeProps } from '@material-ui/core';
-import classnames from 'classnames';
 import React from 'react';
-import { CSSProperties } from '@material-ui/styles';
 import { CTBtheme } from '@ctb/types';
 
 /* eslint-disable-next-line */

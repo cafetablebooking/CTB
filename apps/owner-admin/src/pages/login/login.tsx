@@ -1,4 +1,6 @@
-import React,{useState} from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useState } from 'react';
+import { useAuthContext } from '@ctb/auth-context';
 import {
   Grid,
   CircularProgress,
@@ -8,41 +10,40 @@ import {
   Tab,
   TextField,
   Fade,
-} from "@material-ui/core";
+} from '@material-ui/core';
+import classnames from 'classnames';
 
 import useStyles from './styles';
-
+import google from '../../assets/images/google.svg';
+import { useTheme } from '@material-ui/styles';
+import { CTBtheme } from '@ctb/types';
 /* eslint-disable-next-line */
 export interface LoginProps {}
 
-
-
 export function Login(props: LoginProps) {
-    const classes = useStyles();
+  const classes = useStyles();
+  const theme = useTheme<CTBtheme>();
+  const { login, signup } = useAuthContext();
 
-  // global
-  const userDispatch = useUserDispatch();
-
-  // local
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [activeTabId, setActiveTabId] = useState(0);
-  const [nameValue, setNameValue] = useState("");
-  const [loginValue, setLoginValue] = useState("admin@flatlogic.com");
-  const [passwordValue, setPasswordValue] = useState("password");
+  const [nameValue, setNameValue] = useState('');
+  const [email, setEmail] = useState('');
+  const [passwordValue, setPasswordValue] = useState('');
 
   return (
     <Grid container className={classes.container}>
       <div className={classes.logotypeContainer}>
-        <img src={logo} alt="logo" className={classes.logotypeImage} />
-        <Typography className={classes.logotypeText}>Material Admin</Typography>
+        {/* <img src={logo} alt="logo" className={classes.logotypeImage} /> */}
+        <Typography className={classes.logotypeText}>CTB Admin</Typography>
       </div>
       <div className={classes.formContainer}>
         <div className={classes.form}>
           <Tabs
             value={activeTabId}
             onChange={(e, id) => setActiveTabId(id)}
-            indicatorColor="primary"
+            indicatorColor="secondary"
             textColor="primary"
             centered
           >
@@ -51,10 +52,10 @@ export function Login(props: LoginProps) {
           </Tabs>
           {activeTabId === 0 && (
             <React.Fragment>
-              <Typography variant="h1" className={classes.greeting}>
+              <Typography variant="h4" className={classes.greeting}>
                 Good Morning, User
               </Typography>
-              <Button size="large" className={classes.googleButton}>
+              <Button size="medium" className={classes.googleButton}>
                 <img src={google} alt="google" className={classes.googleIcon} />
                 &nbsp;Sign in with Google
               </Button>
@@ -76,8 +77,8 @@ export function Login(props: LoginProps) {
                     input: classes.textField,
                   },
                 }}
-                value={loginValue}
-                onChange={e => setLoginValue(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 margin="normal"
                 placeholder="Email Adress"
                 type="email"
@@ -92,7 +93,7 @@ export function Login(props: LoginProps) {
                   },
                 }}
                 value={passwordValue}
-                onChange={e => setPasswordValue(e.target.value)}
+                onChange={(e) => setPasswordValue(e.target.value)}
                 margin="normal"
                 placeholder="Password"
                 type="password"
@@ -103,21 +104,10 @@ export function Login(props: LoginProps) {
                   <CircularProgress size={26} className={classes.loginLoader} />
                 ) : (
                   <Button
-                    disabled={
-                      loginValue.length === 0 || passwordValue.length === 0
-                    }
-                    onClick={() =>
-                      loginUser(
-                        userDispatch,
-                        loginValue,
-                        passwordValue,
-                        props.history,
-                        setIsLoading,
-                        setError,
-                      )
-                    }
+                    disabled={email.length === 0 || passwordValue.length === 0}
+                    onClick={() => login(email, passwordValue)}
                     variant="contained"
-                    color="primary"
+                    color="secondary"
                     size="large"
                   >
                     Login
@@ -135,10 +125,10 @@ export function Login(props: LoginProps) {
           )}
           {activeTabId === 1 && (
             <React.Fragment>
-              <Typography variant="h1" className={classes.greeting}>
+              <Typography variant="h4" className={classes.greeting}>
                 Welcome!
               </Typography>
-              <Typography variant="h2" className={classes.subGreeting}>
+              <Typography variant="h5" className={classes.subGreeting}>
                 Create your account
               </Typography>
               <Fade in={error}>
@@ -155,7 +145,7 @@ export function Login(props: LoginProps) {
                   },
                 }}
                 value={nameValue}
-                onChange={e => setNameValue(e.target.value)}
+                onChange={(e) => setNameValue(e.target.value)}
                 margin="normal"
                 placeholder="Full Name"
                 type="text"
@@ -169,8 +159,8 @@ export function Login(props: LoginProps) {
                     input: classes.textField,
                   },
                 }}
-                value={loginValue}
-                onChange={e => setLoginValue(e.target.value)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 margin="normal"
                 placeholder="Email Adress"
                 type="email"
@@ -185,7 +175,7 @@ export function Login(props: LoginProps) {
                   },
                 }}
                 value={passwordValue}
-                onChange={e => setPasswordValue(e.target.value)}
+                onChange={(e) => setPasswordValue(e.target.value)}
                 margin="normal"
                 placeholder="Password"
                 type="password"
@@ -196,18 +186,9 @@ export function Login(props: LoginProps) {
                   <CircularProgress size={26} />
                 ) : (
                   <Button
-                    onClick={() =>
-                      loginUser(
-                        userDispatch,
-                        loginValue,
-                        passwordValue,
-                        props.history,
-                        setIsLoading,
-                        setError,
-                      )
-                    }
+                    onClick={() => signup(email, passwordValue, nameValue)}
                     disabled={
-                      loginValue.length === 0 ||
+                      email.length === 0 ||
                       passwordValue.length === 0 ||
                       nameValue.length === 0
                     }
@@ -230,7 +211,7 @@ export function Login(props: LoginProps) {
                 size="large"
                 className={classnames(
                   classes.googleButton,
-                  classes.googleButtonCreating,
+                  classes.googleButtonCreating
                 )}
               >
                 <img src={google} alt="google" className={classes.googleIcon} />
@@ -240,10 +221,12 @@ export function Login(props: LoginProps) {
           )}
         </div>
         <Typography color="primary" className={classes.copyright}>
-        © 2014-{new Date().getFullYear()} <a style={{ textDecoration: 'none', color: 'inherit' }} href="https://flatlogic.com" rel="noopener noreferrer" target="_blank">Flatlogic</a>, LLC. All rights reserved.
+          ©{new Date().getFullYear()}
+          Cafe Table Booking. All rights reserved.
         </Typography>
       </div>
     </Grid>
   );
+}
 
 export default Login;

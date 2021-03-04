@@ -1,12 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// import {
-//   FooterType,
-//   LayoutType,
-//   NavStyle,
-//   RouteTransition,
-//   ThemeMode,
-//   AuthType,
-// } from '../../../../apps/owner-admin/src/constants/AppEnums';
 
 import { PaletteType, Theme, Transitions } from '@material-ui/core';
 import { Direction } from '@material-ui/core/styles/createMuiTheme';
@@ -25,7 +17,6 @@ export interface AuthUser {
   email?: string;
   photoURL?: string;
   token?: string;
-  // authType: AuthType;
   role: string[];
 }
 

@@ -38,6 +38,7 @@ import {
 import { AppContextPropsType } from '@ctb/types';
 import appContext from '../../context/appContext';
 import UserAvatar from '../user-avatar/user-avatar';
+import { useAuthContext } from '@ctb/auth-context';
 
 const messages = [
   {
@@ -104,7 +105,7 @@ export function Header({ history }: HeaderProps) {
   // global
   const layoutState = useLayoutState();
   const layoutDispatch = useLayoutDispatch();
-
+  const { logout } = useAuthContext();
   // local
   const [mailMenu, setMailMenu] = useState(null);
   const [isMailsUnread, setIsMailsUnread] = useState(true);
@@ -345,7 +346,7 @@ export function Header({ history }: HeaderProps) {
             <Typography
               className={classes.profileMenuLink}
               color="primary"
-              // onClick={() => signOut(userDispatch, props.history)}
+              onClick={() => logout()}
             >
               Sign Out
             </Typography>

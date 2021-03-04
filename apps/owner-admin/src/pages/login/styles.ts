@@ -13,8 +13,8 @@ export default makeStyles((theme: CTBtheme) => ({
     left: 0,
   },
   logotypeContainer: {
-    backgroundColor: theme.palette.primary.main,
-    width: '60%',
+    backgroundColor: theme.palette.secondary.main,
+    width: '50%',
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
@@ -34,13 +34,13 @@ export default makeStyles((theme: CTBtheme) => ({
   logotypeText: {
     color: 'white',
     fontWeight: 500,
-    fontSize: 84,
+    fontSize: 60,
     [theme.breakpoints.down('md')]: {
       fontSize: 48,
     },
   },
   formContainer: {
-    width: '40%',
+    width: '50%',
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
@@ -106,7 +106,7 @@ export default makeStyles((theme: CTBtheme) => ({
   formDivider: {
     flexGrow: 1,
     height: 1,
-    backgroundColor: theme.palette.text.hint + '40',
+    backgroundColor: theme.palette.secondary.light + '40',
   },
   errorMessage: {
     textAlign: 'center',
@@ -135,6 +135,7 @@ export default makeStyles((theme: CTBtheme) => ({
   forgetButton: {
     textTransform: 'none',
     fontWeight: 400,
+    backgroundColor: '#4564',
   },
   loginLoader: {
     marginLeft: theme.spacing(4),
