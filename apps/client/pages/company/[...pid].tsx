@@ -7,7 +7,7 @@ import { useForm } from 'react-hook-form';
 import {
   Wrapper,
   CoverImage,
-  PaymentGuarantee,
+  Separator,
   CompanyContent,
   OpeningHours,
   TextBox,
@@ -21,8 +21,9 @@ import moment from 'moment';
 import PrivateRoute from '../../components/PrivateRoute';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { ClientContext } from 'apps/client/contexts/ClientContext';
-
+import WorkWeekViewComponent from './WorkWeekViewComponent';
 const localizer = momentLocalizer(moment);
+localizer.formats.yearHeaderFormat = 'YYYY';
 
 interface Props {}
 type WeekDay = 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
@@ -73,7 +74,7 @@ const companyDetail = (props: Props) => {
         <Wrapper>
           <CoverImage coverImage={company.coverImage}></CoverImage>
 
-          <PaymentGuarantee>
+          <Separator>
             <div
               style={{
                 position: 'absolute',
@@ -107,7 +108,7 @@ const companyDetail = (props: Props) => {
             >
               Book now
             </Button>
-          </PaymentGuarantee>
+          </Separator>
 
           <CompanyContent>
             <OpeningHours>
@@ -116,11 +117,17 @@ const companyDetail = (props: Props) => {
             </OpeningHours>
             <CalendarWrapper>
               <Calendar
-                defaultView={'day'}
+                views={{
+                  day: true,
+                  week: true,
+                  month: true,
+                  myweek: WorkWeekViewComponent,
+                }}
                 min={new Date(2020, 1, 0, 9, 0, 0)}
                 max={new Date(2020, 1, 0, 21, 0, 0)}
                 localizer={localizer}
                 events={company.tables}
+                messages={{ year: 'Year' }}
                 startAccessor="start"
                 endAccessor="end"
                 style={{ height: 500 }}

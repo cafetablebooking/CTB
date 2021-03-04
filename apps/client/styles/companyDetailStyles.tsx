@@ -21,7 +21,7 @@ export const BusinessInnerBox = styled(Box)`
     flex-direction: row;
   }
 `;
-export const PaymentGuarantee = styled(Box)`
+export const Separator = styled(Box)`
   align-items: center;
   background-color: #a13e3e;
   color: white;
