@@ -9,7 +9,7 @@ import LoginRoute from '../components/LoginRoute';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import GoogleSignInButton from '../components/GoogleSignInButton';
 import { login } from '@ctb/auth-crud';
-import { loginSchema } from '@ctb/utils';
+import { loginSchema } from '@ctb/yup-resolvers';
 import {
   SignInWrapper,
   RedirectMessage,

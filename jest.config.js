@@ -5,5 +5,6 @@ module.exports = {
     '<rootDir>/libs/firebase-auth',
     '<rootDir>/libs/auth-context',
     '<rootDir>/libs/auth-crud',
+    '<rootDir>/libs/yup-resolvers',
   ],
 };

@@ -11,7 +11,7 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import GoogleSignInButton from '../components/GoogleSignInButton';
 import { registerAccount } from '@ctb/auth-crud';
-import { registerSchema } from '@ctb/utils';
+import { registerSchema } from '@ctb/yup-resolvers';
 import {
   SignInWrapper,
   RedirectMessage,
