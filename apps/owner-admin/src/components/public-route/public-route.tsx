@@ -13,7 +13,7 @@ function PublicRoute({ component: Component, ...rest }) {
     <Route
       {...rest}
       render={(props) =>
-        user && user ? <Redirect to="/dashboard" /> : <Component {...props} />
+        user ? <Redirect to="/dashboard" /> : <Component {...props} />
       }
     />
   );

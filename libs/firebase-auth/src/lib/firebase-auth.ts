@@ -1,7 +1,9 @@
 import firebase from 'firebase/app';
 import 'firebase/auth';
-
-const app = {
+import 'firebase/functions';
+import 'firebase/firestore';
+// import * as admin from 'firebase-admin';
+const firebaseConfig = {
   //   apiKey: process.env.CLIENT_FIREBASE_API_KEY,
   //   authDomain: process.env.CLIENT_FIREBASE_AUTH_DOMAIN,
   //   projectId: process.env.CLIENT_FIREBASE_PROJECT_ID,
@@ -16,14 +18,19 @@ const app = {
   appId: '1:527456432823:web:85ad494b7043576ec6d332',
 };
 
-if (!firebase.apps.length) {
-  firebase.initializeApp(app);
-}
+firebase.initializeApp(firebaseConfig);
+// admin.initializeApp(firebaseConfig);
+const firestore = firebase.firestore();
+const auth = firebase.auth();
+const functions = firebase.functions();
 
-export const auth = !firebase.apps.length
-  ? firebase.initializeApp(app).auth()
-  : firebase.app().auth();
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+// if (!firebase.apps.length) {
+//   firebase.initializeApp(app);
+// }
 
-export const googleProvider = new firebase.auth.GoogleAuthProvider();
+// export const auth = !firebase.apps.length
+//   ? firebase.initializeApp(app).auth()
+//   : firebase.app().auth();
 
-export default app;
+export { firestore, auth, functions, googleProvider };

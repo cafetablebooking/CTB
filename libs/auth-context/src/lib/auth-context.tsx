@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, useEffect, useState, useContext } from 'react';
-import { auth, googleProvider } from '@ctb/firebase-auth';
+import { auth, googleProvider, functions } from '@ctb/firebase-auth';
 import React from 'react';
 
-export const AuthContext = createContext<AuthProps>(null);
+export const AuthContext = createContext<AuthProps | null>(null);
 
 interface Props {
   children: any;
@@ -19,40 +19,59 @@ interface AuthProps {
 
 const AuthContextProvider = ({ children }: Props) => {
   const [user, setUser] = useState(null);
+  const ADMIN_USERS = { Ramy: 'ramy.niranjan@gmail.com' };
 
-  const signup = (email, password, name) => {
-    return auth
-      .createUserWithEmailAndPassword(email, password)
-      .then((response) => {
-        response.user.updateProfile({ displayName: name });
-        setUser(response.user);
-        return response.user;
-      });
+  const signup = async (email, password, name) => {
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      await user.updateProfile({ displayName: name });
+      if (email === ADMIN_USERS[name]) {
+        const addAdminRole = functions.httpsCallable('addAdminRole');
+        addAdminRole({ email });
+        const { claims } = await user.getIdTokenResult(true);
+        console.log(claims);
+      }
+      setUser(user);
+      return user;
+    } catch (error) {
+      console.error(error);
+    }
   };
-  const login = (email, password) => {
-    return auth.signInWithEmailAndPassword(email, password).then((response) => {
-      setUser(response.user);
-      return response.user;
-    });
+
+  const login = async (email, password) => {
+    try {
+      const { user } = await auth.signInWithEmailAndPassword(email, password);
+      const { claims } = await auth.currentUser.getIdTokenResult();
+      console.log(claims);
+      setUser(user);
+      return user;
+    } catch (error) {
+      console.log(error);
+    }
   };
   const logout = () => {
     return auth.signOut().then(() => {
       setUser(false);
     });
   };
+
   const resetPassword = (email) => {
     return auth.sendPasswordResetEmail(email);
   };
-  const signInWithGoogle = () => {
-    return auth
-      .signInWithPopup(googleProvider)
-      .then((res) => {
-        setUser(res.user);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
+
+  const signInWithGoogle = async () => {
+    try {
+      const { user } = await auth.signInWithPopup(googleProvider);
+      setUser(user);
+      return user;
+    } catch (error) {
+      console.log(error);
+    }
   };
+
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
