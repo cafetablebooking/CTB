@@ -23,7 +23,6 @@ const AuthContextProvider = ({ children }: Props) => {
   const [user, setUser] = useState(null);
   const [uidValue, setUidValue] = useLocalStorage('uid', '');
   const ADMIN_USERS = { Ramy: 'ramy.niranjan@gmail.com' };
-  console.log(uidValue);
 
   const signup = async (email, password, name) => {
     try {
@@ -35,8 +34,7 @@ const AuthContextProvider = ({ children }: Props) => {
       if (email === ADMIN_USERS[name]) {
         const addAdminRole = functions.httpsCallable('addAdminRole');
         addAdminRole({ email });
-        const { claims } = await user.getIdTokenResult(true);
-        console.log(claims);
+        // const { claims } = await user.getIdTokenResult(true);
       }
 
       setUser(user);
@@ -49,8 +47,8 @@ const AuthContextProvider = ({ children }: Props) => {
   const login = async (email, password) => {
     try {
       const { user } = await auth.signInWithEmailAndPassword(email, password);
-      const { claims } = await auth.currentUser.getIdTokenResult();
-      console.log(claims);
+      // const { claims } = await auth.currentUser.getIdTokenResult();
+      // console.log(claims);
       setUser(user);
       return user;
     } catch (error) {
