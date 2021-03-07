@@ -1,3 +1,4 @@
+/* eslint-disable no-empty-pattern */
 import React, { useContext, useState } from 'react';
 import {
   AppBar,
@@ -95,11 +96,9 @@ const notifications = [
 
 // import { useUserDispatch, signOut } from '../../context/UserContext';
 /* eslint-disable-next-line */
-export interface HeaderProps extends AppBarProps {
-  history?: string;
-}
+export interface HeaderProps extends AppBarProps {}
 
-export function Header({ history }: HeaderProps) {
+export function Header({}: HeaderProps) {
   const classes = useStyles();
   const theme = useTheme<CTBtheme>();
   // global

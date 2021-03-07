@@ -12,18 +12,17 @@ import ThemeSetting from '../themeChanger';
 // import { ThemeSetting } from '../../context/ThemeSetting/ContextReducer';
 /* eslint-disable-next-line */
 export interface LayoutProps {
-  history?: string;
   children: React.ReactNode;
 }
 
-export function Layout({ history, children }: LayoutProps) {
+export function Layout({ children }: LayoutProps) {
   const classes = useStyles();
 
   // global
   const layoutState = useLayoutState();
   return (
     <div className={classes.root}>
-      <Header history={history} />
+      <Header />
       <Sidebar />
       <Paper
         className={classnames(classes.content, {

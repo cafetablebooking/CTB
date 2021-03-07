@@ -114,7 +114,10 @@ export function Sidebar({ location }: SidebarProps) {
       }}
       open={isSidebarOpened}
       ModalProps={{ onBackdropClick: () => toggleSidebar(layoutDispatch) }}
-      PaperProps={{ onClick: () => toggleSidebar(layoutDispatch) }}
+      PaperProps={{
+        onClick: () => !isPermanent && toggleSidebar(layoutDispatch),
+        elevation: 4,
+      }}
     >
       <div className={classes.toolbar} />
       <div className={classes.mobileBackButton}>

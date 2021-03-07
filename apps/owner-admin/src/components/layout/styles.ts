@@ -12,6 +12,7 @@ export default makeStyles((theme: any) => ({
     padding: theme.spacing(3),
     width: `calc(100vw - 240px)`,
     minHeight: '100vh',
+    // backgroundColor: '#F3F4F6',
   },
   contentShift: {
     width: `calc(100vw - ${240 + theme.spacing(6)}px)`,

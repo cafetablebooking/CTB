@@ -5,7 +5,7 @@ const useStyles = makeStyles((theme: CTBtheme) => ({
   customizerOption: {
     position: 'absolute',
     right: 0,
-    top: 100,
+    top: 200,
     zIndex: 1110,
     [theme.breakpoints.up('xl')]: {
       top: 125,
