@@ -9,5 +9,6 @@ module.exports = {
     '<rootDir>/apps/test-admin',
     '<rootDir>/apps/functions',
     '<rootDir>/apps/cloud-functions',
+    '<rootDir>/libs/use-local-storage',
   ],
 };

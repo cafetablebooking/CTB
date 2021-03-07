@@ -1,17 +1,9 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from 'react';
-import { Drawer, IconButton, List } from '@material-ui/core';
+import { Box, Drawer, IconButton, List, Typography } from '@material-ui/core';
 import {
-  Home as HomeIcon,
-  NotificationsNone as NotificationsIcon,
-  FormatSize as TypographyIcon,
-  FilterNone as UIElementsIcon,
-  BorderAll as TableIcon,
-  QuestionAnswer as SupportIcon,
-  LibraryBooks as LibraryIcon,
   HelpOutline as FAQIcon,
   ArrowBack as ArrowBackIcon,
-  // EventSeatOutlinedIcon,
   AppsOutlined,
 } from '@material-ui/icons';
 import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
@@ -28,7 +20,6 @@ import useStyles from './styles';
 
 // components
 import SidebarLink from './components/sidebar-link/sidebar-link';
-import Dot from './components/dot/dot';
 
 import {
   useLayoutState,
@@ -122,12 +113,19 @@ export function Sidebar({ location }: SidebarProps) {
         }),
       }}
       open={isSidebarOpened}
+      ModalProps={{ onBackdropClick: () => toggleSidebar(layoutDispatch) }}
+      PaperProps={{ onClick: () => toggleSidebar(layoutDispatch) }}
     >
       <div className={classes.toolbar} />
       <div className={classes.mobileBackButton}>
-        <IconButton onClick={() => toggleSidebar(layoutDispatch)}>
-          <ArrowBackIcon />
-        </IconButton>
+        {!isPermanent && (
+          <IconButton>
+            <ArrowBackIcon />
+            <Typography style={{ marginLeft: '6px' }} variant="h5">
+              CTB Admin
+            </Typography>
+          </IconButton>
+        )}
       </div>
       <List>
         {structure.map((link) => (

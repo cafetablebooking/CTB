@@ -2,6 +2,7 @@
 import { createContext, useEffect, useState, useContext } from 'react';
 import { auth, googleProvider, functions } from '@ctb/firebase-auth';
 import React from 'react';
+import { useLocalStorage } from '@ctb/use-local-storage';
 
 export const AuthContext = createContext<AuthProps | null>(null);
 
@@ -15,11 +16,14 @@ interface AuthProps {
   resetPassword: any;
   signInWithGoogle: any;
   user: any;
+  uidValue: any;
 }
 
 const AuthContextProvider = ({ children }: Props) => {
   const [user, setUser] = useState(null);
+  const [uidValue, setUidValue] = useLocalStorage('uid', '');
   const ADMIN_USERS = { Ramy: 'ramy.niranjan@gmail.com' };
+  console.log(uidValue);
 
   const signup = async (email, password, name) => {
     try {
@@ -34,6 +38,7 @@ const AuthContextProvider = ({ children }: Props) => {
         const { claims } = await user.getIdTokenResult(true);
         console.log(claims);
       }
+
       setUser(user);
       return user;
     } catch (error) {
@@ -52,7 +57,8 @@ const AuthContextProvider = ({ children }: Props) => {
       console.log(error);
     }
   };
-  const logout = () => {
+
+  const logout = (user) => {
     return auth.signOut().then(() => {
       setUser(false);
     });
@@ -76,8 +82,10 @@ const AuthContextProvider = ({ children }: Props) => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (user) {
         setUser(user);
+        setUidValue(user.uid);
       } else {
         setUser(false);
+        setUidValue('');
       }
     });
 
@@ -93,6 +101,7 @@ const AuthContextProvider = ({ children }: Props) => {
         logout,
         resetPassword,
         signInWithGoogle,
+        uidValue,
       }}
     >
       {children}

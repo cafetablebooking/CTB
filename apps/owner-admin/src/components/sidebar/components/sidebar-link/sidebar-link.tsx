@@ -13,7 +13,6 @@ import {
 import { Inbox as InboxIcon } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
 import classnames from 'classnames';
-import styled from 'styled-components';
 
 // styles
 import useStyles from './styles';

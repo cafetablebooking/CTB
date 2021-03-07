@@ -29,6 +29,7 @@
     "firebase-auth": { "tags": [] },
     "auth-context": { "tags": [] },
     "types": { "tags": [] },
-    "functions": { "tags": [] }
+    "functions": { "tags": [] },
+    "use-local-storage": { "tags": [] }
   }
 }

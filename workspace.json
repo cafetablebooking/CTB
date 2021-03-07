@@ -352,6 +352,31 @@
           }
         }
       }
+    },
+    "use-local-storage": {
+      "root": "libs/use-local-storage",
+      "sourceRoot": "libs/use-local-storage/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/use-local-storage/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/use-local-storage"
+          ],
+          "options": {
+            "jestConfig": "libs/use-local-storage/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
     }
   },
   "cli": {

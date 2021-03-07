@@ -7,12 +7,12 @@ import { Login } from './pages/login/login';
 import Reservation from './pages/reservation/reservation';
 import PrivateRoute from './components/private-route';
 import PublicRoute from './components/public-route';
+import { useLocalStorage } from '@ctb/use-local-storage';
 
 interface AppProps {}
 
 export const App: React.FC<AppProps> = () => {
-  // const [isLoggedIn, setIsloggedIn] = useState(false);
-  // const { currentUser } = useAuthContext();
+  // const [uidValue, setUidValue] = useLocalStorage('uid', '');
   return (
     <BrowserRouter>
       <Switch>
