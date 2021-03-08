@@ -8,7 +8,7 @@ import { ThemeProvider } from '@material-ui/core/styles';
 import darkTheme from '../components/ThemeProviders/DarkThemeProvider';
 
 import SearchBoxComponent from '../components/Header/SearchBoxComponent';
-import { AuthContext } from '@ctb/auth-context';
+
 import OnboardingCard from '../components/OnboardingCard';
 import {
   Home,
