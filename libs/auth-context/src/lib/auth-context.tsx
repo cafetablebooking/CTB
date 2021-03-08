@@ -3,7 +3,6 @@ import { auth } from '@ctb/firebase-auth';
 import React from 'react';
 
 export const AuthContext = React.createContext({});
-import styled from 'styled-components';
 
 interface Props {
   children: any;
@@ -26,14 +25,7 @@ export const AuthContextProvider = (props: Props) => {
         setCurrentUser,
       }}
     >
-      <FontWrapper>{props.children}</FontWrapper>
+      {props.children}
     </AuthContext.Provider>
   );
 };
-const FontWrapper = styled.div`
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-
-  button {
-    font-weight: bold;
-  }
-`;
