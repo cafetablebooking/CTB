@@ -1,142 +1,121 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { createContext, useEffect, useState } from 'react';
-import { auth, googleProvider } from '@ctb/firebase-auth';
+import { createContext, useEffect, useState, useContext } from 'react';
+import { auth, googleProvider, functions } from '@ctb/firebase-auth';
 import React from 'react';
+import { useLocalStorage } from '@ctb/use-local-storage';
 
-// export const AuthContext = createContext({});
+export const AuthContext = createContext<AuthProps | null>(null);
 
-import Geocode from 'react-geocode';
-import { useRouter } from 'next/router';
-import styled from 'styled-components';
-export const AuthContext = React.createContext({});
 interface Props {
   children: any;
 }
+interface AuthProps {
+  signup: any;
+  login: any;
+  logout: any;
+  resetPassword: any;
+  signInWithGoogle: any;
+  user: any;
+  uidValue: any;
+}
 
-export const AuthContextProvider = (props: Props) => {
-  const [loading, setLoading] = useState<boolean>(false);
-  const [currentUser, setCurrentUser] = useState<any>(null);
-  const [navigatorPosition, setNavigatorPosition] = useState<any>(null);
-  const [companiesMockData, setCompaniesMockData] = useState<any>([]);
+const AuthContextProvider = ({ children }: Props) => {
+  const [user, setUser] = useState(null);
+  const [uidValue, setUidValue] = useLocalStorage('uid', '');
+  const ADMIN_USERS = {
+    Ramy: 'ramy.niranjan@gmail.com',
+    Gabriel: 'gabbeholmer@hotmail.com',
+  };
 
-  Geocode.setApiKey(process.env.NEXT_PUBLIC_CLIENT_GOOGLE_MAPS_API_KEY);
+  const signup = async (email, password, name) => {
+    try {
+      const { user } = await auth.createUserWithEmailAndPassword(
+        email,
+        password
+      );
+      await user.updateProfile({ displayName: name });
+      if (email === ADMIN_USERS[name]) {
+        const addAdminRole = functions.httpsCallable('addAdminRole');
+        addAdminRole({ email });
+        // const { claims } = await user.getIdTokenResult(true);
+      }
 
-  const signup = (email, password) => {
-    return auth.createUserWithEmailAndPassword(email, password);
+      setUser(user);
+      return user;
+    } catch (error) {
+      console.error(error);
+    }
   };
-  const login = (email, password) => {
-    return auth.signInWithEmailAndPassword(email, password);
+
+  const login = async (email, password) => {
+    try {
+      const { user } = await auth.signInWithEmailAndPassword(email, password);
+      // const { claims } = await auth.currentUser.getIdTokenResult();
+      // console.log(claims);
+      setUser(user);
+      return user;
+    } catch (error) {
+      console.log(error);
+    }
   };
-  const logout = () => {
-    return auth.signOut();
+
+  const logout = (user) => {
+    return auth.signOut().then(() => {
+      setUser(false);
+    });
   };
+
   const resetPassword = (email) => {
     return auth.sendPasswordResetEmail(email);
   };
-  const signInWithGoogle = () => {
-    return auth
-      .signInWithPopup(googleProvider)
-      .then((res) => {
-        setCurrentUser(res.user);
-      })
-      .catch((error) => {
-        console.log(error.message);
-      });
-  };
 
-  const triggerNavigator = () => {
-    function success(pos) {
-      const crd = pos.coords;
-      const latitude = crd.latitude;
-      const longitude = crd.longitude;
-      const accuracy = crd.accuracy;
-
-      setNavigatorPosition({
-        lat: latitude,
-        lng: longitude,
-        // accuracy: accuracy,
-      });
-    }
-
-    function error(err) {
-      console.warn(`ERROR(${err.code}): ${err.message}`);
-    }
-
-    const options = {
-      enableHighAccuracy: true,
-      timeout: 5000,
-      maximumAge: 0,
-    };
-
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(success, error, options);
+  const signInWithGoogle = async () => {
+    try {
+      const { user } = await auth.signInWithPopup(googleProvider);
+      setUser(user);
+      return user;
+    } catch (error) {
+      console.log(error);
     }
   };
-  const router = useRouter();
+
   useEffect(() => {
-    router.events.on('routeChangeComplete', () => {
-      window.scrollTo(0, 0);
-    });
-    fetch('https://api.npoint.io/c07c4cf6f0190a621db1')
-      .then((data) => data.json())
-      .then((data) => {
-        data.map(async (item) => {
-          const response = await Geocode.fromAddress(
-            `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
-          );
-
-          const { lat, lng } =
-            response && response.results[0].geometry.location;
-
-          const options = {
-            id: item.id,
-            companyName: item.companyName,
-            vatNr: item.vatNr,
-            phoneNumber: item.phoneNumber,
-            email: item.email,
-            image: item.image,
-            openingHours: item.openingHours,
-            adress: item.adress,
-            coordinates: {
-              lat,
-              lng,
-            },
-          };
-          setCompaniesMockData((prevState) => [...prevState, options]);
-        });
-      });
     const unsubscribe = auth.onAuthStateChanged((user) => {
-      setCurrentUser(user);
+      if (user) {
+        setUser(user);
+        setUidValue(user.uid);
+      } else {
+        setUser(false);
+        setUidValue('');
+      }
     });
-    return unsubscribe;
+
+    return () => unsubscribe();
   }, []);
 
   return (
     <AuthContext.Provider
       value={{
-        currentUser,
-        setCurrentUser,
+        user,
         signup,
         login,
         logout,
         resetPassword,
-        loading,
-        setLoading,
         signInWithGoogle,
-        navigatorPosition,
-        setNavigatorPosition,
-        triggerNavigator,
-        companiesMockData,
+        uidValue,
       }}
     >
-      <FontWrapper>{props.children}</FontWrapper>
+      {children}
     </AuthContext.Provider>
   );
 };
-const FontWrapper = styled.div`
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 
-  button {
-    font-weight: bold;
+function useAuthContext() {
+  const context = useContext(AuthContext);
+  if (context === undefined) {
+    throw new Error('useAuthContext must be used within a AuthContextProvider');
   }
-`;
+  return context;
+}
+
+export { useAuthContext, AuthContextProvider };
