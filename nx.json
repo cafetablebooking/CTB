@@ -27,13 +27,10 @@
     "client-e2e": { "tags": [], "implicitDependencies": ["client"] },
     "firebase-auth": { "tags": [] },
     "auth-context": { "tags": [] },
-<<<<<<< HEAD
     "auth-crud": { "tags": [] },
-    "yup-resolvers": { "tags": [] }
-=======
+    "yup-resolvers": { "tags": [] },
     "types": { "tags": [] },
     "functions": { "tags": [] },
     "use-local-storage": { "tags": [] }
->>>>>>> feature/owner-dashboard-setup
   }
 }
