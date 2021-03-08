@@ -11,9 +11,9 @@ import '../../../../../node_modules/react-big-calendar/lib/css/react-big-calenda
 const events = [
   {
     id: 0,
-    title: 'Table 1',
-    start: new Date(2021, 0, 29, 9, 0, 0),
-    end: new Date(2021, 0, 29, 13, 0, 0),
+    title: 'GH',
+    start: new Date(2021, 2, 8, 12, 0, 0),
+    end: new Date(2021, 2, 8, 13, 0, 0),
     resourceId: 1,
   },
   {
@@ -41,7 +41,7 @@ const events = [
 ];
 
 const resourceMap = [
-  { resourceId: 1, resourceTitle: 'Table 1' },
+  { resourceId: 1, resourceTitle: 'Ramy' },
   { resourceId: 2, resourceTitle: 'Table 2' },
   { resourceId: 3, resourceTitle: 'Table 3' },
   { resourceId: 4, resourceTitle: 'Table 4' },
