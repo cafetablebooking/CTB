@@ -244,51 +244,144 @@
         }
       }
     },
+<<<<<<< HEAD
     "auth-crud": {
       "root": "libs/auth-crud",
       "sourceRoot": "libs/auth-crud/src",
+=======
+    "types": {
+      "root": "libs/types",
+      "sourceRoot": "libs/types/src",
+>>>>>>> feature/owner-dashboard-setup
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
+<<<<<<< HEAD
               "libs/auth-crud/**/*.{ts,tsx,js,jsx}"
+=======
+              "libs/types/**/*.ts"
+>>>>>>> feature/owner-dashboard-setup
             ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
           "outputs": [
+<<<<<<< HEAD
             "coverage/libs/auth-crud"
           ],
           "options": {
             "jestConfig": "libs/auth-crud/jest.config.js",
+=======
+            "coverage/libs/types"
+          ],
+          "options": {
+            "jestConfig": "libs/types/jest.config.js",
+>>>>>>> feature/owner-dashboard-setup
             "passWithNoTests": true
           }
         }
       }
     },
+<<<<<<< HEAD
     "yup-resolvers": {
       "root": "libs/yup-resolvers",
       "sourceRoot": "libs/yup-resolvers/src",
-      "projectType": "library",
+=======
+    "functions": {
+      "root": "apps/functions",
+      "sourceRoot": "apps/functions/src",
+      "projectType": "application",
+      "prefix": "functions",
       "targets": {
+        "build": {
+          "executor": "@nrwl/node:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/functions",
+            "main": "apps/functions/src/main.ts",
+            "tsConfig": "apps/functions/tsconfig.app.json",
+            "assets": [
+              "apps/functions/src/assets"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/functions/src/environments/environment.ts",
+                  "with": "apps/functions/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "functions:build"
+          }
+        },
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/yup-resolvers/**/*.{ts,tsx,js,jsx}"
+              "apps/functions/**/*.ts"
             ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
           "outputs": [
+            "coverage/apps/functions"
+          ],
+          "options": {
+            "jestConfig": "apps/functions/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "use-local-storage": {
+      "root": "libs/use-local-storage",
+      "sourceRoot": "libs/use-local-storage/src",
+>>>>>>> feature/owner-dashboard-setup
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+<<<<<<< HEAD
+              "libs/yup-resolvers/**/*.{ts,tsx,js,jsx}"
+=======
+              "libs/use-local-storage/**/*.{ts,tsx,js,jsx}"
+>>>>>>> feature/owner-dashboard-setup
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+<<<<<<< HEAD
             "coverage/libs/yup-resolvers"
           ],
           "options": {
             "jestConfig": "libs/yup-resolvers/jest.config.js",
+=======
+            "coverage/libs/use-local-storage"
+          ],
+          "options": {
+            "jestConfig": "libs/use-local-storage/jest.config.js",
+>>>>>>> feature/owner-dashboard-setup
             "passWithNoTests": true
           }
         }

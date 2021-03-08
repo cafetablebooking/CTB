@@ -3,7 +3,7 @@ import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
 import { HeaderType, ThemeMode } from '../../constants/AppEnums';
 
 const breakpoints = createBreakpoints({});
-
+// const cardRadius = ThemeStyleRadius.STANDARD;
 const cardRadius = 8;
 const defaultConfig: any = {
   theme: {

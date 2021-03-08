@@ -17,9 +17,14 @@
     "paths": {
       "@ctb/firebase-auth": ["libs/firebase-auth/src/index.ts"],
       "@ctb/auth-context": ["libs/auth-context/src/index.ts"],
+<<<<<<< HEAD
       "@ctb/auth-crud": ["libs/auth-crud/src/index.ts"],
       "@ctb/utils": ["libs/utils/src/index.ts"],
       "@ctb/yup-resolvers": ["libs/yup-resolvers/src/index.ts"]
+=======
+      "@ctb/types": ["libs/types/src/index.ts"],
+      "@ctb/use-local-storage": ["libs/use-local-storage/src/index.ts"]
+>>>>>>> feature/owner-dashboard-setup
     }
   },
   "exclude": ["node_modules", "tmp"]
