@@ -9,7 +9,6 @@ import {
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
-import { resetPassword } from '@ctb/auth-crud';
 import { forgotPasswordSchema } from '@ctb/yup-resolvers';
 import {
   SignInBox,
@@ -18,13 +17,14 @@ import {
   RedirectMessage,
 } from '../styles/forgotPasswordStyles';
 import { ClientContext } from '../contexts/ClientContext';
+import { useAuthContext } from '@ctb/auth-context';
 interface Props {}
 
 const ForgotPassword = (props: Props) => {
   const [message, setMessage] = useState<string>('');
   const [error, setError] = useState<string>('');
   const { loading, setLoading }: any = useContext(ClientContext);
-
+  const { resetPassword }: any = useAuthContext();
   const { register, handleSubmit, watch, errors } = useForm({
     resolver: yupResolver(forgotPasswordSchema),
   });

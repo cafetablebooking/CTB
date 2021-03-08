@@ -95,14 +95,20 @@ export const Wrapper = styled(Box)`
   position: relative;
   margin-bottom: 50px;
 `;
-export const ImageWrapper = styled.div`
-  display: flex;
-  align-items: center;
-  background: #d6d6d6;
-  justify-content: center;
-  position: relative;
+export const ImageOuterCircle = styled.div`
   width: 200px;
   height: 200px;
+  background: white;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  clip-path: circle(50%);
+`;
+export const ImageInnerCircle = styled.div`
+  background: white;
+  position: relative;
+  width: 180px;
+  height: 180px;
   clip-path: circle(50%);
   img {
     border-radius: 4px;
@@ -114,8 +120,14 @@ export const OpeningHours = styled.div`
 `;
 export const CalendarWrapper = styled.div`
   position: relative;
-
+  width: 70vw;
   margin: auto;
+  .fc-timegrid-col-events {
+    margin: 0;
+  }
+  .fc-timegrid-event-harness {
+    cursor: pointer;
+  }
 `;
 export const CompanyContent = styled(Box)`
   flex-wrap: wrap;

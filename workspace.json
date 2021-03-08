@@ -220,10 +220,6 @@
         }
       }
     },
-    "auth-crud": {
-      "root": "libs/auth-crud",
-      "sourceRoot": "libs/auth-crud/src"
-    },
     "types": {
       "root": "libs/types",
       "sourceRoot": "libs/types/src",
