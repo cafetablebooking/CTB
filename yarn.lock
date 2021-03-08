@@ -1383,18 +1383,7 @@
   dependencies:
     regenerator-runtime "^0.13.4"
 
-<<<<<<< HEAD
-"@babel/runtime@^7.1.5", "@babel/runtime@^7.6.0", "@babel/runtime@^7.6.3":
-  version "7.13.9"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.13.9.tgz#97dbe2116e2630c489f22e0656decd60aaa1fcee"
-  integrity sha512-aY2kU+xgJ3dJ1eU6FMB9EH8dIe8dmusF1xEku52joLvw6eAFN0AI+WxCLDnpev2LEejWBAy2sBvBOBAjI3zmvA==
-  dependencies:
-    regenerator-runtime "^0.13.4"
-
-"@babel/runtime@^7.10.2", "@babel/runtime@^7.10.3", "@babel/runtime@^7.10.5", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.3", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
-=======
 "@babel/runtime@^7.1.2", "@babel/runtime@^7.10.2", "@babel/runtime@^7.10.3", "@babel/runtime@^7.10.5", "@babel/runtime@^7.11.2", "@babel/runtime@^7.12.1", "@babel/runtime@^7.12.5", "@babel/runtime@^7.3.1", "@babel/runtime@^7.4.4", "@babel/runtime@^7.5.5", "@babel/runtime@^7.7.2", "@babel/runtime@^7.8.3", "@babel/runtime@^7.8.4", "@babel/runtime@^7.8.7":
->>>>>>> feature/owner-dashboard-setup
   version "7.12.13"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.12.13.tgz#0a21452352b02542db0ffb928ac2d3ca7cb6d66d"
   integrity sha512-8+3UMPBrjFa/6TtKi/7sehPKqfAm4g6K+YQjyyFOLUTxzOngcRZTlAVY8sc2CORJYqdHQY8gRPHmn+qo15rCBw==
@@ -1528,17 +1517,11 @@
     debug "^3.1.0"
     lodash.once "^4.1.1"
 
-<<<<<<< HEAD
-"@date-io/core@1.x":
-=======
 "@date-io/core@1.x", "@date-io/core@^1.3.13":
->>>>>>> feature/owner-dashboard-setup
   version "1.3.13"
   resolved "https://registry.yarnpkg.com/@date-io/core/-/core-1.3.13.tgz#90c71da493f20204b7a972929cc5c482d078b3fa"
   integrity sha512-AlEKV7TxjeK+jxWVKcCFrfYAk8spX9aCyiToFIiLPtfQbsjmRGLIhb5VZgptQcJdHtLXo7+m0DuurwFgUToQuA==
 
-<<<<<<< HEAD
-=======
 "@date-io/date-fns@^1.3.13":
   version "1.3.13"
   resolved "https://registry.yarnpkg.com/@date-io/date-fns/-/date-fns-1.3.13.tgz#7798844041640ab393f7e21a7769a65d672f4735"
@@ -1546,7 +1529,6 @@
   dependencies:
     "@date-io/core" "^1.3.13"
 
->>>>>>> feature/owner-dashboard-setup
 "@emotion/hash@^0.8.0":
   version "0.8.0"
   resolved "https://registry.yarnpkg.com/@emotion/hash/-/hash-0.8.0.tgz#bbbff68978fefdbe68ccb533bc8cbe1d1afb5413"
@@ -1842,14 +1824,6 @@
   resolved "https://registry.yarnpkg.com/@firebase/webchannel-wrapper/-/webchannel-wrapper-0.4.1.tgz#600f2275ff54739ad5ac0102f1467b8963cd5f71"
   integrity sha512-0yPjzuzGMkW1GkrC8yWsiN7vt1OzkMIi9HgxRmKREZl2wnNPOKo/yScTjXf/O57HM8dltqxPF6jlNLFVtc2qdw==
 
-<<<<<<< HEAD
-"@googlemaps/js-api-loader@1.11.1", "@googlemaps/js-api-loader@^1.7.0":
-  version "1.11.1"
-  resolved "https://registry.yarnpkg.com/@googlemaps/js-api-loader/-/js-api-loader-1.11.1.tgz#b7f02c04d8d8602fb4bd873b03685fccefce1c6f"
-  integrity sha512-2ug4uBu0onRXTAo7Yxkay5N7pdNIz3XpTElMTLdCtEfQDxikbjeR6GS8atVhblX+ubFBNlXvDzz7VtuXv0vMRQ==
-  dependencies:
-    fast-deep-equal "^3.1.3"
-=======
 "@google-cloud/common@^3.6.0":
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/@google-cloud/common/-/common-3.6.0.tgz#c2f6da5f79279a4a9ac7c71fc02d582beab98e8b"
@@ -1929,7 +1903,13 @@
     snakeize "^0.1.0"
     stream-events "^1.0.1"
     xdg-basedir "^4.0.0"
->>>>>>> feature/owner-dashboard-setup
+
+"@googlemaps/js-api-loader@1.11.1", "@googlemaps/js-api-loader@^1.7.0":
+  version "1.11.1"
+  resolved "https://registry.yarnpkg.com/@googlemaps/js-api-loader/-/js-api-loader-1.11.1.tgz#b7f02c04d8d8602fb4bd873b03685fccefce1c6f"
+  integrity sha512-2ug4uBu0onRXTAo7Yxkay5N7pdNIz3XpTElMTLdCtEfQDxikbjeR6GS8atVhblX+ubFBNlXvDzz7VtuXv0vMRQ==
+  dependencies:
+    fast-deep-equal "^3.1.3"
 
 "@grpc/grpc-js@^1.0.0":
   version "1.2.6"
@@ -2179,12 +2159,6 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-<<<<<<< HEAD
-"@mapbox/point-geometry@^0.1.0":
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/@mapbox/point-geometry/-/point-geometry-0.1.0.tgz#8a83f9335c7860effa2eeeca254332aa0aeed8f2"
-  integrity sha1-ioP5M1x4YO/6Lu7KJUMyqgru2PI=
-=======
 "@joelcode/gcp-function@0.0.5":
   version "0.0.5"
   resolved "https://registry.yarnpkg.com/@joelcode/gcp-function/-/gcp-function-0.0.5.tgz#bdec58e8d9631de5ee448331d44ad7c2dc31aed4"
@@ -2217,7 +2191,11 @@
     webpack-dev-server "3.9.0"
     webpack-merge "4.2.1"
     webpack-node-externals "1.7.2"
->>>>>>> feature/owner-dashboard-setup
+
+"@mapbox/point-geometry@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@mapbox/point-geometry/-/point-geometry-0.1.0.tgz#8a83f9335c7860effa2eeeca254332aa0aeed8f2"
+  integrity sha1-ioP5M1x4YO/6Lu7KJUMyqgru2PI=
 
 "@material-ui/core@^4.11.3":
   version "4.11.3"
@@ -2834,7 +2812,6 @@
   resolved "https://registry.yarnpkg.com/@protobufjs/utf8/-/utf8-1.1.0.tgz#a777360b5b39a1a2e5106f8e858f2fd2d060c570"
   integrity sha1-p3c2C1s5oaLlEG+OhY8v0tBgxXA=
 
-<<<<<<< HEAD
 "@reach/auto-id@0.13.0":
   version "0.13.0"
   resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.13.0.tgz#0dfa4c1af46d1ad68d8282c786c03362ae35e335"
@@ -2907,7 +2884,7 @@
     "@types/warning" "^3.0.0"
     tslib "^2.0.0"
     warning "^4.0.3"
-=======
+
 "@react-dnd/asap@^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@react-dnd/asap/-/asap-4.0.0.tgz#b300eeed83e9801f51bd66b0337c9a6f04548651"
@@ -2922,7 +2899,6 @@
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@react-dnd/shallowequal/-/shallowequal-2.0.0.tgz#a3031eb54129f2c66b2753f8404266ec7bf67f0a"
   integrity sha512-Pc/AFTdwZwEKJxFJvlxrSmGe/di+aAOBn60sremrpLo6VI/6cmiUYNNwlI5KNYttg7uypzA3ILPMPgxB2GYZEg==
->>>>>>> feature/owner-dashboard-setup
 
 "@react-firebase/auth@^0.2.10":
   version "0.2.10"
@@ -2932,7 +2908,6 @@
     lodash.get "^4.4.2"
     render-and-add-props "^0.5.0"
 
-<<<<<<< HEAD
 "@react-google-maps/api@^2.1.1":
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/@react-google-maps/api/-/api-2.1.1.tgz#0d195632927c72867b0cfcfec7eaef4b79f3bacc"
@@ -2953,8 +2928,6 @@
   resolved "https://registry.yarnpkg.com/@react-google-maps/marker-clusterer/-/marker-clusterer-2.1.1.tgz#fa6cdcbbfee6a529a4d60b1575168a7aa1fedf91"
   integrity sha512-LIqf1T2dVXRaf/gqk/7kEDpRvr1aQGlqOv/p5zwZus3qI6/3qK4jxNpc89gQ2WkCMrGwcI/fTQrnI55BZCxsLA==
 
-=======
->>>>>>> feature/owner-dashboard-setup
 "@restart/hooks@^0.3.25":
   version "0.3.26"
   resolved "https://registry.yarnpkg.com/@restart/hooks/-/hooks-0.3.26.tgz#ade155a7b0b014ef1073391dda46972c3a14a129"
@@ -3519,20 +3492,12 @@
     csstype "^3.0.2"
 
 "@types/react@>=16.9.11":
-<<<<<<< HEAD
-  version "17.0.2"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.2.tgz#3de24c4efef902dd9795a49c75f760cbe4f7a5a8"
-  integrity sha512-Xt40xQsrkdvjn1EyWe1Bc0dJLcil/9x2vAuW7ya+PuQip4UYUaXyhzWmAbwRsdMgwOFHpfp7/FFZebDU6Y8VHA==
-  dependencies:
-    "@types/prop-types" "*"
-=======
   version "17.0.3"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-17.0.3.tgz#ba6e215368501ac3826951eef2904574c262cc79"
   integrity sha512-wYOUxIgs2HZZ0ACNiIayItyluADNbONl7kt8lkLjVK8IitMH5QMyAh75Fwhmo37r1m7L2JaFj03sIfxBVDvRAg==
   dependencies:
     "@types/prop-types" "*"
     "@types/scheduler" "*"
->>>>>>> feature/owner-dashboard-setup
     csstype "^3.0.2"
 
 "@types/resolve@0.0.8":
@@ -3592,8 +3557,6 @@
   dependencies:
     "@types/react" "*"
 
-<<<<<<< HEAD
-=======
 "@types/tapable@*":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@types/tapable/-/tapable-1.0.6.tgz#a9ca4b70a18b270ccb2bc0aaafefd1d486b7ea74"
@@ -3611,14 +3574,11 @@
   dependencies:
     source-map "^0.6.1"
 
->>>>>>> feature/owner-dashboard-setup
 "@types/warning@^3.0.0":
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/@types/warning/-/warning-3.0.0.tgz#0d2501268ad8f9962b740d387c4654f5f8e23e52"
   integrity sha1-DSUBJorY+ZYrdA04fEZU9fjiPlI=
 
-<<<<<<< HEAD
-=======
 "@types/webpack-sources@*":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@types/webpack-sources/-/webpack-sources-2.1.0.tgz#8882b0bd62d1e0ce62f183d0d01b72e6e82e8c10"
@@ -3628,7 +3588,6 @@
     "@types/source-list-map" "*"
     source-map "^0.7.3"
 
->>>>>>> feature/owner-dashboard-setup
 "@types/webpack-sources@^0.1.5":
   version "0.1.8"
   resolved "https://registry.yarnpkg.com/@types/webpack-sources/-/webpack-sources-0.1.8.tgz#078d75410435993ec8a0a2855e88706f3f751f81"
@@ -5602,11 +5561,7 @@ clone@^2.1.1:
   resolved "https://registry.yarnpkg.com/clone/-/clone-2.1.2.tgz#1b7f4b9f591f1e8f83670401600345a02887435f"
   integrity sha1-G39Ln1kfHo+DZwQBYANFoCiHQ18=
 
-<<<<<<< HEAD
-clsx@^1.0.2, clsx@^1.0.4:
-=======
 clsx@^1.0.2, clsx@^1.0.4, clsx@^1.1.1:
->>>>>>> feature/owner-dashboard-setup
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/clsx/-/clsx-1.1.1.tgz#98b3134f9abbdf23b2663491ace13c5c03a73188"
   integrity sha512-6/bPho624p3S2pMyvP5kKBPXnI3ufHLObBFCfgx+LkeR5lg2XYy2hqZqUf45ypD8COn2bhgGJSUE+l5dhNBieA==
@@ -6438,14 +6393,11 @@ data-urls@^2.0.0:
     whatwg-mimetype "^2.3.0"
     whatwg-url "^8.0.0"
 
-<<<<<<< HEAD
-=======
 date-and-time@^0.14.2:
   version "0.14.2"
   resolved "https://registry.yarnpkg.com/date-and-time/-/date-and-time-0.14.2.tgz#a4266c3dead460f6c231fe9674e585908dac354e"
   integrity sha512-EFTCh9zRSEpGPmJaexg7HTuzZHh6cnJj1ui7IGCFNXzd2QdpsNh05Db5TF3xzJm30YN+A8/6xHSuRcQqoc3kFA==
 
->>>>>>> feature/owner-dashboard-setup
 date-arithmetic@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/date-arithmetic/-/date-arithmetic-4.1.0.tgz#e5d6434e9deb71f79760a37b729e4a515e730ddf"
@@ -6456,11 +6408,7 @@ date-fns@^1.27.2:
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-1.30.1.tgz#2e71bf0b119153dbb4cc4e88d9ea5acfb50dc05c"
   integrity sha512-hBSVCvSmWC+QypYObzwGOd9wqdDpOt+0wl0KbU+R+uuZBS1jN8VsD1ss3irQDknRj5NvxiTF6oj/nDRnN/UQNw==
 
-<<<<<<< HEAD
 date-fns@^2.18.0:
-=======
-date-fns@^2.0.0-beta.5:
->>>>>>> feature/owner-dashboard-setup
   version "2.18.0"
   resolved "https://registry.yarnpkg.com/date-fns/-/date-fns-2.18.0.tgz#08e50aee300ad0d2c5e054e3f0d10d8f9cdfe09e"
   integrity sha512-NYyAg4wRmGVU4miKq5ivRACOODdZRY3q5WLmOJSq8djyzftYphU7dTHLcEtLqEvfqMKQ0jVv91P4BAwIjsXIcw==
@@ -6659,19 +6607,17 @@ detect-node@^2.0.4:
   resolved "https://registry.yarnpkg.com/detect-node/-/detect-node-2.0.4.tgz#014ee8f8f669c5c58023da64b8179c083a28c46c"
   integrity sha512-ZIzRpLJrOj7jjP2miAtgqIfmzbxa4ZOr5jJc601zklsfEx9oTzmmj2nVpIPRpNlRTIh8lc1kyViIY7BWSGNmKw==
 
-<<<<<<< HEAD
 diacritic@0.0.2:
   version "0.0.2"
   resolved "https://registry.yarnpkg.com/diacritic/-/diacritic-0.0.2.tgz#fc2a887b5a5bc0a0a854fb614c7c2f209061ee04"
   integrity sha1-/CqIe1pbwKCoVPthTHwvIJBh7gQ=
-=======
+
 dicer@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/dicer/-/dicer-0.3.0.tgz#eacd98b3bfbf92e8ab5c2fdb71aaac44bb06b872"
   integrity sha512-MdceRRWqltEG2dZqO769g27N/3PXfcKl04VhYnBlo2YhH7zPi88VebsjTKclaOyiuMaGU72hTfw3VkUitGcVCA==
   dependencies:
     streamsearch "0.1.2"
->>>>>>> feature/owner-dashboard-setup
 
 diff-sequences@^25.2.6:
   version "25.2.6"
@@ -6774,11 +6720,7 @@ dom-accessibility-api@^0.5.4:
   resolved "https://registry.yarnpkg.com/dom-accessibility-api/-/dom-accessibility-api-0.5.4.tgz#b06d059cdd4a4ad9a79275f9d414a5c126241166"
   integrity sha512-TvrjBckDy2c6v6RLxPv5QXOnU+SmF9nBII5621Ve5fu6Z/BDrENurBEvlC1f44lKEUVqOpK4w9E5Idc5/EgkLQ==
 
-<<<<<<< HEAD
-dom-helpers@^5.0.1, dom-helpers@^5.1.0, dom-helpers@^5.2.0:
-=======
 dom-helpers@^5.0.1, dom-helpers@^5.1.0, dom-helpers@^5.1.3, dom-helpers@^5.2.0:
->>>>>>> feature/owner-dashboard-setup
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/dom-helpers/-/dom-helpers-5.2.0.tgz#57fd054c5f8f34c52a3eeffdb7e7e93cd357d95b"
   integrity sha512-Ru5o9+V8CpunKnz5LGgWXkmrH/20cGKwcHwS4m73zIvs54CN9epEmT/HLqFJW3kXpakAFkEdzgy1hzlJe3E4OQ==
@@ -7907,10 +7849,10 @@ firebase-functions@^3.13.2:
     express "^4.17.1"
     lodash "^4.17.14"
 
-firebase@^8.2.9:
-  version "8.2.9"
-  resolved "https://registry.yarnpkg.com/firebase/-/firebase-8.2.9.tgz#d5a1e2a13776862f05237e717f13320a377bc9c9"
-  integrity sha512-0QNPgKre9OHuBHwXKIs1wW1aPrO0wx1si3JMA46vPOmx/vkpQQD2OCxdZdVUc+y5u9d/yNMvVBR6j85H0O15rA==
+firebase@^8.2.6:
+  version "8.2.10"
+  resolved "https://registry.yarnpkg.com/firebase/-/firebase-8.2.10.tgz#b2dd2f676d6c34a878414a04d4ad6133bba81c15"
+  integrity sha512-fGDrVWEDbFf4uaRhOMmbLf4CfW3D98GsMsbnvfd/5lPw5wTpUUcVjHyhXxcB+qfu66WeNW5kEKlEKLJmQXTkYw==
   dependencies:
     "@firebase/analytics" "0.6.4"
     "@firebase/app" "0.6.15"
@@ -8199,17 +8141,15 @@ gensync@^1.0.0-beta.1:
   resolved "https://registry.yarnpkg.com/gensync/-/gensync-1.0.0-beta.2.tgz#32a6ee76c3d7f52d46b2b1ae5d93fea8580a25e0"
   integrity sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg==
 
-<<<<<<< HEAD
 geolib@^3.3.1:
   version "3.3.1"
   resolved "https://registry.yarnpkg.com/geolib/-/geolib-3.3.1.tgz#f144a53b6a6858e81111ff71d137318389927611"
   integrity sha512-sfahBXFcgELdpumDZV5b3KWiINkZxC5myAkLk067UUcTmTXaiE9SWmxMEHztn/Eus4JX6kesHxaIuZlniYgUtg==
-=======
+
 get-caller-file@^1.0.1:
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-1.0.3.tgz#f978fa4c90d1dfe7ff2d6beda2a515e713bdcf4a"
   integrity sha512-3t6rVToeoZfYSGd8YoLFR2DJkiQrIiUrGcjvFX2mDw3bn6k2OtwHN0TNCLbBO+w8qTvimhDkv+LSscbJY1vE6w==
->>>>>>> feature/owner-dashboard-setup
 
 get-caller-file@^2.0.1:
   version "2.0.5"
@@ -8422,17 +8362,6 @@ google-auth-library@^6.1.1:
     jws "^4.0.0"
     lru-cache "^6.0.0"
 
-<<<<<<< HEAD
-google-map-react@^2.1.9:
-  version "2.1.9"
-  resolved "https://registry.yarnpkg.com/google-map-react/-/google-map-react-2.1.9.tgz#6e539ce8bf28e7b8cda6058402e7581d1d1cec3d"
-  integrity sha512-//Pa0o6sdspU2H0ehVztSDQSnYYeV6TY4Z6ftty34yiCJYLliOzeq17dA9uFkyUFdL+XwbTU6e9mfs+bjBMIzw==
-  dependencies:
-    "@googlemaps/js-api-loader" "^1.7.0"
-    "@mapbox/point-geometry" "^0.1.0"
-    eventemitter3 "^4.0.4"
-    prop-types "^15.7.2"
-=======
 google-auth-library@^7.0.0, google-auth-library@^7.0.2:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/google-auth-library/-/google-auth-library-7.0.2.tgz#cab6fc7f94ebecc97be6133d6519d9946ccf3e9d"
@@ -8464,7 +8393,16 @@ google-gax@^2.9.2:
     node-fetch "^2.6.1"
     protobufjs "^6.10.2"
     retry-request "^4.0.0"
->>>>>>> feature/owner-dashboard-setup
+
+google-map-react@^2.1.9:
+  version "2.1.9"
+  resolved "https://registry.yarnpkg.com/google-map-react/-/google-map-react-2.1.9.tgz#6e539ce8bf28e7b8cda6058402e7581d1d1cec3d"
+  integrity sha512-//Pa0o6sdspU2H0ehVztSDQSnYYeV6TY4Z6ftty34yiCJYLliOzeq17dA9uFkyUFdL+XwbTU6e9mfs+bjBMIzw==
+  dependencies:
+    "@googlemaps/js-api-loader" "^1.7.0"
+    "@mapbox/point-geometry" "^0.1.0"
+    eventemitter3 "^4.0.4"
+    prop-types "^15.7.2"
 
 google-p12-pem@^3.0.3:
   version "3.0.3"
@@ -8625,12 +8563,11 @@ hex-color-regex@^1.1.0:
   resolved "https://registry.yarnpkg.com/hex-color-regex/-/hex-color-regex-1.1.0.tgz#4c06fccb4602fe2602b3c93df82d7e7dbf1a8a8e"
   integrity sha512-l9sfDFsuqtOqKDsQdqrMRk0U85RZc0RtOR9yPI7mRVOa4FsR/BVnZ0shmQRM96Ji99kYZP/7hn1cedc1+ApsTQ==
 
-<<<<<<< HEAD
 highlight-words-core@1.2.2:
   version "1.2.2"
   resolved "https://registry.yarnpkg.com/highlight-words-core/-/highlight-words-core-1.2.2.tgz#1eff6d7d9f0a22f155042a00791237791b1eeaaa"
   integrity sha512-BXUKIkUuh6cmmxzi5OIbUJxrG8OAk2MqoL1DtO3Wo9D2faJg2ph5ntyuQeLqaHJmzER6H5tllCDA9ZnNe9BVGg==
-=======
+
 history@^4.9.0:
   version "4.10.1"
   resolved "https://registry.yarnpkg.com/history/-/history-4.10.1.tgz#33371a65e3a83b267434e2b3f3b1b4c58aad4cf3"
@@ -8642,7 +8579,6 @@ history@^4.9.0:
     tiny-invariant "^1.0.2"
     tiny-warning "^1.0.0"
     value-equal "^1.0.1"
->>>>>>> feature/owner-dashboard-setup
 
 hmac-drbg@^1.0.1:
   version "1.0.1"
@@ -9090,11 +9026,7 @@ internal-slot@^1.0.2:
     has "^1.0.3"
     side-channel "^1.0.4"
 
-<<<<<<< HEAD
 invariant@2.2.4, invariant@^2.2.2, invariant@^2.2.4:
-=======
-invariant@^2.2.2, invariant@^2.2.4:
->>>>>>> feature/owner-dashboard-setup
   version "2.2.4"
   resolved "https://registry.yarnpkg.com/invariant/-/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
   integrity sha512-phJfQVBuaJM5raOpJjSfkiD6BpbCE4Ns//LaXl6wGYtUBY83nWS6Rf9tXm2e8VaK60JEjYldbPif/A2B1C2gNA==
@@ -10549,14 +10481,11 @@ lodash-es@^4.17.20:
   resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
   integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
 
-<<<<<<< HEAD
-=======
 lodash.assignwith@^4.2.0:
   version "4.2.0"
   resolved "https://registry.yarnpkg.com/lodash.assignwith/-/lodash.assignwith-4.2.0.tgz#127a97f02adc41751a954d24b0de17e100e038eb"
   integrity sha1-EnqX8CrcQXUalU0ksN4X4QDgOOs=
 
->>>>>>> feature/owner-dashboard-setup
 lodash.camelcase@^4.3.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/lodash.camelcase/-/lodash.camelcase-4.3.0.tgz#b28aa6288a2b9fc651035c7711f65ab6190331a6"
@@ -10826,8 +10755,6 @@ media-typer@0.3.0:
   resolved "https://registry.yarnpkg.com/media-typer/-/media-typer-0.3.0.tgz#8710d7af0aa626f8fffa1ce00168545263255748"
   integrity sha1-hxDXrwqmJvj/+hzgAWhUUmMlV0g=
 
-<<<<<<< HEAD
-=======
 mem@^4.0.0:
   version "4.3.0"
   resolved "https://registry.yarnpkg.com/mem/-/mem-4.3.0.tgz#461af497bc4ae09608cdb2e60eefb69bff744178"
@@ -10837,7 +10764,6 @@ mem@^4.0.0:
     mimic-fn "^2.0.0"
     p-is-promise "^2.0.0"
 
->>>>>>> feature/owner-dashboard-setup
 memoize-one@^5.1.1:
   version "5.1.1"
   resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-5.1.1.tgz#047b6e3199b508eaec03504de71229b8eb1d75c0"
@@ -13157,17 +13083,10 @@ rc@^1.2.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-<<<<<<< HEAD
 react-big-calendar@^0.33.0:
   version "0.33.0"
   resolved "https://registry.yarnpkg.com/react-big-calendar/-/react-big-calendar-0.33.0.tgz#258ca1e25de80dca122b070c356fd94a7c0a13fd"
   integrity sha512-QnDmllsYnFuRNdMoJkz4oqkR1skyqxJLu/MRBIMZtNrmLPAxPjHLxaq08cchm5g9wiYOpr4kDgO8qLbYk4zJvA==
-=======
-react-big-calendar@^0.33.2:
-  version "0.33.2"
-  resolved "https://registry.yarnpkg.com/react-big-calendar/-/react-big-calendar-0.33.2.tgz#e5c2d1110433a3a442609f589922e47887423a93"
-  integrity sha512-bUpkLdkHyAHj7wYdPdAXbhPE1S3y0eFJ69m4Hi2rz41gdgP3Ti10rTOhRYYsO7GS4RGqsCUtUrn37iHqdcOJog==
->>>>>>> feature/owner-dashboard-setup
   dependencies:
     "@babel/runtime" "^7.1.5"
     clsx "^1.0.4"
@@ -13181,8 +13100,6 @@ react-big-calendar@^0.33.2:
     react-overlays "^4.1.1"
     uncontrollable "^7.0.0"
 
-<<<<<<< HEAD
-=======
 react-display-name@^0.2.0:
   version "0.2.5"
   resolved "https://registry.yarnpkg.com/react-display-name/-/react-display-name-0.2.5.tgz#304c7cbfb59ee40389d436e1a822c17fe27936c6"
@@ -13205,7 +13122,6 @@ react-dnd@^11.1.3:
     dnd-core "^11.1.3"
     hoist-non-react-statics "^3.3.0"
 
->>>>>>> feature/owner-dashboard-setup
 react-dom@17.0.1:
   version "17.0.1"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-17.0.1.tgz#1de2560474ec9f0e334285662ede52dbc5426fc6"
@@ -13215,14 +13131,6 @@ react-dom@17.0.1:
     object-assign "^4.1.1"
     scheduler "^0.20.1"
 
-<<<<<<< HEAD
-react-geocode@^0.2.3:
-  version "0.2.3"
-  resolved "https://registry.yarnpkg.com/react-geocode/-/react-geocode-0.2.3.tgz#e27fa3f212a2629b2b2bb2a3a325a12b802b2dae"
-  integrity sha512-sIpbgmn1IUzAxO4haOZ6jeeFnMD8ya9PC38yiNrmJ9vPWbvAO2D/2yfCBzZjGZVUm4PRzKAc0KghXfaEnug0TQ==
-  dependencies:
-    regenerator-runtime "^0.13.3"
-=======
 react-dom@^16.3.0:
   version "16.14.0"
   resolved "https://registry.yarnpkg.com/react-dom/-/react-dom-16.14.0.tgz#7ad838ec29a777fb3c75c3a190f661cf92ab8b89"
@@ -13232,7 +13140,13 @@ react-dom@^16.3.0:
     object-assign "^4.1.1"
     prop-types "^15.6.2"
     scheduler "^0.19.1"
->>>>>>> feature/owner-dashboard-setup
+
+react-geocode@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/react-geocode/-/react-geocode-0.2.3.tgz#e27fa3f212a2629b2b2bb2a3a325a12b802b2dae"
+  integrity sha512-sIpbgmn1IUzAxO4haOZ6jeeFnMD8ya9PC38yiNrmJ9vPWbvAO2D/2yfCBzZjGZVUm4PRzKAc0KghXfaEnug0TQ==
+  dependencies:
+    regenerator-runtime "^0.13.3"
 
 react-hook-form@^6.15.1:
   version "6.15.1"
@@ -13254,14 +13168,11 @@ react-lifecycles-compat@^3.0.4:
   resolved "https://registry.yarnpkg.com/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz#4f1a273afdfc8f3488a8c516bfda78f872352362"
   integrity sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==
 
-<<<<<<< HEAD
 react-marquee-slider@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/react-marquee-slider/-/react-marquee-slider-1.1.2.tgz#a3df0201d17ee7b20627944c7efd8af78522bc6d"
   integrity sha512-Fjkwphr+vYqR4yJ9adv0rJgFsKeb5/kx35lA5gVdPFiBDno6r/nHVRg/gdGVLp/SF4dHwoJwZBwa4mKTOpHnqQ==
 
-=======
->>>>>>> feature/owner-dashboard-setup
 react-overlays@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/react-overlays/-/react-overlays-4.1.1.tgz#0060107cbe1c5171a744ccda3fbf0556d064bc5f"
@@ -13281,8 +13192,6 @@ react-refresh@0.8.3:
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.8.3.tgz#721d4657672d400c5e3c75d063c4a85fb2d5d68f"
   integrity sha512-X8jZHc7nCMjaCqoU+V2I0cOhNW+QMBwSUkeXnTi8IPe6zaRWfn60ZzvFDZqWPfmSJfjub7dDW1SP0jaHWLu/hg==
 
-<<<<<<< HEAD
-=======
 react-router-dom@5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/react-router-dom/-/react-router-dom-5.2.0.tgz#9e65a4d0c45e13289e66c7b17c7e175d0ea15662"
@@ -13332,7 +13241,6 @@ react-to-print@^2.8.0:
   dependencies:
     prop-types "^15.7.2"
 
->>>>>>> feature/owner-dashboard-setup
 react-transition-group@^4.0.0, react-transition-group@^4.4.0:
   version "4.4.1"
   resolved "https://registry.yarnpkg.com/react-transition-group/-/react-transition-group-4.4.1.tgz#63868f9325a38ea5ee9535d828327f85773345c9"
