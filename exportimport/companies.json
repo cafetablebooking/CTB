@@ -1,0 +1,472 @@
+{
+  "companies": [
+    {
+      "id": 0,
+      "email": "company@email.com",
+      "image": "/static/img/marquee/espressohouse.png",
+      "coverImage": "/static/img/hero/cover-image.jpg",
+      "vatNr": 32323,
+      "availableBookings": [
+        {
+          "id": 0,
+          "title": "Open Table",
+          "allDay": true,
+          "start": "2021-03-18T12:00:00",
+          "end": "2021-03-18T14:00:00",
+          "resourceId": 1
+        },
+        {
+          "id": 1,
+          "title": "Open Table",
+          "start": "2021-03-18T14:00:00",
+          "end": "2021-03-18T15:00:00",
+          "resourceId": 2
+        },
+        {
+          "id": 2,
+          "title": "Open Table",
+          "start": "2021-03-18T15:00:00",
+          "end": "2021-03-18T16:00:00",
+          "resourceId": 3
+        }
+      ],
+      "tables": [
+        { "resourceId": 1, "resourceTitle": "Table 1" },
+        { "resourceId": 2, "resourceTitle": "Table 2" },
+        { "resourceId": 3, "resourceTitle": "Table 3" }
+      ],
+      "adress": {
+        "city": "Stockholm",
+        "name": "Odengatan 94",
+        "postalCode": "11322"
+      },
+      "companyName": "Espresso House",
+      "phoneNumber": "+46434234234",
+      "openingHours": [
+        { "day": "Sun", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Mon", "open": 13, "closed": 21, "isClosed": false },
+        { "day": "Tue", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Wed", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Thu", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Fri", "open": 15, "closed": 21, "isClosed": false },
+        { "day": "Sat", "open": 9, "closed": 21, "isClosed": false }
+      ]
+    },
+    {
+      "id": 1,
+      "email": "company@email.com",
+      "image": "/static/img/marquee/dunkin.svg",
+      "coverImage": "/static/img/hero/cover-image.jpg",
+      "vatNr": 32323,
+      "availableBookings": [
+        {
+          "id": 0,
+          "title": "Open Table",
+          "allDay": true,
+          "start": "2021-03-19T12:00:00",
+          "end": "2021-03-19T14:00:00",
+          "resourceId": 1
+        },
+        {
+          "id": 1,
+          "title": "Open Table",
+          "start": "2021-03-19T14:00:00",
+          "end": "2021-03-19T15:00:00",
+          "resourceId": 2
+        },
+        {
+          "id": 2,
+          "title": "Open Table",
+          "start": "2021-03-19T15:00:00",
+          "end": "2021-03-19T16:00:00",
+          "resourceId": 3
+        }
+      ],
+      "tables": [
+        { "resourceId": 1, "resourceTitle": "Table 1" },
+        { "resourceId": 2, "resourceTitle": "Table 2" },
+        { "resourceId": 3, "resourceTitle": "Table 3" }
+      ],
+      "adress": {
+        "city": "Stockholm",
+        "name": "Teknologgatan 4",
+        "postalCode": "11322"
+      },
+      "companyName": "Dunkin Donuts",
+      "phoneNumber": "+46434234234",
+      "openingHours": [
+        { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Tue", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Wed", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Thu", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Fri", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Sat", "open": 9, "closed": 21, "isClosed": false }
+      ]
+    },
+    {
+      "id": 3,
+      "email": "company@email.com",
+      "image": "/static/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
+      "coverImage": "/static/img/hero/cover-image.jpg",
+      "vatNr": 32323,
+      "availableBookings": [
+        {
+          "id": 0,
+          "title": "Open Table",
+          "allDay": true,
+          "start": "2021-03-20T12:00:00",
+          "end": "2021-03-20T14:00:00",
+          "resourceId": 1
+        },
+        {
+          "id": 1,
+          "title": "Open Table",
+          "start": "2021-03-20T14:00:00",
+          "end": "2021-03-20T15:00:00",
+          "resourceId": 2
+        },
+        {
+          "id": 2,
+          "title": "Open Table",
+          "start": "2021-03-20T15:00:00",
+          "end": "2021-03-20T16:00:00",
+          "resourceId": 3
+        }
+      ],
+      "tables": [
+        { "resourceId": 1, "resourceTitle": "Table 1" },
+        { "resourceId": 2, "resourceTitle": "Table 2" },
+        { "resourceId": 3, "resourceTitle": "Table 3" }
+      ],
+      "adress": {
+        "city": "Stockholm",
+        "name": "Torsgatan 34",
+        "postalCode": "11322"
+      },
+      "companyName": "Starbucks",
+      "phoneNumber": "+46434234234",
+      "openingHours": [
+        { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Tue", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Wed", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Thu", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Fri", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Sat", "open": 9, "closed": 21, "isClosed": false }
+      ]
+    },
+    {
+      "id": 4,
+      "email": "company@email.com",
+      "image": "/static/img/marquee/tim-hortons.png",
+      "coverImage": "/static/img/hero/cover-image.jpg",
+      "vatNr": 32323,
+      "availableBookings": [
+        {
+          "id": 0,
+          "title": "Open Table",
+          "allDay": true,
+          "start": "2021-03-21T12:00:00",
+          "end": "2021-03-21T14:00:00",
+          "resourceId": 1
+        },
+        {
+          "id": 1,
+          "title": "Open Table",
+          "start": "2021-03-21T14:00:00",
+          "end": "2021-03-21T15:00:00",
+          "resourceId": 2
+        },
+        {
+          "id": 2,
+          "title": "Open Table",
+          "start": "2021-03-21T15:00:00",
+          "end": "2021-03-21T16:00:00",
+          "resourceId": 3
+        }
+      ],
+      "tables": [
+        { "resourceId": 1, "resourceTitle": "Table 1" },
+        { "resourceId": 2, "resourceTitle": "Table 2" },
+        { "resourceId": 3, "resourceTitle": "Table 3" }
+      ],
+      "adress": {
+        "city": "Stockholm",
+        "name": "Sveavägen 12",
+        "postalCode": "11322"
+      },
+      "companyName": "Tim Hortons",
+      "phoneNumber": "+46434234234",
+      "openingHours": [
+        { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Tue", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Wed", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Thu", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Fri", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Sat", "open": 9, "closed": 21, "isClosed": false }
+      ]
+    },
+    {
+      "id": 5,
+      "email": "company@email.com",
+      "image": "/static/img/marquee/caribou-cafe.png",
+      "coverImage": "/static/img/hero/cover-image.jpg",
+      "vatNr": 32323,
+      "availableBookings": [
+        {
+          "id": 0,
+          "title": "Open Table",
+          "allDay": true,
+          "start": "2021-03-22T12:00:00",
+          "end": "2021-03-22T14:00:00",
+          "resourceId": 1
+        },
+        {
+          "id": 1,
+          "title": "Open Table",
+          "start": "2021-03-22T14:00:00",
+          "end": "2021-03-22T15:00:00",
+          "resourceId": 2
+        },
+        {
+          "id": 2,
+          "title": "Open Table",
+          "start": "2021-03-22T15:00:00",
+          "end": "2021-03-22T16:00:00",
+          "resourceId": 3
+        }
+      ],
+      "tables": [
+        { "resourceId": 1, "resourceTitle": "Table 1" },
+        { "resourceId": 2, "resourceTitle": "Table 2" },
+        { "resourceId": 3, "resourceTitle": "Table 3" }
+      ],
+      "adress": {
+        "city": "Stockholm",
+        "name": "Rörstrandsgatan 44",
+        "postalCode": "11322"
+      },
+      "companyName": "Waynes Coffee",
+      "phoneNumber": "+46434234234",
+      "openingHours": [
+        { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Tue", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Wed", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Thu", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Fri", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Sat", "open": 9, "closed": 21, "isClosed": false }
+      ]
+    },
+    {
+      "id": 6,
+      "email": "company@email.com",
+      "image": "/static/img/marquee/luckin-coffee.svg",
+      "coverImage": "/static/img/hero/cover-image.jpg",
+      "vatNr": 32323,
+      "availableBookings": [
+        {
+          "id": 0,
+          "title": "Open Table",
+          "allDay": true,
+          "start": "2021-03-23T12:00:00",
+          "end": "2021-03-18T14:00:00",
+          "resourceId": 1
+        },
+        {
+          "id": 1,
+          "title": "Open Table",
+          "start": "2021-03-23T14:00:00",
+          "end": "2021-03-23T15:00:00",
+          "resourceId": 2
+        },
+        {
+          "id": 2,
+          "title": "Open Table",
+          "start": "2021-03-23T15:00:00",
+          "end": "2021-03-23T16:00:00",
+          "resourceId": 3
+        }
+      ],
+      "tables": [
+        { "resourceId": 1, "resourceTitle": "Table 1" },
+        { "resourceId": 2, "resourceTitle": "Table 2" },
+        { "resourceId": 3, "resourceTitle": "Table 3" }
+      ],
+      "adress": {
+        "city": "Stockholm",
+        "name": "Dalagatan 12",
+        "postalCode": "11322"
+      },
+      "companyName": "Luckin Coffee",
+      "phoneNumber": "+46434234234",
+      "openingHours": [
+        { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Tue", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Wed", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Thu", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Fri", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Sat", "open": 9, "closed": 21, "isClosed": false }
+      ]
+    },
+    {
+      "id": 7,
+      "email": "company@email.com",
+      "image": "/static/img/marquee/tom-n-toms.jpg",
+      "coverImage": "/static/img/hero/cover-image.jpg",
+      "vatNr": 32323,
+      "availableBookings": [
+        {
+          "id": 0,
+          "title": "Open Table",
+          "allDay": true,
+          "start": "2021-03-24T12:00:00",
+          "end": "2021-03-24T14:00:00",
+          "resourceId": 1
+        },
+        {
+          "id": 1,
+          "title": "Open Table",
+          "start": "2021-03-24T14:00:00",
+          "end": "2021-03-24T15:00:00",
+          "resourceId": 2
+        },
+        {
+          "id": 2,
+          "title": "Open Table",
+          "start": "2021-03-24T15:00:00",
+          "end": "2021-03-24T16:00:00",
+          "resourceId": 3
+        }
+      ],
+      "tables": [
+        { "resourceId": 1, "resourceTitle": "Table 1" },
+        { "resourceId": 2, "resourceTitle": "Table 2" },
+        { "resourceId": 3, "resourceTitle": "Table 3" }
+      ],
+      "adress": {
+        "city": "Stockholm",
+        "name": "Dalagatan 67",
+        "postalCode": "11322"
+      },
+      "companyName": "Tom 'N Toms",
+      "phoneNumber": "+46434234234",
+      "openingHours": [
+        { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Tue", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Wed", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Thu", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Fri", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Sat", "open": 9, "closed": 21, "isClosed": false }
+      ]
+    },
+    {
+      "id": 8,
+      "email": "company@email.com",
+      "image": "/static/img/marquee/costa-coffee.svg",
+      "coverImage": "/static/img/hero/cover-image.jpg",
+      "vatNr": 32323,
+      "availableBookings": [
+        {
+          "id": 0,
+          "title": "Open Table",
+          "allDay": true,
+          "start": "2021-03-25T12:00:00",
+          "end": "2021-03-25T14:00:00",
+          "resourceId": 1
+        },
+        {
+          "id": 1,
+          "title": "Open Table",
+          "start": "2021-03-25T14:00:00",
+          "end": "2021-03-25T15:00:00",
+          "resourceId": 2
+        },
+        {
+          "id": 2,
+          "title": "Open Table",
+          "start": "2021-03-25T15:00:00",
+          "end": "2021-03-25T16:00:00",
+          "resourceId": 3
+        }
+      ],
+      "tables": [
+        { "resourceId": 1, "resourceTitle": "Table 1" },
+        { "resourceId": 2, "resourceTitle": "Table 2" },
+        { "resourceId": 3, "resourceTitle": "Table 3" }
+      ],
+      "adress": {
+        "city": "Stockholm",
+        "name": "Dalagatan 22",
+        "postalCode": "11322"
+      },
+      "companyName": "Costa Café",
+      "phoneNumber": "+46434234234",
+      "openingHours": [
+        { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Tue", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Wed", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Thu", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Fri", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Sat", "open": 9, "closed": 21, "isClosed": false }
+      ]
+    },
+    {
+      "id": 9,
+      "email": "company@email.com",
+      "image": "/static/img/marquee/tchibo-coffee.png",
+      "coverImage": "/static/img/hero/cover-image.jpg",
+      "vatNr": 32323,
+      "availableBookings": [
+        {
+          "id": 0,
+          "title": "Open Table",
+          "allDay": true,
+          "start": "2021-03-26T12:00:00",
+          "end": "2021-03-18T14:00:00",
+          "resourceId": 1
+        },
+        {
+          "id": 1,
+          "title": "Open Table",
+          "start": "2021-03-26T14:00:00",
+          "end": "2021-03-26T15:00:00",
+          "resourceId": 2
+        },
+        {
+          "id": 2,
+          "title": "Open Table",
+          "start": "2021-03-27T15:00:00",
+          "end": "2021-03-27T16:00:00",
+          "resourceId": 3
+        }
+      ],
+      "tables": [
+        { "resourceId": 1, "resourceTitle": "Table 1" },
+        { "resourceId": 2, "resourceTitle": "Table 2" },
+        { "resourceId": 3, "resourceTitle": "Table 3" }
+      ],
+      "adress": {
+        "city": "Stockholm",
+        "name": "Dalagatan 12",
+        "postalCode": "11322"
+      },
+      "companyName": "Tchibo",
+      "phoneNumber": "+46434234234",
+      "openingHours": [
+        { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Tue", "open": 14, "closed": 21, "isClosed": false },
+        { "day": "Wed", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Thu", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Fri", "open": 9, "closed": 21, "isClosed": false },
+        { "day": "Sat", "open": 9, "closed": 21, "isClosed": false }
+      ]
+    }
+  ]
+}

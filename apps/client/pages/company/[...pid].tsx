@@ -22,6 +22,7 @@ import Image from 'next/image';
 import { ClientContext } from 'apps/client/contexts/ClientContext';
 import moment from 'moment';
 import { Calendar, Views, momentLocalizer } from 'react-big-calendar';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 interface Props {}
 type WeekDay = 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
 const localizer = momentLocalizer(moment);
@@ -63,6 +64,7 @@ const companyDetail = (props: Props) => {
       });
     return openingDay;
   };
+  console.log(company);
 
   const onSubmit = (data) => {};
   return (
@@ -146,7 +148,6 @@ const companyDetail = (props: Props) => {
                 defaultView={Views.DAY}
                 views={['day', 'work_week']}
                 step={60}
-                defaultDate={new Date(2018, 0, 29)}
                 resources={company.tables}
                 resourceIdAccessor="resourceId"
                 resourceTitleAccessor="resourceTitle"
