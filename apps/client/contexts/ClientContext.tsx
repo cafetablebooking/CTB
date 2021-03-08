@@ -12,10 +12,41 @@ interface Props {
 }
 export const ClientContext = React.createContext({});
 export const ClientContextProvider = (props: Props) => {
+  const [loading, setLoading] = useState<boolean>(false);
   const [companies, setCompanies] = useState<any>([]);
   const { setCurrentUser }: any = useContext(AuthContext);
-
+  const [navigatorPosition, setNavigatorPosition] = useState<any>(null);
+  const router = useRouter();
   Geocode.setApiKey(process.env.NEXT_PUBLIC_CLIENT_GOOGLE_MAPS_API_KEY);
+
+  const triggerNavigator = () => {
+    function success(pos) {
+      const crd = pos.coords;
+      const latitude = crd.latitude;
+      const longitude = crd.longitude;
+      //   const accuracy = crd.accuracy;
+
+      setNavigatorPosition({
+        lat: latitude,
+        lng: longitude,
+        // accuracy: accuracy,
+      });
+    }
+
+    function error(err) {
+      console.warn(`ERROR(${err.code}): ${err.message}`);
+    }
+
+    var options = {
+      enableHighAccuracy: true,
+      timeout: 5000,
+      maximumAge: 0,
+    };
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(success, error, options);
+    }
+  };
 
   const getCompanies = async () => {
     const res = await fetch('/mock/companies.json');
@@ -69,6 +100,10 @@ export const ClientContextProvider = (props: Props) => {
       });
   };
   useEffect(() => {
+    router.events.on('routeChangeComplete', () => {
+      window.scrollTo(0, 0);
+    });
+
     getCompanies();
   }, []);
 
@@ -77,6 +112,11 @@ export const ClientContextProvider = (props: Props) => {
       value={{
         signInWithGoogle,
         companies,
+        loading,
+        setLoading,
+        navigatorPosition,
+        setNavigatorPosition,
+        triggerNavigator,
       }}
     >
       <FontWrapper>{props.children}</FontWrapper>
