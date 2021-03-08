@@ -1,0 +1,26 @@
+[
+  {
+    "title": "Fill your tables",
+    "image": "/static/business-icons/tables.svg",
+    "subtitle1": "CTB (Cafe Table Booking) is a universal table booking service where your customers can book their visit in advance.",
+    "subtitle2": "Your free tables are automatically displayed and you will get a booking page on CTB."
+  },
+  {
+    "title": "Being Available (Covid-19)",
+    "image": "/static/business-icons/Vector.svg",
+    "subtitle1": "New rules and regulations requires foresight. We want to make sure there is room for everyone, so people can calmly enjoy their visit.",
+    "subtitle2": "Our service facilitates management and adjustment for both customers and businesses."
+  },
+  {
+    "title": "Manage table bookings",
+    "image": "/static/business-icons/bookings.svg",
+    "subtitle1": "We will help you to organize your business in forms of offering a service to maintain a clear schedule of your bookings.",
+    "subtitle2": "You will have an admin dashboard where you can manage your tables and see further details of your bookings."
+  },
+  {
+    "title": "Increase your sales",
+    "image": "/static/business-icons/money.svg",
+    "subtitle1": "We will fill your calendar in advance so your staff also can plan in advance, this will improve structure. As well as increasing your sales.",
+    "subtitle2": ""
+  }
+]

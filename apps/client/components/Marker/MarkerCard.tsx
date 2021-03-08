@@ -15,7 +15,7 @@ const MarkerCard = (props: Props) => {
   return (
     <Card ref={props.node}>
       <ImageWrapper>
-        <Image src={props.image} layout="fill" objectfit="contain" />
+        <Image src={props.image} alt="Avatar image for companies" layout="fill" />
       </ImageWrapper>
       <ListItemDetails>
         <Typography variant="h6">{props.companyName}</Typography>
@@ -25,7 +25,7 @@ const MarkerCard = (props: Props) => {
         <Typography color="secondary">Closed</Typography>
       </ListItemDetails>
       {props.distance && <Box>{props.distance} meters away</Box>}
-      <Image src={'/static/angle-right.svg'} height="20" width="20" />
+      <Image src={'/static/angle-right.svg'} alt="Angle right icon for cards" height="20" width="20" />
     </Card>
   );
 };

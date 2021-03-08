@@ -109,31 +109,6 @@
         }
       }
     },
-    "header": {
-      "root": "libs/header",
-      "sourceRoot": "libs/header/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/header/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/header"
-          ],
-          "options": {
-            "jestConfig": "libs/header/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "client": {
       "root": "apps/client",
       "sourceRoot": "apps/client",
@@ -269,126 +244,51 @@
         }
       }
     },
-    "footer": {
-      "root": "libs/footer",
-      "sourceRoot": "libs/footer/src",
+    "auth-crud": {
+      "root": "libs/auth-crud",
+      "sourceRoot": "libs/auth-crud/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/footer/**/*.{ts,tsx,js,jsx}"
+              "libs/auth-crud/**/*.{ts,tsx,js,jsx}"
             ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
           "outputs": [
-            "coverage/libs/footer"
+            "coverage/libs/auth-crud"
           ],
           "options": {
-            "jestConfig": "libs/footer/jest.config.js",
+            "jestConfig": "libs/auth-crud/jest.config.js",
             "passWithNoTests": true
           }
         }
       }
     },
-    "theme-provider": {
-      "root": "libs/theme-provider",
-      "sourceRoot": "libs/theme-provider/src",
+    "yup-resolvers": {
+      "root": "libs/yup-resolvers",
+      "sourceRoot": "libs/yup-resolvers/src",
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-              "libs/theme-provider/**/*.{ts,tsx,js,jsx}"
+              "libs/yup-resolvers/**/*.{ts,tsx,js,jsx}"
             ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
           "outputs": [
-            "coverage/libs/theme-provider"
+            "coverage/libs/yup-resolvers"
           ],
           "options": {
-            "jestConfig": "libs/theme-provider/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "dark-theme-provider": {
-      "root": "libs/dark-theme-provider",
-      "sourceRoot": "libs/dark-theme-provider/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/dark-theme-provider/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/dark-theme-provider"
-          ],
-          "options": {
-            "jestConfig": "libs/dark-theme-provider/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "search-box-component": {
-      "root": "libs/search-box-component",
-      "sourceRoot": "libs/search-box-component/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/search-box-component/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/search-box-component"
-          ],
-          "options": {
-            "jestConfig": "libs/search-box-component/jest.config.js",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "auto-complete": {
-      "root": "libs/auto-complete",
-      "sourceRoot": "libs/auto-complete/src",
-      "projectType": "library",
-      "targets": {
-        "lint": {
-          "executor": "@nrwl/linter:eslint",
-          "options": {
-            "lintFilePatterns": [
-              "libs/auto-complete/**/*.{ts,tsx,js,jsx}"
-            ]
-          }
-        },
-        "test": {
-          "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/auto-complete"
-          ],
-          "options": {
-            "jestConfig": "libs/auto-complete/jest.config.js",
+            "jestConfig": "libs/yup-resolvers/jest.config.js",
             "passWithNoTests": true
           }
         }

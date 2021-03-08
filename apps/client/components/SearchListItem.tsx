@@ -1,8 +1,11 @@
 import React from 'react';
 import { Box, Typography } from '@material-ui/core';
-import styled from 'styled-components';
 import Image from 'next/image';
-
+import {
+  ImageWrapper,
+  ListItem,
+  ListItemDetails,
+} from '../styles/SearchListItemStyles';
 interface Props {
   companyName: string;
   vatNr: string;
@@ -18,7 +21,12 @@ const SearchListItem = (props: Props) => {
   return (
     <ListItem>
       <ImageWrapper>
-        <Image src={props.image} height="150" width="150" objectfit="contain" />
+        <Image
+          src={props.image}
+          height="150"
+          width="150"
+          alt="Avatar image of business"
+        />
       </ImageWrapper>
       <ListItemDetails>
         <Typography variant="h5">{props.companyName}</Typography>
@@ -41,38 +49,11 @@ const SearchListItem = (props: Props) => {
       <Image
         src={'/static/angle-right.svg'}
         height="20"
+        alt="Angle right for company cards"
         width="20"
-        objectfit="contain"
       />
     </ListItem>
   );
 };
-const ImageWrapper = styled.div`
-  display: flex;
-  position: relative;
-  img {
-    border-radius: 4px;
-  }
-  align-items: center;
-  width: 150px;
-  height: 150px;
-`;
 
-const ListItem = styled(Box)`
-  cursor: pointer;
-  display: flex;
-  justify-content: space-between;
-  background: #ffffff;
-  border-radius: 10px;
-  padding: 20px;
-  margin-bottom: 40px;
-  filter: drop-shadow(0px 6px 10px rgba(0, 0, 0, 0.6));
-  transition: all 0.1s ease-in;
-`;
-const ListItemDetails = styled(Box)`
-  margin: 20px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-`;
 export default SearchListItem;

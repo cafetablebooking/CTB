@@ -9,9 +9,9 @@ import Divider from '@material-ui/core/Divider';
 import Typography from '@material-ui/core/Typography';
 import styled from 'styled-components';
 const faces = [
-  'http://i.pravatar.cc/300?img=1',
+  'https://i.pravatar.cc/300?img=1',
   'https://i.pravatar.cc/300?img=7',
-  'http://i.pravatar.cc/300?img=3',
+  'https://i.pravatar.cc/300?img=3',
   'https://i.pravatar.cc/300?img=12',
 ];
 
@@ -30,10 +30,7 @@ const useStyles = makeStyles((muiBaseTheme) => ({
   },
   content: {
     textAlign: 'left',
-    padding: muiBaseTheme.spacing.unit * 3,
-  },
-  divider: {
-    margin: `${muiBaseTheme.spacing.unit * 3}px 0`,
+    padding: muiBaseTheme.spacing(3),
   },
   heading: {
     fontWeight: 'bold',
@@ -42,11 +39,8 @@ const useStyles = makeStyles((muiBaseTheme) => ({
     lineHeight: 1.8,
   },
   avatar: {
-    display: 'inline-block',
     border: '2px solid white',
-    '&:not(:first-of-type)': {
-      marginLeft: -muiBaseTheme.spacing.unit,
-    },
+    '&:not(:first-of-type)': {},
   },
 }));
 
@@ -60,7 +54,7 @@ function OnboardingCard() {
           <Typography
             className={'MuiTypography--heading'}
             variant={'h6'}
-            style={{ fontSize: '24px' }}
+            style={{ fontSize: '24px', margin: 0 }}
             gutterBottom
           >
             Save time and money
@@ -75,10 +69,18 @@ function OnboardingCard() {
             arrive at the café. With discount code ILOVECOFFEE get a 50%
             discount at your first reservation.
           </Typography>
-          <Divider className={classes.divider} light />
-          {faces.map((face) => (
-            <Avatar className={classes.avatar} key={face} src={face} />
-          ))}
+          <Divider style={{ margin: '14px 0 14px 0' }} light />
+          <div style={{ display: 'flex', marginLeft: '8px' }}>
+            {faces.map((face) => (
+              <Avatar
+                style={{ marginLeft: '-8px' }}
+                className={classes.avatar}
+                key={face}
+                src={face}
+                alt="User image for Café and restaurant businesses"
+              />
+            ))}
+          </div>
         </CardContent>
       </StyledCard>
     </div>

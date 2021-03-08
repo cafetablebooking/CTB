@@ -2,10 +2,11 @@ import React from 'react';
 import { AppProps } from 'next/app';
 import Head from 'next/head';
 import { AuthContextProvider } from '@ctb/auth-context';
-import { Header } from '@ctb/header';
-import { Footer } from '@ctb/footer';
+import Header from '../components/Header/Header';
+import Footer from '../components/Footer/Footer';
 import { ThemeProvider } from '@material-ui/core/styles';
-import { theme } from '@ctb/theme-provider';
+import theme from '../components/ThemeProviders/LightThemeProvider';
+import { ClientContextProvider } from '../contexts/ClientContext';
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
@@ -18,15 +19,16 @@ function CustomApp({ Component, pageProps }: AppProps) {
       <Head>
         <title>Welcome to client!</title>
       </Head>
-
       <AuthContextProvider>
-        <Header />
-        <main style={{ top: '60.8px', position: 'relative' }}>
-          <ThemeProvider theme={theme}>
-            <Component {...pageProps} />
-          </ThemeProvider>
-        </main>
-        <Footer />
+        <ClientContextProvider>
+          <Header />
+          <main style={{ top: '73.6px', position: 'relative' }}>
+            <ThemeProvider theme={theme}>
+              <Component {...pageProps} />
+            </ThemeProvider>
+          </main>
+          <Footer />
+        </ClientContextProvider>
       </AuthContextProvider>
     </>
   );

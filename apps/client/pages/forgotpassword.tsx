@@ -3,33 +3,27 @@ import {
   TextField,
   Button,
   Typography,
-  Box,
   CircularProgress,
 } from '@material-ui/core';
 
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import styled from 'styled-components';
 import Link from 'next/link';
-import { AuthContext } from '@ctb/auth-context';
-import { useRouter } from 'next/router';
-import * as Yup from 'yup';
-
+import { resetPassword } from '@ctb/auth-crud';
+import { forgotPasswordSchema } from '@ctb/yup-resolvers';
+import {
+  SignInBox,
+  FormWrapper,
+  Form,
+  RedirectMessage,
+} from '../styles/forgotPasswordStyles';
+import { ClientContext } from '../contexts/ClientContext';
 interface Props {}
 
 const ForgotPassword = (props: Props) => {
   const [message, setMessage] = useState<string>('');
   const [error, setError] = useState<string>('');
-  const forgotPasswordSchema = Yup.object().shape({
-    email: Yup.string()
-      .email('Wrong email format')
-      .min(3, 'Minimum 3 symbols')
-      .max(50, 'Maximum 50 symbols')
-      .required('This field is required.'),
-  });
-
-  const { resetPassword, loading, setLoading }: any = useContext(AuthContext);
-  const router = useRouter();
+  const { loading, setLoading }: any = useContext(ClientContext);
 
   const { register, handleSubmit, watch, errors } = useForm({
     resolver: yupResolver(forgotPasswordSchema),
@@ -68,9 +62,9 @@ const ForgotPassword = (props: Props) => {
           <div style={{ color: 'red' }}>{errors.email?.message}</div>
           {loading ? <CircularProgress /> : <p>{message}</p>}
           <Button
-            color="secondary"
+            color="primary"
             variant="contained"
-            style={{ marginTop: '10px' }}
+            style={{ marginTop: '10px', height: '56px', width: 245.2 }}
             type="submit"
           >
             Reset Password
@@ -85,32 +79,5 @@ const ForgotPassword = (props: Props) => {
     </SignInBox>
   );
 };
-
-const RedirectMessage = styled(Box)`
-  justify-content: center;
-  display: flex;
-  margin: 10px;
-  a {
-    display: flex;
-    align-items: center;
-    margin-left: 4px;
-    text-decoration: none;
-  }
-`;
-const Form = styled.form`
-  display: flex;
-
-  flex-direction: column;
-`;
-const SignInBox = styled(Box)`
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  min-height: 100vh;
-`;
-const FormWrapper = styled(Box)`
-  display: flex;
-  justify-content: space-evenly;
-`;
 
 export default ForgotPassword;
