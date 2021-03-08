@@ -7,10 +7,10 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import parse from 'autosuggest-highlight/parse';
 import throttle from 'lodash/throttle';
-import { AuthContext } from '@ctb/auth-context';
 import styled from 'styled-components';
 import Paper from '@material-ui/core/Paper';
 import Image from 'next/image';
+import { ClientContext } from 'apps/client/contexts/ClientContext';
 function loadScript(src: string, position: HTMLElement | null, id: string) {
   if (!position) {
     return;
@@ -54,7 +54,7 @@ interface PlaceType {
 }
 
 function AutoCompleteInput(props: AutoCompleteInputProps) {
-  const { triggerNavigator }: any = useContext(AuthContext);
+  const { triggerNavigator }: any = useContext(ClientContext);
   const classes = useStyles();
   const inputValue = props.inputValue;
   const setInputValue = props.setInputValue;
