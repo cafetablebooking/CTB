@@ -8,9 +8,7 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/owner-admin",
             "index": "apps/owner-admin/src/index.html",
@@ -64,16 +62,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/owner-admin/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["apps/owner-admin/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/owner-admin"
-          ],
+          "outputs": ["coverage/apps/owner-admin"],
           "options": {
             "jestConfig": "apps/owner-admin/jest.config.js",
             "passWithNoTests": true
@@ -102,9 +96,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/owner-admin-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/owner-admin-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -116,9 +108,7 @@
       "targets": {
         "build": {
           "executor": "@nrwl/next:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "root": "apps/client",
             "outputPath": "dist/apps/client"
@@ -149,16 +139,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/client/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["apps/client/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/client"
-          ],
+          "outputs": ["coverage/apps/client"],
           "options": {
             "jestConfig": "apps/client/jest.config.js",
             "passWithNoTests": true
@@ -187,9 +173,7 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/client-e2e/**/*.{js,ts}"
-            ]
+            "lintFilePatterns": ["apps/client-e2e/**/*.{js,ts}"]
           }
         }
       }
@@ -202,16 +186,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/firebase-auth/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["libs/firebase-auth/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/firebase-auth"
-          ],
+          "outputs": ["coverage/libs/firebase-auth"],
           "options": {
             "jestConfig": "libs/firebase-auth/jest.config.js",
             "passWithNoTests": true
@@ -227,16 +207,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "libs/auth-context/**/*.{ts,tsx,js,jsx}"
-            ]
+            "lintFilePatterns": ["libs/auth-context/**/*.{ts,tsx,js,jsx}"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/libs/auth-context"
-          ],
+          "outputs": ["coverage/libs/auth-context"],
           "options": {
             "jestConfig": "libs/auth-context/jest.config.js",
             "passWithNoTests": true
@@ -244,53 +220,38 @@
         }
       }
     },
-<<<<<<< HEAD
     "auth-crud": {
       "root": "libs/auth-crud",
-      "sourceRoot": "libs/auth-crud/src",
-=======
+      "sourceRoot": "libs/auth-crud/src"
+    },
     "types": {
       "root": "libs/types",
       "sourceRoot": "libs/types/src",
->>>>>>> feature/owner-dashboard-setup
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-<<<<<<< HEAD
-              "libs/auth-crud/**/*.{ts,tsx,js,jsx}"
-=======
+              "libs/auth-crud/**/*.{ts,tsx,js,jsx}",
               "libs/types/**/*.ts"
->>>>>>> feature/owner-dashboard-setup
             ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-<<<<<<< HEAD
-            "coverage/libs/auth-crud"
-          ],
+          "outputs": ["coverage/libs/auth-crud"],
           "options": {
             "jestConfig": "libs/auth-crud/jest.config.js",
-=======
-            "coverage/libs/types"
-          ],
-          "options": {
-            "jestConfig": "libs/types/jest.config.js",
->>>>>>> feature/owner-dashboard-setup
             "passWithNoTests": true
           }
         }
       }
     },
-<<<<<<< HEAD
     "yup-resolvers": {
       "root": "libs/yup-resolvers",
-      "sourceRoot": "libs/yup-resolvers/src",
-=======
+      "sourceRoot": "libs/yup-resolvers/src"
+    },
     "functions": {
       "root": "apps/functions",
       "sourceRoot": "apps/functions/src",
@@ -299,16 +260,12 @@
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
-          "outputs": [
-            "{options.outputPath}"
-          ],
+          "outputs": ["{options.outputPath}"],
           "options": {
             "outputPath": "dist/apps/functions",
             "main": "apps/functions/src/main.ts",
             "tsConfig": "apps/functions/tsconfig.app.json",
-            "assets": [
-              "apps/functions/src/assets"
-            ]
+            "assets": ["apps/functions/src/assets"]
           },
           "configurations": {
             "production": {
@@ -333,16 +290,12 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": [
-              "apps/functions/**/*.ts"
-            ]
+            "lintFilePatterns": ["apps/functions/**/*.ts"]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-            "coverage/apps/functions"
-          ],
+          "outputs": ["coverage/apps/functions"],
           "options": {
             "jestConfig": "apps/functions/jest.config.js",
             "passWithNoTests": true
@@ -353,35 +306,22 @@
     "use-local-storage": {
       "root": "libs/use-local-storage",
       "sourceRoot": "libs/use-local-storage/src",
->>>>>>> feature/owner-dashboard-setup
       "projectType": "library",
       "targets": {
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
             "lintFilePatterns": [
-<<<<<<< HEAD
-              "libs/yup-resolvers/**/*.{ts,tsx,js,jsx}"
-=======
+              "libs/yup-resolvers/**/*.{ts,tsx,js,jsx}",
               "libs/use-local-storage/**/*.{ts,tsx,js,jsx}"
->>>>>>> feature/owner-dashboard-setup
             ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": [
-<<<<<<< HEAD
-            "coverage/libs/yup-resolvers"
-          ],
+          "outputs": ["coverage/libs/use-local-storage"],
           "options": {
             "jestConfig": "libs/yup-resolvers/jest.config.js",
-=======
-            "coverage/libs/use-local-storage"
-          ],
-          "options": {
-            "jestConfig": "libs/use-local-storage/jest.config.js",
->>>>>>> feature/owner-dashboard-setup
             "passWithNoTests": true
           }
         }
