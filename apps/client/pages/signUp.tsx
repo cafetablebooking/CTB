@@ -10,7 +10,6 @@ import { useRouter } from 'next/router';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import GoogleSignInButton from '../components/GoogleSignInButton';
-import { registerAccount } from '@ctb/auth-crud';
 import { registerSchema } from '@ctb/yup-resolvers';
 import {
   SignInWrapper,
@@ -19,15 +18,14 @@ import {
   InnerFlexItem,
   Form,
 } from '../styles/authStyles';
-import { ClientContext } from '../contexts/ClientContext';
+import { useAuthContext } from '@ctb/auth-context';
 interface Props {}
 
 const signUp = (props: Props) => {
-  const { signInWithGoogle }: any = useContext(ClientContext);
+  const { signInWithGoogle, signup }: any = useAuthContext();
   const isDesktop = useMediaQuery('(min-width:768px)');
   const [error, setError] = useState<string>('');
   const router = useRouter();
-
   const { register, handleSubmit, errors } = useForm({
     resolver: yupResolver(registerSchema),
   });
@@ -38,7 +36,7 @@ const signUp = (props: Props) => {
   };
   async function onSubmit(data) {
     try {
-      await registerAccount(data.email, data.password);
+      await signup(data.email, data.password);
       router.push('/signIn');
     } catch {}
   }

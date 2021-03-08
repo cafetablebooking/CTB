@@ -1,12 +1,12 @@
-import { AuthContext } from '@ctb/auth-context';
-import React, { useContext } from 'react';
+import { useAuthContext } from '@ctb/auth-context';
+
 import SignIn from '../pages/signIn';
 
 const PrivateRoute = (Component) => {
   const Auth = (props) => {
-    const { currentUser }: any = useContext(AuthContext);
+    const { user }: any = useAuthContext();
 
-    if (!currentUser) {
+    if (!user) {
       return <SignIn />;
     }
 

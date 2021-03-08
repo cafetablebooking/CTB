@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 import PrivateRoute from '../components/PrivateRoute';
 import { Button, Box } from '@material-ui/core';
 import styled from 'styled-components';
-import { logout } from '@ctb/auth-crud';
+import { useAuthContext } from '@ctb/auth-context';
 interface Props {}
 const Dashboard = styled(Box)`
   min-height: 100vh;
@@ -12,7 +12,7 @@ const Dashboard = styled(Box)`
 
 const dashboard = (props: Props) => {
   const router = useRouter();
-
+  const { logout } = useAuthContext();
   const logoutUser = () => {
     router.push('/signIn');
     logout();

@@ -1,10 +1,10 @@
 import * as geolib from 'geolib';
 import moment from 'moment';
 import Geocode from 'react-geocode';
-import { db } from '@ctb/firebase-auth';
+import { firestore } from '@ctb/firebase-auth';
 
 export const getCompaniesData = async () => {
-  const companiesRef = db.collection('companies');
+  const companiesRef = firestore.collection('companies');
   const dataArray = [];
   const editedDataArray = [];
   let allCompanies = await companiesRef.get();

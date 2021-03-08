@@ -8,7 +8,6 @@ import { useRouter } from 'next/router';
 import LoginRoute from '../components/LoginRoute';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import GoogleSignInButton from '../components/GoogleSignInButton';
-import { login } from '@ctb/auth-crud';
 import { loginSchema } from '@ctb/yup-resolvers';
 import {
   SignInWrapper,
@@ -18,12 +17,13 @@ import {
   Form,
 } from '../styles/authStyles';
 import { ClientContext } from '../contexts/ClientContext';
+import { useAuthContext } from '@ctb/auth-context';
 interface Props {}
 
 const SignIn = (props: Props) => {
   const isDesktop = useMediaQuery('(min-width:768px)');
   const [error, setError] = useState<string>('');
-  const { signInWithGoogle }: any = useContext(ClientContext);
+  const { signInWithGoogle, login }: any = useAuthContext();
   const router = useRouter();
 
   const { register, handleSubmit, watch, errors } = useForm({
