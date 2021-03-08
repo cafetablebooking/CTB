@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { createContext, useEffect, useState, useContext } from 'react';
 import { auth, googleProvider, functions } from '@ctb/firebase-auth';
