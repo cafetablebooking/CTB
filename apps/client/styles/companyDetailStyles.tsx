@@ -73,7 +73,7 @@ export const CoverImage = styled(Box)`
 
   flex-wrap: wrap;
   justify-content: space-evenly;
-  background: ${(props) => `url(${props.coverImage}) no-repeat center`};
+  background: ${(props) => `url(${props.coverimage}) no-repeat center`};
   background-size: cover;
   max-width: 100vw;
   min-height: 300px;

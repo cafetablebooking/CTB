@@ -64,14 +64,13 @@ const companyDetail = (props: Props) => {
       });
     return openingDay;
   };
-  console.log(company);
 
   const onSubmit = (data) => {};
   return (
     <>
       {company && (
         <Wrapper>
-          <CoverImage coverImage={company.coverImage}></CoverImage>
+          <CoverImage coverimage={company.coverImage}></CoverImage>
 
           <Separator>
             <div
@@ -88,7 +87,6 @@ const companyDetail = (props: Props) => {
                     src={company.image}
                     alt="Avatar Image For Companies"
                     layout="fill"
-                    objectFit="contain"
                   />
                 </ImageInnerCircle>
               </ImageOuterCircle>
@@ -144,7 +142,7 @@ const companyDetail = (props: Props) => {
               /> */}
               <Calendar
                 selectable
-                onSelectSlot={(e) => alert(e)}
+                onSelectSlot={(slot) => console.log(slot.start)}
                 events={company.availableBookings}
                 localizer={localizer}
                 defaultView={Views.DAY}
