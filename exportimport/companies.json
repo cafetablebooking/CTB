@@ -58,10 +58,10 @@
       "image": "/static/img/marquee/dunkin.svg",
       "coverImage": "/static/img/hero/cover-image.jpg",
       "vatNr": 32323,
-      "availableBookings": [
+      "bookedTimes": [
         {
           "id": 0,
-          "title": "Open Table",
+          "title": "Booked",
           "allDay": true,
           "start": "2021-03-19T12:00:00",
           "end": "2021-03-19T14:00:00",

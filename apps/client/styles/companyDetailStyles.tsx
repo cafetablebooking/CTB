@@ -128,6 +128,9 @@ export const CalendarWrapper = styled.div`
   .fc-timegrid-event-harness {
     cursor: pointer;
   }
+  .rbc-time-slot:hover {
+      background: red
+  }
 `;
 export const CompanyContent = styled(Box)`
   flex-wrap: wrap;

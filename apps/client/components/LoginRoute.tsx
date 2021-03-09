@@ -1,12 +1,12 @@
-import { AuthContext } from '@ctb/auth-context';
+import { AuthContext, useAuthContext } from '@ctb/auth-context';
 import React, { useContext } from 'react';
 import Dashboard from '../pages/dashboard';
 
 const LoginRoute = (Component) => {
   const Auth = (props) => {
-    const { currentUser }: any = useContext(AuthContext);
+    const { user }: any = useAuthContext();
 
-    if (currentUser) {
+    if (user) {
       return <Dashboard />;
     }
 

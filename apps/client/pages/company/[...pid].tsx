@@ -143,6 +143,8 @@ const companyDetail = (props: Props) => {
                 }}
               /> */}
               <Calendar
+                selectable
+                onSelectSlot={(e) => alert(e)}
                 events={company.availableBookings}
                 localizer={localizer}
                 defaultView={Views.DAY}
