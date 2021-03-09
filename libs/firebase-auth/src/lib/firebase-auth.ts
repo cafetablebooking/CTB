@@ -25,7 +25,6 @@ if (!firebase.apps.length) {
 }
 
 const firestore = firebase.firestore();
-// const auth = firebase.auth();
 const auth = !firebase.apps.length
   ? firebase.initializeApp(firebaseConfig).auth()
   : firebase.app().auth();
