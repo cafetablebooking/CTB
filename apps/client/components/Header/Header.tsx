@@ -45,16 +45,16 @@ function Header(props: HeaderProps) {
   return (
     <StyledHeader>
       <HeaderUpper>
-        <Logotype>
-          <Link href="/">
+        <Link href="/">
+          <Logotype>
             <Image
               width="70"
               height="70"
               src="/static/img/logo/header-logotype.png"
               alt="Table booking logotype"
             />
-          </Link>
-        </Logotype>
+          </Logotype>
+        </Link>
         <nav>
           <ul>
             <li>

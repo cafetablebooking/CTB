@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Typography, Box, TextField, Button, Divider } from '@material-ui/core';
+import { Typography, Button } from '@material-ui/core';
 
 import { useRouter } from 'next/router';
 
@@ -13,21 +13,19 @@ import {
   TextBox,
   CalendarWrapper,
 } from '../../styles/companyDetailStyles';
-import { AuthContext } from '@ctb/auth-context';
-import { ImageWrapper } from 'apps/client/styles/companyDetailStyles';
+import {
+  ImageInnerCircle,
+  ImageOuterCircle,
+} from 'apps/client/styles/companyDetailStyles';
 import Image from 'next/image';
-import { Calendar, momentLocalizer } from 'react-big-calendar';
-import moment from 'moment';
-import PrivateRoute from '../../components/PrivateRoute';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
-import { ClientContext } from 'apps/client/contexts/ClientContext';
-import WorkWeekViewComponent from './WorkWeekViewComponent';
-const localizer = momentLocalizer(moment);
-localizer.formats.yearHeaderFormat = 'YYYY';
 
+import { ClientContext } from 'apps/client/contexts/ClientContext';
+import moment from 'moment';
+import { Calendar, Views, momentLocalizer } from 'react-big-calendar';
+import 'react-big-calendar/lib/css/react-big-calendar.css';
 interface Props {}
 type WeekDay = 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
-
+const localizer = momentLocalizer(moment);
 const ValueMap: { [value in WeekDay]: string } = {
   Sun: 'Sunday',
   Mon: 'Monday',
@@ -54,7 +52,7 @@ const companyDetail = (props: Props) => {
         const weekDay = ValueMap[item.day];
 
         return (
-          <div>
+          <div key={item.day}>
             <Typography variant="body2">
               <b>{weekDay}</b>
             </Typography>
@@ -66,6 +64,7 @@ const companyDetail = (props: Props) => {
       });
     return openingDay;
   };
+  console.log(company);
 
   const onSubmit = (data) => {};
   return (
@@ -83,10 +82,16 @@ const companyDetail = (props: Props) => {
                 left: '5vw',
               }}
             >
-              <ImageWrapper>
-                <Image src={company.image} objectfit="contain" layout="fill" />
-              </ImageWrapper>
-
+              <ImageOuterCircle>
+                <ImageInnerCircle>
+                  <Image
+                    src={company.image}
+                    alt="Avatar Image For Companies"
+                    layout="fill"
+                    objectFit="contain"
+                  />
+                </ImageInnerCircle>
+              </ImageOuterCircle>
               <TextBox>
                 <Typography variant="h5">{company.companyName}</Typography>
 
@@ -116,21 +121,36 @@ const companyDetail = (props: Props) => {
               {renderOpeniningHours()}
             </OpeningHours>
             <CalendarWrapper>
-              <Calendar
-                views={{
-                  day: true,
-                  week: true,
-                  month: true,
-                  myweek: WorkWeekViewComponent,
+              {/* <FullCalendar
+                allDaySlot={false}
+                schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
+                plugins={[interactionPlugin, resourceTimeGridPlugin]}
+                initialView="resourceTimeGridDay"
+                nowIndicator={true}
+                editable={false}
+                initialEvents={company.availableBookings}
+                initialResources={company.tables}
+                slotMinTime="09:00:00"
+                slotMaxTime="21:00:00"
+                hiddenDays={[]}
+                eventClick={(e) => console.log(e.event._def.resourceIds[0])}
+                slotLabelFormat={{
+                  hour12: false,
+                  hour: '2-digit',
+                  minute: '2-digit',
+                  omitZeroMinute: false,
+                  meridiem: 'narrow',
                 }}
-                min={new Date(2020, 1, 0, 9, 0, 0)}
-                max={new Date(2020, 1, 0, 21, 0, 0)}
+              /> */}
+              <Calendar
+                events={company.availableBookings}
                 localizer={localizer}
-                events={company.tables}
-                messages={{ year: 'Year' }}
-                startAccessor="start"
-                endAccessor="end"
-                style={{ height: 500 }}
+                defaultView={Views.DAY}
+                views={['day', 'work_week']}
+                step={60}
+                resources={company.tables}
+                resourceIdAccessor="resourceId"
+                resourceTitleAccessor="resourceTitle"
               />
             </CalendarWrapper>
           </CompanyContent>
