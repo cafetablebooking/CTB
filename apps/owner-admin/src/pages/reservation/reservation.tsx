@@ -4,8 +4,13 @@ import React from 'react';
 import { Calendar, Views, globalizeLocalizer } from 'react-big-calendar';
 import globalize from 'globalize';
 
+import withDragAndDrop from '../../../../../node_modules/react-big-calendar/lib/addons/dragAndDrop';
+
 import Layout from '../../components/layout/layout';
 import '../../../../../node_modules/react-big-calendar/lib/css/react-big-calendar.css';
+import '../../../../../node_modules/react-big-calendar/lib/addons/dragAndDrop/styles.scss';
+
+const DragAndDropCalendar = withDragAndDrop(Calendar);
 // react - big - calendar / lib / css / react - big - calendar.css;
 
 const events = [
@@ -53,7 +58,7 @@ const localizer = globalizeLocalizer(globalize);
 const reservation: React.FC<reservationProps> = ({}) => {
   return (
     <Layout>
-      <Calendar
+      <DragAndDropCalendar
         events={events}
         localizer={localizer}
         defaultView={Views.DAY}
@@ -64,6 +69,7 @@ const reservation: React.FC<reservationProps> = ({}) => {
         resourceIdAccessor="resourceId"
         resourceTitleAccessor="resourceTitle"
         style={{ height: 500 }}
+        resizable
       />
     </Layout>
   );

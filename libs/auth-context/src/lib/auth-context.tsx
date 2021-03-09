@@ -18,10 +18,12 @@ interface AuthProps {
   signInWithGoogle: any;
   user: any;
   uidValue: any;
+  // isAdmin: boolean;
 }
 
 const AuthContextProvider = ({ children }: Props) => {
   const [user, setUser] = useState(null);
+  // const [isAdmin, setIsAdmin] = useState(false);
   const [uidValue, setUidValue] = useLocalStorage('uid', '');
   const ADMIN_USERS = {
     Ramy: 'ramy.niranjan@gmail.com',
@@ -36,11 +38,11 @@ const AuthContextProvider = ({ children }: Props) => {
       );
       await user.updateProfile({ displayName: name });
       if (email === ADMIN_USERS[name]) {
-        const addAdminRole = functions.httpsCallable('addAdminRole');
-        addAdminRole({ email });
-        // const { claims } = await user.getIdTokenResult(true);
+        const addAdminRole = await functions.httpsCallable('addAdminRole');
+        await addAdminRole({ email });
+        // const isAdmin = (await user.getIdTokenResult(true)).claims;
+        // setIsAdmin(isAdmin.admin);
       }
-
       setUser(user);
       return user;
     } catch (error) {
@@ -51,8 +53,8 @@ const AuthContextProvider = ({ children }: Props) => {
   const login = async (email, password) => {
     try {
       const { user } = await auth.signInWithEmailAndPassword(email, password);
-      // const { claims } = await auth.currentUser.getIdTokenResult();
-      // console.log(claims);
+      // const { admin } = (await user.getIdTokenResult()).claims;
+      // setIsAdmin(admin);
       setUser(user);
       return user;
     } catch (error) {
@@ -104,6 +106,7 @@ const AuthContextProvider = ({ children }: Props) => {
         resetPassword,
         signInWithGoogle,
         uidValue,
+        // isAdmin,
       }}
     >
       {children}

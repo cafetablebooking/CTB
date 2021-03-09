@@ -45,3 +45,31 @@ exports.listAllUsers = functions.https.onRequest((req, res) => {
       res.status(500).send(error);
     });
 });
+
+exports.deleteUser = functions.https.onCall((data, context) => {
+  return admin
+    .auth()
+    .deleteUser(data.uid)
+    .then(() => {
+      console.log('Successfully deleted user');
+    })
+    .catch((error) => {
+      console.log('Error deleting user:', error);
+    });
+});
+
+exports.isUserAdmin = functions.https.onCall((data, context) => {
+  return admin
+    .auth()
+    .getUser(data.uid)
+    .then((userRecord) => {
+      // console.log(userRecord.customClaims['admin']);
+      if (!userRecord.customClaims['admin']) {
+        return false;
+      }
+      return userRecord.customClaims['admin'];
+    })
+    .catch((error) => {
+      console.log('user not admin', error);
+    });
+});
