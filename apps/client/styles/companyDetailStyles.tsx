@@ -122,14 +122,14 @@ export const CalendarWrapper = styled.div`
   position: relative;
   width: 70vw;
   margin: auto;
-  .fc-timegrid-col-events {
+  .rbc-events-container {
     margin: 0;
   }
   .fc-timegrid-event-harness {
     cursor: pointer;
   }
-  .rbc-time-slot:hover {
-      background: red
+  .rbc-time-slot {
+    min-height: 40px;
   }
 `;
 export const CompanyContent = styled(Box)`

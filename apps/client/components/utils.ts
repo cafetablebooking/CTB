@@ -18,11 +18,11 @@ export const getCompaniesData = async () => {
 
     //   const { lat, lng } = response && response.results[0].geometry.location;
 
-    const availableBookings = item.availableBookings.map((booking) => {
+    const bookedTimes = item.bookedTimes.map((booking) => {
       const startTime = moment(booking.start, 'YYYY-MM-DD HH:mm:ss').toDate();
       const endTime = moment(booking.end, 'YYYY-MM-DD HH:mm:ss').toDate();
       return {
-        title: booking.title,
+        title: "Booked",
         start: startTime,
         end: endTime,
         resourceId: booking.resourceId,
@@ -30,7 +30,7 @@ export const getCompaniesData = async () => {
     });
     const options = {
       ...item,
-      availableBookings: availableBookings,
+      bookedTimes: bookedTimes,
       coordinates: {
         lat: 59,
         lng: 18,

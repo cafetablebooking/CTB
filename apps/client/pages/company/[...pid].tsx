@@ -64,7 +64,32 @@ const companyDetail = (props: Props) => {
       });
     return openingDay;
   };
+  function eventStyle(event, start, end, isSelected) {
+    console.log(isSelected);
+    var style = {
+      backgroundColor: isSelected ? '#cc354e' : '#b5102c',
+      borderRadius: '0px',
+      opacity: 0.8,
+      color: 'black',
+      border: '0px',
+      display: 'block',
+    };
+    return {
+      style: style,
+    };
+  }
+  const selectSlotsHandler = (slots) => {
+    const formatStart = moment(slots.start).format('YYYY-MM-DDTHH:mm:ss');
+    const formatEnd = moment(slots.end).format('YYYY-MM-DDTHH:mm:ss');
 
+    const selectedSlot = {
+      allDay: true,
+      start: formatStart,
+      end: formatEnd,
+      resourceId: slots.resourceId,
+    };
+    console.log(selectedSlot);
+  };
   const onSubmit = (data) => {};
   return (
     <>
@@ -141,13 +166,14 @@ const companyDetail = (props: Props) => {
                 }}
               /> */}
               <Calendar
+                eventPropGetter={eventStyle}
                 selectable
-                onSelectSlot={(slot) => console.log(slot.start)}
-                events={company.availableBookings}
+                onSelectSlot={selectSlotsHandler}
+                events={company.bookedTimes}
                 localizer={localizer}
                 defaultView={Views.DAY}
                 views={['day', 'work_week']}
-                step={60}
+                step={30}
                 resources={company.tables}
                 resourceIdAccessor="resourceId"
                 resourceTitleAccessor="resourceTitle"

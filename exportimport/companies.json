@@ -6,10 +6,10 @@
       "image": "/static/img/marquee/espressohouse.png",
       "coverImage": "/static/img/hero/cover-image.jpg",
       "vatNr": 32323,
-      "availableBookings": [
+      "bookedTimes": [
         {
           "id": 0,
-          "title": "Open Table",
+
           "allDay": true,
           "start": "2021-03-18T12:00:00",
           "end": "2021-03-18T14:00:00",
@@ -17,14 +17,14 @@
         },
         {
           "id": 1,
-          "title": "Open Table",
+
           "start": "2021-03-18T14:00:00",
           "end": "2021-03-18T15:00:00",
           "resourceId": 2
         },
         {
           "id": 2,
-          "title": "Open Table",
+
           "start": "2021-03-18T15:00:00",
           "end": "2021-03-18T16:00:00",
           "resourceId": 3
@@ -61,7 +61,6 @@
       "bookedTimes": [
         {
           "id": 0,
-          "title": "Booked",
           "allDay": true,
           "start": "2021-03-19T12:00:00",
           "end": "2021-03-19T14:00:00",
@@ -69,14 +68,12 @@
         },
         {
           "id": 1,
-          "title": "Open Table",
           "start": "2021-03-19T14:00:00",
           "end": "2021-03-19T15:00:00",
           "resourceId": 2
         },
         {
           "id": 2,
-          "title": "Open Table",
           "start": "2021-03-19T15:00:00",
           "end": "2021-03-19T16:00:00",
           "resourceId": 3
@@ -110,10 +107,9 @@
       "image": "/static/img/marquee/Starbucks_Corporation_Logo_2011.svg.png",
       "coverImage": "/static/img/hero/cover-image.jpg",
       "vatNr": 32323,
-      "availableBookings": [
+      "bookedTimes": [
         {
           "id": 0,
-          "title": "Open Table",
           "allDay": true,
           "start": "2021-03-20T12:00:00",
           "end": "2021-03-20T14:00:00",
@@ -121,14 +117,12 @@
         },
         {
           "id": 1,
-          "title": "Open Table",
           "start": "2021-03-20T14:00:00",
           "end": "2021-03-20T15:00:00",
           "resourceId": 2
         },
         {
           "id": 2,
-          "title": "Open Table",
           "start": "2021-03-20T15:00:00",
           "end": "2021-03-20T16:00:00",
           "resourceId": 3
@@ -162,10 +156,10 @@
       "image": "/static/img/marquee/tim-hortons.png",
       "coverImage": "/static/img/hero/cover-image.jpg",
       "vatNr": 32323,
-      "availableBookings": [
+      "bookedTimes": [
         {
           "id": 0,
-          "title": "Open Table",
+
           "allDay": true,
           "start": "2021-03-21T12:00:00",
           "end": "2021-03-21T14:00:00",
@@ -173,14 +167,14 @@
         },
         {
           "id": 1,
-          "title": "Open Table",
+
           "start": "2021-03-21T14:00:00",
           "end": "2021-03-21T15:00:00",
           "resourceId": 2
         },
         {
           "id": 2,
-          "title": "Open Table",
+
           "start": "2021-03-21T15:00:00",
           "end": "2021-03-21T16:00:00",
           "resourceId": 3
@@ -214,10 +208,10 @@
       "image": "/static/img/marquee/caribou-cafe.png",
       "coverImage": "/static/img/hero/cover-image.jpg",
       "vatNr": 32323,
-      "availableBookings": [
+      "bookedTimes": [
         {
           "id": 0,
-          "title": "Open Table",
+
           "allDay": true,
           "start": "2021-03-22T12:00:00",
           "end": "2021-03-22T14:00:00",
@@ -225,14 +219,14 @@
         },
         {
           "id": 1,
-          "title": "Open Table",
+
           "start": "2021-03-22T14:00:00",
           "end": "2021-03-22T15:00:00",
           "resourceId": 2
         },
         {
           "id": 2,
-          "title": "Open Table",
+
           "start": "2021-03-22T15:00:00",
           "end": "2021-03-22T16:00:00",
           "resourceId": 3
@@ -266,10 +260,10 @@
       "image": "/static/img/marquee/luckin-coffee.svg",
       "coverImage": "/static/img/hero/cover-image.jpg",
       "vatNr": 32323,
-      "availableBookings": [
+      "bookedTimes": [
         {
           "id": 0,
-          "title": "Open Table",
+
           "allDay": true,
           "start": "2021-03-23T12:00:00",
           "end": "2021-03-18T14:00:00",
@@ -277,14 +271,14 @@
         },
         {
           "id": 1,
-          "title": "Open Table",
+
           "start": "2021-03-23T14:00:00",
           "end": "2021-03-23T15:00:00",
           "resourceId": 2
         },
         {
           "id": 2,
-          "title": "Open Table",
+
           "start": "2021-03-23T15:00:00",
           "end": "2021-03-23T16:00:00",
           "resourceId": 3
@@ -318,10 +312,10 @@
       "image": "/static/img/marquee/tom-n-toms.jpg",
       "coverImage": "/static/img/hero/cover-image.jpg",
       "vatNr": 32323,
-      "availableBookings": [
+      "bookedTimes": [
         {
           "id": 0,
-          "title": "Open Table",
+
           "allDay": true,
           "start": "2021-03-24T12:00:00",
           "end": "2021-03-24T14:00:00",
@@ -329,14 +323,14 @@
         },
         {
           "id": 1,
-          "title": "Open Table",
+
           "start": "2021-03-24T14:00:00",
           "end": "2021-03-24T15:00:00",
           "resourceId": 2
         },
         {
           "id": 2,
-          "title": "Open Table",
+
           "start": "2021-03-24T15:00:00",
           "end": "2021-03-24T16:00:00",
           "resourceId": 3
@@ -370,10 +364,10 @@
       "image": "/static/img/marquee/costa-coffee.svg",
       "coverImage": "/static/img/hero/cover-image.jpg",
       "vatNr": 32323,
-      "availableBookings": [
+      "bookedTimes": [
         {
           "id": 0,
-          "title": "Open Table",
+
           "allDay": true,
           "start": "2021-03-25T12:00:00",
           "end": "2021-03-25T14:00:00",
@@ -381,14 +375,14 @@
         },
         {
           "id": 1,
-          "title": "Open Table",
+
           "start": "2021-03-25T14:00:00",
           "end": "2021-03-25T15:00:00",
           "resourceId": 2
         },
         {
           "id": 2,
-          "title": "Open Table",
+
           "start": "2021-03-25T15:00:00",
           "end": "2021-03-25T16:00:00",
           "resourceId": 3
@@ -422,10 +416,10 @@
       "image": "/static/img/marquee/tchibo-coffee.png",
       "coverImage": "/static/img/hero/cover-image.jpg",
       "vatNr": 32323,
-      "availableBookings": [
+      "bookedTimes": [
         {
           "id": 0,
-          "title": "Open Table",
+
           "allDay": true,
           "start": "2021-03-26T12:00:00",
           "end": "2021-03-18T14:00:00",
@@ -433,14 +427,14 @@
         },
         {
           "id": 1,
-          "title": "Open Table",
+
           "start": "2021-03-26T14:00:00",
           "end": "2021-03-26T15:00:00",
           "resourceId": 2
         },
         {
           "id": 2,
-          "title": "Open Table",
+
           "start": "2021-03-27T15:00:00",
           "end": "2021-03-27T16:00:00",
           "resourceId": 3
