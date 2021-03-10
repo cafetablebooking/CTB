@@ -147,27 +147,6 @@ const companyDetail = (props: Props) => {
               {renderOpeniningHours()}
             </OpeningHours>
             <CalendarWrapper>
-              {/* <FullCalendar
-                allDaySlot={false}
-                schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
-                plugins={[interactionPlugin, resourceTimeGridPlugin]}
-                initialView="resourceTimeGridDay"
-                nowIndicator={true}
-                editable={false}
-                initialEvents={company.availableBookings}
-                initialResources={company.tables}
-                slotMinTime="09:00:00"
-                slotMaxTime="21:00:00"
-                hiddenDays={[]}
-                eventClick={(e) => console.log(e.event._def.resourceIds[0])}
-                slotLabelFormat={{
-                  hour12: false,
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  omitZeroMinute: false,
-                  meridiem: 'narrow',
-                }}
-              /> */}
               <Calendar
                 min={new Date(2021, 1, 0, 9, 0, 0)}
                 max={new Date(2021, 1, 0, 21, 0, 0)}
@@ -179,7 +158,7 @@ const companyDetail = (props: Props) => {
                 defaultView={Views.DAY}
                 formats={{
                   timeGutterFormat: (date, culture, localizer) =>
-                    localizer.format(date, 'H:mm', culture),
+                    localizer.format(date, 'HH:mm', culture),
                 }}
                 views={['day', 'work_week']}
                 step={30}
