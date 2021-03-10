@@ -6,14 +6,19 @@ import Dialog from '@material-ui/core/Dialog';
 
 import Typography from '@material-ui/core/Typography';
 import { blue } from '@material-ui/core/colors';
-import { Box, Button, DialogActions } from '@material-ui/core';
+import {
+  Box,
+  Button,
+  DialogActions,
+  DialogContentText,
+} from '@material-ui/core';
 import styled from 'styled-components';
 import { useRouter } from 'next/router';
 export interface SimpleDialogProps {
   open: boolean;
   selectedValue: string;
   onClose: (value: string) => void;
-  handlePaymentDialog: (value: string) => void;
+  handlePaymentDialog: () => void;
   bookedInfo: any;
   company: any;
 }
@@ -26,7 +31,7 @@ const useStyles = makeStyles({
 function SimpleDialog(props: SimpleDialogProps) {
   const router = useRouter();
   const classes = useStyles();
-  const { onClose, selectedValue, open } = props;
+  const { onClose, selectedValue, open, handlePaymentDialog } = props;
   const bookedInfo = props.bookedInfo;
   const startTime =
     bookedInfo.start && bookedInfo.start.replace('T', ' ').slice(0, -3);
@@ -54,10 +59,10 @@ function SimpleDialog(props: SimpleDialogProps) {
       open={open}
     >
       <StyledDialogBox>
-        <DialogTitle id="simple-dialog-title">
+        <DialogTitle id="simple-dialog-title">Confirm table</DialogTitle>
+        <DialogContentText id="alert-dialog-slide-description">
           Do you really want to book <b>{findTable.resourceTitle}</b>?
-        </DialogTitle>
-
+        </DialogContentText>
         <Typography>
           From: <b>{startTime}</b>
         </Typography>
@@ -65,7 +70,7 @@ function SimpleDialog(props: SimpleDialogProps) {
           To: <b>{endTime}</b>
         </Typography>
         <DialogActions>
-          <Button onClick={props.handlePaymentDialog} color="primary">
+          <Button onClick={handlePaymentDialog} color="primary">
             Yes
           </Button>
           <Button onClick={handleClose} color="primary">

@@ -17,7 +17,6 @@ export interface SimpleDialogProps {
   open: boolean;
   selectedValue: string;
   onClose: (value: string) => void;
-  handlePaymentDialogue: (value: string) => void;
   bookedInfo: any;
   company: any;
 }
@@ -39,12 +38,9 @@ function SimpleDialog(props: SimpleDialogProps) {
     onClose(selectedValue);
   };
 
-  const handleListItemClick = (value: string) => {
-    onClose(value);
-  };
-  const handleRedirect = () => {
-    router.push('/payment');
-  };
+//   const handleRedirect = () => {
+//     router.push('/payment');
+//   };
 
   return (
     <ThemeProvider theme={darkTheme}>
@@ -117,15 +113,4 @@ function SimpleDialog(props: SimpleDialogProps) {
   );
 }
 
-const StyledDialogBox = styled(Box)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  padding: 30px;
-  .MuiDialogTitle-root {
-    margin-bottom: 20px;
-    padding: 0 !important;
-  }
-`;
 export default SimpleDialog;

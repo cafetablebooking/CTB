@@ -11,17 +11,10 @@ import {
 import darkTheme from '../components/ThemeProviders/DarkThemeProvider';
 interface Props {}
 import {
-  BusinessInfoItem,
-  BusinessInnerBox,
-  BusinessTextBox,
   Wrapper,
-  Hero,
-  PaymentGuarantee,
   Form,
   ConnectBusinessBox,
   CardDetails,
-  OnboardingContent,
-  TextBox,
 } from '../styles/paymentStyles';
 import { useForm } from 'react-hook-form';
 const payment = (props: Props) => {
