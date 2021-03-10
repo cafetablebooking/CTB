@@ -84,23 +84,17 @@ export default makeStyles((theme: CTBtheme) => ({
     display: 'flex',
     flexDirection: 'column',
   },
-  headerMenu: {
-    marginTop: theme.spacing(7),
-  },
-  headerMenuList: {
-    display: 'flex',
-    flexDirection: 'column',
-  },
+  // headerMenu: {
+  //   marginTop: theme.spacing(7),
+  // },
+
   headerMenuItem: {
     '&:hover, &:focus': {
       backgroundColor: theme.palette.background.light,
       // color: "white",
     },
   },
-  headerMenuButton: {
-    marginLeft: theme.spacing(2),
-    padding: theme.spacing(0.5),
-  },
+
   headerMenuButtonSandwich: {
     marginLeft: 9,
     [theme.breakpoints.down('sm')]: {
@@ -111,24 +105,12 @@ export default makeStyles((theme: CTBtheme) => ({
   headerMenuButtonCollapse: {
     marginRight: theme.spacing(2),
   },
-  headerIcon: {
-    fontSize: 28,
-    color: 'rgba(255, 255, 255, 0.35)',
-    // cursor: 'pointer',
-  },
+
   headerIconCollapse: {
     // color: 'white',
     color: theme.palette.text.secondary,
   },
-  profileMenu: {
-    minWidth: 265,
-  },
-  profileMenuUser: {
-    display: 'flex',
-    flexDirection: 'column',
-    padding: theme.spacing(2),
-    marginLeft: 15,
-  },
+
   profileMenuItem: {
     color: theme.palette.text.hint,
   },
@@ -139,41 +121,7 @@ export default makeStyles((theme: CTBtheme) => ({
       color: theme.palette.primary.main,
     },
   },
-  profileMenuLink: {
-    fontSize: 16,
-    textDecoration: 'none',
-    '&:hover': {
-      cursor: 'pointer',
-    },
-  },
-  messageNotification: {
-    height: 'auto',
-    display: 'flex',
-    alignItems: 'center',
-    '&:hover, &:focus': {
-      backgroundColor: theme.palette.background.light,
-    },
-  },
-  messageNotificationSide: {
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginRight: theme.spacing(2),
-  },
-  messageNotificationBodySide: {
-    alignItems: 'flex-start',
-    marginRight: 0,
-  },
-  sendMessageButton: {
-    margin: theme.spacing(4),
-    marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2),
-    textTransform: 'none',
-  },
-  sendButtonIcon: {
-    marginLeft: theme.spacing(2),
-  },
+
   purchaseBtn: {
     [theme.breakpoints.down('sm')]: {
       display: 'none',

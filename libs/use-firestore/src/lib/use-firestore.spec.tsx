@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Notification from './notification';
+import { useFirestore } from './use-firestore';
 
-describe('Notification', () => {
+describe('UseFirestore', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Notification />);
+    const { baseElement } = render(<useFirestore />);
     expect(baseElement).toBeTruthy();
   });
 });
