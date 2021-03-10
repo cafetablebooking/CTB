@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 
 import { useRouter } from 'next/router';
-import PrivateRoute from '../components/PrivateRoute';
+import DashboardRoute from '../components/PrivateRoutes/DashboardRoute';
 import { Button, Box } from '@material-ui/core';
 import styled from 'styled-components';
 import { useAuthContext } from '@ctb/auth-context';
@@ -20,4 +20,4 @@ const dashboard = (props: Props) => {
 
   return <Dashboard>{<Button onClick={logoutUser}>Logout</Button>}</Dashboard>;
 };
-export default PrivateRoute(dashboard);
+export default DashboardRoute(dashboard);

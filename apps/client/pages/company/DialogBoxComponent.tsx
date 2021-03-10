@@ -1,19 +1,14 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import Avatar from '@material-ui/core/Avatar';
-import List from '@material-ui/core/List';
-import ListItem from '@material-ui/core/ListItem';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import ListItemText from '@material-ui/core/ListItemText';
+
 import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
-import PersonIcon from '@material-ui/icons/Person';
-import AddIcon from '@material-ui/icons/Add';
+
 import Typography from '@material-ui/core/Typography';
 import { blue } from '@material-ui/core/colors';
 import { Box, Button, DialogActions } from '@material-ui/core';
 import styled from 'styled-components';
-import moment from 'moment';
+import { useRouter } from 'next/router';
 export interface SimpleDialogProps {
   open: boolean;
   selectedValue: string;
@@ -28,6 +23,7 @@ const useStyles = makeStyles({
   },
 });
 function SimpleDialog(props: SimpleDialogProps) {
+  const router = useRouter();
   const classes = useStyles();
   const { onClose, selectedValue, open } = props;
   const bookedInfo = props.bookedInfo;
@@ -40,8 +36,6 @@ function SimpleDialog(props: SimpleDialogProps) {
     (table) => table.resourceId === bookedInfo.resourceId
   );
 
-  console.log(findTable.resourceTitle);
-
   const handleClose = () => {
     onClose(selectedValue);
   };
@@ -49,7 +43,9 @@ function SimpleDialog(props: SimpleDialogProps) {
   const handleListItemClick = (value: string) => {
     onClose(value);
   };
-
+  const handleRedirect = () => {
+    router.push('/payment');
+  };
   return (
     <Dialog
       onClose={handleClose}
@@ -68,7 +64,7 @@ function SimpleDialog(props: SimpleDialogProps) {
           To: <b>{endTime}</b>
         </Typography>
         <DialogActions>
-          <Button onClick={handleClose} color="primary">
+          <Button onClick={handleRedirect} color="primary">
             Yes
           </Button>
           <Button onClick={handleClose} color="primary">

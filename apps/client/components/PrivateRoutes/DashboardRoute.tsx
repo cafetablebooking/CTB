@@ -1,8 +1,8 @@
 import { useAuthContext } from '@ctb/auth-context';
 
-import SignIn from '../pages/signIn';
+import SignIn from '../../pages/signIn';
 
-const PrivateRoute = (Component) => {
+const DashboardRoute = (Component) => {
   const Auth = (props) => {
     const { user }: any = useAuthContext();
 
@@ -20,4 +20,4 @@ const PrivateRoute = (Component) => {
   return Auth;
 };
 
-export default PrivateRoute;
+export default DashboardRoute;

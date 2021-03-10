@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { Typography, Button } from '@material-ui/core';
 
 import { useRouter } from 'next/router';
@@ -19,7 +19,7 @@ import {
 } from 'apps/client/styles/companyDetailStyles';
 import Image from 'next/image';
 
-import { ClientContext } from 'apps/client/contexts/ClientContext';
+import { useClientContext } from 'apps/client/contexts/ClientContext';
 import moment from 'moment';
 import { Calendar, Views, momentLocalizer } from 'react-big-calendar';
 import { firestore, firebase } from '@ctb/firebase-auth';
@@ -39,15 +39,16 @@ const ValueMap: { [value in WeekDay]: string } = {
 } as const;
 const companyDetail = (props: Props) => {
   const { register, handleSubmit, watch, errors } = useForm({});
-  const { companies }: any = useContext(ClientContext);
+  const { companies, bookedInfo, setBookedInfo }: any = useClientContext();
   const router = useRouter();
+
   const companyId = router.query.pid && router.query.pid[0];
 
   const company = companies && companies.find((item) => item.id === companyId);
 
   const [open, setOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState('');
-  const [bookedInfo, setBookedInfo] = React.useState({});
+
   const handleClickOpen = () => {};
 
   const handleClose = (value: string) => {
@@ -152,13 +153,15 @@ const companyDetail = (props: Props) => {
               Book now
             </Button>
           </Separator>
-          <DialogBoxComponent
-            company={company}
-            selectedValue={selectedValue}
-            bookedInfo={bookedInfo}
-            open={open}
-            onClose={handleClose}
-          />
+          {bookedInfo && (
+            <DialogBoxComponent
+              company={company}
+              selectedValue={selectedValue}
+              bookedInfo={bookedInfo}
+              open={open}
+              onClose={handleClose}
+            />
+          )}
           <CompanyContent>
             <OpeningHours>
               <Typography variant="h6">Bookable times</Typography>

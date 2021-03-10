@@ -16,7 +16,7 @@ export const ClientContextProvider = (props: Props) => {
   const { setCurrentUser }: any = useContext(AuthContext);
   const router = useRouter();
   const [navigatorPosition, setNavigatorPosition] = useState<any>(null);
-
+  const [bookedInfo, setBookedInfo] = React.useState(null);
   Geocode.setApiKey(process.env.NEXT_PUBLIC_CLIENT_GOOGLE_MAPS_API_KEY);
 
   const triggerNavigator = () => {
@@ -82,6 +82,8 @@ export const ClientContextProvider = (props: Props) => {
         navigatorPosition,
         setNavigatorPosition,
         triggerNavigator,
+        bookedInfo,
+        setBookedInfo,
       }}
     >
       <FontWrapper>{props.children}</FontWrapper>
@@ -96,3 +98,14 @@ const FontWrapper = styled.div`
     font-weight: bold;
   }
 `;
+function useClientContext() {
+  const context = useContext(ClientContext);
+  if (context === undefined) {
+    throw new Error(
+      'useClientContext must be used within a ClientContextProvider'
+    );
+  }
+  return context;
+}
+
+export { useClientContext };
