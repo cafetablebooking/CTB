@@ -87,7 +87,7 @@ const companyDetail = (props: Props) => {
       end: formatEnd,
       resourceId: slots.resourceId,
     };
-    var companyRef = firestore.collection('companies').doc(company.id);
+    const companyRef = firestore.collection('companies').doc(company.id);
 
     companyRef.update({
       bookedTimes: firebase.firestore.FieldValue.arrayUnion(bookedTimes),
@@ -169,12 +169,18 @@ const companyDetail = (props: Props) => {
                 }}
               /> */}
               <Calendar
+                min={new Date(2021, 1, 0, 9, 0, 0)}
+                max={new Date(2021, 1, 0, 21, 0, 0)}
                 eventPropGetter={eventStyle}
                 selectable
                 onSelectSlot={selectSlotsHandler}
                 events={company.bookedTimes}
                 localizer={localizer}
                 defaultView={Views.DAY}
+                formats={{
+                  timeGutterFormat: (date, culture, localizer) =>
+                    localizer.format(date, 'H:mm', culture),
+                }}
                 views={['day', 'work_week']}
                 step={30}
                 resources={company.tables}
