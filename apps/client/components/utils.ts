@@ -8,12 +8,16 @@ export const getCompaniesData = async () => {
   const dataArray = [];
   const editedDataArray = [];
   let allCompanies = await companiesRef.get();
+
   for (const doc of allCompanies.docs) {
-    dataArray.push(doc.data());
+    dataArray.push({
+      ...doc.data(),
+      id: doc.id,
+    });
   }
   dataArray.map(async (item) => {
     //   const response = await Geocode.fromAddress(
-    //     `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
+    //     `${item.adress.name} ${item.\adress.city} ${item.adress.postalCode}`
     //   );
 
     //   const { lat, lng } = response && response.results[0].geometry.location;
@@ -22,7 +26,7 @@ export const getCompaniesData = async () => {
       const startTime = moment(booking.start, 'YYYY-MM-DD HH:mm:ss').toDate();
       const endTime = moment(booking.end, 'YYYY-MM-DD HH:mm:ss').toDate();
       return {
-        title: "Booked",
+        title: 'Booked',
         start: startTime,
         end: endTime,
         resourceId: booking.resourceId,

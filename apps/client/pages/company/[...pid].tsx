@@ -22,6 +22,7 @@ import Image from 'next/image';
 import { ClientContext } from 'apps/client/contexts/ClientContext';
 import moment from 'moment';
 import { Calendar, Views, momentLocalizer } from 'react-big-calendar';
+import { firestore, firebase } from '@ctb/firebase-auth';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 interface Props {}
 type WeekDay = 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
@@ -35,15 +36,13 @@ const ValueMap: { [value in WeekDay]: string } = {
   Fri: 'Friday',
   Sat: 'Saturday',
 } as const;
-
 const companyDetail = (props: Props) => {
   const { register, handleSubmit, watch, errors } = useForm({});
   const { companies }: any = useContext(ClientContext);
   const router = useRouter();
   const companyId = router.query.pid && router.query.pid[0];
 
-  const company =
-    companies && companies.find((item) => item.id === parseInt(companyId));
+  const company = companies && companies.find((item) => item.id === companyId);
 
   const renderOpeniningHours = () => {
     const openingDay =
@@ -65,7 +64,6 @@ const companyDetail = (props: Props) => {
     return openingDay;
   };
   function eventStyle(event, start, end, isSelected) {
-    console.log(isSelected);
     var style = {
       backgroundColor: isSelected ? '#cc354e' : '#b5102c',
       borderRadius: '0px',
@@ -78,17 +76,22 @@ const companyDetail = (props: Props) => {
       style: style,
     };
   }
+
   const selectSlotsHandler = (slots) => {
     const formatStart = moment(slots.start).format('YYYY-MM-DDTHH:mm:ss');
     const formatEnd = moment(slots.end).format('YYYY-MM-DDTHH:mm:ss');
 
-    const selectedSlot = {
+    const bookedTimes = {
       allDay: true,
       start: formatStart,
       end: formatEnd,
       resourceId: slots.resourceId,
     };
-    console.log(selectedSlot);
+    var companyRef = firestore.collection('companies').doc(company.id);
+
+    companyRef.update({
+      bookedTimes: firebase.firestore.FieldValue.arrayUnion(bookedTimes),
+    });
   };
   const onSubmit = (data) => {};
   return (
