@@ -1,36 +1,59 @@
 import React from 'react';
-import PaymentRoute from '../components/PrivateRoutes/PaymentRoute';
-import {
-  Typography,
-  Box,
-  TextField,
-  Button,
-  Divider,
-  ThemeProvider,
-} from '@material-ui/core';
-import darkTheme from '../components/ThemeProviders/DarkThemeProvider';
-interface Props {}
-import {
-  BusinessInfoItem,
-  BusinessInnerBox,
-  BusinessTextBox,
-  Wrapper,
-  Hero,
-  PaymentGuarantee,
-  Form,
-  ConnectBusinessBox,
-  CardDetails,
-  OnboardingContent,
-  TextBox,
-} from '../styles/paymentStyles';
+import { makeStyles } from '@material-ui/core/styles';
+
+import DialogTitle from '@material-ui/core/DialogTitle';
+import Dialog from '@material-ui/core/Dialog';
+
+import Typography from '@material-ui/core/Typography';
+import { blue } from '@material-ui/core/colors';
+import { Box, Button } from '@material-ui/core';
+import { TextField, Divider, ThemeProvider } from '@material-ui/core';
+import styled from 'styled-components';
+import darkTheme from '../../components/ThemeProviders/DarkThemeProvider';
+import { useRouter } from 'next/router';
+import { Form, PaymentBox, CardDetails } from '../../styles/paymentStyles';
 import { useForm } from 'react-hook-form';
-const payment = (props: Props) => {
+export interface SimpleDialogProps {
+  open: boolean;
+  selectedValue: string;
+  onClose: (value: string) => void;
+  handlePaymentDialogue: (value: string) => void;
+  bookedInfo: any;
+  company: any;
+}
+const useStyles = makeStyles({
+  avatar: {
+    backgroundColor: blue[100],
+    color: blue[600],
+  },
+});
+function SimpleDialog(props: SimpleDialogProps) {
   const { register, handleSubmit, watch, errors } = useForm({});
   const onSubmit = (data) => {};
+  const router = useRouter();
+  const classes = useStyles();
+  const { onClose, selectedValue, open } = props;
+  const bookedInfo = props.bookedInfo;
+
+  const handleClose = () => {
+    onClose(selectedValue);
+  };
+
+  const handleListItemClick = (value: string) => {
+    onClose(value);
+  };
+  const handleRedirect = () => {
+    router.push('/payment');
+  };
+
   return (
     <ThemeProvider theme={darkTheme}>
-      <Wrapper>
-        <ConnectBusinessBox>
+      <Dialog
+        onClose={handleClose}
+        aria-labelledby="simple-dialog-title"
+        open={open}
+      >
+        <PaymentBox>
           <Typography gutterBottom={true} align="center" variant="h4">
             Payment
           </Typography>
@@ -88,10 +111,21 @@ const payment = (props: Props) => {
               Confirm payment
             </Button>
           </Form>
-        </ConnectBusinessBox>
-      </Wrapper>
+        </PaymentBox>
+      </Dialog>
     </ThemeProvider>
   );
-};
+}
 
-export default PaymentRoute(payment);
+const StyledDialogBox = styled(Box)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 30px;
+  .MuiDialogTitle-root {
+    margin-bottom: 20px;
+    padding: 0 !important;
+  }
+`;
+export default SimpleDialog;

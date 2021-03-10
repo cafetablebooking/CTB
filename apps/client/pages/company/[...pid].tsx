@@ -24,6 +24,7 @@ import moment from 'moment';
 import { Calendar, Views, momentLocalizer } from 'react-big-calendar';
 import { firestore, firebase } from '@ctb/firebase-auth';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import PaymentDialogComponent from './PaymentDialogComponent';
 import DialogBoxComponent from './DialogBoxComponent';
 interface Props {}
 type WeekDay = 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
@@ -46,16 +47,23 @@ const companyDetail = (props: Props) => {
 
   const company = companies && companies.find((item) => item.id === companyId);
 
-  const [open, setOpen] = React.useState(false);
+  const [openConfirmBox, setOpenConfirmBox] = React.useState(false);
+  const [paymentDialogOpen, setPaymentDialogOpen] = React.useState(false);
   const [selectedValue, setSelectedValue] = React.useState('');
 
-  const handleClickOpen = () => {};
-
-  const handleClose = (value: string) => {
-    setOpen(false);
+  const handlePaymentDialog = () => {
+    setPaymentDialogOpen(true);
+    setOpenConfirmBox(false);
+  };
+  const handleConfirmBoxClose = (value: string) => {
+    setOpenConfirmBox(false);
     setSelectedValue(value);
   };
+  const handlePaymentDialogClose = (value: string) => {
+    setPaymentDialogOpen(false);
 
+    setSelectedValue(value);
+  };
   const renderOpeniningHours = () => {
     const openingDay =
       company &&
@@ -100,7 +108,7 @@ const companyDetail = (props: Props) => {
       resourceId: slots.resourceId,
     };
     const companyRef = firestore.collection('companies').doc(company.id);
-    setOpen(true);
+    setOpenConfirmBox(true);
     setBookedInfo(bookedTimes);
     // companyRef.update({
     //   bookedTimes: firebase.firestore.FieldValue.arrayUnion(bookedTimes),
@@ -153,13 +161,21 @@ const companyDetail = (props: Props) => {
               Book now
             </Button>
           </Separator>
+          <PaymentDialogComponent
+            company={company}
+            selectedValue={selectedValue}
+            bookedInfo={bookedInfo}
+            open={paymentDialogOpen}
+            onClose={handlePaymentDialogClose}
+          />
           {bookedInfo && (
             <DialogBoxComponent
+              handlePaymentDialog={handlePaymentDialog}
               company={company}
               selectedValue={selectedValue}
               bookedInfo={bookedInfo}
-              open={open}
-              onClose={handleClose}
+              open={openConfirmBox}
+              onClose={handleConfirmBoxClose}
             />
           )}
           <CompanyContent>

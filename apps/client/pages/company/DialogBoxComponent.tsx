@@ -13,6 +13,7 @@ export interface SimpleDialogProps {
   open: boolean;
   selectedValue: string;
   onClose: (value: string) => void;
+  handlePaymentDialog: (value: string) => void;
   bookedInfo: any;
   company: any;
 }
@@ -39,13 +40,13 @@ function SimpleDialog(props: SimpleDialogProps) {
   const handleClose = () => {
     onClose(selectedValue);
   };
-
   const handleListItemClick = (value: string) => {
     onClose(value);
   };
   const handleRedirect = () => {
     router.push('/payment');
   };
+
   return (
     <Dialog
       onClose={handleClose}
@@ -64,7 +65,7 @@ function SimpleDialog(props: SimpleDialogProps) {
           To: <b>{endTime}</b>
         </Typography>
         <DialogActions>
-          <Button onClick={handleRedirect} color="primary">
+          <Button onClick={props.handlePaymentDialog} color="primary">
             Yes
           </Button>
           <Button onClick={handleClose} color="primary">
