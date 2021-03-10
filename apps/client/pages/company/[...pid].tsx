@@ -24,6 +24,7 @@ import moment from 'moment';
 import { Calendar, Views, momentLocalizer } from 'react-big-calendar';
 import { firestore, firebase } from '@ctb/firebase-auth';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import DialogBoxComponent from './DialogBoxComponent';
 interface Props {}
 type WeekDay = 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
 const localizer = momentLocalizer(moment);
@@ -43,6 +44,16 @@ const companyDetail = (props: Props) => {
   const companyId = router.query.pid && router.query.pid[0];
 
   const company = companies && companies.find((item) => item.id === companyId);
+
+  const [open, setOpen] = React.useState(false);
+  const [selectedValue, setSelectedValue] = React.useState('');
+  const [bookedInfo, setBookedInfo] = React.useState({});
+  const handleClickOpen = () => {};
+
+  const handleClose = (value: string) => {
+    setOpen(false);
+    setSelectedValue(value);
+  };
 
   const renderOpeniningHours = () => {
     const openingDay =
@@ -88,10 +99,11 @@ const companyDetail = (props: Props) => {
       resourceId: slots.resourceId,
     };
     const companyRef = firestore.collection('companies').doc(company.id);
-
-    companyRef.update({
-      bookedTimes: firebase.firestore.FieldValue.arrayUnion(bookedTimes),
-    });
+    setOpen(true);
+    setBookedInfo(bookedTimes);
+    // companyRef.update({
+    //   bookedTimes: firebase.firestore.FieldValue.arrayUnion(bookedTimes),
+    // });
   };
   const onSubmit = (data) => {};
   return (
@@ -140,7 +152,13 @@ const companyDetail = (props: Props) => {
               Book now
             </Button>
           </Separator>
-
+          <DialogBoxComponent
+            company={company}
+            selectedValue={selectedValue}
+            bookedInfo={bookedInfo}
+            open={open}
+            onClose={handleClose}
+          />
           <CompanyContent>
             <OpeningHours>
               <Typography variant="h6">Bookable times</Typography>
