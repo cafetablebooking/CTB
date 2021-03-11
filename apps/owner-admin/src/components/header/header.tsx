@@ -1,33 +1,11 @@
 /* eslint-disable no-empty-pattern */
 import React, { useContext, useState } from 'react';
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  InputBase,
-  Menu,
-  MenuItem,
-  Fab,
-  Button,
-  useTheme,
-  Typography,
-} from '@material-ui/core';
-import {
-  Menu as MenuIcon,
-  MailOutline as MailIcon,
-  NotificationsNone as NotificationsIcon,
-  Person as AccountIcon,
-  Search as SearchIcon,
-  Send as SendIcon,
-  ArrowBack as ArrowBackIcon,
-} from '@material-ui/icons';
+import { AppBar, Toolbar, useTheme, Typography } from '@material-ui/core';
+
 import { AppBarProps } from '@material-ui/core';
-import classNames from 'classnames';
 import { CTBtheme, ThemeMode } from '@ctb/types';
 // styles
 import useStyles from './styles';
-
-import Badge from '../badge';
 import {
   useLayoutState,
   useLayoutDispatch,
@@ -83,13 +61,14 @@ export function Header({}: HeaderProps) {
   const layoutState = useLayoutState();
   const layoutDispatch = useLayoutDispatch();
   const { logout } = useAuthContext();
+
   // local
   const [mailMenu, setMailMenu] = useState(null);
   const [isMailsUnread, setIsMailsUnread] = useState(true);
   const [notificationsMenu, setNotificationsMenu] = useState(null);
   const [isNotificationsUnread, setIsNotificationsUnread] = useState(true);
   const [profileMenu, setProfileMenu] = useState(null);
-  const [isSearchOpen, setSearchOpen] = useState(false);
+  // const [isSearchOpen, setSearchOpen] = useState(false);
   const { themeMode } = useContext<AppContextPropsType>(appContext);
 
   console.log(docs);
@@ -100,60 +79,15 @@ export function Header({}: HeaderProps) {
       className={classes.appBar}
     >
       <Toolbar className={classes.toolbar}>
-        <IconButton
-          color="inherit"
-          onClick={() => toggleSidebar(layoutDispatch)}
-          className={classNames(
-            classes.headerMenuButtonSandwich,
-            classes.headerMenuButtonCollapse
-          )}
-        >
-          {layoutState.isSidebarOpened ? (
-            <ArrowBackIcon
-              classes={{
-                root: classNames(
-                  classes.headerIcon,
-                  classes.headerIconCollapse
-                ),
-              }}
-            />
-          ) : (
-            <MenuIcon
-              classes={{
-                root: classNames(
-                  classes.headerIcon,
-                  classes.headerIconCollapse
-                ),
-              }}
-            />
-          )}
-        </IconButton>
+        <HeaderIconButton
+          onClick={(e) => toggleSidebar(layoutDispatch)}
+          layoutState={layoutState}
+          isSidebarToggle
+        />
         <Typography variant="h6" className={classes.logotype}>
           CTB Admin
         </Typography>
         <div className={classes.grow} />
-
-        <div
-          className={classNames(classes.search, {
-            [classes.searchFocused]: isSearchOpen,
-          })}
-        >
-          <div
-            className={classNames(classes.searchIcon, {
-              [classes.searchIconOpened]: isSearchOpen,
-            })}
-            onClick={() => setSearchOpen(!isSearchOpen)}
-          >
-            <SearchIcon classes={{ root: classes.headerIcon }} />
-          </div>
-          <InputBase
-            placeholder="Search…"
-            classes={{
-              root: classes.inputRoot,
-              input: classes.inputInput,
-            }}
-          />
-        </div>
 
         <HeaderIconButton
           onClick={(e) => {

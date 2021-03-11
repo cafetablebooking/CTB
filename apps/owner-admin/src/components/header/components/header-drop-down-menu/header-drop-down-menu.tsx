@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Fab, Menu, MenuItem, Typography } from '@material-ui/core';
 import React from 'react';
-import classNames from 'classNames';
+import classNames from 'classnames';
 
 import UserAvatar from '../../../user-avatar/user-avatar';
 import useStyles from './styles';
@@ -43,7 +43,6 @@ function HeaderDropDownMenu({
   return (
     <Menu
       id="notifications-menu"
-      // open={Boolean(notificationsMenu)}
       open={open}
       anchorEl={anchorEl}
       onClose={onClose}
@@ -55,9 +54,7 @@ function HeaderDropDownMenu({
       <div className={classes.profileMenuUser}>
         <Typography variant="h5">{title}</Typography>
         <Typography variant="subtitle2" color="secondary">
-          {/* {list.length} New Notifications */}
           {isProfile ? subTitle : `${list.length} New ${title}`}
-          {/* {`${list.length} New ${title}`} */}
         </Typography>
       </div>
       {list &&
@@ -80,7 +77,6 @@ function HeaderDropDownMenu({
                 classes.notificationItemContainer
               )}
             >
-              {/* <Typography>{listItem.message}</Typography> */}
               {isMessage && (
                 <Typography variant="subtitle2">{listItem.name}</Typography>
               )}

@@ -95,21 +95,9 @@ export default makeStyles((theme: CTBtheme) => ({
     },
   },
 
-  headerMenuButtonSandwich: {
-    marginLeft: 9,
-    [theme.breakpoints.down('sm')]: {
-      marginLeft: 0,
-    },
-    padding: theme.spacing(0.5),
-  },
-  headerMenuButtonCollapse: {
-    marginRight: theme.spacing(2),
-  },
-
-  headerIconCollapse: {
-    // color: 'white',
-    color: theme.palette.text.secondary,
-  },
+ 
+  
+  
 
   profileMenuItem: {
     color: theme.palette.text.hint,
@@ -128,4 +116,5 @@ export default makeStyles((theme: CTBtheme) => ({
     },
     marginRight: theme.spacing(3),
   },
+  
 }));

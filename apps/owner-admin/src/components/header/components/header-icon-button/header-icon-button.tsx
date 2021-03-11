@@ -1,14 +1,13 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import { IconButton } from '@material-ui/core';
+import classNames from 'classnames';
 
 import {
   Menu as MenuIcon,
   MailOutline as MailIcon,
   NotificationsNone as NotificationsIcon,
   Person as AccountIcon,
-  Search as SearchIcon,
-  Send as SendIcon,
   ArrowBack as ArrowBackIcon,
 } from '@material-ui/icons';
 
@@ -27,6 +26,8 @@ export interface HeaderIconButtonProps {
   isNotification?: boolean;
   isAccount?: boolean;
   badge?: boolean;
+  layoutState?: any;
+  isSidebarToggle?: boolean;
 }
 
 export function HeaderIconButton({
@@ -40,6 +41,8 @@ export function HeaderIconButton({
   isNotification,
   isAccount,
   badge,
+  layoutState,
+  isSidebarToggle,
 }: HeaderIconButtonProps) {
   const classes = useStyles();
 
@@ -49,7 +52,11 @@ export function HeaderIconButton({
       aria-haspopup="true"
       aria-controls="mail-menu"
       onClick={onClick}
-      className={classes.headerMenuButton}
+      className={classNames(
+        classes.headerMenuButton,
+        classes.headerMenuButtonSandwich,
+        classes.headerMenuButtonCollapse
+      )}
     >
       {badge && (
         <Badge
@@ -71,7 +78,23 @@ export function HeaderIconButton({
           {isMail && <MailIcon classes={{ root: classes.headerIcon }} />}
         </Badge>
       )}
+
       {isAccount && <AccountIcon classes={{ root: classes.headerIcon }} />}
+
+      {isSidebarToggle &&
+        (layoutState.isSidebarOpened ? (
+          <ArrowBackIcon
+            classes={{
+              root: classNames(classes.headerIcon, classes.headerIconCollapse),
+            }}
+          />
+        ) : (
+          <MenuIcon
+            classes={{
+              root: classNames(classes.headerIcon, classes.headerIconCollapse),
+            }}
+          />
+        ))}
     </IconButton>
   );
 }
