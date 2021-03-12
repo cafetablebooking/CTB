@@ -2,7 +2,7 @@ import * as geolib from 'geolib';
 import moment from 'moment';
 import Geocode from 'react-geocode';
 import { firestore } from '@ctb/firebase-auth';
-export const getTablesById = async (id) => {
+export const getTableBookingById = async (id) => {
   const data = [];
   const tablesRef = firestore.collection('tableBookings').where('companyId', '==', id);
   let companyTables = await tablesRef.get();
@@ -28,17 +28,17 @@ export const getTableBookings = async () => {
 };
 export const getCompaniesData = async () => {
   const companiesRef = firestore.collection('companies');
-  const dataArray = [];
-  const editedDataArray = [];
+  const tempArr = [];
+  const data = [];
   let allCompanies = await companiesRef.get();
 
   for (const doc of allCompanies.docs) {
-    dataArray.push({
+    tempArr.push({
       ...doc.data(),
       id: doc.id,
     });
   }
-  dataArray.map(async (item) => {
+  tempArr.map(async (item) => {
     //   const response = await Geocode.fromAddress(
     //     `${item.adress.name} ${item.\adress.city} ${item.adress.postalCode}`
     //   );
@@ -52,10 +52,10 @@ export const getCompaniesData = async () => {
         lng: 18,
       },
     };
-    editedDataArray.push(options);
+    data.push(options);
   });
 
-  return editedDataArray;
+  return data;
 };
 
 export const getOpeningHours = (day) => {

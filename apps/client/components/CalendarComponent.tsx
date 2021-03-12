@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { CalendarWrapper } from '../styles/companyDetailStyles';
-import { getTablesById } from './utils';
+import { getTableBookingById } from './utils';
 import moment from 'moment';
 import { Calendar, Views, momentLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -23,7 +23,7 @@ const CalendarComponent = (props: Props) => {
   } = props;
   const [tables, setTables] = useState(null);
   const setTablesData = async () => {
-    const data = await getTablesById(companyId);
+    const data = await getTableBookingById(companyId);
 
     setTables(data);
   };
