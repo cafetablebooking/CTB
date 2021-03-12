@@ -39,3 +39,4 @@ testem.log
 Thumbs.db
 *.local
 apps/client/.env.local
+/server/node_modules

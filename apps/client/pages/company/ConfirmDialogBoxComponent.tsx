@@ -20,7 +20,7 @@ export interface SimpleDialogProps {
   onClose: (value: string) => void;
   handlePaymentDialog: () => void;
   bookedInfo: any;
-  company: any;
+  tableBookings: any;
 }
 const useStyles = makeStyles({
   avatar: {
@@ -30,15 +30,20 @@ const useStyles = makeStyles({
 });
 function SimpleDialog(props: SimpleDialogProps) {
   const router = useRouter();
-  const classes = useStyles();
-  const { onClose, selectedValue, open, handlePaymentDialog } = props;
+  const {
+    onClose,
+    selectedValue,
+    open,
+    handlePaymentDialog,
+    tableBookings,
+  } = props;
   const bookedInfo = props.bookedInfo;
   const startTime =
     bookedInfo.start && bookedInfo.start.replace('T', ' ').slice(0, -3);
   const endTime =
     bookedInfo.end && bookedInfo.end.replace('T', ' ').slice(0, -3);
 
-  const findTable = props.company.tables.find(
+  const findTable = tableBookings[0].resources.find(
     (table) => table.resourceId === bookedInfo.resourceId
   );
 

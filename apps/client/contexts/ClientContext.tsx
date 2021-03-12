@@ -63,7 +63,6 @@ export const ClientContextProvider = (props: Props) => {
     const data = await getCompaniesData();
     setCompanies(data);
   };
-
   useEffect(() => {
     router.events.on('routeChangeComplete', () => {
       window.scrollTo(0, 0);
@@ -71,7 +70,6 @@ export const ClientContextProvider = (props: Props) => {
 
     setCompaniesData();
   }, []);
-
   return (
     <ClientContext.Provider
       value={{

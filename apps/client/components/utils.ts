@@ -2,7 +2,30 @@ import * as geolib from 'geolib';
 import moment from 'moment';
 import Geocode from 'react-geocode';
 import { firestore } from '@ctb/firebase-auth';
+export const getTablesById = async (id) => {
+  const data = [];
+  const tablesRef = firestore.collection('tableBookings').where('companyId', '==', id);
+  let companyTables = await tablesRef.get();
 
+  for (const doc of companyTables.docs) {
+    data.push(doc.data());
+  }
+  return data;
+};
+
+export const getTableBookings = async () => {
+  const allBookingsRef = firestore.collection('tableBookings');
+  const data = [];
+  const allBookings = await allBookingsRef.get();
+
+  for (const doc of allBookings.docs) {
+    data.push({
+      ...doc.data(),
+      docId: doc.id,
+    });
+  }
+  return data;
+};
 export const getCompaniesData = async () => {
   const companiesRef = firestore.collection('companies');
   const dataArray = [];
@@ -22,19 +45,8 @@ export const getCompaniesData = async () => {
 
     //   const { lat, lng } = response && response.results[0].geometry.location;
 
-    const bookedTimes = item.bookedTimes.map((booking) => {
-      const startTime = moment(booking.start, 'YYYY-MM-DD HH:mm:ss').toDate();
-      const endTime = moment(booking.end, 'YYYY-MM-DD HH:mm:ss').toDate();
-      return {
-        title: 'Booked',
-        start: startTime,
-        end: endTime,
-        resourceId: booking.resourceId,
-      };
-    });
     const options = {
       ...item,
-      bookedTimes: bookedTimes,
       coordinates: {
         lat: 59,
         lng: 18,

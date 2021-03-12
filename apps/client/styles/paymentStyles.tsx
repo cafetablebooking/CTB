@@ -18,11 +18,12 @@ export const PaymentBox = styled(Box)`
   align-items: center;
   padding: 20px;
   border-radius: 4px;
-  background-color: #424242;
-  color: white;
   display: flex;
 
   flex-direction: column;
+  .__PrivateStripeElement {
+    margin-left: 30px !important;
+  }
   /* @media (min-width: 768px) {
     min-width: 600px;
   } */

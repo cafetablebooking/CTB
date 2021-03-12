@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Typography, Button } from '@material-ui/core';
 
 import { useRouter } from 'next/router';
 
-import { useForm } from 'react-hook-form';
 import {
   Wrapper,
   CoverImage,
@@ -11,7 +10,6 @@ import {
   CompanyContent,
   OpeningHours,
   TextBox,
-  CalendarWrapper,
 } from '../../styles/companyDetailStyles';
 import {
   ImageInnerCircle,
@@ -20,15 +18,20 @@ import {
 import Image from 'next/image';
 
 import { useClientContext } from 'apps/client/contexts/ClientContext';
-import moment from 'moment';
-import { Calendar, Views, momentLocalizer } from 'react-big-calendar';
-import { firestore, firebase } from '@ctb/firebase-auth';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
+
 import PaymentDialogComponent from './PaymentDialogComponent';
-import DialogBoxComponent from './DialogBoxComponent';
+import ConfirmDialogBoxComponent from './ConfirmDialogBoxComponent';
+import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js';
+import CalendarComponent from 'apps/client/components/CalendarComponent';
+import { getTableBookings } from 'apps/client/components/utils';
+const stripePromise = loadStripe(
+  process.env.NEXT_PUBLIC_CLIENT_STRIPE_PUBLISHABLE_KEY
+);
+
 interface Props {}
 type WeekDay = 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
-const localizer = momentLocalizer(moment);
+
 const ValueMap: { [value in WeekDay]: string } = {
   Sun: 'Sunday',
   Mon: 'Monday',
@@ -39,21 +42,29 @@ const ValueMap: { [value in WeekDay]: string } = {
   Sat: 'Saturday',
 } as const;
 const companyDetail = (props: Props) => {
-  const { register, handleSubmit, watch, errors } = useForm({});
   const { companies, bookedInfo, setBookedInfo }: any = useClientContext();
   const router = useRouter();
-
   const companyId = router.query.pid && router.query.pid[0];
-
   const company = companies && companies.find((item) => item.id === companyId);
 
-  const [openConfirmBox, setOpenConfirmBox] = React.useState(false);
-  const [paymentDialogOpen, setPaymentDialogOpen] = React.useState(false);
-  const [selectedValue, setSelectedValue] = React.useState('');
+  const [openConfirmBox, setOpenConfirmBox] = useState(false);
+  const [paymentDialogOpen, setPaymentDialogOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState('');
+  const [success, setSuccess] = useState(false);
+  const [tableBookings, setTableBookings] = useState(null);
 
+  const setAllTableBookings = async () => {
+    const data = await getTableBookings();
+    setTableBookings(data);
+  };
+
+  useEffect(() => {
+    setAllTableBookings();
+  }, []);
   const handlePaymentDialog = () => {
     setPaymentDialogOpen(true);
     setOpenConfirmBox(false);
+    setSuccess(false);
   };
   const handleConfirmBoxClose = (value: string) => {
     setOpenConfirmBox(false);
@@ -83,38 +94,7 @@ const companyDetail = (props: Props) => {
       });
     return openingDay;
   };
-  function eventStyle(event, start, end, isSelected) {
-    var style = {
-      backgroundColor: isSelected ? '#cc354e' : '#b5102c',
-      borderRadius: '0px',
-      opacity: 0.8,
-      color: 'black',
-      border: '0px',
-      display: 'block',
-    };
-    return {
-      style: style,
-    };
-  }
 
-  const selectSlotsHandler = (slots) => {
-    const formatStart = moment(slots.start).format('YYYY-MM-DDTHH:mm:ss');
-    const formatEnd = moment(slots.end).format('YYYY-MM-DDTHH:mm:ss');
-
-    const bookedTimes = {
-      allDay: true,
-      start: formatStart,
-      end: formatEnd,
-      resourceId: slots.resourceId,
-    };
-    const companyRef = firestore.collection('companies').doc(company.id);
-    setOpenConfirmBox(true);
-    setBookedInfo(bookedTimes);
-    // companyRef.update({
-    //   bookedTimes: firebase.firestore.FieldValue.arrayUnion(bookedTimes),
-    // });
-  };
-  const onSubmit = (data) => {};
   return (
     <>
       {company && (
@@ -161,17 +141,22 @@ const companyDetail = (props: Props) => {
               Book now
             </Button>
           </Separator>
-          <PaymentDialogComponent
-            company={company}
-            selectedValue={selectedValue}
-            bookedInfo={bookedInfo}
-            open={paymentDialogOpen}
-            onClose={handlePaymentDialogClose}
-          />
-          {bookedInfo && (
-            <DialogBoxComponent
-              handlePaymentDialog={handlePaymentDialog}
+          <Elements stripe={stripePromise}>
+            <PaymentDialogComponent
+              success={success}
+              setSuccess={setSuccess}
               company={company}
+              tableBookings={tableBookings}
+              selectedValue={selectedValue}
+              bookedInfo={bookedInfo}
+              open={paymentDialogOpen}
+              onClose={handlePaymentDialogClose}
+            />
+          </Elements>
+          {bookedInfo && (
+            <ConfirmDialogBoxComponent
+              handlePaymentDialog={handlePaymentDialog}
+              tableBookings={tableBookings}
               selectedValue={selectedValue}
               bookedInfo={bookedInfo}
               open={openConfirmBox}
@@ -183,27 +168,13 @@ const companyDetail = (props: Props) => {
               <Typography variant="h6">Bookable times</Typography>
               {renderOpeniningHours()}
             </OpeningHours>
-            <CalendarWrapper>
-              <Calendar
-                min={new Date(2021, 1, 0, 9, 0, 0)}
-                max={new Date(2021, 1, 0, 21, 0, 0)}
-                eventPropGetter={eventStyle}
-                selectable
-                onSelectSlot={selectSlotsHandler}
-                events={company.bookedTimes}
-                localizer={localizer}
-                defaultView={Views.DAY}
-                formats={{
-                  timeGutterFormat: (date, culture, localizer) =>
-                    localizer.format(date, 'HH:mm', culture),
-                }}
-                views={['day', 'work_week']}
-                step={30}
-                resources={company.tables}
-                resourceIdAccessor="resourceId"
-                resourceTitleAccessor="resourceTitle"
-              />
-            </CalendarWrapper>
+            <CalendarComponent
+              success={success}
+              company={company}
+              setOpenConfirmBox={setOpenConfirmBox}
+              setBookedInfo={setBookedInfo}
+              companyId={companyId}
+            />
           </CompanyContent>
         </Wrapper>
       )}
