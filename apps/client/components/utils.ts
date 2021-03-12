@@ -3,12 +3,14 @@ import moment from 'moment';
 import Geocode from 'react-geocode';
 import { firestore } from '@ctb/firebase-auth';
 export const getTableBookingById = async (id) => {
-  const data = [];
-  const tablesRef = firestore.collection('tableBookings').where('companyId', '==', id);
+  let data = null;
+  const tablesRef = firestore
+    .collection('tableBookings')
+    .where('companyId', '==', id);
   let companyTables = await tablesRef.get();
 
   for (const doc of companyTables.docs) {
-    data.push(doc.data());
+    data = doc.data();
   }
   return data;
 };

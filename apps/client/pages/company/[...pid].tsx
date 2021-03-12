@@ -170,7 +170,6 @@ const companyDetail = (props: Props) => {
             </OpeningHours>
             <CalendarComponent
               success={success}
-              company={company}
               setOpenConfirmBox={setOpenConfirmBox}
               setBookedInfo={setBookedInfo}
               companyId={companyId}
