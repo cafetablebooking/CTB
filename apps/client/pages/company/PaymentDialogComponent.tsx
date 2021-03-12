@@ -1,15 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import React from 'react';
 
-import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 
 import Typography from '@material-ui/core/Typography';
-import { blue } from '@material-ui/core/colors';
-import { Box, Button } from '@material-ui/core';
-import { TextField, Divider, ThemeProvider } from '@material-ui/core';
-import styled from 'styled-components';
-import { useRouter } from 'next/router';
+import { Button } from '@material-ui/core';
+import { TextField, Divider } from '@material-ui/core';
+
 import { Form, PaymentBox, CardDetails } from '../../styles/paymentStyles';
 import { useForm } from 'react-hook-form';
 import { firestore, firebase } from '@ctb/firebase-auth';
@@ -17,14 +13,12 @@ import axios from 'axios';
 import {
   useStripe,
   useElements,
-  CardElement,
-  Elements,
   CardNumberElement,
   CardExpiryElement,
   CardCvcElement,
 } from '@stripe/react-stripe-js';
 import StripeInput from './StripeInput';
-import { getTableBookings } from 'apps/client/components/utils';
+
 export interface SimpleDialogProps {
   open: boolean;
   selectedValue: string;
@@ -35,18 +29,10 @@ export interface SimpleDialogProps {
   setSuccess: (value: boolean) => void;
   tableBookings: any;
 }
-const useStyles = makeStyles({
-  avatar: {
-    backgroundColor: blue[100],
-    color: blue[600],
-  },
-});
 
 function PaymentDialog(props: SimpleDialogProps) {
   const { register, handleSubmit, watch, errors } = useForm({});
 
-  const router = useRouter();
-  const classes = useStyles();
   const {
     onClose,
     selectedValue,

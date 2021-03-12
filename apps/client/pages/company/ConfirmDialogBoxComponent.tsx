@@ -12,7 +12,6 @@ import {
   DialogContentText,
 } from '@material-ui/core';
 import styled from 'styled-components';
-import { useRouter } from 'next/router';
 export interface SimpleDialogProps {
   open: boolean;
   selectedValue: string;
