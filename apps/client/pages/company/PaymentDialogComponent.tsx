@@ -124,7 +124,6 @@ function PaymentDialog(props: PaymentDialogProps) {
                   component: CardNumberElement,
                 },
               }}
-              inputRef={register()}
             />
             <CardDetails>
               <TextField
@@ -141,7 +140,6 @@ function PaymentDialog(props: PaymentDialogProps) {
                     component: CardExpiryElement,
                   },
                 }}
-                inputRef={register()}
               />
               <TextField
                 id="outlined-basic"
@@ -157,7 +155,6 @@ function PaymentDialog(props: PaymentDialogProps) {
                     component: CardCvcElement,
                   },
                 }}
-                inputRef={register()}
               />
             </CardDetails>
             <TextField
