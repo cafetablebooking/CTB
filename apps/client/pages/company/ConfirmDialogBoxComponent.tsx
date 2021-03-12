@@ -4,7 +4,7 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 import Dialog from '@material-ui/core/Dialog';
 
 import Typography from '@material-ui/core/Typography';
-
+import moment from 'moment';
 import {
   Box,
   Button,
@@ -47,6 +47,14 @@ function ConfirmDialog(props: ConfirmDialogProps) {
   const handleClose = () => {
     onClose(selectedValue);
   };
+  const selectedStartTime = moment(
+    bookedInfo.start,
+    'YYYY-MM-DD HH:mm:ss'
+  ).toDate();
+
+  const currentDate = moment()._d;
+  const timeHasPassed = selectedStartTime < currentDate ? true : false;
+  console.log(timeHasPassed);
 
   return (
     <Dialog
@@ -55,24 +63,31 @@ function ConfirmDialog(props: ConfirmDialogProps) {
       open={open}
     >
       <StyledDialogBox>
-        <DialogTitle id="simple-dialog-title">Confirm table</DialogTitle>
-        <DialogContentText id="alert-dialog-slide-description">
-          Do you really want to book <b>{findTableResource.resourceTitle}</b>?
-        </DialogContentText>
-        <Typography>
-          From: <b>{startTime}</b>
-        </Typography>
-        <Typography>
-          To: <b>{endTime}</b>
-        </Typography>
-        <DialogActions>
-          <Button onClick={handlePaymentDialog} color="primary">
-            Yes
-          </Button>
-          <Button onClick={handleClose} color="primary">
-            No
-          </Button>
-        </DialogActions>
+        {!timeHasPassed ? (
+          <>
+            <DialogTitle id="simple-dialog-title">Confirm table</DialogTitle>
+            <DialogContentText id="alert-dialog-slide-description">
+              Do you really want to book{' '}
+              <b>{findTableResource.resourceTitle}</b>?
+            </DialogContentText>
+            <Typography>
+              From: <b>{startTime}</b>
+            </Typography>
+            <Typography>
+              To: <b>{endTime}</b>
+            </Typography>
+            <DialogActions>
+              <Button onClick={handlePaymentDialog} color="primary">
+                Yes
+              </Button>
+              <Button onClick={handleClose} color="primary">
+                No
+              </Button>
+            </DialogActions>{' '}
+          </>
+        ) : (
+          <Typography>You can't select a time in the passed.</Typography>
+        )}
       </StyledDialogBox>
     </Dialog>
   );
