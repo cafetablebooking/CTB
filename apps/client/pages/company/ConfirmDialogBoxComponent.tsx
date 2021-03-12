@@ -12,33 +12,38 @@ import {
   DialogContentText,
 } from '@material-ui/core';
 import styled from 'styled-components';
-export interface SimpleDialogProps {
+export interface ConfirmDialogProps {
   open: boolean;
   selectedValue: string;
   onClose: (value: string) => void;
   handlePaymentDialog: () => void;
   bookedInfo: any;
   tableBookings: any;
+  companyId: string;
 }
 
-function SimpleDialog(props: SimpleDialogProps) {
+function ConfirmDialog(props: ConfirmDialogProps) {
   const {
     onClose,
     selectedValue,
     open,
     handlePaymentDialog,
     tableBookings,
+    companyId,
   } = props;
+
   const bookedInfo = props.bookedInfo;
   const startTime =
     bookedInfo.start && bookedInfo.start.replace('T', ' ').slice(0, -3);
   const endTime =
     bookedInfo.end && bookedInfo.end.replace('T', ' ').slice(0, -3);
 
-  const findTable = tableBookings[0].resources.find(
-    (table) => table.resourceId === bookedInfo.resourceId
-  );
-
+  const tableBooking = tableBookings.find((item) => {
+    return item.companyId === companyId;
+  });
+  const findTableResource = tableBooking.resources.find((item) => {
+    return item.resourceId === bookedInfo.resourceId;
+  });
   const handleClose = () => {
     onClose(selectedValue);
   };
@@ -52,7 +57,7 @@ function SimpleDialog(props: SimpleDialogProps) {
       <StyledDialogBox>
         <DialogTitle id="simple-dialog-title">Confirm table</DialogTitle>
         <DialogContentText id="alert-dialog-slide-description">
-          Do you really want to book <b>{findTable.resourceTitle}</b>?
+          Do you really want to book <b>{findTableResource.resourceTitle}</b>?
         </DialogContentText>
         <Typography>
           From: <b>{startTime}</b>
@@ -84,4 +89,4 @@ const StyledDialogBox = styled(Box)`
     padding: 0 !important;
   }
 `;
-export default SimpleDialog;
+export default ConfirmDialog;

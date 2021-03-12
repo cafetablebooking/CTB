@@ -57,8 +57,8 @@ const CalendarComponent = (props: Props) => {
   };
 
   const bookedTimes =
-    tableBookingsById !== null &&
-    tableBookingsById.bookedTimes.map((booking) => {
+    tableBookingsById &&
+    Object(tableBookingsById).bookedTimes.map((booking) => {
       const startTime = moment(booking.start, 'YYYY-MM-DD HH:mm:ss').toDate();
       const endTime = moment(booking.end, 'YYYY-MM-DD HH:mm:ss').toDate();
       return {
@@ -71,7 +71,7 @@ const CalendarComponent = (props: Props) => {
 
   return (
     <CalendarWrapper>
-      {/* {tableBookingsById && (
+      {tableBookingsById && (
         <Calendar
           min={new Date(2021, 1, 0, 9, 0, 0)}
           max={new Date(2021, 1, 0, 21, 0, 0)}
@@ -87,11 +87,11 @@ const CalendarComponent = (props: Props) => {
           }}
           views={['day', 'work_week']}
           step={30}
-          resources={tableBookingsById[0].resources}
+          resources={Object(tableBookingsById).resources}
           resourceIdAccessor="resourceId"
           resourceTitleAccessor="resourceTitle"
         />
-      )} */}
+      )}
     </CalendarWrapper>
   );
 };

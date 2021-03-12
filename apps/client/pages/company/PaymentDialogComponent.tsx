@@ -19,7 +19,7 @@ import {
 } from '@stripe/react-stripe-js';
 import StripeInput from './StripeInput';
 
-export interface SimpleDialogProps {
+export interface PaymentDialogProps {
   open: boolean;
   selectedValue: string;
   onClose: (value: string) => void;
@@ -30,7 +30,7 @@ export interface SimpleDialogProps {
   tableBookings: any;
 }
 
-function PaymentDialog(props: SimpleDialogProps) {
+function PaymentDialog(props: PaymentDialogProps) {
   const { register, handleSubmit, watch, errors } = useForm({});
 
   const {

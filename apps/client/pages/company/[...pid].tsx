@@ -161,6 +161,7 @@ const companyDetail = (props: Props) => {
               bookedInfo={bookedInfo}
               open={openConfirmBox}
               onClose={handleConfirmBoxClose}
+              companyId={companyId}
             />
           )}
           <CompanyContent>
