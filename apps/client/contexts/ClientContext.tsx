@@ -64,10 +64,11 @@ export const ClientContextProvider = (props: Props) => {
     setCompanies(data);
   };
   useEffect(() => {
-    router.events.on('routeChangeComplete', () => {
-      window.scrollTo(0, 0);
-    });
-
+    if (typeof window !== 'undefined') {
+      router.events.on('routeChangeComplete', () => {
+        window.scrollTo(0, 0);
+      });
+    }
     setCompaniesData();
   }, []);
   return (
