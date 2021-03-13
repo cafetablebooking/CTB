@@ -147,18 +147,20 @@ export const CalendarWrapper = styled.div`
       min-height: 50px;
     }
   }
-  .rbc-time-view-resources .rbc-header,
-  .rbc-time-view-resources .rbc-day-bg {
-    width: 100%;
-  }
-  .rbc-time-view-resources .rbc-day-slot {
-    min-width: 50px !important;
+  @media (max-width: 768px) {
+    .rbc-time-view-resources .rbc-header,
+    .rbc-time-view-resources .rbc-day-bg {
+      width: 100%;
+    }
+    .rbc-time-view-resources .rbc-day-slot {
+      min-width: 50px !important;
+    }
   }
 `;
 export const CompanyContent = styled(Box)`
   flex-wrap: wrap;
   display: flex;
-
+  justify-content: center;
   min-height: 60vh;
   margin: 5vw 5vw 5vw 5vw;
   @media (min-width: 930px) {

@@ -4,6 +4,7 @@ import { getTableBookingById } from './utils';
 import moment from 'moment';
 import { Calendar, Views, momentLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { useMediaQuery } from '@material-ui/core';
 import styled from 'styled-components';
 const localizer = momentLocalizer(moment);
 interface Props {
@@ -14,6 +15,7 @@ interface Props {
 }
 
 const CalendarComponent = (props: Props) => {
+  const isDesktop = useMediaQuery('(min-width:768px)');
   const { companyId, setOpenConfirmBox, setBookedInfo, success } = props;
 
   const [tableBookingsById, setTableBookingsById] = useState<object | null>(
@@ -103,7 +105,7 @@ const CalendarComponent = (props: Props) => {
             timeGutterFormat: (date, culture, localizer) =>
               localizer.format(date, 'HH:mm', culture),
           }}
-          views={['day', 'work_week']}
+          views={isDesktop ? ['day', 'work_week'] : ['day']}
           step={30}
           resources={Object(tableBookingsById).resources}
           resourceIdAccessor="resourceId"

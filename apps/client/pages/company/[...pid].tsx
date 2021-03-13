@@ -46,7 +46,6 @@ const companyDetail = (props: Props) => {
   const router = useRouter();
   const companyId = router.query.pid && router.query.pid[0];
   const company = companies && companies.find((item) => item.id === companyId);
-
   const [openConfirmBox, setOpenConfirmBox] = useState(false);
   const [paymentDialogOpen, setPaymentDialogOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState('');
