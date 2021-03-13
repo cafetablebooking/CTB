@@ -18,9 +18,11 @@ import {
   OnboardingContent,
   TextBox,
 } from '../styles/connectBusinessStyles';
+import { firestore } from '@ctb/firebase-auth';
 interface Props {}
 
 const connectCafe = (props: Props) => {
+  const [success, setSuccess] = useState<boolean>(false);
   const { register, handleSubmit, watch, errors } = useForm({});
   const [connectInfoData, setConnectInfoData] = useState(null);
 
@@ -77,7 +79,18 @@ const connectCafe = (props: Props) => {
     return infoData;
   };
 
-  const onSubmit = (data) => {};
+  const onSubmit = async (data) => {
+    const { vatNr, email, phoneNumber, companyName } = data;
+    const companiesRef = firestore.collection('company_requests');
+
+    await companiesRef.add({
+      companyName,
+      vatNr,
+      email,
+      phoneNumber,
+    });
+    setSuccess(true);
+  };
   return (
     <Wrapper>
       <Hero></Hero>
@@ -124,67 +137,82 @@ const connectCafe = (props: Props) => {
         >
           <ThemeProvider theme={darkTheme}>
             <ConnectBusinessBox>
-              <Typography gutterBottom={true} align="center" variant="h4">
-                Get started
-              </Typography>
-              <Typography align="center">
-                We will help you register so you can get started. Fill in the
-                form below and our staff will contact you within the next 24
-                hours.
-              </Typography>
-              <Divider
-                style={{ width: '80%', margin: '24px 0 24px 0' }}
-                light={false}
-                flexItem={false}
-                orientation="horizontal"
-              />
-              <Form onSubmit={handleSubmit(onSubmit)}>
-                <TextField
-                  id="outlined-basic"
-                  label="Company name"
-                  variant="outlined"
-                  name="cafe"
-                  inputRef={register()}
-                />
-                <TextField
-                  style={{ marginTop: 10 }}
-                  id="outlined-basic"
-                  label="VAT Nr"
-                  variant="outlined"
-                  name="cafe"
-                  inputRef={register()}
-                />
-                <TextField
-                  style={{ marginTop: 10 }}
-                  id="outlined-basic"
-                  label="E-mail"
-                  variant="outlined"
-                  name="cafe"
-                  inputRef={register()}
-                />
-                <TextField
-                  style={{ marginTop: 10 }}
-                  id="outlined-basic"
-                  label="Phone number"
-                  variant="outlined"
-                  name="cafe"
-                  inputRef={register()}
-                />
+              {!success ? (
+                <>
+                  <Typography gutterBottom={true} align="center" variant="h4">
+                    Get started
+                  </Typography>
+                  <Typography align="center">
+                    We will help you register so you can get started. Fill in
+                    the form below and our staff will contact you within the
+                    next 24 hours.
+                  </Typography>
+                  <Divider
+                    style={{ width: '80%', margin: '24px 0 24px 0' }}
+                    light={false}
+                    flexItem={false}
+                    orientation="horizontal"
+                  />
+                  <Form onSubmit={handleSubmit(onSubmit)}>
+                    <TextField
+                      id="outlined-basic"
+                      label="Company name"
+                      variant="outlined"
+                      name="companyName"
+                      inputRef={register()}
+                      required
+                    />
+                    <TextField
+                      style={{ marginTop: 10 }}
+                      id="outlined-basic"
+                      label="VAT Nr"
+                      variant="outlined"
+                      name="vatNr"
+                      inputRef={register()}
+                      required
+                    />
+                    <TextField
+                      style={{ marginTop: 10 }}
+                      id="outlined-basic"
+                      label="E-mail"
+                      variant="outlined"
+                      name="email"
+                      inputRef={register()}
+                      required
+                    />
+                    <TextField
+                      style={{ marginTop: 10 }}
+                      id="outlined-basic"
+                      label="Phone number"
+                      variant="outlined"
+                      name="phoneNumber"
+                      inputRef={register()}
+                      required
+                    />
 
-                <Button
-                  style={{
-                    marginTop: 24,
-                    width: '242.5px',
-                    height: '56px',
-                    alignSelf: 'center',
-                  }}
-                  color="primary"
-                  variant="contained"
-                  type="submit"
-                >
-                  Send
-                </Button>
-              </Form>
+                    <Button
+                      style={{
+                        marginTop: 24,
+                        width: '242.5px',
+                        height: '56px',
+                        alignSelf: 'center',
+                      }}
+                      color="primary"
+                      variant="contained"
+                      type="submit"
+                    >
+                      Send
+                    </Button>
+                  </Form>
+                </>
+              ) : (
+                <>
+                  <Typography variant="h6">Thank you!</Typography>
+                  <Typography align="center">
+                    We will contact you in a very short of time!
+                  </Typography>
+                </>
+              )}
             </ConnectBusinessBox>
           </ThemeProvider>
         </div>

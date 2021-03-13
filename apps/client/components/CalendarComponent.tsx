@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Children } from 'react';
 import { CalendarWrapper } from '../styles/companyDetailStyles';
 import { getTableBookingById } from './utils';
 import moment from 'moment';
 import { Calendar, Views, momentLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
+import styled from 'styled-components';
 const localizer = momentLocalizer(moment);
 interface Props {
   companyId: string;
@@ -40,7 +41,24 @@ const CalendarComponent = (props: Props) => {
       style: style,
     };
   }
+  function slotStyle(date) {
+    const currentDate = moment()._d;
+    const timeHasPassed = date < currentDate ? true : false;
+    console.log(timeHasPassed);
 
+    var style = {
+      backgroundColor: timeHasPassed ? 'red' : 'inherit',
+      backgroundPosition: 'center',
+      borderRadius: '0px',
+      opacity: 0.8,
+      color: 'black',
+      border: '0px',
+      display: 'block',
+    };
+    return {
+      style: style,
+    };
+  }
   const selectSlotsHandler = (slots) => {
     const formatStart = moment(slots.start).format('YYYY-MM-DDTHH:mm:ss');
     const formatEnd = moment(slots.end).format('YYYY-MM-DDTHH:mm:ss');
@@ -95,5 +113,5 @@ const CalendarComponent = (props: Props) => {
     </CalendarWrapper>
   );
 };
-
+const StyledSlots = styled.div``;
 export default CalendarComponent;

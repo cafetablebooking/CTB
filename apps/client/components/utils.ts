@@ -61,6 +61,7 @@ export const getCompaniesData = async () => {
 };
 
 export const getOpeningHours = (day) => {
+  if (!day) return;
   const date = new Date();
   const getDay = date.getDay();
   const today = day[getDay];

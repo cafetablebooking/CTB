@@ -99,8 +99,9 @@ const companyDetail = (props: Props) => {
     <>
       {company && (
         <Wrapper>
-          <CoverImage coverimage={company.coverImage}></CoverImage>
-
+          {company.coverImage && (
+            <CoverImage coverimage={company.coverImage}></CoverImage>
+          )}
           <Separator>
             <div
               style={{
@@ -111,21 +112,24 @@ const companyDetail = (props: Props) => {
               }}
             >
               <ImageOuterCircle>
-                <ImageInnerCircle>
-                  <Image
-                    src={company.image}
-                    alt="Avatar Image For Companies"
-                    layout="fill"
-                  />
-                </ImageInnerCircle>
+                {company.image && (
+                  <ImageInnerCircle>
+                    <Image
+                      src={company.image}
+                      alt="Avatar Image For Companies"
+                      layout="fill"
+                    />
+                  </ImageInnerCircle>
+                )}
               </ImageOuterCircle>
               <TextBox>
                 <Typography variant="h5">{company.companyName}</Typography>
-
-                <Typography>
-                  {company.adress.name} {company.adress.postalCode}{' '}
-                  {company.adress.city}
-                </Typography>
+                {company.adress && (
+                  <Typography>
+                    {company.adress.name} {company.adress.postalCode}{' '}
+                    {company.adress.city}
+                  </Typography>
+                )}
               </TextBox>
             </div>
             <Button
@@ -167,7 +171,7 @@ const companyDetail = (props: Props) => {
           <CompanyContent>
             <OpeningHours>
               <Typography variant="h6">Bookable times</Typography>
-              {renderOpeniningHours()}
+              {company.openingHours && renderOpeniningHours()}
             </OpeningHours>
             <CalendarComponent
               success={success}
