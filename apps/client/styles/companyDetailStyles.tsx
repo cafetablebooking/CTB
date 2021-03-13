@@ -120,7 +120,20 @@ export const OpeningHours = styled.div`
 `;
 export const CalendarWrapper = styled.div`
   position: relative;
-  width: 70vw;
+  width: 90vw;
+  max-width: 800px;
+  .rbc-toolbar-label {
+    margin: 10px;
+  }
+  .rbc-toolbar {
+    flex-direction: column;
+    @media (min-width: 768px) {
+      flex-direction: row;
+      .rbc-toolbar-label {
+        margin: 0;
+      }
+    }
+  }
   margin: auto;
   .rbc-events-container {
     margin: 0;
@@ -129,7 +142,17 @@ export const CalendarWrapper = styled.div`
     cursor: pointer;
   }
   .rbc-time-slot {
-    min-height: 40px;
+    min-height: 30px;
+    @media (min-width: 768px) {
+      min-height: 50px;
+    }
+  }
+  .rbc-time-view-resources .rbc-header,
+  .rbc-time-view-resources .rbc-day-bg {
+    width: 100%;
+  }
+  .rbc-time-view-resources .rbc-day-slot {
+    min-width: 50px !important;
   }
 `;
 export const CompanyContent = styled(Box)`
