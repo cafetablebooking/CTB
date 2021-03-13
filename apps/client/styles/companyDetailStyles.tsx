@@ -117,11 +117,18 @@ export const ImageInnerCircle = styled.div`
 export const OpeningHours = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: center;
 `;
 export const CalendarWrapper = styled.div`
   position: relative;
   width: 90vw;
-  max-width: 800px;
+  max-width: 1000px;
+  .rbc-header {
+    width: 50px;
+  }
+  .rbc-time-view-resources .rbc-day-slot {
+    min-width: 50px;
+  }
   .rbc-toolbar-label {
     margin: 10px;
   }
@@ -141,6 +148,7 @@ export const CalendarWrapper = styled.div`
   .fc-timegrid-event-harness {
     cursor: pointer;
   }
+
   .rbc-time-slot {
     min-height: 30px;
     @media (min-width: 768px) {

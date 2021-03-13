@@ -21,7 +21,8 @@ const CalendarComponent = (props: Props) => {
   const [tableBookingsById, setTableBookingsById] = useState<object | null>(
     null
   );
-
+  const currentDate = moment().startOf('hour')._d;
+  const [showMin, setShowMin] = useState(currentDate);
   const handleBookingsById = async () => {
     const data = await getTableBookingById(companyId);
     setTableBookingsById(data);
@@ -46,16 +47,15 @@ const CalendarComponent = (props: Props) => {
   function slotStyle(date) {
     const currentDate = moment()._d;
     const timeHasPassed = date < currentDate ? true : false;
-    console.log(timeHasPassed);
 
     var style = {
-      backgroundColor: timeHasPassed ? 'red' : 'inherit',
+      backgroundColor: timeHasPassed ? 'lightgray' : 'inherit',
       backgroundPosition: 'center',
       borderRadius: '0px',
       opacity: 0.8,
       color: 'black',
       border: '0px',
-      display: 'block',
+      visibility: timeHasPassed ? 'hidden' : 'visible',
     };
     return {
       style: style,
@@ -93,13 +93,19 @@ const CalendarComponent = (props: Props) => {
     <CalendarWrapper>
       {tableBookingsById && (
         <Calendar
-          min={new Date(2021, 1, 0, 9, 0, 0)}
+          min={showMin}
           max={new Date(2021, 1, 0, 21, 0, 0)}
           eventPropGetter={eventStyle}
           selectable
           onSelectSlot={selectSlotsHandler}
           events={bookedTimes}
           localizer={localizer}
+          onRangeChange={(arr) =>
+            arr[0] > currentDate
+              ? setShowMin(new Date(2021, 1, 0, 9, 0, 0))
+              : setShowMin(currentDate)
+          }
+          slotPropGetter={slotStyle}
           defaultView={Views.DAY}
           formats={{
             timeGutterFormat: (date, culture, localizer) =>
