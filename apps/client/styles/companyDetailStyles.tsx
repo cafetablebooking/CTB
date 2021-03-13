@@ -166,11 +166,14 @@ export const CalendarWrapper = styled.div`
   }
 `;
 export const CompanyContent = styled(Box)`
-  flex-wrap: wrap;
   display: flex;
   justify-content: center;
+  flex-direction: column;
   min-height: 60vh;
   margin: 5vw 5vw 5vw 5vw;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
   @media (min-width: 930px) {
     margin: 5vw 8vw 5vw 8vw;
   }
