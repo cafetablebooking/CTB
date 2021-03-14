@@ -14,6 +14,7 @@ import {
 import {
   ImageInnerCircle,
   ImageOuterCircle,
+  TitleCompany,
 } from 'apps/client/styles/companyDetailStyles';
 import Image from 'next/image';
 
@@ -102,14 +103,7 @@ const companyDetail = (props: Props) => {
             <CoverImage coverimage={company.coverImage}></CoverImage>
           )}
           <Separator>
-            <div
-              style={{
-                position: 'absolute',
-                display: 'flex',
-                alignItems: 'center',
-                left: '5vw',
-              }}
-            >
+            <TitleCompany>
               <ImageOuterCircle>
                 {company.image && (
                   <ImageInnerCircle>
@@ -130,19 +124,7 @@ const companyDetail = (props: Props) => {
                   </Typography>
                 )}
               </TextBox>
-            </div>
-            <Button
-              style={{
-                marginRight: '5vw',
-                width: '242.5px',
-                height: '56px',
-              }}
-              color="primary"
-              variant="contained"
-              type="submit"
-            >
-              Book now
-            </Button>
+            </TitleCompany>
           </Separator>
           <Elements stripe={stripePromise}>
             <PaymentDialogComponent

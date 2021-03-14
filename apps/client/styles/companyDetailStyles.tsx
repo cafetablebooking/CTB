@@ -21,13 +21,30 @@ export const BusinessInnerBox = styled(Box)`
     flex-direction: row;
   }
 `;
+export const TitleCompany = styled(Box)`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  left: 0;
+  justify-content: center;
+  position: relative;
+  @media (min-width: 768px) {
+    position: absolute;
+    left: 5vw;
+    flex-direction: row;
+  }
+`;
 export const Separator = styled(Box)`
   align-items: center;
   background-color: #a13e3e;
   color: white;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   padding: 24px;
+  min-height: 80px;
+  @media (min-width: 768px) {
+    justify-content: flex-end;
+  }
 `;
 export const BusinessInfoItem = styled(Box)`
   margin-top: 24px;
@@ -118,6 +135,7 @@ export const OpeningHours = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
+  margin-bottom: 10px;
 `;
 export const CalendarWrapper = styled.div`
   position: relative;
