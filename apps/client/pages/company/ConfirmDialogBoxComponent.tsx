@@ -51,7 +51,7 @@ function ConfirmDialog(props: ConfirmDialogProps) {
     bookedInfo.start,
     'YYYY-MM-DD HH:mm:ss'
   ).toDate();
-
+//e
   const currentDate = moment()._d;
   const timeHasPassed = selectedStartTime < currentDate ? true : false;
   console.log(timeHasPassed);
