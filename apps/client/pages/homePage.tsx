@@ -68,12 +68,14 @@ const homePage = (props: Props) => {
               companies.map((item) => (
                 <Motion key={`child-${item.id}`} velocity={0} radius={100}>
                   <ImageWrapper>
-                    <Image
-                      src={item.image}
-                      alt="Avatar logotype of restaurant café company"
-                      width={570}
-                      height={370}
-                    />
+                    {item.image && (
+                      <Image
+                        src={item.image}
+                        alt="Avatar logotype of restaurant café company"
+                        width={570}
+                        height={370}
+                      />
+                    )}
                   </ImageWrapper>
                 </Motion>
               ))}

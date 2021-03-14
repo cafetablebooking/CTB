@@ -21,13 +21,30 @@ export const BusinessInnerBox = styled(Box)`
     flex-direction: row;
   }
 `;
+export const TitleCompany = styled(Box)`
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  left: 0;
+  justify-content: center;
+  position: relative;
+  @media (min-width: 768px) {
+    position: absolute;
+    left: 5vw;
+    flex-direction: row;
+  }
+`;
 export const Separator = styled(Box)`
   align-items: center;
   background-color: #a13e3e;
   color: white;
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   padding: 24px;
+  min-height: 80px;
+  @media (min-width: 768px) {
+    justify-content: flex-end;
+  }
 `;
 export const BusinessInfoItem = styled(Box)`
   margin-top: 24px;
@@ -73,7 +90,7 @@ export const CoverImage = styled(Box)`
 
   flex-wrap: wrap;
   justify-content: space-evenly;
-  background: ${(props) => `url(${props.coverImage}) no-repeat center`};
+  background: ${(props) => `url(${props.coverimage}) no-repeat center`};
   background-size: cover;
   max-width: 100vw;
   min-height: 300px;
@@ -117,24 +134,64 @@ export const ImageInnerCircle = styled.div`
 export const OpeningHours = styled.div`
   display: flex;
   flex-direction: column;
+  text-align: center;
+  margin-bottom: 10px;
 `;
 export const CalendarWrapper = styled.div`
   position: relative;
-  width: 70vw;
+  width: 90vw;
+  max-width: 1000px;
+  .rbc-header {
+    width: 50px;
+  }
+  .rbc-time-view-resources .rbc-day-slot {
+    min-width: 50px;
+  }
+  .rbc-toolbar-label {
+    margin: 10px;
+  }
+  .rbc-toolbar {
+    flex-direction: column;
+    @media (min-width: 768px) {
+      flex-direction: row;
+      .rbc-toolbar-label {
+        margin: 0;
+      }
+    }
+  }
   margin: auto;
-  .fc-timegrid-col-events {
+  .rbc-events-container {
     margin: 0;
   }
   .fc-timegrid-event-harness {
     cursor: pointer;
   }
+
+  .rbc-time-slot {
+    min-height: 30px;
+    @media (min-width: 768px) {
+      min-height: 50px;
+    }
+  }
+  @media (max-width: 768px) {
+    .rbc-time-view-resources .rbc-header,
+    .rbc-time-view-resources .rbc-day-bg {
+      width: 100%;
+    }
+    .rbc-time-view-resources .rbc-day-slot {
+      min-width: 50px !important;
+    }
+  }
 `;
 export const CompanyContent = styled(Box)`
-  flex-wrap: wrap;
   display: flex;
-
+  justify-content: center;
+  flex-direction: column;
   min-height: 60vh;
   margin: 5vw 5vw 5vw 5vw;
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
   @media (min-width: 930px) {
     margin: 5vw 8vw 5vw 8vw;
   }

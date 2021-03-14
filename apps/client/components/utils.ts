@@ -2,47 +2,66 @@ import * as geolib from 'geolib';
 import moment from 'moment';
 import Geocode from 'react-geocode';
 import { firestore } from '@ctb/firebase-auth';
+export const getTableBookingById = async (id) => {
+  let data = null;
+  const tablesRef = firestore
+    .collection('tableBookings')
+    .where('companyId', '==', id);
+  let companyTables = await tablesRef.get();
 
+  for (const doc of companyTables.docs) {
+    data = doc.data();
+  }
+  return data;
+};
+
+export const getTableBookings = async () => {
+  const allBookingsRef = firestore.collection('tableBookings');
+  const data = [];
+  const allBookings = await allBookingsRef.get();
+
+  for (const doc of allBookings.docs) {
+    data.push({
+      ...doc.data(),
+      docId: doc.id,
+    });
+  }
+  return data;
+};
 export const getCompaniesData = async () => {
   const companiesRef = firestore.collection('companies');
-  const dataArray = [];
-  const editedDataArray = [];
+  const tempArr = [];
+  const data = [];
   let allCompanies = await companiesRef.get();
+
   for (const doc of allCompanies.docs) {
-    dataArray.push(doc.data());
+    tempArr.push({
+      ...doc.data(),
+      id: doc.id,
+    });
   }
-  dataArray.map(async (item) => {
+  tempArr.map(async (item) => {
     //   const response = await Geocode.fromAddress(
-    //     `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
+    //     `${item.adress.name} ${item.\adress.city} ${item.adress.postalCode}`
     //   );
 
     //   const { lat, lng } = response && response.results[0].geometry.location;
 
-    const availableBookings = item.availableBookings.map((booking) => {
-      const startTime = moment(booking.start, 'YYYY-MM-DD HH:mm:ss').toDate();
-      const endTime = moment(booking.end, 'YYYY-MM-DD HH:mm:ss').toDate();
-      return {
-        title: booking.title,
-        start: startTime,
-        end: endTime,
-        resourceId: booking.resourceId,
-      };
-    });
     const options = {
       ...item,
-      availableBookings: availableBookings,
       coordinates: {
         lat: 59,
         lng: 18,
       },
     };
-    editedDataArray.push(options);
+    data.push(options);
   });
 
-  return editedDataArray;
+  return data;
 };
 
 export const getOpeningHours = (day) => {
+  if (!day) return;
   const date = new Date();
   const getDay = date.getDay();
   const today = day[getDay];

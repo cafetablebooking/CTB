@@ -55,8 +55,13 @@ export const ConnectBusinessBox = styled(Box)`
   background-color: #424242;
   color: white;
   display: flex;
-
+  width: 100%;
+  min-height: 400px;
   flex-direction: column;
+  @media (min-width: 768px) {
+    min-width: 600px;
+    min-height: 524px;
+  }
 `;
 export const TextBox = styled(Box)`
   ul {

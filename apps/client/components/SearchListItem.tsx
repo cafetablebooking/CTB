@@ -21,18 +21,22 @@ const SearchListItem = (props: Props) => {
   return (
     <ListItem>
       <ImageWrapper>
-        <Image
-          src={props.image}
-          height="150"
-          width="150"
-          alt="Avatar image of business"
-        />
+        {props.image && (
+          <Image
+            src={props.image}
+            height="150"
+            width="150"
+            alt="Avatar image of business"
+          />
+        )}
       </ImageWrapper>
       <ListItemDetails>
         <Typography variant="h5">{props.companyName}</Typography>
-        <Typography>
-          {props.adress.name} {props.adress.postalCode} {props.adress.city}
-        </Typography>
+        {props.adress && (
+          <Typography>
+            {props.adress.name} {props.adress.postalCode} {props.adress.city}
+          </Typography>
+        )}
         {props.openingHours ? (
           <Box color="success.main">
             <Typography>

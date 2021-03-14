@@ -32,4 +32,4 @@ const functions = firebase.functions();
 
 const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-export { firestore, auth, functions, googleProvider };
+export { firestore, auth, functions, googleProvider, firebase };

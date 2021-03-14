@@ -13,7 +13,7 @@ const jsonToFirestore = async () => {
     );
     console.log('Firebase Initialized');
 
-    await firestoreService.restore('./companies.json');
+    await firestoreService.restore('./tables.json');
     console.log('Upload Success');
   } catch (error) {
     console.log(error);

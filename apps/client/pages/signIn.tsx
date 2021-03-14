@@ -5,7 +5,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import LoginRoute from '../components/LoginRoute';
+import LoginRoute from '../components/PrivateRoutes/LoginRoute';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import GoogleSignInButton from '../components/GoogleSignInButton';
 import { loginSchema } from '@ctb/yup-resolvers';
@@ -16,7 +16,7 @@ import {
   InnerFlexItem,
   Form,
 } from '../styles/authStyles';
-import { ClientContext } from '../contexts/ClientContext';
+import { useClientContext } from '../contexts/ClientContext';
 import { useAuthContext } from '@ctb/auth-context';
 interface Props {}
 
@@ -25,18 +25,18 @@ const SignIn = (props: Props) => {
   const [error, setError] = useState<string>('');
   const { signInWithGoogle, login }: any = useAuthContext();
   const router = useRouter();
-
+  const { bookedInfo }: any = useClientContext();
   const { register, handleSubmit, watch, errors } = useForm({
     resolver: yupResolver(loginSchema),
   });
   const googleSignInHandler = () => {
     signInWithGoogle();
-    router.push('/dashboard');
+    bookedInfo ? router.push('/payment') : router.push('/dashboard');
   };
   async function onSubmit(data) {
     try {
       await login(data.email, data.password);
-      router.push('/dashboard');
+      bookedInfo ? router.push('/payment') : router.push('/dashboard');
     } catch {
       setError('Wrong email or password.');
     }
