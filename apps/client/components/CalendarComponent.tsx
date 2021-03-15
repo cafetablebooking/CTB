@@ -31,6 +31,7 @@ const CalendarComponent = (props: Props) => {
 
   const currentDate = moment()._d;
   const currentDateHour = moment().startOf('hour')._d;
+
   const [showMin, setShowMin] = useState(null);
   const [showMax, setShowMax] = useState(null);
   const handleBookingsById = async () => {
@@ -39,7 +40,6 @@ const CalendarComponent = (props: Props) => {
   };
   useEffect(() => {
     handleBookingsById();
-
     checkOpeningHours(currentDate);
   }, [success]);
 
@@ -103,15 +103,24 @@ const CalendarComponent = (props: Props) => {
 
   const checkOpeningHours = (date) => {
     const getDay = moment(date).day();
+    const getMonth = moment(date).month();
+    const dayOfMonth = moment().date();
+
     const getYear = moment(date).year();
 
     const openingMin = getOpeningHours(company.openingHours, getDay).today.open;
     const openingMax = getOpeningHours(company.openingHours, getDay).today
       .closed;
-    console.log('hello');
+    const minDate = new Date(getYear, getMonth, dayOfMonth, openingMin, 0, 0);
+    const maxDate = new Date(getYear, getMonth, dayOfMonth, openingMax, 0, 0);
+    console.log(minDate);
 
-    setShowMin(new Date(getYear, 1, 0, openingMin, 0, 0));
-    setShowMax(new Date(getYear, 1, 0, openingMax, 0, 0));
+    if (currentDateHour >= minDate) {
+      setShowMin(currentDateHour);
+    } else {
+      setShowMin(minDate);
+    }
+    setShowMax(maxDate);
   };
 
   return (
