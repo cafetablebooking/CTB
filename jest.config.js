@@ -12,5 +12,6 @@ module.exports = {
     '<rootDir>/apps/cloud-functions',
     '<rootDir>/libs/use-local-storage',
     '<rootDir>/libs/use-firestore',
+    '<rootDir>/apps/company-dashbaord',
   ],
 };

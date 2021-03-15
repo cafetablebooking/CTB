@@ -18,6 +18,7 @@ import {
   OnboardingContent,
   TextBox,
 } from '../styles/connectBusinessStyles';
+import { firestore } from '@ctb/firebase-auth';
 interface Props {}
 
 const connectCafe = (props: Props) => {
@@ -77,7 +78,13 @@ const connectCafe = (props: Props) => {
     return infoData;
   };
 
-  const onSubmit = (data) => {};
+  const onSubmit = (data) => {
+    const companyRequestRf = firestore.collection('company_request');
+    companyRequestRf.add({
+      ...data,
+    });
+    console.log(data);
+  };
   return (
     <Wrapper>
       <Hero></Hero>
@@ -143,7 +150,7 @@ const connectCafe = (props: Props) => {
                   id="outlined-basic"
                   label="Company name"
                   variant="outlined"
-                  name="cafe"
+                  name="name"
                   inputRef={register()}
                 />
                 <TextField
@@ -151,7 +158,7 @@ const connectCafe = (props: Props) => {
                   id="outlined-basic"
                   label="VAT Nr"
                   variant="outlined"
-                  name="cafe"
+                  name="vat"
                   inputRef={register()}
                 />
                 <TextField
@@ -159,7 +166,7 @@ const connectCafe = (props: Props) => {
                   id="outlined-basic"
                   label="E-mail"
                   variant="outlined"
-                  name="cafe"
+                  name="email"
                   inputRef={register()}
                 />
                 <TextField
@@ -167,7 +174,7 @@ const connectCafe = (props: Props) => {
                   id="outlined-basic"
                   label="Phone number"
                   variant="outlined"
-                  name="cafe"
+                  name="phoneNumber"
                   inputRef={register()}
                 />
 
