@@ -119,10 +119,12 @@ const SearchPid = () => {
         const pidItem = item.companyName
           .toLowerCase()
           .includes(pid.toLowerCase());
+        const date = new Date();
+        const getDay = date.getDay();
         if (filter === 'open') {
-          return getOpeningHours(item.openingHours) && pidItem;
+          return getOpeningHours(item.openingHours, getDay) && pidItem;
         } else if (filter === 'closed') {
-          return !getOpeningHours(item.openingHours) && pidItem;
+          return !getOpeningHours(item.openingHours, getDay) && pidItem;
         } else {
           return pidItem;
         }
@@ -207,6 +209,8 @@ const SearchPid = () => {
           <StyledTransitionGroup>
             {filteredData &&
               filteredData.map((item) => {
+                const date = new Date();
+                const getDay = date.getDay();
                 return (
                   <CSSTransition key={item.id} timeout={500} classNames="item">
                     <Link href={`/company/${item.id}`}>
@@ -217,7 +221,10 @@ const SearchPid = () => {
                           phoneNumber={item.phoneNumber}
                           email={item.email}
                           image={item.image}
-                          openingHours={getOpeningHours(item.openingHours)}
+                          openingHours={getOpeningHours(
+                            item.openingHours,
+                            getDay
+                          )}
                           adress={item.adress}
                           distance={
                             navigatorPosition &&

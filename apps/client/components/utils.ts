@@ -60,11 +60,9 @@ export const getCompaniesData = async () => {
   return data;
 };
 
-export const getOpeningHours = (day) => {
-  if (!day) return;
-  const date = new Date();
-  const getDay = date.getDay();
-  const today = day[getDay];
+export const getOpeningHours = (item, day) => {
+  if (!item) return;
+  const today = item[day];
   const { open, closed } = today;
   let isOpen = false;
   var format = 'hh:mm:ss';
@@ -79,7 +77,7 @@ export const getOpeningHours = (day) => {
     isOpen = false;
   }
 
-  return isOpen ? today : null;
+  return { today, isOpen };
 };
 export const getDistance = (item: any, lat: number, lng: number) => {
   return geolib.getDistance(

@@ -152,6 +152,7 @@ const companyDetail = (props: Props) => {
               {company.openingHours && renderOpeniningHours()}
             </OpeningHours>
             <CalendarComponent
+              company={company}
               success={success}
               setOpenConfirmBox={setOpenConfirmBox}
               setBookedInfo={setBookedInfo}

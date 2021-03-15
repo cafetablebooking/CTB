@@ -18,6 +18,7 @@ interface Props {
 }
 
 const SearchListItem = (props: Props) => {
+  console.log(props.openingHours);
   return (
     <ListItem>
       <ImageWrapper>
@@ -37,10 +38,11 @@ const SearchListItem = (props: Props) => {
             {props.adress.name} {props.adress.postalCode} {props.adress.city}
           </Typography>
         )}
-        {props.openingHours ? (
+        {props.openingHours && props.openingHours.isOpen ? (
           <Box color="success.main">
             <Typography>
-              Open ({props.openingHours.open}-{props.openingHours.closed})
+              Open ({props.openingHours.today.open}-
+              {props.openingHours.today.closed})
             </Typography>
           </Box>
         ) : (
