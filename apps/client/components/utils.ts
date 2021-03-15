@@ -2,6 +2,14 @@ import * as geolib from 'geolib';
 import moment from 'moment';
 import Geocode from 'react-geocode';
 import { firestore } from '@ctb/firebase-auth';
+const currentDate = moment()._d;
+
+const formatDate = moment(currentDate).format('YYYY-MM-DD HH:mm');
+const start = moment(formatDate);
+const roundTo = 30 - (start.minute() % 30);
+
+export const currentDateRoundTo = moment(start).add(roundTo, 'minutes')._d;
+
 export const getTableBookingById = async (id) => {
   let data = null;
   const tablesRef = firestore

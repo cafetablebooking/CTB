@@ -6,6 +6,7 @@ import { Calendar, Views, momentLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { useMediaQuery } from '@material-ui/core';
 import styled from 'styled-components';
+import { currentDateRoundTo } from './utils';
 const localizer = momentLocalizer(moment);
 interface Props {
   companyId: string;
@@ -28,14 +29,6 @@ const CalendarComponent = (props: Props) => {
     null
   );
 
-  const currentDate = moment()._d;
-
-  const formatDate = moment(currentDate).format('YYYY-MM-DD HH:mm');
-  const start = moment(formatDate);
-  const roundUp = 30 - (start.minute() % 30);
-
-  const currentDateHour = moment(start).add(roundUp, 'minutes')._d;
-
   const [showMin, setShowMin] = useState(null);
   const [showMax, setShowMax] = useState(null);
   const handleBookingsById = async () => {
@@ -51,7 +44,7 @@ const CalendarComponent = (props: Props) => {
   }
   useEffect(() => {
     handleBookingsById();
-    checkOpeningHours(currentDate);
+    checkOpeningHours(currentDateRoundTo);
   }, [success]);
 
   function eventStyle(event, start, end, isSelected) {
@@ -68,7 +61,7 @@ const CalendarComponent = (props: Props) => {
     };
   }
   function slotStyle(date) {
-    const timeHasPassed = date < currentDateHour ? true : false;
+    const timeHasPassed = date < currentDateRoundTo ? true : false;
 
     var style = {
       backgroundColor: timeHasPassed ? 'lightgray' : 'inherit',
@@ -124,18 +117,24 @@ const CalendarComponent = (props: Props) => {
 
     const minDate = new Date(getYear, getMonth, dayOfMonth, openingMin, 0, 0);
     const maxDate = new Date(getYear, getMonth, dayOfMonth, openingMax, 0, 0);
+    if (currentDateRoundTo >= maxDate) {
+      setShowMin(minDate);
+      setShowMax(maxDate);
+      return;
+    }
 
-    if (currentDateHour >= minDate) {
-      setShowMin(currentDateHour);
+    if (currentDateRoundTo >= minDate) {
+      setShowMin(currentDateRoundTo);
     } else {
       setShowMin(minDate);
     }
+
     setShowMax(maxDate);
   };
   const futureEvents =
     bookedTimes &&
     bookedTimes.filter((item) => {
-      return item.start >= currentDate;
+      return item.start >= currentDateRoundTo;
     });
 
   return (
