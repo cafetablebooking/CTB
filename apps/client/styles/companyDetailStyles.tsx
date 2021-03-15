@@ -93,8 +93,11 @@ export const CoverImage = styled(Box)`
   background: ${(props) => `url(${props.coverimage}) no-repeat center`};
   background-size: cover;
   max-width: 100vw;
-  min-height: 300px;
+
+  display: none;
   @media (min-width: 768px) {
+    min-height: 200px;
+    display: block;
   }
 
   @media (min-width: 970px) {
@@ -189,6 +192,7 @@ export const CompanyContent = styled(Box)`
   flex-direction: column;
   min-height: 60vh;
   margin: 5vw 5vw 5vw 5vw;
+
   @media (min-width: 768px) {
     flex-direction: row;
   }

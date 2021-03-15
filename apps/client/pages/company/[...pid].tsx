@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Typography } from '@material-ui/core';
+import { Typography, useMediaQuery } from '@material-ui/core';
 
 import { useRouter } from 'next/router';
 
@@ -39,6 +39,7 @@ const ValueMap: { [value in WeekDay]: string } = {
   Sat: 'Saturday',
 } as const;
 const companyDetail = (props: Props) => {
+  const isDesktop = useMediaQuery('(min-width:768px)');
   const { companies, bookedInfo, setBookedInfo }: any = useClientContext();
   const router = useRouter();
   const companyId = router.query.pid && router.query.pid[0];
@@ -112,9 +113,11 @@ const companyDetail = (props: Props) => {
                 )}
               </ImageOuterCircle>
               <TextBox>
-                <Typography variant="h5">{company.companyName}</Typography>
+                <Typography align={isDesktop ? 'left' : 'center'} variant="h5">
+                  {company.companyName}
+                </Typography>
                 {company.adress && (
-                  <Typography>
+                  <Typography align={isDesktop ? 'left' : 'center'}>
                     {company.adress.name} {company.adress.postalCode}{' '}
                     {company.adress.city}
                   </Typography>

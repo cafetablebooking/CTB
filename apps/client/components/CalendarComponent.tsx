@@ -16,7 +16,6 @@ interface Props {
 }
 
 const CalendarComponent = (props: Props) => {
-  const isDesktop = useMediaQuery('(min-width:768px)');
   const {
     companyId,
     setOpenConfirmBox,
@@ -24,13 +23,18 @@ const CalendarComponent = (props: Props) => {
     success,
     company,
   } = props;
-
+  const isDesktop = useMediaQuery('(min-width:768px)');
   const [tableBookingsById, setTableBookingsById] = useState<object | null>(
     null
   );
 
   const currentDate = moment()._d;
-  const currentDateHour = moment().startOf('hour')._d;
+
+  const formatDate = moment(currentDate).format('YYYY-MM-DD HH:mm');
+  const start = moment(formatDate);
+  const roundUp = 30 - (start.minute() % 30);
+
+  const currentDateHour = moment(start).add(roundUp, 'minutes')._d;
 
   const [showMin, setShowMin] = useState(null);
   const [showMax, setShowMax] = useState(null);
@@ -38,6 +42,13 @@ const CalendarComponent = (props: Props) => {
     const data = await getTableBookingById(companyId);
     setTableBookingsById(data);
   };
+
+  function roundMinutes(date) {
+    date.setHours(date.getHours() + Math.round(date.getMinutes() / 30));
+    date.setMinutes(0, 0, 0);
+
+    return date;
+  }
   useEffect(() => {
     handleBookingsById();
     checkOpeningHours(currentDate);
@@ -57,8 +68,7 @@ const CalendarComponent = (props: Props) => {
     };
   }
   function slotStyle(date) {
-    const currentDate = moment()._d;
-    const timeHasPassed = date < currentDate ? true : false;
+    const timeHasPassed = date < currentDateHour ? true : false;
 
     var style = {
       backgroundColor: timeHasPassed ? 'lightgray' : 'inherit',
@@ -104,16 +114,16 @@ const CalendarComponent = (props: Props) => {
   const checkOpeningHours = (date) => {
     const getDay = moment(date).day();
     const getMonth = moment(date).month();
-    const dayOfMonth = moment().date();
+    const dayOfMonth = moment(date).date();
 
     const getYear = moment(date).year();
 
     const openingMin = getOpeningHours(company.openingHours, getDay).today.open;
     const openingMax = getOpeningHours(company.openingHours, getDay).today
       .closed;
+
     const minDate = new Date(getYear, getMonth, dayOfMonth, openingMin, 0, 0);
     const maxDate = new Date(getYear, getMonth, dayOfMonth, openingMax, 0, 0);
-    console.log(minDate);
 
     if (currentDateHour >= minDate) {
       setShowMin(currentDateHour);
@@ -122,6 +132,11 @@ const CalendarComponent = (props: Props) => {
     }
     setShowMax(maxDate);
   };
+  const futureEvents =
+    bookedTimes &&
+    bookedTimes.filter((item) => {
+      return item.start >= currentDate;
+    });
 
   return (
     <CalendarWrapper>
@@ -132,7 +147,7 @@ const CalendarComponent = (props: Props) => {
           eventPropGetter={eventStyle}
           selectable
           onSelectSlot={selectSlotsHandler}
-          events={bookedTimes}
+          events={futureEvents}
           localizer={localizer}
           onRangeChange={(arr) => checkOpeningHours(arr[0])}
           slotPropGetter={slotStyle}
