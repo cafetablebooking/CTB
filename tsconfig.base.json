@@ -21,7 +21,8 @@
       "@ctb/utils": ["libs/utils/src/index.ts"],
       "@ctb/yup-resolvers": ["libs/yup-resolvers/src/index.ts"],
       "@ctb/types": ["libs/types/src/index.ts"],
-      "@ctb/use-local-storage": ["libs/use-local-storage/src/index.ts"]
+      "@ctb/use-local-storage": ["libs/use-local-storage/src/index.ts"],
+      "@ctb/use-firestore": ["libs/use-firestore/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

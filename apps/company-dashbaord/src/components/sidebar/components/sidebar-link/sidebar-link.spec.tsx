@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
 
-import Notification from './notification';
+import SidebarLink from './sidebar-link';
 
-describe('Notification', () => {
+describe('SidebarLinkJsx', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<Notification />);
+    const { baseElement } = render(<SidebarLink />);
     expect(baseElement).toBeTruthy();
   });
 });

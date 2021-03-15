@@ -11,6 +11,7 @@ export const loginSchema = Yup.object().shape({
     .max(60, 'Maximum 60 symbols')
     .required('This field is required.'),
 });
+
 export const registerSchema = Yup.object().shape({
   email: Yup.string()
     .email('Wrong email format')
@@ -33,6 +34,7 @@ export const registerSchema = Yup.object().shape({
       ),
     }),
 });
+
 export const forgotPasswordSchema = Yup.object().shape({
   email: Yup.string()
     .email('Wrong email format')

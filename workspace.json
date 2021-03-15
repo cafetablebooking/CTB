@@ -8,7 +8,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/web:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/owner-admin",
             "index": "apps/owner-admin/src/index.html",
@@ -62,12 +64,16 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/owner-admin/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/owner-admin/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/owner-admin"],
+          "outputs": [
+            "coverage/apps/owner-admin"
+          ],
           "options": {
             "jestConfig": "apps/owner-admin/jest.config.js",
             "passWithNoTests": true
@@ -96,7 +102,9 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/owner-admin-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/owner-admin-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -108,7 +116,9 @@
       "targets": {
         "build": {
           "executor": "@nrwl/next:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "root": "apps/client",
             "outputPath": "dist/apps/client"
@@ -139,12 +149,16 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/client/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "apps/client/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/client"],
+          "outputs": [
+            "coverage/apps/client"
+          ],
           "options": {
             "jestConfig": "apps/client/jest.config.js",
             "passWithNoTests": true
@@ -173,7 +187,9 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/client-e2e/**/*.{js,ts}"]
+            "lintFilePatterns": [
+              "apps/client-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }
@@ -186,12 +202,16 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/firebase-auth/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "libs/firebase-auth/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/firebase-auth"],
+          "outputs": [
+            "coverage/libs/firebase-auth"
+          ],
           "options": {
             "jestConfig": "libs/firebase-auth/jest.config.js",
             "passWithNoTests": true
@@ -207,12 +227,16 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["libs/auth-context/**/*.{ts,tsx,js,jsx}"]
+            "lintFilePatterns": [
+              "libs/auth-context/**/*.{ts,tsx,js,jsx}"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/auth-context"],
+          "outputs": [
+            "coverage/libs/auth-context"
+          ],
           "options": {
             "jestConfig": "libs/auth-context/jest.config.js",
             "passWithNoTests": true
@@ -236,7 +260,9 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/auth-crud"],
+          "outputs": [
+            "coverage/libs/auth-crud"
+          ],
           "options": {
             "jestConfig": "libs/auth-crud/jest.config.js",
             "passWithNoTests": true
@@ -256,12 +282,16 @@
       "targets": {
         "build": {
           "executor": "@nrwl/node:build",
-          "outputs": ["{options.outputPath}"],
+          "outputs": [
+            "{options.outputPath}"
+          ],
           "options": {
             "outputPath": "dist/apps/functions",
             "main": "apps/functions/src/main.ts",
             "tsConfig": "apps/functions/tsconfig.app.json",
-            "assets": ["apps/functions/src/assets"]
+            "assets": [
+              "apps/functions/src/assets"
+            ]
           },
           "configurations": {
             "production": {
@@ -286,12 +316,16 @@
         "lint": {
           "executor": "@nrwl/linter:eslint",
           "options": {
-            "lintFilePatterns": ["apps/functions/**/*.ts"]
+            "lintFilePatterns": [
+              "apps/functions/**/*.ts"
+            ]
           }
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/apps/functions"],
+          "outputs": [
+            "coverage/apps/functions"
+          ],
           "options": {
             "jestConfig": "apps/functions/jest.config.js",
             "passWithNoTests": true
@@ -315,10 +349,145 @@
         },
         "test": {
           "executor": "@nrwl/jest:jest",
-          "outputs": ["coverage/libs/use-local-storage"],
+          "outputs": [
+            "coverage/libs/use-local-storage"
+          ],
           "options": {
             "jestConfig": "libs/yup-resolvers/jest.config.js",
             "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "use-firestore": {
+      "root": "libs/use-firestore",
+      "sourceRoot": "libs/use-firestore/src",
+      "projectType": "library",
+      "targets": {
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "libs/use-firestore/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/libs/use-firestore"
+          ],
+          "options": {
+            "jestConfig": "libs/use-firestore/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "company-dashbaord": {
+      "root": "apps/company-dashbaord",
+      "sourceRoot": "apps/company-dashbaord/src",
+      "projectType": "application",
+      "targets": {
+        "build": {
+          "executor": "@nrwl/web:build",
+          "outputs": [
+            "{options.outputPath}"
+          ],
+          "options": {
+            "outputPath": "dist/apps/company-dashbaord",
+            "index": "apps/company-dashbaord/src/index.html",
+            "main": "apps/company-dashbaord/src/main.tsx",
+            "polyfills": "apps/company-dashbaord/src/polyfills.ts",
+            "tsConfig": "apps/company-dashbaord/tsconfig.app.json",
+            "assets": [
+              "apps/company-dashbaord/src/favicon.ico",
+              "apps/company-dashbaord/src/assets"
+            ],
+            "styles": [],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/company-dashbaord/src/environments/environment.ts",
+                  "with": "apps/company-dashbaord/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "executor": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "company-dashbaord:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "company-dashbaord:build:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/company-dashbaord/**/*.{ts,tsx,js,jsx}"
+            ]
+          }
+        },
+        "test": {
+          "executor": "@nrwl/jest:jest",
+          "outputs": [
+            "coverage/apps/company-dashbaord"
+          ],
+          "options": {
+            "jestConfig": "apps/company-dashbaord/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "company-dashbaord-e2e": {
+      "root": "apps/company-dashbaord-e2e",
+      "sourceRoot": "apps/company-dashbaord-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/company-dashbaord-e2e/cypress.json",
+            "tsConfig": "apps/company-dashbaord-e2e/tsconfig.e2e.json",
+            "devServerTarget": "company-dashbaord:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "company-dashbaord:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/company-dashbaord-e2e/**/*.{js,ts}"
+            ]
           }
         }
       }

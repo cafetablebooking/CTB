@@ -30,6 +30,12 @@
     "yup-resolvers": { "tags": [] },
     "types": { "tags": [] },
     "functions": { "tags": [] },
-    "use-local-storage": { "tags": [] }
+    "use-local-storage": { "tags": [] },
+    "use-firestore": { "tags": [] },
+    "company-dashbaord": { "tags": [] },
+    "company-dashbaord-e2e": {
+      "tags": [],
+      "implicitDependencies": ["company-dashbaord"]
+    }
   }
 }
