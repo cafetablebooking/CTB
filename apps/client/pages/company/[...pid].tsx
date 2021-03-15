@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Typography, Button } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 
 import { useRouter } from 'next/router';
 
@@ -130,7 +130,7 @@ const companyDetail = (props: Props) => {
             tableBookings={tableBookings}
             selectedValue={selectedValue}
             bookedInfo={bookedInfo}
-            open={paymentDialogOpen}
+            paymentDialogOpen={paymentDialogOpen}
             onClose={handlePaymentDialogClose}
           />
 
@@ -140,7 +140,7 @@ const companyDetail = (props: Props) => {
               tableBookings={tableBookings}
               selectedValue={selectedValue}
               bookedInfo={bookedInfo}
-              open={openConfirmBox}
+              openConfirmBox={openConfirmBox}
               onClose={handleConfirmBoxClose}
               companyId={companyId}
             />

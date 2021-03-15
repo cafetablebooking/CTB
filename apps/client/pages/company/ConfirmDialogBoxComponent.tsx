@@ -9,7 +9,7 @@ import DialogActions from '@material-ui/core/DialogActions';
 import { Box, Button } from '@material-ui/core';
 import styled from 'styled-components';
 export interface ConfirmDialogProps {
-  open: boolean;
+  openConfirmBox: boolean;
   selectedValue: string;
   onClose: (value: string) => void;
   handlePaymentDialog: () => void;
@@ -22,7 +22,7 @@ function ConfirmDialog(props: ConfirmDialogProps) {
   const {
     onClose,
     selectedValue,
-    open,
+    openConfirmBox,
     handlePaymentDialog,
     tableBookings,
     companyId,
@@ -58,7 +58,7 @@ function ConfirmDialog(props: ConfirmDialogProps) {
     <Dialog
       onClose={handleClose}
       aria-labelledby="simple-dialog-title"
-      open={open}
+      open={openConfirmBox ? openConfirmBox : false}
     >
       <StyledDialogBox>
         {!timeHasPassed ? (

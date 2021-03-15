@@ -20,7 +20,7 @@ import {
 } from '@stripe/react-stripe-js';
 
 export interface PaymentDialogProps {
-  open: boolean;
+  paymentDialogOpen: boolean;
   selectedValue: string;
   onClose: (value: string) => void;
   bookedInfo: any;
@@ -54,7 +54,7 @@ function PaymentDialog(props: PaymentDialogProps) {
   const {
     onClose,
     selectedValue,
-    open,
+    paymentDialogOpen,
     company,
     success,
     setSuccess,
@@ -113,7 +113,7 @@ function PaymentDialog(props: PaymentDialogProps) {
     <Dialog
       onClose={handleClose}
       aria-labelledby="simple-dialog-title"
-      open={open}
+      open={paymentDialogOpen ? paymentDialogOpen : false}
     >
       {!success ? (
         <PaymentBox>
