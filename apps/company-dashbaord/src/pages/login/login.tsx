@@ -41,7 +41,7 @@ export function Login(props: LoginProps) {
     <Grid container className={classes.container}>
       <div className={classes.logotypeContainer}>
         {/* <img src={logo} alt="logo" className={classes.logotypeImage} /> */}
-        <Typography className={classes.logotypeText}>CTB Admin</Typography>
+        <Typography className={classes.logotypeText}>Cafe Admin</Typography>
       </div>
       <div className={classes.formContainer}>
         <div className={classes.form}>
