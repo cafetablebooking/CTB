@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useRef, useImperativeHandle } from 'react';
 
 import Dialog from '@material-ui/core/Dialog';
 
@@ -10,6 +10,7 @@ import { Form, PaymentBox, CardDetails } from '../../styles/paymentStyles';
 import { useForm } from 'react-hook-form';
 import { firestore, firebase } from '@ctb/firebase-auth';
 import axios from 'axios';
+
 import {
   useStripe,
   useElements,
@@ -17,7 +18,6 @@ import {
   CardExpiryElement,
   CardCvcElement,
 } from '@stripe/react-stripe-js';
-import StripeInput from './StripeInput';
 
 export interface PaymentDialogProps {
   open: boolean;
@@ -30,6 +30,24 @@ export interface PaymentDialogProps {
   tableBookings: any;
 }
 
+interface Props {
+  inputRef: any;
+  component: any;
+}
+
+const StripeInput = (props: Props) => {
+  const elementRef: any = useRef();
+  const { component: Component, inputRef } = props;
+  useImperativeHandle(inputRef, () => ({
+    focus: () => elementRef.current.focus,
+  }));
+  return (
+    <Component
+      onReady={(element) => (elementRef.current = element)}
+      {...props}
+    />
+  );
+};
 function PaymentDialog(props: PaymentDialogProps) {
   const { register, handleSubmit, watch, errors } = useForm({});
 

@@ -22,13 +22,9 @@ import { useClientContext } from 'apps/client/contexts/ClientContext';
 
 import PaymentDialogComponent from './PaymentDialogComponent';
 import ConfirmDialogBoxComponent from './ConfirmDialogBoxComponent';
-import { loadStripe } from '@stripe/stripe-js';
-import { Elements } from '@stripe/react-stripe-js';
+
 import CalendarComponent from 'apps/client/components/CalendarComponent';
 import { getTableBookings } from 'apps/client/components/utils';
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_CLIENT_STRIPE_PUBLISHABLE_KEY
-);
 
 interface Props {}
 type WeekDay = 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
@@ -47,10 +43,10 @@ const companyDetail = (props: Props) => {
   const router = useRouter();
   const companyId = router.query.pid && router.query.pid[0];
   const company = companies && companies.find((item) => item.id === companyId);
-  const [openConfirmBox, setOpenConfirmBox] = useState(false);
-  const [paymentDialogOpen, setPaymentDialogOpen] = useState(false);
+  const [openConfirmBox, setOpenConfirmBox] = useState<boolean>(false);
+  const [paymentDialogOpen, setPaymentDialogOpen] = useState<boolean>(false);
   const [selectedValue, setSelectedValue] = useState('');
-  const [success, setSuccess] = useState(false);
+  const [success, setSuccess] = useState<boolean>(false);
   const [tableBookings, setTableBookings] = useState(null);
 
   const setAllTableBookings = async () => {
@@ -126,18 +122,18 @@ const companyDetail = (props: Props) => {
               </TextBox>
             </TitleCompany>
           </Separator>
-          <Elements stripe={stripePromise}>
-            <PaymentDialogComponent
-              success={success}
-              setSuccess={setSuccess}
-              company={company}
-              tableBookings={tableBookings}
-              selectedValue={selectedValue}
-              bookedInfo={bookedInfo}
-              open={paymentDialogOpen}
-              onClose={handlePaymentDialogClose}
-            />
-          </Elements>
+
+          <PaymentDialogComponent
+            success={success}
+            setSuccess={setSuccess}
+            company={company}
+            tableBookings={tableBookings}
+            selectedValue={selectedValue}
+            bookedInfo={bookedInfo}
+            open={paymentDialogOpen}
+            onClose={handlePaymentDialogClose}
+          />
+
           {bookedInfo && (
             <ConfirmDialogBoxComponent
               handlePaymentDialog={handlePaymentDialog}
@@ -149,6 +145,7 @@ const companyDetail = (props: Props) => {
               companyId={companyId}
             />
           )}
+
           <CompanyContent>
             <OpeningHours>
               <Typography variant="h6">Bookable times</Typography>

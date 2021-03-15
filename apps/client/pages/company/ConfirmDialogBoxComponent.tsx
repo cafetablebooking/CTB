@@ -1,16 +1,12 @@
 import React from 'react';
 
-import DialogTitle from '@material-ui/core/DialogTitle';
-import Dialog from '@material-ui/core/Dialog';
-
 import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
-import {
-  Box,
-  Button,
-  DialogActions,
-  DialogContentText,
-} from '@material-ui/core';
+import Dialog from '@material-ui/core/Dialog';
+import DialogTitle from '@material-ui/core/DialogTitle';
+import DialogContentText from '@material-ui/core/DialogContent';
+import DialogActions from '@material-ui/core/DialogActions';
+import { Box, Button } from '@material-ui/core';
 import styled from 'styled-components';
 export interface ConfirmDialogProps {
   open: boolean;
@@ -30,31 +26,33 @@ function ConfirmDialog(props: ConfirmDialogProps) {
     handlePaymentDialog,
     tableBookings,
     companyId,
+    bookedInfo,
   } = props;
 
-  const bookedInfo = props.bookedInfo;
   const startTime =
-    bookedInfo.start && bookedInfo.start.replace('T', ' ').slice(0, -3);
-  const endTime =
-    bookedInfo.end && bookedInfo.end.replace('T', ' ').slice(0, -3);
+    bookedInfo && bookedInfo.start.replace('T', ' ').slice(0, -3);
+  const endTime = bookedInfo && bookedInfo.end.replace('T', ' ').slice(0, -3);
 
-  const tableBooking = tableBookings.find((item) => {
-    return item.companyId === companyId;
-  });
-  const findTableResource = tableBooking.resources.find((item) => {
-    return item.resourceId === bookedInfo.resourceId;
-  });
+  const tableBooking =
+    tableBookings &&
+    tableBookings.find((item) => {
+      return item.companyId === companyId;
+    });
+  const findTableResource =
+    tableBooking &&
+    tableBooking.resources.find((item) => {
+      return item.resourceId === bookedInfo.resourceId;
+    });
   const handleClose = () => {
     onClose(selectedValue);
   };
   const selectedStartTime = moment(
-    bookedInfo.start,
+    bookedInfo && bookedInfo.start,
     'YYYY-MM-DD HH:mm:ss'
   ).toDate();
-//e
+  //e
   const currentDate = moment()._d;
   const timeHasPassed = selectedStartTime < currentDate ? true : false;
-  console.log(timeHasPassed);
 
   return (
     <Dialog
@@ -68,7 +66,7 @@ function ConfirmDialog(props: ConfirmDialogProps) {
             <DialogTitle id="simple-dialog-title">Confirm table</DialogTitle>
             <DialogContentText id="alert-dialog-slide-description">
               Do you really want to book{' '}
-              <b>{findTableResource.resourceTitle}</b>?
+              <b>{findTableResource && findTableResource.resourceTitle}</b>?
             </DialogContentText>
             <Typography>
               From: <b>{startTime}</b>
