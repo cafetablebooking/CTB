@@ -1,6 +1,6 @@
 import React, { useEffect, useState, Children } from 'react';
 import { CalendarWrapper } from '../styles/companyDetailStyles';
-import { getTableBookingById } from './utils';
+import { getOpeningHours, getTableBookingById } from './utils';
 import moment from 'moment';
 import { Calendar, Views, momentLocalizer } from 'react-big-calendar';
 import 'react-big-calendar/lib/css/react-big-calendar.css';
@@ -12,23 +12,35 @@ interface Props {
   setOpenConfirmBox: (value: boolean) => void;
   setBookedInfo: (value: object) => void;
   success: boolean;
+  company: any;
 }
 
 const CalendarComponent = (props: Props) => {
   const isDesktop = useMediaQuery('(min-width:768px)');
-  const { companyId, setOpenConfirmBox, setBookedInfo, success } = props;
+  const {
+    companyId,
+    setOpenConfirmBox,
+    setBookedInfo,
+    success,
+    company,
+  } = props;
 
   const [tableBookingsById, setTableBookingsById] = useState<object | null>(
     null
   );
-  const currentDate = moment().startOf('hour')._d;
-  const [showMin, setShowMin] = useState(currentDate);
+
+  const currentDate = moment()._d;
+  const currentDateHour = moment().startOf('hour')._d;
+  const [showMin, setShowMin] = useState(null);
+  const [showMax, setShowMax] = useState(null);
   const handleBookingsById = async () => {
     const data = await getTableBookingById(companyId);
     setTableBookingsById(data);
   };
   useEffect(() => {
     handleBookingsById();
+
+    checkOpeningHours(currentDate);
   }, [success]);
 
   function eventStyle(event, start, end, isSelected) {
@@ -89,22 +101,31 @@ const CalendarComponent = (props: Props) => {
       };
     });
 
+  const checkOpeningHours = (date) => {
+    const getDay = moment(date).day();
+    const getYear = moment(date).year();
+
+    const openingMin = getOpeningHours(company.openingHours, getDay).today.open;
+    const openingMax = getOpeningHours(company.openingHours, getDay).today
+      .closed;
+    console.log('hello');
+
+    setShowMin(new Date(getYear, 1, 0, openingMin, 0, 0));
+    setShowMax(new Date(getYear, 1, 0, openingMax, 0, 0));
+  };
+
   return (
     <CalendarWrapper>
       {tableBookingsById && (
         <Calendar
           min={showMin}
-          max={new Date(2021, 1, 0, 21, 0, 0)}
+          max={showMax}
           eventPropGetter={eventStyle}
           selectable
           onSelectSlot={selectSlotsHandler}
           events={bookedTimes}
           localizer={localizer}
-          onRangeChange={(arr) =>
-            arr[0] > currentDate
-              ? setShowMin(new Date(2021, 1, 0, 9, 0, 0))
-              : setShowMin(currentDate)
-          }
+          onRangeChange={(arr) => checkOpeningHours(arr[0])}
           slotPropGetter={slotStyle}
           defaultView={Views.DAY}
           formats={{
