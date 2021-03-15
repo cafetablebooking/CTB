@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import moment from 'moment';
 import Dialog from '@material-ui/core/Dialog';
 import DialogTitle from '@material-ui/core/DialogTitle';
-import DialogContentText from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogActions from '@material-ui/core/DialogActions';
 import { Box, Button } from '@material-ui/core';
 import styled from 'styled-components';
