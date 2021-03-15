@@ -47,7 +47,10 @@ const SearchListItem = (props: Props) => {
           </Box>
         ) : (
           <Box color="error.main">
-            <Typography>Closed</Typography>
+            <Typography>
+              Closed ({props.openingHours.today.open}-
+              {props.openingHours.today.closed})
+            </Typography>
           </Box>
         )}
       </ListItemDetails>
