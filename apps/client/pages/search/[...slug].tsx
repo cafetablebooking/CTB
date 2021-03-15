@@ -51,7 +51,7 @@ const SearchPid = () => {
     let zoom = 0;
 
     if (pid && pid.length > 0 && type === 'location' && navigatorPosition) {
-      if (pid === 'Check my position') {
+      if (pid === 'check-my-position') {
         latitude = navigatorPosition.lat;
         longitude = navigatorPosition.lng;
         zoom = 12;
@@ -63,7 +63,7 @@ const SearchPid = () => {
         zoom = 12;
       }
     } else {
-      if (pid === 'Check my position') {
+      if (pid === 'check-my-position') {
         const response = await Geocode.fromAddress(`Sweden`);
         const { lat, lng } = response && response.results[0].geometry.location;
         latitude = lat;
@@ -93,7 +93,7 @@ const SearchPid = () => {
   };
 
   let filteredData = null;
-  if (type === 'location' && pid !== 'Check my position') {
+  if (type === 'location' && pid !== 'check-my-position') {
     filteredData =
       companies &&
       companies.filter((item) => {
@@ -102,7 +102,7 @@ const SearchPid = () => {
         return adress.toLowerCase().includes(pid.toLowerCase());
       });
   } else {
-    if (pid === 'Check my position') {
+    if (pid === 'check-my-position') {
       filteredData = companies && companies;
     } else {
       filteredData =

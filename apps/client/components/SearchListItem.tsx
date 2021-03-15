@@ -18,7 +18,6 @@ interface Props {
 }
 
 const SearchListItem = (props: Props) => {
-  console.log(props.openingHours);
   return (
     <ListItem>
       <ImageWrapper>
@@ -47,10 +46,7 @@ const SearchListItem = (props: Props) => {
           </Box>
         ) : (
           <Box color="error.main">
-            <Typography>
-              Closed ({props.openingHours.today.open}-
-              {props.openingHours.today.closed})
-            </Typography>
+            <Typography>Closed</Typography>
           </Box>
         )}
       </ListItemDetails>
