@@ -90,7 +90,7 @@ function AutoCompleteInput(props: AutoCompleteInputProps) {
   const Link = ({ children, ...other }) => {
     const handleClick = () => {
       setValue({
-        description: 'check-my-position',
+        description: 'Check my position',
         structured_formatting: {
           main_text: 'Surat',
           main_text_matched_substrings: [
