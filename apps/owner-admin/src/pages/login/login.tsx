@@ -12,11 +12,11 @@ import {
   Fade,
 } from '@material-ui/core';
 import classnames from 'classnames';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { useForm } from 'react-hook-form';
+// import { yupResolver } from '@hookform/resolvers/yup';
+// import { useForm } from 'react-hook-form';
 import { useTheme } from '@material-ui/styles';
 import { CTBtheme } from '@ctb/types';
-import { signUpSchema } from '@ctb/yup-resolvers';
+// import { signUpSchema } from '@ctb/yup-resolvers';
 
 import useStyles from './styles';
 import google from '../../assets/images/google.svg';
@@ -28,9 +28,9 @@ export function Login(props: LoginProps) {
   const theme = useTheme<CTBtheme>();
   const { login, signup } = useAuthContext();
 
-  const { register, handleSubmit, control } = useForm({
-    resolver: yupResolver(signUpSchema),
-  });
+  // const { register, handleSubmit, control } = useForm({
+  //   resolver: yupResolver(signUpSchema),
+  // });
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [activeTabId, setActiveTabId] = useState(0);
@@ -88,7 +88,6 @@ export function Login(props: LoginProps) {
                 placeholder="Email Adress"
                 type="email"
                 fullWidth
-                ref={register}
                 name="email"
               />
               <TextField
@@ -105,7 +104,6 @@ export function Login(props: LoginProps) {
                 placeholder="Password"
                 type="password"
                 fullWidth
-                ref={register}
                 name="password"
               />
               <div className={classes.formButtons}>
