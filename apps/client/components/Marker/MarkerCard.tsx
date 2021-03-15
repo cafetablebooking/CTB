@@ -14,18 +14,31 @@ import { Typography, Box } from '@material-ui/core';
 const MarkerCard = (props: Props) => {
   return (
     <Card ref={props.node}>
-      <ImageWrapper>
-        <Image src={props.image} alt="Avatar image for companies" layout="fill" />
-      </ImageWrapper>
+      {props.image && (
+        <ImageWrapper>
+          <Image
+            src={props.image}
+            alt="Avatar image for companies"
+            layout="fill"
+          />
+        </ImageWrapper>
+      )}
       <ListItemDetails>
         <Typography variant="h6">{props.companyName}</Typography>
-        <Typography>
-          {props.adress.name} {props.adress.postalCode} {props.adress.city}
-        </Typography>
+        {props.adress && (
+          <Typography>
+            {props.adress.name} {props.adress.postalCode} {props.adress.city}
+          </Typography>
+        )}
         <Typography color="secondary">Closed</Typography>
       </ListItemDetails>
       {props.distance && <Box>{props.distance} meters away</Box>}
-      <Image src={'/static/angle-right.svg'} alt="Angle right icon for cards" height="20" width="20" />
+      <Image
+        src={'/static/angle-right.svg'}
+        alt="Angle right icon for cards"
+        height="20"
+        width="20"
+      />
     </Card>
   );
 };

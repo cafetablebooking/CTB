@@ -1,9 +1,8 @@
-import React, { useContext } from 'react';
-import { Typography, Button } from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { Typography } from '@material-ui/core';
 
 import { useRouter } from 'next/router';
 
-import { useForm } from 'react-hook-form';
 import {
   Wrapper,
   CoverImage,
@@ -11,21 +10,25 @@ import {
   CompanyContent,
   OpeningHours,
   TextBox,
-  CalendarWrapper,
 } from '../../styles/companyDetailStyles';
 import {
   ImageInnerCircle,
   ImageOuterCircle,
+  TitleCompany,
 } from 'apps/client/styles/companyDetailStyles';
 import Image from 'next/image';
 
-import { ClientContext } from 'apps/client/contexts/ClientContext';
-import moment from 'moment';
-import { Calendar, Views, momentLocalizer } from 'react-big-calendar';
-import 'react-big-calendar/lib/css/react-big-calendar.css';
+import { useClientContext } from 'apps/client/contexts/ClientContext';
+
+import PaymentDialogComponent from './PaymentDialogComponent';
+import ConfirmDialogBoxComponent from './ConfirmDialogBoxComponent';
+
+import CalendarComponent from 'apps/client/components/CalendarComponent';
+import { getTableBookings } from 'apps/client/components/utils';
+
 interface Props {}
 type WeekDay = 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
-const localizer = momentLocalizer(moment);
+
 const ValueMap: { [value in WeekDay]: string } = {
   Sun: 'Sunday',
   Mon: 'Monday',
@@ -35,16 +38,39 @@ const ValueMap: { [value in WeekDay]: string } = {
   Fri: 'Friday',
   Sat: 'Saturday',
 } as const;
-
 const companyDetail = (props: Props) => {
-  const { register, handleSubmit, watch, errors } = useForm({});
-  const { companies }: any = useContext(ClientContext);
+  const { companies, bookedInfo, setBookedInfo }: any = useClientContext();
   const router = useRouter();
   const companyId = router.query.pid && router.query.pid[0];
+  const company = companies && companies.find((item) => item.id === companyId);
+  const [openConfirmBox, setOpenConfirmBox] = useState<boolean>(false);
+  const [paymentDialogOpen, setPaymentDialogOpen] = useState<boolean>(false);
+  const [selectedValue, setSelectedValue] = useState('');
+  const [success, setSuccess] = useState<boolean>(false);
+  const [tableBookings, setTableBookings] = useState(null);
 
-  const company =
-    companies && companies.find((item) => item.id === parseInt(companyId));
+  const setAllTableBookings = async () => {
+    const data = await getTableBookings();
+    setTableBookings(data);
+  };
 
+  useEffect(() => {
+    setAllTableBookings();
+  }, []);
+  const handlePaymentDialog = () => {
+    setPaymentDialogOpen(true);
+    setOpenConfirmBox(false);
+    setSuccess(false);
+  };
+  const handleConfirmBoxClose = (value: string) => {
+    setOpenConfirmBox(false);
+    setSelectedValue(value);
+  };
+  const handlePaymentDialogClose = (value: string) => {
+    setPaymentDialogOpen(false);
+
+    setSelectedValue(value);
+  };
   const renderOpeniningHours = () => {
     const openingDay =
       company &&
@@ -64,95 +90,74 @@ const companyDetail = (props: Props) => {
       });
     return openingDay;
   };
-  console.log(company);
 
-  const onSubmit = (data) => {};
   return (
     <>
       {company && (
         <Wrapper>
-          <CoverImage coverImage={company.coverImage}></CoverImage>
-
+          {company.coverImage && (
+            <CoverImage coverimage={company.coverImage}></CoverImage>
+          )}
           <Separator>
-            <div
-              style={{
-                position: 'absolute',
-                display: 'flex',
-                alignItems: 'center',
-                left: '5vw',
-              }}
-            >
+            <TitleCompany>
               <ImageOuterCircle>
-                <ImageInnerCircle>
-                  <Image
-                    src={company.image}
-                    alt="Avatar Image For Companies"
-                    layout="fill"
-                    objectFit="contain"
-                  />
-                </ImageInnerCircle>
+                {company.image && (
+                  <ImageInnerCircle>
+                    <Image
+                      src={company.image}
+                      alt="Avatar Image For Companies"
+                      layout="fill"
+                    />
+                  </ImageInnerCircle>
+                )}
               </ImageOuterCircle>
               <TextBox>
                 <Typography variant="h5">{company.companyName}</Typography>
-
-                <Typography>
-                  {company.adress.name} {company.adress.postalCode}{' '}
-                  {company.adress.city}
-                </Typography>
+                {company.adress && (
+                  <Typography>
+                    {company.adress.name} {company.adress.postalCode}{' '}
+                    {company.adress.city}
+                  </Typography>
+                )}
               </TextBox>
-            </div>
-            <Button
-              style={{
-                marginRight: '5vw',
-                width: '242.5px',
-                height: '56px',
-              }}
-              color="primary"
-              variant="contained"
-              type="submit"
-            >
-              Book now
-            </Button>
+            </TitleCompany>
           </Separator>
+
+          <PaymentDialogComponent
+            success={success}
+            setSuccess={setSuccess}
+            company={company}
+            tableBookings={tableBookings}
+            selectedValue={selectedValue}
+            bookedInfo={bookedInfo}
+            paymentDialogOpen={paymentDialogOpen}
+            onClose={handlePaymentDialogClose}
+          />
+
+          {bookedInfo && (
+            <ConfirmDialogBoxComponent
+              handlePaymentDialog={handlePaymentDialog}
+              tableBookings={tableBookings}
+              selectedValue={selectedValue}
+              bookedInfo={bookedInfo}
+              openConfirmBox={openConfirmBox}
+              onClose={handleConfirmBoxClose}
+              companyId={companyId}
+            />
+          )}
 
           <CompanyContent>
             <OpeningHours>
               <Typography variant="h6">Bookable times</Typography>
-              {renderOpeniningHours()}
+              {company.openingHours && renderOpeniningHours()}
             </OpeningHours>
-            <CalendarWrapper>
-              {/* <FullCalendar
-                allDaySlot={false}
-                schedulerLicenseKey="CC-Attribution-NonCommercial-NoDerivatives"
-                plugins={[interactionPlugin, resourceTimeGridPlugin]}
-                initialView="resourceTimeGridDay"
-                nowIndicator={true}
-                editable={false}
-                initialEvents={company.availableBookings}
-                initialResources={company.tables}
-                slotMinTime="09:00:00"
-                slotMaxTime="21:00:00"
-                hiddenDays={[]}
-                eventClick={(e) => console.log(e.event._def.resourceIds[0])}
-                slotLabelFormat={{
-                  hour12: false,
-                  hour: '2-digit',
-                  minute: '2-digit',
-                  omitZeroMinute: false,
-                  meridiem: 'narrow',
-                }}
-              /> */}
-              <Calendar
-                events={company.availableBookings}
-                localizer={localizer}
-                defaultView={Views.DAY}
-                views={['day', 'work_week']}
-                step={60}
-                resources={company.tables}
-                resourceIdAccessor="resourceId"
-                resourceTitleAccessor="resourceTitle"
-              />
-            </CalendarWrapper>
+            <CalendarComponent
+              company={company}
+              success={success}
+              setOpenConfirmBox={setOpenConfirmBox}
+              setBookedInfo={setBookedInfo}
+              companyId={companyId}
+            />
           </CompanyContent>
         </Wrapper>
       )}
