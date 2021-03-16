@@ -32,10 +32,10 @@
     "functions": { "tags": [] },
     "use-local-storage": { "tags": [] },
     "use-firestore": { "tags": [] },
-    "company-dashbaord": { "tags": [] },
-    "company-dashbaord-e2e": {
+    "company-dashboard": { "tags": [] },
+    "company-dashboard-e2e": {
       "tags": [],
-      "implicitDependencies": ["company-dashbaord"]
+      "implicitDependencies": ["company-dashboard"]
     }
   }
 }
