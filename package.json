@@ -76,7 +76,7 @@
     "react-hook-form": "^6.15.1",
     "react-is": "17.0.1",
     "react-marquee-slider": "^1.1.2",
-    "react-router-dom": "5.2.0",
+    "react-router-dom": "^5.2.0",
     "sharp": "^0.27.1",
     "styled-components": "^5.2.1",
     "swr": "^0.4.2",
