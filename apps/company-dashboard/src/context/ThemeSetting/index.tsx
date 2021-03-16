@@ -2,7 +2,7 @@ import React, { useCallback, useReducer } from 'react';
 import { CTBtheme } from '@ctb/types';
 
 import defaultConfig from './defaultConfig';
-import { contextReducer, ThemeSetting } from './ContextReducer';
+import { contextReducer, ThemeSetting } from './contextReducer';
 // import { ThemeMode } from '../../constants/AppEnums';
 import { ThemeMode } from '@ctb/types';
 import AppContext from '../appContext';
