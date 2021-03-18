@@ -90,7 +90,7 @@ function PaymentDialog(props: PaymentDialogProps) {
     if (!error) {
       try {
         const { id } = paymentMethod;
-        const url = 'https://stripe-server-ctb.herokuapp.com/payment:4000'; ////
+        const url = 'http://localhost/payment:4000'; ////
         const response = await axios.post(url, {
           amount: 100,
           id,

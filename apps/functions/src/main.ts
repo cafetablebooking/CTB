@@ -6,6 +6,9 @@ import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 import * as nodemailer from 'nodemailer';
 
+const stripe = require('stripe')(
+  'sk_test_51ITjygL8RDHU1rm4NhEq7tPjZmUcbaUcxlsJceNNFPmqMJKYJpsVOELdz6zsElVjktXk9tq7E06NMirD3Nv2zIPU00qbxLZbdX'
+);
 admin.initializeApp();
 
 const transporter = nodemailer.createTransport({
@@ -62,6 +65,10 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
     .catch((err) => {
       return err;
     });
+});
+
+exports.createStripeCheckout = functions.https.onRequest((req, res) => {
+
 });
 
 exports.listAllUsers = functions.https.onRequest((req, res) => {
