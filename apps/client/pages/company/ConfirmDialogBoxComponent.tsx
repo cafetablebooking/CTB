@@ -80,7 +80,7 @@ function ConfirmDialog(props: ConfirmDialogProps) {
       open={openConfirmBox ? openConfirmBox : false}
     >
       <StyledDialogBox>
-        {isAlreadyBooked.length ? (
+        {isAlreadyBooked && isAlreadyBooked.length ? (
           <p>This time is already booked.</p>
         ) : (
           <div>
