@@ -99,14 +99,14 @@ function ConfirmDialog(props: ConfirmDialogProps) {
                 <Typography>
                   To: <b>{endTime}</b>
                 </Typography>
-                <DialogActions>
+                <StyledDialogActions>
                   <Button onClick={handlePaymentDialog} color="primary">
                     Yes
                   </Button>
                   <Button onClick={handleClose} color="primary">
                     No
                   </Button>
-                </DialogActions>{' '}
+                </StyledDialogActions>{' '}
               </>
             ) : (
               <Typography>You can't select a time in the passed.</Typography>
@@ -117,7 +117,10 @@ function ConfirmDialog(props: ConfirmDialogProps) {
     </Dialog>
   );
 }
-
+const StyledDialogActions = styled(DialogActions)`
+  display: flex;
+  justify-content: center !important;
+`;
 const StyledDialogBox = styled(Box)`
   display: flex;
   justify-content: center;
