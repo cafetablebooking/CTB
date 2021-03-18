@@ -81,7 +81,7 @@ function ConfirmDialog(props: ConfirmDialogProps) {
     >
       <StyledDialogBox>
         {isAlreadyBooked && isAlreadyBooked.length ? (
-          <p>This time is already booked.</p>
+          <Typography>This time is already booked.</Typography>
         ) : (
           <div>
             {!timeHasPassed ? (
