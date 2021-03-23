@@ -8,6 +8,7 @@ import Reservation from './pages/reservation/reservation';
 import PrivateRoute from './components/private-route';
 import PublicRoute from './components/public-route';
 import Users from './pages/users/users';
+import CreateCompanyUser from './pages/create-company-user/create-company-user';
 
 interface AppProps {}
 
@@ -24,6 +25,10 @@ export const App: React.FC<AppProps> = () => {
         <PrivateRoute path="/settings" component={Reservation} />
         <PrivateRoute path="/support" component={Reservation} />
         <PrivateRoute path="/faq" component={Reservation} />
+        <PrivateRoute
+          path="/create-company-user"
+          component={CreateCompanyUser}
+        />
       </Switch>
     </BrowserRouter>
   );

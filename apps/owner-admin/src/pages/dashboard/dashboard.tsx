@@ -1,25 +1,28 @@
 import { auth, functions } from '@ctb/firebase-auth';
-import { Paper } from '@material-ui/core';
+import { Box, Grid, Paper } from '@material-ui/core';
 import React from 'react';
+import Card from '../../components/card/card';
 // import * as admin from 'firebase-admin';
 
-import styled from 'styled-components';
 import Layout from '../../components/layout/layout';
 
 /* eslint-disable-next-line */
 export interface DashboardProps {}
 
-const allUsers = functions.httpsCallable('listAllUsersCall');
-allUsers().then((res) => {
-  console.log(res);
-});
-
 export function Dashboard(props: DashboardProps) {
   return (
     <Layout>
-      <h1>Welcome to Dashboard!</h1>
-      <h1>Welcome to Dashboard!</h1>
-      <h1>Welcome to Dashboard!</h1>
+      <Grid container spacing={8}>
+        <Grid item xs={12} sm={4}>
+          <Card headerTitle="Create" headerSubTitle="company user" actionIcon />
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          {/* <Card /> */}
+        </Grid>
+        <Grid item xs={12} sm={4}>
+          {/* <Card /> */}
+        </Grid>
+      </Grid>
     </Layout>
   );
 }

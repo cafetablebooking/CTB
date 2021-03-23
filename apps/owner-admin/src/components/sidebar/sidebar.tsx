@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useState, useEffect } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 import { Box, Drawer, IconButton, List, Typography } from '@material-ui/core';
 import {
   HelpOutline as FAQIcon,
@@ -11,6 +12,7 @@ import EventSeatOutlinedIcon from '@material-ui/icons/EventSeatOutlined';
 import PeopleAltOutlinedIcon from '@material-ui/icons/PeopleAltOutlined';
 import QuestionAnswerOutlinedIcon from '@material-ui/icons/QuestionAnswerOutlined';
 import BusinessOutlinedIcon from '@material-ui/icons/BusinessOutlined';
+import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
 import { useTheme } from '@material-ui/styles';
 import { withRouter } from 'react-router-dom';
 import classNames from 'classnames';
@@ -32,41 +34,52 @@ export interface SidebarProps {
 }
 
 const structure = [
-  { id: 0, label: 'Dashboard', link: '/dashboard', icon: <AppsOutlined /> },
   {
-    id: 1,
+    id: uuidv4(),
+    label: 'Dashboard',
+    link: '/dashboard',
+    icon: <AppsOutlined />,
+  },
+  {
+    id: uuidv4(),
     label: 'Reservations',
     link: '/reservation',
     icon: <EventSeatOutlinedIcon />,
   },
   {
-    id: 2,
+    id: uuidv4(),
     label: 'Users',
     link: '/users',
     icon: <PeopleAltOutlinedIcon />,
   },
   {
-    id: 3,
+    id: uuidv4(),
     label: 'Company/Users',
     link: '/companies',
     icon: <BusinessOutlinedIcon />,
   },
   {
-    id: 4,
+    id: uuidv4(),
+    label: 'Create compnay user',
+    link: '/create-company-user',
+    icon: <AddCircleOutlineOutlinedIcon />,
+  },
+  {
+    id: uuidv4(),
     label: 'Settings',
     link: '/settings',
     icon: <SettingsOutlinedIcon />,
   },
-  { id: 5, type: 'divider' },
-  { id: 6, type: 'title', label: 'HELP' },
+  { id: uuidv4(), type: 'divider' },
+  { id: uuidv4(), type: 'title', label: 'HELP' },
   {
-    id: 7,
+    id: uuidv4(),
     label: 'Support',
     link: '/support',
     icon: <QuestionAnswerOutlinedIcon />,
   },
-  { id: 8, label: 'FAQ', link: '/faq', icon: <FAQIcon /> },
-  { id: 9, type: 'divider' },
+  { id: uuidv4(), label: 'FAQ', link: '/faq', icon: <FAQIcon /> },
+  { id: uuidv4(), type: 'divider' },
 ];
 
 export function Sidebar({ location }: SidebarProps) {

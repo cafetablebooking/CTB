@@ -9,7 +9,7 @@ export default makeStyles((theme: any) => ({
   },
   content: {
     flexGrow: 1,
-    padding: theme.spacing(3),
+    padding: theme.spacing(10),
     width: `calc(100vw - 240px)`,
     minHeight: '100vh',
     // backgroundColor: '#F3F4F6',

@@ -6,7 +6,10 @@ import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 import * as nodemailer from 'nodemailer';
 
+import * as cors from 'cors';
+
 admin.initializeApp();
+const corsHandler = cors({ origin: true });
 
 const transporter = nodemailer.createTransport({
   host: 'smtp.gmail.com',
@@ -44,14 +47,15 @@ exports.sendEmail = functions.firestore
   .document('company_request/{company_requestId}')
   .onCreate(sendWelcomeEmail);
 
-exports.addAdminRole = functions.https.onCall((data, context) => {
+exports.setRole = functions.https.onCall((data, context) => {
   // get user and add admin custom claim
   return admin
     .auth()
     .getUserByEmail(data.email)
     .then((user) => {
       return admin.auth().setCustomUserClaims(user.uid, {
-        admin: true,
+        admin: data.admin ?? false,
+        companyUser: data.companyUser ?? false,
       });
     })
     .then(() => {
@@ -66,21 +70,23 @@ exports.addAdminRole = functions.https.onCall((data, context) => {
 
 exports.listAllUsers = functions.https.onRequest((req, res) => {
   const allUsers = [];
-
-  return admin
-    .auth()
-    .listUsers()
-    .then((listUsersResult) => {
-      listUsersResult.users.forEach((userRecord) => {
-        const userData = userRecord.toJSON();
-        allUsers.push(userData);
+  return corsHandler(req, res, () => {
+    // your function body here - use the provided req and res from cors
+    return admin
+      .auth()
+      .listUsers()
+      .then((listUsersResult) => {
+        listUsersResult.users.forEach((userRecord) => {
+          const userData = userRecord.toJSON();
+          allUsers.push(userData);
+        });
+        res.status(200).send(JSON.stringify(allUsers));
+      })
+      .catch((error) => {
+        console.log('Error listing users:', error);
+        res.status(500).send(error);
       });
-      res.status(200).send(JSON.stringify(allUsers));
-    })
-    .catch((error) => {
-      console.log('Error listing users:', error);
-      res.status(500).send(error);
-    });
+  });
 });
 
 exports.deleteUser = functions.https.onCall((data, context) => {
@@ -108,5 +114,26 @@ exports.isUserAdmin = functions.https.onCall((data, context) => {
     })
     .catch((error) => {
       console.log('user not admin', error);
+    });
+});
+
+exports.createUser = functions.https.onCall((data, context) => {
+  return admin
+    .auth()
+    .createUser({
+      email: data.email,
+      // emailVerified: false,
+      // phoneNumber: data.phoneNumber,
+      password: data.password,
+      displayName: data.displayName,
+      // photoURL: 'http://www.example.com/12345678/photo.png',
+      // disabled: false,
+    })
+    .then((userRecord) => {
+      // See the UserRecord reference doc for the contents of userRecord.
+      console.log('Successfully created new user:', userRecord.uid);
+    })
+    .catch((error) => {
+      console.log('Error creating new user:', error);
     });
 });
