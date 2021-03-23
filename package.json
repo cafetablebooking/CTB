@@ -78,6 +78,7 @@
     "react-marquee-slider": "^1.1.2",
     "react-router-dom": "^5.2.0",
     "sharp": "^0.27.1",
+    "stripe": "^8.138.0",
     "styled-components": "^5.2.1",
     "swr": "^0.4.2",
     "tinycolor2": "^1.4.2",

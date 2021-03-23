@@ -8,6 +8,9 @@ import * as nodemailer from 'nodemailer';
 
 import * as cors from 'cors';
 
+// const stripe = require('stripe')(
+//   'sk_test_51ITjygL8RDHU1rm4NhEq7tPjZmUcbaUcxlsJceNNFPmqMJKYJpsVOELdz6zsElVjktXk9tq7E06NMirD3Nv2zIPU00qbxLZbdX'
+// );
 admin.initializeApp();
 const corsHandler = cors({ origin: true });
 
@@ -67,6 +70,8 @@ exports.setRole = functions.https.onCall((data, context) => {
       return err;
     });
 });
+
+exports.createStripeCheckout = functions.https.onRequest((req, res) => {});
 
 exports.listAllUsers = functions.https.onRequest((req, res) => {
   const allUsers = [];

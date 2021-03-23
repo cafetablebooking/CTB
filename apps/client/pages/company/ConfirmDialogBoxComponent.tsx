@@ -54,6 +54,25 @@ function ConfirmDialog(props: ConfirmDialogProps) {
   //e
   const timeHasPassed = selectedStartTime < currentDateRoundTo ? true : false;
 
+  const isAlreadyBooked =
+    tableBooking &&
+    tableBooking.bookedTimes.filter((item) => {
+      const selectedResourceId = bookedInfo.resourceId;
+      const eventResourceId = item.resourceId;
+      const selectedStart = moment(bookedInfo.start);
+      const selectedEnd = moment(bookedInfo.end);
+      const eventStart = moment(item.start);
+      const eventEnd = moment(item.end);
+      if (eventResourceId === selectedResourceId) {
+        if (
+          eventStart.isBetween(selectedStart._i, selectedEnd._i) ||
+          eventEnd.isBetween(selectedStart._i, selectedEnd._i)
+        ) {
+          return item;
+        }
+      }
+    });
+
   return (
     <Dialog
       onClose={handleClose}
@@ -61,36 +80,47 @@ function ConfirmDialog(props: ConfirmDialogProps) {
       open={openConfirmBox ? openConfirmBox : false}
     >
       <StyledDialogBox>
-        {!timeHasPassed ? (
-          <>
-            <DialogTitle id="simple-dialog-title">Confirm table</DialogTitle>
-            <DialogContentText id="alert-dialog-slide-description">
-              Do you really want to book{' '}
-              <b>{findTableResource && findTableResource.resourceTitle}</b>?
-            </DialogContentText>
-            <Typography>
-              From: <b>{startTime}</b>
-            </Typography>
-            <Typography>
-              To: <b>{endTime}</b>
-            </Typography>
-            <DialogActions>
-              <Button onClick={handlePaymentDialog} color="primary">
-                Yes
-              </Button>
-              <Button onClick={handleClose} color="primary">
-                No
-              </Button>
-            </DialogActions>{' '}
-          </>
+        {isAlreadyBooked && isAlreadyBooked.length ? (
+          <Typography>This time is already booked.</Typography>
         ) : (
-          <Typography>You can't select a time in the passed.</Typography>
+          <div>
+            {!timeHasPassed ? (
+              <>
+                <DialogTitle align="center" id="simple-dialog-title">
+                  Confirm table
+                </DialogTitle>
+                <DialogContentText id="alert-dialog-slide-description">
+                  Do you really want to book{' '}
+                  <b>{findTableResource && findTableResource.resourceTitle}</b>?
+                </DialogContentText>
+                <Typography>
+                  From: <b>{startTime}</b>
+                </Typography>
+                <Typography>
+                  To: <b>{endTime}</b>
+                </Typography>
+                <StyledDialogActions>
+                  <Button onClick={handlePaymentDialog} color="primary">
+                    Yes
+                  </Button>
+                  <Button onClick={handleClose} color="primary">
+                    No
+                  </Button>
+                </StyledDialogActions>{' '}
+              </>
+            ) : (
+              <Typography>You can't select a time in the passed.</Typography>
+            )}{' '}
+          </div>
         )}
       </StyledDialogBox>
     </Dialog>
   );
 }
-
+const StyledDialogActions = styled(DialogActions)`
+  display: flex;
+  justify-content: center !important;
+`;
 const StyledDialogBox = styled(Box)`
   display: flex;
   justify-content: center;
