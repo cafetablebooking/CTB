@@ -1,9 +1,10 @@
-import React, { useRef, useImperativeHandle } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useRef, useImperativeHandle, useState } from 'react';
 
 import Dialog from '@material-ui/core/Dialog';
 
 import Typography from '@material-ui/core/Typography';
-import { Button } from '@material-ui/core';
+import { Button, CircularProgress } from '@material-ui/core';
 import { TextField, Divider } from '@material-ui/core';
 
 import { Form, PaymentBox, CardDetails } from '../../styles/paymentStyles';
@@ -25,8 +26,6 @@ export interface PaymentDialogProps {
   onClose: (value: string) => void;
   bookedInfo: any;
   company: any;
-  success: boolean;
-  setSuccess: (value: boolean) => void;
   tableBookings: any;
 }
 
@@ -37,6 +36,7 @@ interface Props {
 
 const StripeInput = (props: Props) => {
   const elementRef: any = useRef();
+
   const { component: Component, inputRef } = props;
   useImperativeHandle(inputRef, () => ({
     focus: () => elementRef.current.focus,
@@ -48,16 +48,17 @@ const StripeInput = (props: Props) => {
     />
   );
 };
+
 function PaymentDialog(props: PaymentDialogProps) {
   const { register, handleSubmit, watch, errors } = useForm({});
-
+  const [isProcessing, setProcessingTo] = useState(false);
+  const [checkoutError, setCheckoutError] = useState('');
+  const [success, setSuccess] = useState(false);
   const {
     onClose,
     selectedValue,
     paymentDialogOpen,
     company,
-    success,
-    setSuccess,
     tableBookings,
   } = props;
   const bookedInfo = props.bookedInfo;
@@ -73,39 +74,52 @@ function PaymentDialog(props: PaymentDialogProps) {
     tableBookings.find((booking) => {
       return booking.companyId === company.id;
     });
-
   const onSubmit = async (data) => {
     const tableBookingsRef = firestore
       .collection('tableBookings')
       .doc(findBooking && findBooking.docId);
 
-    const { error, paymentMethod } = await stripe.createPaymentMethod({
-      type: 'card',
-      card: elements.getElement(CardNumberElement),
-      billing_details: {
-        name: data.name,
-      },
-    });
+    setProcessingTo(true);
 
-    if (!error) {
-      try {
-        const { id } = paymentMethod;
-        const url = 'http://localhost/payment:4000'; ////
-        const response = await axios.post(url, {
-          amount: 100,
-          id,
-        });
-        if (response.data.success) {
-          tableBookingsRef.update({
-            bookedTimes: firebase.firestore.FieldValue.arrayUnion(bookedInfo),
-          });
-          setSuccess(true);
+    try {
+      const { data: clientSecret } = await axios.post(
+        'https://us-central1-cafetablebooking.cloudfunctions.net/stripeHandler',
+        {
+          amount: 10 * 100,
         }
-      } catch (error) {
-        console.log('Error:', error);
+      );
+      const {
+        error: createPaymentErr,
+        paymentMethod,
+      } = await stripe.createPaymentMethod({
+        type: 'card',
+        card: elements.getElement(CardNumberElement),
+        billing_details: {
+          name: data.name,
+        },
+      });
+
+      if (createPaymentErr) {
+        setCheckoutError(createPaymentErr.message);
+        setProcessingTo(false);
+        return;
       }
-    } else {
-      console.log(error.message);
+
+      const { error } = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: paymentMethod.id,
+      });
+      if (error) {
+        setCheckoutError(error.message);
+        setProcessingTo(false);
+        return;
+      }
+      setSuccess(true);
+      tableBookingsRef.update({
+        bookedTimes: firebase.firestore.FieldValue.arrayUnion(bookedInfo),
+      });
+    } catch (error) {
+      setCheckoutError(error.message);
+      setProcessingTo(false);
     }
   };
 
@@ -195,9 +209,13 @@ function PaymentDialog(props: PaymentDialogProps) {
               color="primary"
               variant="contained"
               type="submit"
+              disabled={isProcessing}
             >
-              Confirm payment
+              {isProcessing ? 'Processing..' : 'Confirm payment'}
             </Button>
+            <div style={{ color: 'red', textAlign: 'center' }}>
+              {checkoutError}
+            </div>
           </Form>
         </PaymentBox>
       ) : (
