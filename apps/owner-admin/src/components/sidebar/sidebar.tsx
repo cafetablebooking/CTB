@@ -54,7 +54,13 @@ const structure = [
   },
   {
     id: uuidv4(),
-    label: 'Company/Users',
+    label: 'Pending Companies',
+    link: '/pendingCompanies',
+    icon: <PeopleAltOutlinedIcon />,
+  },
+  {
+    id: uuidv4(),
+    label: 'Companies',
     link: '/companies',
     icon: <BusinessOutlinedIcon />,
   },

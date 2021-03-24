@@ -71,7 +71,6 @@ export function Header({}: HeaderProps) {
   // const [isSearchOpen, setSearchOpen] = useState(false);
   const { themeMode } = useContext<AppContextPropsType>(appContext);
 
-  console.log(docs);
   return (
     <AppBar
       color={themeMode === ThemeMode.DARK ? 'primary' : 'secondary'}
