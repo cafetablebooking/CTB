@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import MUIDataTable from 'mui-datatables';
 
 import Layout from '../../components/layout/layout';
 
 import { useFirestore } from '@ctb/use-firestore';
+import CustomToolBarSelect from './CustomToolBarSelect';
+import { firestore } from '@ctb/firebase-auth';
 
 /* eslint-disable-next-line */
 export interface UsersProps {}
@@ -38,6 +40,23 @@ const columns = [
 
 export function PendingCompanies(props: UsersProps) {
   const { docs } = useFirestore('company_requests');
+  console.log(docs);
+
+  const setActivateCompanies = (selectedRows) => {
+    selectedRows.data.map(async (item) => {
+      const pendingCompany = docs[item.index];
+      const { companyName, vatNr, email, phoneNumber, id } = pendingCompany;
+      const companiesRef = firestore.collection('companies');
+      const pendingCompanies = firestore.collection('company_requests').doc(id);
+      await companiesRef.add({
+        companyName,
+        vatNr,
+        email,
+        phoneNumber,
+      });
+      await pendingCompanies.delete();
+    });
+  };
 
   const options = {
     filter: true,
@@ -46,6 +65,12 @@ export function PendingCompanies(props: UsersProps) {
     tableBodyHeight: '500px',
     elevation: 1,
     sortFilterList: true,
+    customToolbarSelect: (selectedRows) => (
+      <CustomToolBarSelect
+        setActivateCompanies={setActivateCompanies}
+        selectedRows={selectedRows}
+      />
+    ),
   };
   return (
     <Layout>
