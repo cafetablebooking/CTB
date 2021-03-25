@@ -63,10 +63,14 @@ function ConfirmDialog(props: ConfirmDialogProps) {
       const selectedEnd = moment(bookedInfo.end);
       const eventStart = moment(item.start);
       const eventEnd = moment(item.end);
+
       if (eventResourceId === selectedResourceId) {
         if (
           eventStart.isBetween(selectedStart._i, selectedEnd._i) ||
-          eventEnd.isBetween(selectedStart._i, selectedEnd._i)
+          eventEnd.isBetween(selectedStart._i, selectedEnd._i) ||
+          eventStart.isSame(selectedStart._i) ||
+          eventEnd.isSame(selectedEnd._i) ||
+          selectedStart.isBetween(eventStart._i, eventEnd._i)
         ) {
           return item;
         }
