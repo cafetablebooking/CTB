@@ -36,9 +36,8 @@ const AuthContextProvider = ({ children }: Props) => {
       );
       await user.updateProfile({ displayName: name });
       if (email === ADMIN_USERS[name]) {
-        const admin = true;
-        const addAdminRole = await functions.httpsCallable('addAdminRole');
-        await addAdminRole({ email, admin });
+        const setRole = await functions.httpsCallable('setRole');
+        await setRole({ email, admin: true, companyUser: false });
       }
       setUser(user);
       return user;

@@ -44,14 +44,10 @@ export function CreateCompanyUser(props: CreateCompanyUserProps) {
   });
 
   const onSubmit = async ({ displayName, email, password, message }) => {
-    const companyUser = true;
-    const admin = false;
-    // console.log(data);
-    // console.log(displayName, email, password, message);
     const createUser = await functions.httpsCallable('createUser');
     createUser({ email, password, displayName });
     const setRole = await functions.httpsCallable('setRole');
-    setRole({ email, admin, companyUser });
+    setRole({ email, companyUser: true, admin: false });
   };
 
   const classes = useStyles();

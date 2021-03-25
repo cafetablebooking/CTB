@@ -5,13 +5,19 @@
 import * as functions from 'firebase-functions';
 import * as admin from 'firebase-admin';
 import * as nodemailer from 'nodemailer';
+import Stripe from 'stripe';
 
 import * as cors from 'cors';
 
-// const stripe = require('stripe')(
-//   'sk_test_51ITjygL8RDHU1rm4NhEq7tPjZmUcbaUcxlsJceNNFPmqMJKYJpsVOELdz6zsElVjktXk9tq7E06NMirD3Nv2zIPU00qbxLZbdX'
-// );
+const PUBLISHABLE_KEY =
+  'pk_test_51IYfjEKp4XrdRIV5ALP4XZfBOnCEEaeszBPFeZbxLMwPUIho1iL61ub4AkooCxOzPZq0sagfB2QvSot3WsWGPRGX003w2bnk8t';
+const SECRET_KEY =
+  'sk_test_51IYfjEKp4XrdRIV53nbSZtxBxotT560niMA6j14rAilAblNfhIFpANboVG7y8GQRecQ2QxE9l5iZpZA2wQcu8Hbg00C6xaPMta';
+
 admin.initializeApp();
+const stripe = new Stripe(SECRET_KEY, {
+  apiVersion: '2020-08-27',
+});
 const corsHandler = cors({ origin: true });
 
 const transporter = nodemailer.createTransport({
@@ -57,8 +63,8 @@ exports.setRole = functions.https.onCall((data, context) => {
     .getUserByEmail(data.email)
     .then((user) => {
       return admin.auth().setCustomUserClaims(user.uid, {
-        admin: data.admin ?? false,
-        companyUser: data.companyUser ?? false,
+        admin: data.admin,
+        companyUser: data.companyUser,
       });
     })
     .then(() => {
@@ -70,8 +76,6 @@ exports.setRole = functions.https.onCall((data, context) => {
       return err;
     });
 });
-
-exports.createStripeCheckout = functions.https.onRequest((req, res) => {});
 
 exports.listAllUsers = functions.https.onRequest((req, res) => {
   const allUsers = [];
@@ -128,7 +132,7 @@ exports.createUser = functions.https.onCall((data, context) => {
     .createUser({
       email: data.email,
       // emailVerified: false,
-      // phoneNumber: data.phoneNumber,
+      phoneNumber: data.phoneNumber,
       password: data.password,
       displayName: data.displayName,
       // photoURL: 'http://www.example.com/12345678/photo.png',
@@ -142,3 +146,44 @@ exports.createUser = functions.https.onCall((data, context) => {
       console.log('Error creating new user:', error);
     });
 });
+
+exports.stripeHandler = functions.https.onRequest((req, res) => {
+  return corsHandler(req, res, async () => {
+    if (req.method === 'POST') {
+      try {
+        const { amount } = req.body;
+        const paymentIntent = await stripe.paymentIntents.create({
+          amount,
+          currency: 'SEK',
+        });
+
+        res.status(200).send(paymentIntent.client_secret);
+      } catch (err) {
+        res.status(500).json({ statusCode: 500, message: err.message });
+      }
+    } else {
+      res.setHeader('Allow', 'POST');
+      res.status(405).end('Method Not Allowed');
+    }
+  });
+});
+// exports.stripeHandler = functions.https.onRequest((req, res) => {
+//   return corsHandler(req, res, async () => {
+//     if (req.method === 'POST') {
+//       try {
+//         const { amount } = req.body;
+//         const paymentIntent = await stripe.paymentIntents.create({
+//           amount,
+//           currency: 'SEK',
+//         });
+
+//         res.status(200).send(paymentIntent.client_secret);
+//       } catch (err) {
+//         res.status(500).json({ statusCode: 500, message: err.message });
+//       }
+//     } else {
+//       res.setHeader('Allow', 'POST');
+//       res.status(405).end('Method Not Allowed');
+//     }
+//   });
+// });
