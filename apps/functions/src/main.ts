@@ -10,9 +10,9 @@ import Stripe from 'stripe';
 import * as cors from 'cors';
 
 const PUBLISHABLE_KEY =
-  'pk_test_51GO7LQHHgnY52g2R51b7tQ6ImZUu7mKOvRbWxIXGa4On8j7C9gG2z3s5paFPO6xgCwfQmQVTHFGnYfZ4me9AJBWc006lgezlGq';
+  'pk_test_51IYfjEKp4XrdRIV5ALP4XZfBOnCEEaeszBPFeZbxLMwPUIho1iL61ub4AkooCxOzPZq0sagfB2QvSot3WsWGPRGX003w2bnk8t';
 const SECRET_KEY =
-  'sk_test_51GO7LQHHgnY52g2R2bcAr7j1B8uY6BOX81F5Aviv1PPYj3fIrk91KxOGkSNicEnd1wgqa27XWUwEZiQ4YzFtZDMI00QlVVH3Pp';
+  'sk_test_51IYfjEKp4XrdRIV53nbSZtxBxotT560niMA6j14rAilAblNfhIFpANboVG7y8GQRecQ2QxE9l5iZpZA2wQcu8Hbg00C6xaPMta';
 
 admin.initializeApp();
 const stripe = new Stripe(SECRET_KEY, {
@@ -167,3 +167,23 @@ exports.stripeHandler = functions.https.onRequest((req, res) => {
     }
   });
 });
+// exports.stripeHandler = functions.https.onRequest((req, res) => {
+//   return corsHandler(req, res, async () => {
+//     if (req.method === 'POST') {
+//       try {
+//         const { amount } = req.body;
+//         const paymentIntent = await stripe.paymentIntents.create({
+//           amount,
+//           currency: 'SEK',
+//         });
+
+//         res.status(200).send(paymentIntent.client_secret);
+//       } catch (err) {
+//         res.status(500).json({ statusCode: 500, message: err.message });
+//       }
+//     } else {
+//       res.setHeader('Allow', 'POST');
+//       res.status(405).end('Method Not Allowed');
+//     }
+//   });
+// });

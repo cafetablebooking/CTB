@@ -15,29 +15,29 @@ const stripePromise = loadStripe(
 
 function CustomApp({ Component, pageProps }: AppProps) {
   return (
-    <Elements stripe={stripePromise}>
-      <>
-        <style jsx global>{`
-          body {
-            margin: 0;
-          }
-        `}</style>
-        <Head>
-          <title>Welcome to client!</title>
-        </Head>
-        <AuthContextProvider>
-          <ClientContextProvider>
-            <Header />
-            <main style={{ top: '73.6px', position: 'relative' }}>
-              <ThemeProvider theme={theme}>
+    <>
+      <style jsx global>{`
+        body {
+          margin: 0;
+        }
+      `}</style>
+      <Head>
+        <title>Welcome to client!</title>
+      </Head>
+      <AuthContextProvider>
+        <ClientContextProvider>
+          <Header />
+          <main style={{ top: '73.6px', position: 'relative' }}>
+            <ThemeProvider theme={theme}>
+              <Elements stripe={stripePromise}>
                 <Component {...pageProps} />
-              </ThemeProvider>
-            </main>
-            <Footer />
-          </ClientContextProvider>
-        </AuthContextProvider>
-      </>
-    </Elements>
+              </Elements>
+            </ThemeProvider>
+          </main>
+          <Footer />
+        </ClientContextProvider>
+      </AuthContextProvider>
+    </>
   );
 }
 
