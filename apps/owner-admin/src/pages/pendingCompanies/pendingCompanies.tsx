@@ -47,17 +47,24 @@ export function PendingCompanies(props: UsersProps) {
     selectedRows.data.map(async (item) => {
       const pendingCompany = docs[item.index];
       const { companyName, vatNr, email, phoneNumber, id } = pendingCompany;
-      const companiesRef = firestore.collection('companies');
+
       const pendingCompanies = firestore.collection('company_requests').doc(id);
-      
-      await signup(email, id, companyName);
-      await companiesRef.add({
-        companyName,
-        vatNr,
-        email,
-        phoneNumber,
-      });
-      await pendingCompanies.delete();
+
+      const res = await signup(email, id, companyName);
+
+      if (res) {
+        console.log(res.uid);
+
+        const companiesRef = firestore.collection('companies').doc(res.uid);
+
+        await companiesRef.set({
+          companyName,
+          vatNr,
+          email,
+          phoneNumber,
+        });
+        await pendingCompanies.delete();
+      }
     });
   };
 
