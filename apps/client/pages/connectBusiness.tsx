@@ -19,6 +19,7 @@ import {
   TextBox,
 } from '../styles/connectBusinessStyles';
 import { firestore } from '@ctb/firebase-auth';
+
 interface Props {}
 
 const connectCafe = (props: Props) => {

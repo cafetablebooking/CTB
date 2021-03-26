@@ -1,0 +1,315 @@
+[debug] [2021-03-26T08:43:48.589Z] ----------------------------------------------------------------------
+[debug] [2021-03-26T08:43:48.590Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\gabbe\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2021-03-26T08:43:48.591Z] CLI Version:   9.6.1
+[debug] [2021-03-26T08:43:48.591Z] Platform:      win32
+[debug] [2021-03-26T08:43:48.591Z] Node Version:  v14.16.0
+[debug] [2021-03-26T08:43:48.592Z] Time:          Fri Mar 26 2021 09:43:48 GMT+0100 (Central European Standard Time)
+[debug] [2021-03-26T08:43:48.592Z] ----------------------------------------------------------------------
+[debug] [2021-03-26T08:43:48.592Z] 
+[debug] [2021-03-26T08:43:48.597Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-03-26T08:43:48.598Z] > authorizing via signed-in user
+[debug] [2021-03-26T08:43:48.598Z] [iam] checking project cafetablebooking for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]
+[debug] [2021-03-26T08:43:48.599Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/cafetablebooking:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[debug] [2021-03-26T08:43:49.392Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:43:45 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=739","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-26T08:43:49.394Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/cafetablebooking/serviceAccounts/cafetablebooking@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2021-03-26T08:43:50.165Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:43:46 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'cafetablebooking'...
+[info] 
+[info] i  deploying firestore, functions 
+[info] Running command: npm run build functions --prod
+[debug] [2021-03-26T08:44:12.698Z] ----------------------------------------------------------------------
+[debug] [2021-03-26T08:44:12.700Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\gabbe\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2021-03-26T08:44:12.700Z] CLI Version:   9.6.1
+[debug] [2021-03-26T08:44:12.700Z] Platform:      win32
+[debug] [2021-03-26T08:44:12.700Z] Node Version:  v14.16.0
+[debug] [2021-03-26T08:44:12.701Z] Time:          Fri Mar 26 2021 09:44:12 GMT+0100 (Central European Standard Time)
+[debug] [2021-03-26T08:44:12.701Z] ----------------------------------------------------------------------
+[debug] [2021-03-26T08:44:12.701Z] 
+[debug] [2021-03-26T08:44:12.706Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-03-26T08:44:12.706Z] > authorizing via signed-in user
+[debug] [2021-03-26T08:44:12.707Z] [iam] checking project cafetablebooking for permissions ["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]
+[debug] [2021-03-26T08:44:12.708Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/cafetablebooking:testIamPermissions  
+ {"permissions":["cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","datastore.indexes.create","datastore.indexes.delete","datastore.indexes.list","datastore.indexes.update","firebase.projects.get"]}
+[debug] [2021-03-26T08:44:13.488Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:09 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","server-timing":"gfet4t7; dur=739","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-26T08:44:13.489Z] >>> HTTP REQUEST POST https://iam.googleapis.com/v1/projects/cafetablebooking/serviceAccounts/cafetablebooking@appspot.gserviceaccount.com:testIamPermissions  
+ {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2021-03-26T08:44:14.249Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:10 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] === Deploying to 'cafetablebooking'...
+[info] 
+[info] i  deploying firestore, functions 
+[info] Running command: npm run build functions --prod
+[info] +  functions: Finished running predeploy script. 
+[info] i  firestore: reading indexes from firestore.indexes.json... 
+[info] i  cloud.firestore: checking firestore.rules for compilation errors... 
+[debug] [2021-03-26T08:44:30.203Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/cafetablebooking:test  
+ {"source":{"files":[{"name":"firestore.rules","content":"rules_version = '2';\r\nservice cloud.firestore {\r\n  match /databases/{database}/documents {\r\n    match /{document=**} {\r\n      allow read, write: if\r\n          request.time < timestamp.date(2021, 3, 12);\r\n    }\r\n  }\r\n}"}]}}
+[debug] [2021-03-26T08:44:31.265Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:27 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] +  cloud.firestore: rules file firestore.rules compiled successfully 
+[info] i  functions: ensuring required API cloudfunctions.googleapis.com is enabled... 
+[info] i  functions: ensuring required API cloudbuild.googleapis.com is enabled... 
+[debug] [2021-03-26T08:44:35.598Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/cafetablebooking/services/cloudfunctions.googleapis.com  
+ 
+[debug] [2021-03-26T08:44:35.598Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/cafetablebooking/services/runtimeconfig.googleapis.com  
+ 
+[debug] [2021-03-26T08:44:35.598Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/cafetablebooking/services/cloudbuild.googleapis.com  
+ 
+[debug] [2021-03-26T08:44:36.560Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:32 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] +  functions: required API cloudfunctions.googleapis.com is enabled 
+[debug] [2021-03-26T08:44:36.590Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:32 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-26T08:44:36.595Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:32 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] +  functions: required API cloudbuild.googleapis.com is enabled 
+[debug] [2021-03-26T08:44:36.597Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/cafetablebooking/adminSdkConfig  
+ 
+[debug] [2021-03-26T08:44:36.932Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:33 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  functions: preparing / directory for uploading... 
+[debug] [2021-03-26T08:44:36.934Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/cafetablebooking/configs  
+ 
+[debug] [2021-03-26T08:44:37.181Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:33 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-26T08:44:37.182Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/cafetablebooking/configs/mail/variables  
+ 
+[debug] [2021-03-26T08:44:37.182Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/cafetablebooking/configs/stripe/variables  
+ 
+[debug] [2021-03-26T08:44:37.404Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:33 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-26T08:44:37.404Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/cafetablebooking/configs/stripe/variables/secret_key  
+ 
+[debug] [2021-03-26T08:44:38.173Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:34 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-26T08:44:38.173Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/cafetablebooking/configs/mail/variables/pwd  
+ 
+[debug] [2021-03-26T08:44:38.174Z] >>> HTTP REQUEST GET https://runtimeconfig.googleapis.com/v1beta1/projects/cafetablebooking/configs/mail/variables/from  
+ 
+[debug] [2021-03-26T08:44:38.226Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:34 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-26T08:44:38.632Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:34 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-26T08:44:39.071Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:35 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  functions: packaged / (38.08 MB) for uploading 
+[debug] [2021-03-26T08:44:42.233Z] > [functions] package.json contents: {
+  "name": "ctb",
+  "version": "0.0.0",
+  "license": "MIT",
+  "main": "dist/apps/functions/main.js",
+  "engines": {
+    "node": "14"
+  },
+  "scripts": {
+    "nx": "nx",
+    "deploy": "firebase deploy --only functions",
+    "start": "nx serve",
+    "build": "nx build",
+    "test": "nx test",
+    "lint": "nx workspace-lint && nx lint",
+    "e2e": "nx e2e",
+    "affected:apps": "nx affected:apps",
+    "affected:libs": "nx affected:libs",
+    "affected:build": "nx affected:build",
+    "affected:e2e": "nx affected:e2e",
+    "affected:test": "nx affected:test",
+    "affected:lint": "nx affected:lint",
+    "affected:dep-graph": "nx affected:dep-graph",
+    "affected": "nx affected",
+    "format": "nx format:write",
+    "format:write": "nx format:write",
+    "format:check": "nx format:check",
+    "update": "nx migrate latest",
+    "workspace-generator": "nx workspace-generator",
+    "dep-graph": "nx dep-graph",
+    "help": "nx help",
+    "firebase:deploy": "firebase deploy --only functions"
+  },
+  "private": true,
+  "dependencies": {
+    "@date-io/date-fns": "^1.3.13",
+    "@hookform/resolvers": "1.3.0",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "@material-ui/pickers": "^3.2.10",
+    "@material-ui/styles": "^4.11.3",
+    "@nrwl/next": "^11.2.11",
+    "@nrwl/nx": "^7.8.7",
+    "@nrwl/react": "11.2.11",
+    "@reach/combobox": "^0.13.0",
+    "@react-firebase/auth": "^0.2.10",
+    "@react-google-maps/api": "^2.1.1",
+    "@stripe/react-stripe-js": "^1.4.0",
+    "@stripe/stripe-js": "^1.13.1",
+    "@types/googlemaps": "^3.43.3",
+    "@types/material-ui": "^0.21.8",
+    "@types/tinycolor2": "^1.4.2",
+    "autosuggest-highlight": "^3.1.1",
+    "axios": "^0.21.1",
+    "classnames": "^2.2.6",
+    "core-js": "^3.6.5",
+    "cors": "^2.8.5",
+    "date-fns": "^2.18.0",
+    "document-register-element": "1.13.1",
+    "firebase": "^8.2.6",
+    "firebase-admin": "^9.5.0",
+    "firebase-functions": "^3.13.2",
+    "firestore-export-import": "^0.12.1",
+    "geolib": "^3.3.1",
+    "globalize": "0.1.1",
+    "google-map-react": "^2.1.9",
+    "moment": "^2.29.1",
+    "mui-datatables": "^3.7.6",
+    "next": "10.0.1",
+    "nodemailer": "^6.5.0",
+    "react": "17.0.1",
+    "react-big-calendar": "^0.33.0",
+    "react-dom": "17.0.1",
+    "react-geocode": "^0.2.3",
+    "react-hook-form": "^6.15.1",
+    "react-is": "17.0.1",
+    "react-marquee-slider": "^1.1.2",
+    "react-router-dom": "^5.2.0",
+    "sharp": "^0.27.1",
+    "stripe": "^8.139.0",
+    "styled-components": "^5.2.1",
+    "swr": "^0.4.2",
+    "tinycolor2": "^1.4.2",
+    "tslib": "^2.0.0",
+    "use-places-autocomplete": "^1.9.1",
+    "uuid": "^8.3.2",
+    "yup": "^0.32.8"
+  },
+  "devDependencies": {
+    "@babel/core": "7.9.6",
+    "@babel/preset-env": "7.9.6",
+    "@babel/preset-react": "7.9.4",
+    "@babel/preset-typescript": "7.9.0",
+    "@google-cloud/functions-framework": "^1.7.1",
+    "@joelcode/gcp-function": "0.0.5",
+    "@nrwl/cli": "11.2.11",
+    "@nrwl/cypress": "11.2.11",
+    "@nrwl/eslint-plugin-nx": "11.2.11",
+    "@nrwl/jest": "11.2.11",
+    "@nrwl/linter": "11.2.11",
+    "@nrwl/node": "11.4.0",
+    "@nrwl/nx-cloud": "^11.1.4",
+    "@nrwl/react": "11.2.11",
+    "@nrwl/tao": "11.2.11",
+    "@nrwl/web": "11.2.11",
+    "@nrwl/workspace": "11.2.11",
+    "@testing-library/react": "11.1.2",
+    "@types/classnames": "^2.2.11",
+    "@types/cors": "^2.8.10",
+    "@types/express": "^4.17.11",
+    "@types/jest": "26.0.8",
+    "@types/node": "12.12.38",
+    "@types/react": "16.9.56",
+    "@types/react-dom": "16.9.9",
+    "@types/react-is": "16.7.1",
+    "@types/react-router-dom": "5.1.6",
+    "@types/styled-components": "^5.1.8",
+    "@typescript-eslint/eslint-plugin": "4.3.0",
+    "@typescript-eslint/parser": "4.3.0",
+    "babel-jest": "26.2.2",
+    "babel-plugin-styled-components": "1.10.7",
+    "cypress": "^6.0.1",
+    "dotenv": "6.2.0",
+    "eslint": "7.10.0",
+    "eslint-config-prettier": "6.0.0",
+    "eslint-plugin-cypress": "^2.10.3",
+    "eslint-plugin-import": "2.22.1",
+    "eslint-plugin-jsx-a11y": "6.4.1",
+    "eslint-plugin-react": "7.21.5",
+    "eslint-plugin-react-hooks": "4.2.0",
+    "firebase-functions-test": "^0.2.3",
+    "jest": "26.2.2",
+    "prettier": "2.2.1",
+    "supertest": "^6.1.3",
+    "ts-jest": "26.4.0",
+    "ts-node": "~9.1.1",
+    "typescript": "~4.0.3"
+  }
+}
+[debug] [2021-03-26T08:44:42.236Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/cafetablebooking/releases?pageSize=10&pageToken=  
+ 
+[debug] [2021-03-26T08:44:42.238Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1/projects/cafetablebooking/databases/(default)/collectionGroups/-/indexes  
+ 
+[debug] [2021-03-26T08:44:42.666Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:38 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-26T08:44:42.667Z] >>> HTTP REQUEST GET https://firestore.googleapis.com/v1/projects/cafetablebooking/databases/(default)/collectionGroups/-/fields?filter=indexConfig.usesAncestorConfig=false  
+ 
+[debug] [2021-03-26T08:44:42.949Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:39 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] +  firestore: deployed indexes in firestore.indexes.json successfully 
+[debug] [2021-03-26T08:44:43.142Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:39 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-26T08:44:43.143Z] >>> HTTP REQUEST GET https://firebaserules.googleapis.com/v1/projects/cafetablebooking/rulesets/f1a415f3-2cfd-4d0d-9a16-e288dada1a5c  
+ 
+[debug] [2021-03-26T08:44:43.369Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:39 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] i  firestore: uploading rules firestore.rules... 
+[debug] [2021-03-26T08:44:43.370Z] >>> HTTP REQUEST POST https://firebaserules.googleapis.com/v1/projects/cafetablebooking/rulesets  
+ {"source":{"files":[{"name":"firestore.rules","content":"rules_version = '2';\r\nservice cloud.firestore {\r\n  match /databases/{database}/documents {\r\n    match /{document=**} {\r\n      allow read, write: if\r\n          request.time < timestamp.date(2021, 3, 12);\r\n    }\r\n  }\r\n}"}]}}
+[debug] [2021-03-26T08:44:44.474Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:40 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-26T08:44:44.474Z] [rules] created ruleset projects/cafetablebooking/rulesets/2ae56be3-eb02-45bd-81bf-efef22971a8d
+[debug] [2021-03-26T08:44:44.474Z] >>> HTTP REQUEST GET https://cloudfunctions.googleapis.com/v1/projects/cafetablebooking/locations/-/functions  
+ 
+[debug] [2021-03-26T08:44:45.174Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:41 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-26T08:44:45.175Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/cafetablebooking/locations/us-central1/functions:generateUploadUrl  
+ 
+[debug] [2021-03-26T08:44:45.825Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:42 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-26T08:44:45.826Z] >>> HTTP REQUEST PUT https://storage.googleapis.com/gcf-upload-us-central1-f663e213-5422-42ec-9b1a-c7ea0b44489d/e1e4caba-c8f6-4d45-9e5c-e49e68275bcb.zip?GoogleAccessId=service-527456432823@gcf-admin-robot.iam.gserviceaccount.com&Expires=1616750082&Signature=Q165dnZQxYWkd2gVcyApumhNox%2B1slqBOGg8CDrFa3rhK%2FflgmUmu99uG3ru7eWYlMDvMHWKuwLkkH57vHPh11tU%2FxEH06%2FVwW4jQyuJDdk%2BQdUSsvV6zqRcXgjbzO8YLuz0418Nmr1uHDsXliYJCimn0LkBEUbfq4grzrj4sdeyMTe6g32BMYiH8JoKmZj1Ly8I%2BVJUr2SKLECjPJF2jJkqNGbkrLRtzurZa8NkMgJuql%2BIedIxCpOLCcZ4%2FVVzL50CdUX6fjEMrfDDgiDPFW3821i3%2Fz00R%2Blg12L%2Fec50aoL7BrYQqxLCi89oro3GaIJEQQ%2FMmXFUbcDbzwls9A%3D%3D  
+ <request body omitted>
+[debug] [2021-03-26T08:44:47.857Z] <<< HTTP RESPONSE 200 {"x-guploader-uploadid":"ABg5-Uztt131lJR8H0QoNabB36yLyPwdLGbI5F3yk8jE6b3bpfma86YM4MaoVurBnkTKq04lCETf9E75a8rTNx9NAqHcGkHTPw","etag":"\"950b7325402cdb94b7580b1d8b3a4302\"","x-goog-generation":"1616748284099820","x-goog-metageneration":"1","x-goog-hash":"crc32c=ydSowg==, md5=lQtzJUAs25S3WAsdizpDAg==","x-goog-stored-content-length":"39927430","x-goog-stored-content-encoding":"identity","vary":"Origin","content-length":"0","date":"Fri, 26 Mar 2021 08:44:44 GMT","server":"UploadServer","content-type":"text/html; charset=UTF-8","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\""}
+[info] +  functions: / folder uploaded successfully 
+[debug] [2021-03-26T08:44:47.858Z] [rules] releasing cloud.firestore with ruleset projects/cafetablebooking/rulesets/2ae56be3-eb02-45bd-81bf-efef22971a8d
+[debug] [2021-03-26T08:44:47.858Z] >>> HTTP REQUEST PATCH https://firebaserules.googleapis.com/v1/projects/cafetablebooking/releases/cloud.firestore  
+ {"release":{"name":"projects/cafetablebooking/releases/cloud.firestore","rulesetName":"projects/cafetablebooking/rulesets/2ae56be3-eb02-45bd-81bf-efef22971a8d"}}
+[debug] [2021-03-26T08:44:48.878Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:44:45 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-26T08:44:48.878Z] [rules] updated release projects/cafetablebooking/releases/cloud.firestore
+[info] +  firestore: released rules firestore.rules to cloud.firestore 
+[info] 
+The following functions are found in your project but do not exist in your local source code:
+	createStripeCheckout(us-central1)
+
+If you are renaming a function or changing its region, it is recommended that you create the new function first before deleting the old one to prevent event loss. For more info, visit https://firebase.google.com/docs/functions/manage-functions#modify
+
+[info] i  functions: continuing with other deployments. 
+[info] i  functions: creating Node.js 14 (Beta) function sendLoginCredentials(us-central1)... 
+[debug] [2021-03-26T08:45:46.467Z] >>> HTTP REQUEST POST https://cloudfunctions.googleapis.com/v1/projects/cafetablebooking/locations/us-central1/functions  
+ {"sourceUploadUrl":"https://storage.googleapis.com/gcf-upload-us-central1-f663e213-5422-42ec-9b1a-c7ea0b44489d/e1e4caba-c8f6-4d45-9e5c-e49e68275bcb.zip?GoogleAccessId=service-527456432823@gcf-admin-robot.iam.gserviceaccount.com&Expires=1616750082&Signature=Q165dnZQxYWkd2gVcyApumhNox%2B1slqBOGg8CDrFa3rhK%2FflgmUmu99uG3ru7eWYlMDvMHWKuwLkkH57vHPh11tU%2FxEH06%2FVwW4jQyuJDdk%2BQdUSsvV6zqRcXgjbzO8YLuz0418Nmr1uHDsXliYJCimn0LkBEUbfq4grzrj4sdeyMTe6g32BMYiH8JoKmZj1Ly8I%2BVJUr2SKLECjPJF2jJkqNGbkrLRtzurZa8NkMgJuql%2BIedIxCpOLCcZ4%2FVVzL50CdUX6fjEMrfDDgiDPFW3821i3%2Fz00R%2Blg12L%2Fec50aoL7BrYQqxLCi89oro3GaIJEQQ%2FMmXFUbcDbzwls9A%3D%3D","name":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","entryPoint":"sendLoginCredentials","labels":{"deployment-tool":"cli-firebase"},"runtime":"nodejs14","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"cafetablebooking\",\"storageBucket\":\"cafetablebooking.appspot.com\",\"locationId\":\"us-central\"}"},"eventTrigger":{"resource":"projects/cafetablebooking/databases/(default)/documents/companies/{companiesId}","eventType":"providers/cloud.firestore/eventTypes/document.create","service":"firestore.googleapis.com"}}
+[debug] [2021-03-26T08:45:47.451Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Fri, 26 Mar 2021 08:45:43 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-26T08:45:47.452Z] > refreshing access token with scopes: []
+[debug] [2021-03-26T08:45:47.453Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-03-26T08:45:47.519Z] <<< HTTP RESPONSE 200 {"pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Fri, 26 Mar 2021 08:45:43 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-03-26T08:45:47.525Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ [none]
+[debug] [2021-03-26T08:45:47.764Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ 200
+[debug] [2021-03-26T08:45:47.764Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ {"name":"operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.create","resource":"projects/cafetablebooking/databases/(default)/documents/companies/{companiesId}","service":"firestore.googleapis.com"},"entryPoint":"sendLoginCredentials","labels":{"deployment-tool":"cli-firebase"},"sourceUploadUrl":"https://storage.googleapis.com/gcf-upload-us-central1-f663e213-5422-42ec-9b1a-c7ea0b44489d/e1e4caba-c8f6-4d45-9e5c-e49e68275bcb.zip?GoogleAccessId=service-527456432823@gcf-admin-robot.iam.gserviceaccount.com&Expires=1616750082&Signature=Q165dnZQxYWkd2gVcyApumhNox%2B1slqBOGg8CDrFa3rhK%2FflgmUmu99uG3ru7eWYlMDvMHWKuwLkkH57vHPh11tU%2FxEH06%2FVwW4jQyuJDdk%2BQdUSsvV6zqRcXgjbzO8YLuz0418Nmr1uHDsXliYJCimn0LkBEUbfq4grzrj4sdeyMTe6g32BMYiH8JoKmZj1Ly8I%2BVJUr2SKLECjPJF2jJkqNGbkrLRtzurZa8NkMgJuql%2BIedIxCpOLCcZ4%2FVVzL50CdUX6fjEMrfDDgiDPFW3821i3%2Fz00R%2Blg12L%2Fec50aoL7BrYQqxLCi89oro3GaIJEQQ%2FMmXFUbcDbzwls9A%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"cafetablebooking\",\"storageBucket\":\"cafetablebooking.appspot.com\",\"locationId\":\"us-central\"}"},"runtime":"nodejs14"},"versionId":"1","updateTime":"2021-03-26T08:45:43Z"}}
+[debug] [2021-03-26T08:45:48.266Z] [create-projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials] Retrying task index 0
+[debug] [2021-03-26T08:45:48.266Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ [none]
+[debug] [2021-03-26T08:45:48.484Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ 200
+[debug] [2021-03-26T08:45:48.484Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ {"name":"operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.create","resource":"projects/cafetablebooking/databases/(default)/documents/companies/{companiesId}","service":"firestore.googleapis.com"},"entryPoint":"sendLoginCredentials","labels":{"deployment-tool":"cli-firebase"},"sourceUploadUrl":"https://storage.googleapis.com/gcf-upload-us-central1-f663e213-5422-42ec-9b1a-c7ea0b44489d/e1e4caba-c8f6-4d45-9e5c-e49e68275bcb.zip?GoogleAccessId=service-527456432823@gcf-admin-robot.iam.gserviceaccount.com&Expires=1616750082&Signature=Q165dnZQxYWkd2gVcyApumhNox%2B1slqBOGg8CDrFa3rhK%2FflgmUmu99uG3ru7eWYlMDvMHWKuwLkkH57vHPh11tU%2FxEH06%2FVwW4jQyuJDdk%2BQdUSsvV6zqRcXgjbzO8YLuz0418Nmr1uHDsXliYJCimn0LkBEUbfq4grzrj4sdeyMTe6g32BMYiH8JoKmZj1Ly8I%2BVJUr2SKLECjPJF2jJkqNGbkrLRtzurZa8NkMgJuql%2BIedIxCpOLCcZ4%2FVVzL50CdUX6fjEMrfDDgiDPFW3821i3%2Fz00R%2Blg12L%2Fec50aoL7BrYQqxLCi89oro3GaIJEQQ%2FMmXFUbcDbzwls9A%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"cafetablebooking\",\"storageBucket\":\"cafetablebooking.appspot.com\",\"locationId\":\"us-central\"}"},"runtime":"nodejs14"},"versionId":"1","updateTime":"2021-03-26T08:45:43Z","buildId":"247e7bb8-f897-4e2b-9b7f-2b8c366a8726"}}
+[debug] [2021-03-26T08:45:49.484Z] [create-projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials] Retrying task index 0
+[debug] [2021-03-26T08:45:49.484Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ [none]
+[debug] [2021-03-26T08:45:49.891Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ 200
+[debug] [2021-03-26T08:45:49.891Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ {"name":"operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.create","resource":"projects/cafetablebooking/databases/(default)/documents/companies/{companiesId}","service":"firestore.googleapis.com"},"entryPoint":"sendLoginCredentials","labels":{"deployment-tool":"cli-firebase"},"sourceUploadUrl":"https://storage.googleapis.com/gcf-upload-us-central1-f663e213-5422-42ec-9b1a-c7ea0b44489d/e1e4caba-c8f6-4d45-9e5c-e49e68275bcb.zip?GoogleAccessId=service-527456432823@gcf-admin-robot.iam.gserviceaccount.com&Expires=1616750082&Signature=Q165dnZQxYWkd2gVcyApumhNox%2B1slqBOGg8CDrFa3rhK%2FflgmUmu99uG3ru7eWYlMDvMHWKuwLkkH57vHPh11tU%2FxEH06%2FVwW4jQyuJDdk%2BQdUSsvV6zqRcXgjbzO8YLuz0418Nmr1uHDsXliYJCimn0LkBEUbfq4grzrj4sdeyMTe6g32BMYiH8JoKmZj1Ly8I%2BVJUr2SKLECjPJF2jJkqNGbkrLRtzurZa8NkMgJuql%2BIedIxCpOLCcZ4%2FVVzL50CdUX6fjEMrfDDgiDPFW3821i3%2Fz00R%2Blg12L%2Fec50aoL7BrYQqxLCi89oro3GaIJEQQ%2FMmXFUbcDbzwls9A%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"cafetablebooking\",\"storageBucket\":\"cafetablebooking.appspot.com\",\"locationId\":\"us-central\"}"},"runtime":"nodejs14"},"versionId":"1","updateTime":"2021-03-26T08:45:43Z","buildId":"247e7bb8-f897-4e2b-9b7f-2b8c366a8726"}}
+[debug] [2021-03-26T08:45:51.891Z] [create-projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials] Retrying task index 0
+[debug] [2021-03-26T08:45:51.893Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ [none]
+[debug] [2021-03-26T08:45:52.319Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ 200
+[debug] [2021-03-26T08:45:52.319Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ {"name":"operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.create","resource":"projects/cafetablebooking/databases/(default)/documents/companies/{companiesId}","service":"firestore.googleapis.com"},"entryPoint":"sendLoginCredentials","labels":{"deployment-tool":"cli-firebase"},"sourceUploadUrl":"https://storage.googleapis.com/gcf-upload-us-central1-f663e213-5422-42ec-9b1a-c7ea0b44489d/e1e4caba-c8f6-4d45-9e5c-e49e68275bcb.zip?GoogleAccessId=service-527456432823@gcf-admin-robot.iam.gserviceaccount.com&Expires=1616750082&Signature=Q165dnZQxYWkd2gVcyApumhNox%2B1slqBOGg8CDrFa3rhK%2FflgmUmu99uG3ru7eWYlMDvMHWKuwLkkH57vHPh11tU%2FxEH06%2FVwW4jQyuJDdk%2BQdUSsvV6zqRcXgjbzO8YLuz0418Nmr1uHDsXliYJCimn0LkBEUbfq4grzrj4sdeyMTe6g32BMYiH8JoKmZj1Ly8I%2BVJUr2SKLECjPJF2jJkqNGbkrLRtzurZa8NkMgJuql%2BIedIxCpOLCcZ4%2FVVzL50CdUX6fjEMrfDDgiDPFW3821i3%2Fz00R%2Blg12L%2Fec50aoL7BrYQqxLCi89oro3GaIJEQQ%2FMmXFUbcDbzwls9A%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"cafetablebooking\",\"storageBucket\":\"cafetablebooking.appspot.com\",\"locationId\":\"us-central\"}"},"runtime":"nodejs14"},"versionId":"1","updateTime":"2021-03-26T08:45:43Z","buildId":"247e7bb8-f897-4e2b-9b7f-2b8c366a8726"}}
+[debug] [2021-03-26T08:45:56.320Z] [create-projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials] Retrying task index 0
+[debug] [2021-03-26T08:45:56.320Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ [none]
+[debug] [2021-03-26T08:45:56.540Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ 200
+[debug] [2021-03-26T08:45:56.540Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ {"name":"operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.create","resource":"projects/cafetablebooking/databases/(default)/documents/companies/{companiesId}","service":"firestore.googleapis.com"},"entryPoint":"sendLoginCredentials","labels":{"deployment-tool":"cli-firebase"},"sourceUploadUrl":"https://storage.googleapis.com/gcf-upload-us-central1-f663e213-5422-42ec-9b1a-c7ea0b44489d/e1e4caba-c8f6-4d45-9e5c-e49e68275bcb.zip?GoogleAccessId=service-527456432823@gcf-admin-robot.iam.gserviceaccount.com&Expires=1616750082&Signature=Q165dnZQxYWkd2gVcyApumhNox%2B1slqBOGg8CDrFa3rhK%2FflgmUmu99uG3ru7eWYlMDvMHWKuwLkkH57vHPh11tU%2FxEH06%2FVwW4jQyuJDdk%2BQdUSsvV6zqRcXgjbzO8YLuz0418Nmr1uHDsXliYJCimn0LkBEUbfq4grzrj4sdeyMTe6g32BMYiH8JoKmZj1Ly8I%2BVJUr2SKLECjPJF2jJkqNGbkrLRtzurZa8NkMgJuql%2BIedIxCpOLCcZ4%2FVVzL50CdUX6fjEMrfDDgiDPFW3821i3%2Fz00R%2Blg12L%2Fec50aoL7BrYQqxLCi89oro3GaIJEQQ%2FMmXFUbcDbzwls9A%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"cafetablebooking\",\"storageBucket\":\"cafetablebooking.appspot.com\",\"locationId\":\"us-central\"}"},"runtime":"nodejs14"},"versionId":"1","updateTime":"2021-03-26T08:45:43Z","buildId":"247e7bb8-f897-4e2b-9b7f-2b8c366a8726"}}
+[debug] [2021-03-26T08:46:04.541Z] [create-projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials] Retrying task index 0
+[debug] [2021-03-26T08:46:04.541Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ [none]
+[debug] [2021-03-26T08:46:04.762Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ 200
+[debug] [2021-03-26T08:46:04.762Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ {"name":"operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.create","resource":"projects/cafetablebooking/databases/(default)/documents/companies/{companiesId}","service":"firestore.googleapis.com"},"entryPoint":"sendLoginCredentials","labels":{"deployment-tool":"cli-firebase"},"sourceUploadUrl":"https://storage.googleapis.com/gcf-upload-us-central1-f663e213-5422-42ec-9b1a-c7ea0b44489d/e1e4caba-c8f6-4d45-9e5c-e49e68275bcb.zip?GoogleAccessId=service-527456432823@gcf-admin-robot.iam.gserviceaccount.com&Expires=1616750082&Signature=Q165dnZQxYWkd2gVcyApumhNox%2B1slqBOGg8CDrFa3rhK%2FflgmUmu99uG3ru7eWYlMDvMHWKuwLkkH57vHPh11tU%2FxEH06%2FVwW4jQyuJDdk%2BQdUSsvV6zqRcXgjbzO8YLuz0418Nmr1uHDsXliYJCimn0LkBEUbfq4grzrj4sdeyMTe6g32BMYiH8JoKmZj1Ly8I%2BVJUr2SKLECjPJF2jJkqNGbkrLRtzurZa8NkMgJuql%2BIedIxCpOLCcZ4%2FVVzL50CdUX6fjEMrfDDgiDPFW3821i3%2Fz00R%2Blg12L%2Fec50aoL7BrYQqxLCi89oro3GaIJEQQ%2FMmXFUbcDbzwls9A%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"cafetablebooking\",\"storageBucket\":\"cafetablebooking.appspot.com\",\"locationId\":\"us-central\"}"},"runtime":"nodejs14"},"versionId":"1","updateTime":"2021-03-26T08:45:43Z","buildId":"247e7bb8-f897-4e2b-9b7f-2b8c366a8726"}}
+[debug] [2021-03-26T08:46:20.762Z] [create-projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials] Retrying task index 0
+[debug] [2021-03-26T08:46:20.763Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ [none]
+[debug] [2021-03-26T08:46:21.152Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ 200
+[debug] [2021-03-26T08:46:21.152Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ {"name":"operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.create","resource":"projects/cafetablebooking/databases/(default)/documents/companies/{companiesId}","service":"firestore.googleapis.com"},"entryPoint":"sendLoginCredentials","labels":{"deployment-tool":"cli-firebase"},"sourceUploadUrl":"https://storage.googleapis.com/gcf-upload-us-central1-f663e213-5422-42ec-9b1a-c7ea0b44489d/e1e4caba-c8f6-4d45-9e5c-e49e68275bcb.zip?GoogleAccessId=service-527456432823@gcf-admin-robot.iam.gserviceaccount.com&Expires=1616750082&Signature=Q165dnZQxYWkd2gVcyApumhNox%2B1slqBOGg8CDrFa3rhK%2FflgmUmu99uG3ru7eWYlMDvMHWKuwLkkH57vHPh11tU%2FxEH06%2FVwW4jQyuJDdk%2BQdUSsvV6zqRcXgjbzO8YLuz0418Nmr1uHDsXliYJCimn0LkBEUbfq4grzrj4sdeyMTe6g32BMYiH8JoKmZj1Ly8I%2BVJUr2SKLECjPJF2jJkqNGbkrLRtzurZa8NkMgJuql%2BIedIxCpOLCcZ4%2FVVzL50CdUX6fjEMrfDDgiDPFW3821i3%2Fz00R%2Blg12L%2Fec50aoL7BrYQqxLCi89oro3GaIJEQQ%2FMmXFUbcDbzwls9A%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"cafetablebooking\",\"storageBucket\":\"cafetablebooking.appspot.com\",\"locationId\":\"us-central\"}"},"runtime":"nodejs14"},"versionId":"1","updateTime":"2021-03-26T08:45:43Z","buildId":"247e7bb8-f897-4e2b-9b7f-2b8c366a8726"}}
+[debug] [2021-03-26T08:46:53.153Z] [create-projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials] Retrying task index 0
+[debug] [2021-03-26T08:46:53.153Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ [none]
+[debug] [2021-03-26T08:46:53.556Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ 200
+[debug] [2021-03-26T08:46:53.557Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ {"name":"operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.create","resource":"projects/cafetablebooking/databases/(default)/documents/companies/{companiesId}","service":"firestore.googleapis.com"},"entryPoint":"sendLoginCredentials","labels":{"deployment-tool":"cli-firebase"},"sourceUploadUrl":"https://storage.googleapis.com/gcf-upload-us-central1-f663e213-5422-42ec-9b1a-c7ea0b44489d/e1e4caba-c8f6-4d45-9e5c-e49e68275bcb.zip?GoogleAccessId=service-527456432823@gcf-admin-robot.iam.gserviceaccount.com&Expires=1616750082&Signature=Q165dnZQxYWkd2gVcyApumhNox%2B1slqBOGg8CDrFa3rhK%2FflgmUmu99uG3ru7eWYlMDvMHWKuwLkkH57vHPh11tU%2FxEH06%2FVwW4jQyuJDdk%2BQdUSsvV6zqRcXgjbzO8YLuz0418Nmr1uHDsXliYJCimn0LkBEUbfq4grzrj4sdeyMTe6g32BMYiH8JoKmZj1Ly8I%2BVJUr2SKLECjPJF2jJkqNGbkrLRtzurZa8NkMgJuql%2BIedIxCpOLCcZ4%2FVVzL50CdUX6fjEMrfDDgiDPFW3821i3%2Fz00R%2Blg12L%2Fec50aoL7BrYQqxLCi89oro3GaIJEQQ%2FMmXFUbcDbzwls9A%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"cafetablebooking\",\"storageBucket\":\"cafetablebooking.appspot.com\",\"locationId\":\"us-central\"}"},"runtime":"nodejs14"},"versionId":"1","updateTime":"2021-03-26T08:45:43Z","buildId":"247e7bb8-f897-4e2b-9b7f-2b8c366a8726"}}
+[debug] [2021-03-26T08:47:57.557Z] [create-projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials] Retrying task index 0
+[debug] [2021-03-26T08:47:57.557Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ [none]
+[debug] [2021-03-26T08:47:57.946Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ 200
+[debug] [2021-03-26T08:47:57.946Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ {"name":"operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.create","resource":"projects/cafetablebooking/databases/(default)/documents/companies/{companiesId}","service":"firestore.googleapis.com"},"entryPoint":"sendLoginCredentials","labels":{"deployment-tool":"cli-firebase"},"sourceUploadUrl":"https://storage.googleapis.com/gcf-upload-us-central1-f663e213-5422-42ec-9b1a-c7ea0b44489d/e1e4caba-c8f6-4d45-9e5c-e49e68275bcb.zip?GoogleAccessId=service-527456432823@gcf-admin-robot.iam.gserviceaccount.com&Expires=1616750082&Signature=Q165dnZQxYWkd2gVcyApumhNox%2B1slqBOGg8CDrFa3rhK%2FflgmUmu99uG3ru7eWYlMDvMHWKuwLkkH57vHPh11tU%2FxEH06%2FVwW4jQyuJDdk%2BQdUSsvV6zqRcXgjbzO8YLuz0418Nmr1uHDsXliYJCimn0LkBEUbfq4grzrj4sdeyMTe6g32BMYiH8JoKmZj1Ly8I%2BVJUr2SKLECjPJF2jJkqNGbkrLRtzurZa8NkMgJuql%2BIedIxCpOLCcZ4%2FVVzL50CdUX6fjEMrfDDgiDPFW3821i3%2Fz00R%2Blg12L%2Fec50aoL7BrYQqxLCi89oro3GaIJEQQ%2FMmXFUbcDbzwls9A%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"cafetablebooking\",\"storageBucket\":\"cafetablebooking.appspot.com\",\"locationId\":\"us-central\"}"},"runtime":"nodejs14"},"versionId":"1","updateTime":"2021-03-26T08:45:43Z","buildId":"247e7bb8-f897-4e2b-9b7f-2b8c366a8726"}}
+[debug] [2021-03-26T08:50:05.948Z] [create-projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials] Retrying task index 0
+[debug] [2021-03-26T08:50:05.949Z] >>> [apiv2][query] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ [none]
+[debug] [2021-03-26T08:50:06.363Z] <<< [apiv2][status] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ 200
+[debug] [2021-03-26T08:50:06.363Z] <<< [apiv2][body] GET https://cloudfunctions.googleapis.com/v1/operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ {"name":"operations/Y2FmZXRhYmxlYm9va2luZy91cy1jZW50cmFsMS9zZW5kTG9naW5DcmVkZW50aWFscy9UNDNVa2JXMmI3WQ","metadata":{"@type":"type.googleapis.com/google.cloud.functions.v1.OperationMetadataV1","target":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","type":"CREATE_FUNCTION","request":{"@type":"type.googleapis.com/google.cloud.functions.v1.CloudFunction","name":"projects/cafetablebooking/locations/us-central1/functions/sendLoginCredentials","eventTrigger":{"eventType":"providers/cloud.firestore/eventTypes/document.create","resource":"projects/cafetablebooking/databases/(default)/documents/companies/{companiesId}","service":"firestore.googleapis.com"},"entryPoint":"sendLoginCredentials","labels":{"deployment-tool":"cli-firebase"},"sourceUploadUrl":"https://storage.googleapis.com/gcf-upload-us-central1-f663e213-5422-42ec-9b1a-c7ea0b44489d/e1e4caba-c8f6-4d45-9e5c-e49e68275bcb.zip?GoogleAccessId=service-527456432823@gcf-admin-robot.iam.gserviceaccount.com&Expires=1616750082&Signature=Q165dnZQxYWkd2gVcyApumhNox%2B1slqBOGg8CDrFa3rhK%2FflgmUmu99uG3ru7eWYlMDvMHWKuwLkkH57vHPh11tU%2FxEH06%2FVwW4jQyuJDdk%2BQdUSsvV6zqRcXgjbzO8YLuz0418Nmr1uHDsXliYJCimn0LkBEUbfq4grzrj4sdeyMTe6g32BMYiH8JoKmZj1Ly8I%2BVJUr2SKLECjPJF2jJkqNGbkrLRtzurZa8NkMgJuql%2BIedIxCpOLCcZ4%2FVVzL50CdUX6fjEMrfDDgiDPFW3821i3%2Fz00R%2Blg12L%2Fec50aoL7BrYQqxLCi89oro3GaIJEQQ%2FMmXFUbcDbzwls9A%3D%3D","environmentVariables":{"FIREBASE_CONFIG":"{\"projectId\":\"cafetablebooking\",\"storageBucket\":\"cafetablebooking.appspot.com\",\"locationId\":\"us-central\"}"},"runtime":"nodejs14"},"versionId":"1","updateTime":"2021-03-26T08:45:43Z","buildId":"247e7bb8-f897-4e2b-9b7f-2b8c366a8726"}}
