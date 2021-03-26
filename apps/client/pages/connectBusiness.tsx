@@ -18,9 +18,8 @@ import {
   OnboardingContent,
   TextBox,
 } from '../styles/connectBusinessStyles';
-import { v4 as uuidv4 } from 'uuid';
-import { parse as uuidParse } from 'uuid';
 import { firestore } from '@ctb/firebase-auth';
+
 interface Props {}
 
 const connectCafe = (props: Props) => {
@@ -84,7 +83,6 @@ const connectCafe = (props: Props) => {
   const onSubmit = async (data) => {
     const { vatNr, email, phoneNumber, companyName } = data;
     const companiesRef = firestore.collection('company_requests');
-    const id = uuidv4();
 
     await companiesRef.add({
       companyName,

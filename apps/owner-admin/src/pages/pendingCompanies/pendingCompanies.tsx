@@ -6,6 +6,7 @@ import Layout from '../../components/layout/layout';
 import { useFirestore } from '@ctb/use-firestore';
 import CustomToolBarSelect from './CustomToolBarSelect';
 import { firestore } from '@ctb/firebase-auth';
+import { useAuthContext } from '@ctb/auth-context';
 
 /* eslint-disable-next-line */
 export interface UsersProps {}
@@ -41,13 +42,15 @@ const columns = [
 export function PendingCompanies(props: UsersProps) {
   const { docs } = useFirestore('company_requests');
   console.log(docs);
-
+  const { signup }: any = useAuthContext();
   const setActivateCompanies = (selectedRows) => {
     selectedRows.data.map(async (item) => {
       const pendingCompany = docs[item.index];
       const { companyName, vatNr, email, phoneNumber, id } = pendingCompany;
       const companiesRef = firestore.collection('companies');
       const pendingCompanies = firestore.collection('company_requests').doc(id);
+      
+      await signup(email, id, companyName);
       await companiesRef.add({
         companyName,
         vatNr,
