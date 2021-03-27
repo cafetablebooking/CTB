@@ -66,18 +66,20 @@ const homePage = (props: Props) => {
           <Marquee velocity={30} resetAfterTries={50}>
             {companies &&
               companies.map((item) => (
-                <Motion key={`child-${item.id}`} velocity={0} radius={100}>
-                  <ImageWrapper>
-                    {item.image && (
-                      <Image
-                        src={item.image}
-                        alt="Avatar logotype of restaurant café company"
-                        width={570}
-                        height={370}
-                      />
-                    )}
-                  </ImageWrapper>
-                </Motion>
+                <>
+                  {item.image && (
+                    <Motion key={`child-${item.id}`} velocity={0} radius={100}>
+                      <ImageWrapper>
+                        <Image
+                          src={item.image}
+                          alt="Avatar logotype of restaurant café company"
+                          width={570}
+                          height={370}
+                        />
+                      </ImageWrapper>
+                    </Motion>
+                  )}
+                </>
               ))}
           </Marquee>
         </MarqueeWrapper>

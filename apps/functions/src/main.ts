@@ -8,9 +8,10 @@ import * as nodemailer from 'nodemailer';
 import Stripe from 'stripe';
 
 import * as cors from 'cors';
-
+const SECRET_KEY =
+  'sk_test_51IYfjEKp4XrdRIV53nbSZtxBxotT560niMA6j14rAilAblNfhIFpANboVG7y8GQRecQ2QxE9l5iZpZA2wQcu8Hbg00C6xaPMta';
 admin.initializeApp();
-const stripe = new Stripe(functions.config().stripe.secret_key, {
+const stripe = new Stripe(SECRET_KEY, {
   apiVersion: '2020-08-27',
 });
 const corsHandler = cors({ origin: true });
