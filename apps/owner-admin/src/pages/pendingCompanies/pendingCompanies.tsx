@@ -7,7 +7,7 @@ import { useFirestore } from '@ctb/use-firestore';
 import CustomToolBarSelect from './CustomToolBarSelect';
 import { firestore } from '@ctb/firebase-auth';
 import { useAuthContext } from '@ctb/auth-context';
-
+import ActivateDialogBox from './ActivateDialogBox';
 /* eslint-disable-next-line */
 export interface UsersProps {}
 // export interface option {}
@@ -40,9 +40,22 @@ const columns = [
 ];
 
 export function PendingCompanies(props: UsersProps) {
+  const [open, setOpen] = React.useState(false);
+  const [selectedCompanies, setSelectedCompanies] = useState(null);
+
+  const handleClickOpen = (selectedRows) => {
+    setSelectedCompanies(selectedRows);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   const { docs } = useFirestore('company_requests');
   console.log(docs);
   const { signup }: any = useAuthContext();
+
   const setActivateCompanies = (selectedRows) => {
     selectedRows.data.map(async (item) => {
       const pendingCompany = docs[item.index];
@@ -64,6 +77,7 @@ export function PendingCompanies(props: UsersProps) {
         });
         await pendingCompanies.delete();
       }
+      handleClose();
     });
   };
 
@@ -76,13 +90,19 @@ export function PendingCompanies(props: UsersProps) {
     sortFilterList: true,
     customToolbarSelect: (selectedRows) => (
       <CustomToolBarSelect
-        setActivateCompanies={setActivateCompanies}
+        setActivateCompanies={handleClickOpen}
         selectedRows={selectedRows}
       />
     ),
   };
   return (
     <Layout>
+      <ActivateDialogBox
+        open={open}
+        handleClose={handleClose}
+        setActivateCompanies={() => setActivateCompanies(selectedCompanies)}
+        selectedCompanies={selectedCompanies}
+      />
       <MUIDataTable
         title={'Pending Companies list'}
         data={docs}
