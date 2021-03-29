@@ -56,7 +56,7 @@ export interface HeaderProps extends AppBarProps {}
 export function Header({}: HeaderProps) {
   const classes = useStyles();
   const theme = useTheme<CTBtheme>();
-  const { docs } = useFirestore('company_request');
+  const { docs } = useFirestore('company_requests');
   // global
   const layoutState = useLayoutState();
   const layoutDispatch = useLayoutDispatch();
