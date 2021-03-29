@@ -54,8 +54,8 @@ async function sendLoginCredentialsEmail(snap) {
     html: `<h1>Welcome to CTB</h1>
              <div>
              <p>
-               Here are your login credentials:
-
+               Here is your password:
+                <b>${snap.data().id}</b>
              </p>
              <p> Thank you </p>
                <p> Team CTB </p>

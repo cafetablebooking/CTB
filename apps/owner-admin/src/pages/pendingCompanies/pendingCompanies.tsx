@@ -53,11 +53,10 @@ export function PendingCompanies(props: UsersProps) {
       const res = await signup(email, id, companyName);
 
       if (res) {
-        console.log(res.uid);
-
         const companiesRef = firestore.collection('companies').doc(res.uid);
 
         await companiesRef.set({
+          id,
           companyName,
           vatNr,
           email,
