@@ -75,7 +75,7 @@ exports.sendLoginCredentials = functions.firestore
   .onCreate(sendLoginCredentialsEmail);
 
 exports.sendEmail = functions.firestore
-  .document('company_request/{company_requestId}')
+  .document('company_requests/{company_requestId}')
   .onCreate(sendWelcomeEmail);
 
 exports.setRole = functions.https.onCall((data, context) => {
