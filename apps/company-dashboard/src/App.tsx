@@ -8,6 +8,7 @@ import Reservation from './pages/reservation/reservation';
 import PrivateRoute from './components/private-route';
 import PublicRoute from './components/public-route';
 import Users from './pages/users/users';
+import Tables from './pages/tables/tables';
 
 interface AppProps {}
 
@@ -20,7 +21,7 @@ export const App: React.FC<AppProps> = () => {
         <PrivateRoute path="/dashboard" component={Dashboard} />
         <PrivateRoute path="/reservation" component={Reservation} />
         <PrivateRoute path="/users" component={Users} />
-        <PrivateRoute path="/companies" component={Reservation} />
+        <PrivateRoute path="/tables" component={Tables} />
         <PrivateRoute path="/settings" component={Reservation} />
         <PrivateRoute path="/support" component={Reservation} />
         <PrivateRoute path="/faq" component={Reservation} />

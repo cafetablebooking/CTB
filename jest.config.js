@@ -13,5 +13,6 @@ module.exports = {
     '<rootDir>/libs/use-local-storage',
     '<rootDir>/libs/use-firestore',
     '<rootDir>/apps/company-dashbaord',
+    '<rootDir>/libs/alert-dialog-box',
   ],
 };

@@ -7,7 +7,7 @@ import { useFirestore } from '@ctb/use-firestore';
 import CustomToolBarSelect from './CustomToolBarSelect';
 import { firestore } from '@ctb/firebase-auth';
 import { useAuthContext } from '@ctb/auth-context';
-import { DialogBox } from '@ctb/alert-dialog-box';
+import DialogBox from './DialogBox/DialogBox';
 /* eslint-disable-next-line */
 export interface UsersProps {}
 // export interface option {}
@@ -39,7 +39,7 @@ const columns = [
   },
 ];
 
-export function PendingCompanies(props: UsersProps) {
+export function Tables(props: UsersProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedCompanies, setSelectedCompanies] = useState(null);
   const [actionType, setActionType] = useState<string>('');
@@ -60,38 +60,14 @@ export function PendingCompanies(props: UsersProps) {
 
   const { signup }: any = useAuthContext();
 
-  const setDeleteCompanies = async (selectedRows) => {
+  const setDeleteTables = async (selectedRows) => {
     selectedRows.data.map(async (item) => {
       const company = docs[item.index];
 
       const { id } = company;
       if (!id) return;
-      const pendingCompanies = firestore.collection('company_requests').doc(id);
-      await pendingCompanies.delete();
-      handleClose();
-    });
-  };
-  const setActivateCompanies = (selectedRows) => {
-    selectedRows.data.map(async (item) => {
-      const pendingCompany = docs[item.index];
-      const { companyName, vatNr, email, phoneNumber, id } = pendingCompany;
-
-      const pendingCompanies = firestore.collection('company_requests').doc(id);
-
-      const res = await signup(email, id, companyName);
-
-      if (res) {
-        const companiesRef = firestore.collection('companies').doc(res.uid);
-
-        await companiesRef.set({
-          id,
-          companyName,
-          vatNr,
-          email,
-          phoneNumber,
-        });
-        await pendingCompanies.delete();
-      }
+      const tables = firestore.collection('tables').doc(id);
+      await tables.delete();
       handleClose();
     });
   };
@@ -115,8 +91,7 @@ export function PendingCompanies(props: UsersProps) {
       <DialogBox
         open={open}
         handleClose={handleClose}
-        setActivateCompanies={() => setActivateCompanies(selectedCompanies)}
-        setDeleteCompanies={() => setDeleteCompanies(selectedCompanies)}
+        setDeleteCompanies={() => setDeleteTables(selectedCompanies)}
         selectedCompanies={selectedCompanies}
         actionType={actionType}
       />
@@ -130,4 +105,4 @@ export function PendingCompanies(props: UsersProps) {
   );
 }
 
-export default PendingCompanies;
+export default Tables;
