@@ -47,8 +47,8 @@ const structure = [
   },
   {
     id: 3,
-    label: 'Company/Users',
-    link: '/companies',
+    label: 'Tables',
+    link: '/tables',
     icon: <BusinessOutlinedIcon />,
   },
   {
