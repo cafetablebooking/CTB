@@ -7,7 +7,7 @@ import styled from 'styled-components';
 interface Props {
   handleClose: () => void;
   submitFunction: () => void;
-  company: any;
+  company: HTMLElement;
   title: string;
   text: string;
 }
@@ -22,7 +22,7 @@ const AlertDialogForm = (props: Props) => {
       </DialogTitle>
       <DialogContentText id="alert-dialog-slide-description">
         {text}
-        <b>{company}</b>
+        {company && <b>{company}</b>}
       </DialogContentText>
 
       <StyledDialogActions>
