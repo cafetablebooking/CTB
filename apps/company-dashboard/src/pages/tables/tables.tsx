@@ -57,13 +57,15 @@ export function Tables(props: UsersProps) {
   };
 
   const { docs } = useFirestore('tableBookings');
+  const companies = useFirestore('companies').docs;
+  console.log(companies);
 
-  const table =
+  const companyTables =
     docs &&
     docs.find((item) => {
       return item.companyId === '3c672850-82bf-11eb-8ed2-9d3621fb18a8';
     });
-  const resources = table && table.resources;
+  const tableResources = companyTables && companyTables.resources;
 
   const { signup }: any = useAuthContext();
 
@@ -104,7 +106,7 @@ export function Tables(props: UsersProps) {
       />
       <MUIDataTable
         title={'Table list'}
-        data={resources}
+        data={tableResources}
         columns={columns}
         options={options}
       />
