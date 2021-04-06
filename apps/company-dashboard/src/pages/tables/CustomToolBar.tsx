@@ -6,18 +6,23 @@ import { Button } from '@material-ui/core';
 
 interface Props {
   selectedRows: Object;
-  handleAction: (value: Object, type: string) => void;
+  handleAction: (value: string) => void;
 }
 
 const CustomToolbarSelect = (props: Props) => {
-  const { selectedRows, handleAction } = props;
+  const { handleAction } = props;
 
   return (
     <div className={'custom-toolbar-select'}>
-      <Tooltip title={'Delete'}>
-        <IconButton onClick={() => handleAction(selectedRows, 'delete')}>
-          <DeleteIcon />
-        </IconButton>
+      <Tooltip title={'Create Table'}>
+        <Button
+          color="secondary"
+          variant="contained"
+          style={{ height: '36px', width: 245.2 }}
+          onClick={() => handleAction('createTable')}
+        >
+          Create Table
+        </Button>
       </Tooltip>
     </div>
   );

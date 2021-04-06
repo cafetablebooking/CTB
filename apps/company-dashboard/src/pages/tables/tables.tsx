@@ -4,10 +4,11 @@ import MUIDataTable from 'mui-datatables';
 import Layout from '../../components/layout/layout';
 
 import { useFirestore } from '@ctb/use-firestore';
-import CustomToolBarSelect from './CustomToolBarSelect';
-import { firestore } from '@ctb/firebase-auth';
+import CustomToolBar from './CustomToolBar';
+import { firestore, firebase } from '@ctb/firebase-auth';
 import { useAuthContext } from '@ctb/auth-context';
 import { DialogBox } from '@ctb/alert-dialog-box';
+import CustomToolbarSelect from './CustomToolBarSelect';
 /* eslint-disable-next-line */
 export interface UsersProps {}
 // export interface option {}
@@ -15,6 +16,14 @@ const columns = [
   {
     name: 'resourceId',
     label: 'Id',
+    options: {
+      filter: true,
+      sort: true,
+    },
+  },
+  {
+    name: 'seats',
+    label: 'Seats',
     options: {
       filter: true,
       sort: true,
@@ -43,40 +52,55 @@ export function Tables(props: UsersProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedCompanies, setSelectedCompanies] = useState(null);
   const [actionType, setActionType] = useState<string>('');
-  const handleClickOpen = (selectedRows) => {
-    setSelectedCompanies(selectedRows);
-    setOpen(true);
-  };
+  const [resourceType, setResourceType] = useState<string>('');
+  const { docs } = useFirestore('tableBookings');
+  const { uidValue } = useAuthContext();
+  const companyTables =
+    docs &&
+    docs.find((item) => {
+      return item.id === uidValue;
+    });
+
+  const tableResources = companyTables && companyTables.resources;
+
   const handleAction = (selectedRows, type) => {
-    handleClickOpen(selectedRows);
-    type === 'delete' ? setActionType('delete') : setActionType('activate');
+    if (type === 'delete') {
+      setSelectedCompanies(selectedRows);
+      setActionType('delete');
+      setResourceType('tables');
+      setOpen(true);
+    }
+  };
+  const handleToolbarAction = () => {
+    setOpen(true);
+    setActionType('createTable');
   };
 
   const handleClose = () => {
     setOpen(false);
   };
 
-  const { docs } = useFirestore('tableBookings');
-  const companies = useFirestore('companies').docs;
-  console.log(companies);
-
-  const companyTables =
-    docs &&
-    docs.find((item) => {
-      return item.companyId === '3c672850-82bf-11eb-8ed2-9d3621fb18a8';
-    });
-  const tableResources = companyTables && companyTables.resources;
-
-  const { signup }: any = useAuthContext();
-
   const setDeleteTables = async (selectedRows) => {
     selectedRows.data.map(async (item) => {
-      const company = docs[item.index];
+      const tableResource = companyTables.resources[item.index];
+      const resourceArr = [];
+      resourceArr.push(...companyTables.resources);
 
-      const { id } = company;
-      if (!id) return;
-      const tables = firestore.collection('tableBookings').doc(id);
-      await tables.delete();
+      let index = resourceArr.findIndex(
+        (item) => item.resourceId === tableResource.resourceId
+      );
+
+      let resources;
+      if (index > -1) {
+        resources = [...resourceArr];
+        resources.splice(index, 1);
+      }
+
+      const tableBookings = firestore.collection('tableBookings').doc(uidValue);
+      await tableBookings.set({
+        resources: resources,
+      });
+
       handleClose();
     });
   };
@@ -88,8 +112,14 @@ export function Tables(props: UsersProps) {
     tableBodyHeight: '500px',
     elevation: 1,
     sortFilterList: true,
+    customToolbar: (selectedRows) => (
+      <CustomToolBar
+        handleAction={handleToolbarAction}
+        selectedRows={selectedRows}
+      />
+    ),
     customToolbarSelect: (selectedRows) => (
-      <CustomToolBarSelect
+      <CustomToolbarSelect
         handleAction={handleAction}
         selectedRows={selectedRows}
       />
@@ -103,6 +133,7 @@ export function Tables(props: UsersProps) {
         setDeleteCompanies={() => setDeleteTables(selectedCompanies)}
         selectedCompanies={selectedCompanies}
         actionType={actionType}
+        resourceType={resourceType}
       />
       <MUIDataTable
         title={'Table list'}

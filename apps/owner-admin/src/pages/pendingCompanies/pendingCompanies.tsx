@@ -43,13 +43,19 @@ export function PendingCompanies(props: UsersProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedCompanies, setSelectedCompanies] = useState(null);
   const [actionType, setActionType] = useState<string>('');
+  const [resourceType, setResourceType] = useState<string>('');
   const handleClickOpen = (selectedRows) => {
     setSelectedCompanies(selectedRows);
     setOpen(true);
   };
   const handleAction = (selectedRows, type) => {
     handleClickOpen(selectedRows);
-    type === 'delete' ? setActionType('delete') : setActionType('activate');
+    if (type === 'delete') {
+      setActionType('delete');
+      setResourceType('companies');
+    } else {
+      setActionType('activate');
+    }
   };
 
   const handleClose = () => {
@@ -119,6 +125,7 @@ export function PendingCompanies(props: UsersProps) {
         setDeleteCompanies={() => setDeleteCompanies(selectedCompanies)}
         selectedCompanies={selectedCompanies}
         actionType={actionType}
+        resourceType={resourceType}
       />
       <MUIDataTable
         title={'Pending Companies list'}

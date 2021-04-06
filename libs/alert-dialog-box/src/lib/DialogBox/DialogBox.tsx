@@ -4,6 +4,8 @@ import Dialog from '@material-ui/core/Dialog';
 
 import { useFirestore } from '@ctb/use-firestore';
 import AlertDialogForm from './AlertDialogForm';
+import CreateDialogForm from './CreateDialogForm';
+import { useAuthContext } from '@ctb/auth-context';
 export interface ConfirmDialogProps {
   handleClose: () => void;
   open: boolean;
@@ -11,6 +13,7 @@ export interface ConfirmDialogProps {
   setDeleteCompanies: () => void;
   selectedCompanies: any;
   actionType: string;
+  resourceType: string;
 }
 
 export function DialogBox(props: ConfirmDialogProps) {
@@ -21,16 +24,25 @@ export function DialogBox(props: ConfirmDialogProps) {
     setDeleteCompanies,
     selectedCompanies,
     actionType,
+    resourceType,
   } = props;
-  const { docs } = useFirestore('company_requests');
+  const { docs } = useFirestore('tableBookings');
+  const { uidValue } = useAuthContext();
+  const companyTables =
+    docs &&
+    docs.find((item) => {
+      return item.id === uidValue;
+    });
+
   const company =
     selectedCompanies &&
     selectedCompanies.data.map((item) => {
-      const pendingCompany = docs[item.index];
-      if (!pendingCompany) return;
-      const { companyName } = pendingCompany;
+      const pendingCompany = companyTables.resources[item.index];
 
-      return <p>{companyName}</p>;
+      if (!pendingCompany) return;
+      const { resourceTitle } = pendingCompany;
+
+      return <p>{resourceTitle}</p>;
     });
   return (
     <Dialog
@@ -53,9 +65,10 @@ export function DialogBox(props: ConfirmDialogProps) {
           handleClose={handleClose}
           company={company}
           title="Confirm Deletion"
-          text="Do you really want to delete the following companies?"
+          text={`Do you really want to delete the following ${resourceType}?`}
         />
       )}
+      {actionType && actionType === 'createTable' && <CreateDialogForm />}
     </Dialog>
   );
 }
