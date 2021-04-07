@@ -53,7 +53,7 @@ async function sendWelcomeEmail(snap) {
 }
 
 exports.sendEmail = functions.firestore
-  .document('company_request/{company_requestId}')
+  .document('company_requests/{company_requestsId}')
   .onCreate(sendWelcomeEmail);
 
 exports.setRole = functions.https.onCall((data, context) => {
@@ -167,23 +167,3 @@ exports.stripeHandler = functions.https.onRequest((req, res) => {
     }
   });
 });
-// exports.stripeHandler = functions.https.onRequest((req, res) => {
-//   return corsHandler(req, res, async () => {
-//     if (req.method === 'POST') {
-//       try {
-//         const { amount } = req.body;
-//         const paymentIntent = await stripe.paymentIntents.create({
-//           amount,
-//           currency: 'SEK',
-//         });
-
-//         res.status(200).send(paymentIntent.client_secret);
-//       } catch (err) {
-//         res.status(500).json({ statusCode: 500, message: err.message });
-//       }
-//     } else {
-//       res.setHeader('Allow', 'POST');
-//       res.status(405).end('Method Not Allowed');
-//     }
-//   });
-// });
