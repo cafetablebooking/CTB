@@ -27,6 +27,8 @@ export interface PaymentDialogProps {
   bookedInfo: any;
   company: any;
   tableBookings: any;
+  setSuccess: (value: boolean) => void;
+  success: boolean;
 }
 
 interface Props {
@@ -53,13 +55,14 @@ function PaymentDialog(props: PaymentDialogProps) {
   const { register, handleSubmit, watch, errors } = useForm({});
   const [isProcessing, setProcessingTo] = useState(false);
   const [checkoutError, setCheckoutError] = useState('');
-  const [success, setSuccess] = useState(false);
   const {
     onClose,
     selectedValue,
     paymentDialogOpen,
     company,
     tableBookings,
+    success,
+    setSuccess,
   } = props;
   const bookedInfo = props.bookedInfo;
   const stripe = useStripe();
@@ -105,6 +108,7 @@ function PaymentDialog(props: PaymentDialogProps) {
         return;
       }
 
+      setProcessingTo(false);
       const { error } = await stripe.confirmCardPayment(clientSecret, {
         payment_method: paymentMethod.id,
       });

@@ -8,12 +8,8 @@ import * as nodemailer from 'nodemailer';
 import Stripe from 'stripe';
 
 import * as cors from 'cors';
-
-const PUBLISHABLE_KEY =
-  'pk_test_51IYfjEKp4XrdRIV5ALP4XZfBOnCEEaeszBPFeZbxLMwPUIho1iL61ub4AkooCxOzPZq0sagfB2QvSot3WsWGPRGX003w2bnk8t';
 const SECRET_KEY =
   'sk_test_51IYfjEKp4XrdRIV53nbSZtxBxotT560niMA6j14rAilAblNfhIFpANboVG7y8GQRecQ2QxE9l5iZpZA2wQcu8Hbg00C6xaPMta';
-
 admin.initializeApp();
 const stripe = new Stripe(SECRET_KEY, {
   apiVersion: '2020-08-27',
@@ -51,6 +47,32 @@ async function sendWelcomeEmail(snap) {
     console.log('Sent!');
   });
 }
+async function sendLoginCredentialsEmail(snap) {
+  const mailOptions = {
+    to: snap.data().email,
+    subject: 'CTB - Login Credentials',
+    html: `<h1>Welcome to CTB</h1>
+             <div>
+             <p>
+               Here is your password:
+                <b>${snap.data().id}</b>
+             </p>
+             <p> Thank you </p>
+               <p> Team CTB </p>
+               </div>`,
+  };
+  await transporter.sendMail(mailOptions, (error) => {
+    if (error) {
+      console.log(error);
+      return;
+    }
+    console.log('Sent!');
+  });
+}
+
+exports.sendLoginCredentials = functions.firestore
+  .document('companies/{companiesId}')
+  .onCreate(sendLoginCredentialsEmail);
 
 exports.sendEmail = functions.firestore
   .document('company_requests/{company_requestsId}')
