@@ -4,7 +4,7 @@ import Dialog from '@material-ui/core/Dialog';
 
 import { useFirestore } from '@ctb/use-firestore';
 import AlertDialogForm from './AlertDialogForm';
-import CreateDialogForm from './CreateDialogForm';
+import FieldDialogForm from './FieldDialogForm';
 import { useAuthContext } from '@ctb/auth-context';
 export interface ConfirmDialogProps {
   handleClose: () => void;
@@ -14,6 +14,7 @@ export interface ConfirmDialogProps {
   selectedCompanies: any;
   actionType: string;
   resourceType: string;
+  onSubmit?: (value: any) => void;
 }
 
 export function DialogBox(props: ConfirmDialogProps) {
@@ -25,6 +26,7 @@ export function DialogBox(props: ConfirmDialogProps) {
     selectedCompanies,
     actionType,
     resourceType,
+    onSubmit,
   } = props;
   const { docs } = useFirestore('tableBookings');
   const { uidValue } = useAuthContext();
@@ -44,6 +46,12 @@ export function DialogBox(props: ConfirmDialogProps) {
 
       return <p>{resourceTitle}</p>;
     });
+
+  const textFields = [
+    { name: 'tableName', label: 'Table name', type: 'number' },
+    { name: 'seats', label: 'Number of seats', type: 'number' },
+  ];
+
   return (
     <Dialog
       onClose={handleClose}
@@ -68,7 +76,13 @@ export function DialogBox(props: ConfirmDialogProps) {
           text={`Do you really want to delete the following ${resourceType}?`}
         />
       )}
-      {actionType && actionType === 'createTable' && <CreateDialogForm />}
+      {actionType && actionType === 'createTable' && (
+        <FieldDialogForm
+          textFields={textFields}
+          onSubmit={onSubmit}
+          handleClose={handleClose}
+        />
+      )}
     </Dialog>
   );
 }

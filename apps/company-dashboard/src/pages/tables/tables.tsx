@@ -9,6 +9,7 @@ import { firestore, firebase } from '@ctb/firebase-auth';
 import { useAuthContext } from '@ctb/auth-context';
 import { DialogBox } from '@ctb/alert-dialog-box';
 import CustomToolbarSelect from './CustomToolBarSelect';
+import { v4 as uuidv4 } from 'uuid';
 /* eslint-disable-next-line */
 export interface UsersProps {}
 // export interface option {}
@@ -80,29 +81,46 @@ export function Tables(props: UsersProps) {
     setOpen(false);
   };
 
+  const addTables = async (data) => {
+    const { seats, tableName } = data;
+
+    const tableBookings = firestore.collection('tableBookings').doc(uidValue);
+    if (companyTables) {
+      tableBookings.update({
+        resources: firebase.firestore.FieldValue.arrayUnion({
+          seats,
+          resourceTitle: tableName,
+          resourceId: uuidv4(),
+        }),
+      });
+    } else {
+      await tableBookings.set({
+        resources: [
+          {
+            seats,
+            resourceTitle: tableName,
+            resourceId: uuidv4(),
+          },
+        ],
+      });
+    }
+  };
   const setDeleteTables = async (selectedRows) => {
     selectedRows.data.map(async (item) => {
       const tableResource = companyTables.resources[item.index];
-      const resourceArr = [];
-      resourceArr.push(...companyTables.resources);
-
-      let index = resourceArr.findIndex(
-        (item) => item.resourceId === tableResource.resourceId
-      );
-
-      let resources;
-      if (index > -1) {
-        resources = [...resourceArr];
-        resources.splice(index, 1);
-      }
+      const arr = [];
+      const filteredResources = companyTables.resources.filter((item) => {
+        return item.resourceId !== tableResource.resourceId;
+      });
+      arr.push(...filteredResources);
+      console.log(arr);
 
       const tableBookings = firestore.collection('tableBookings').doc(uidValue);
-      await tableBookings.set({
-        resources: resources,
+      tableBookings.set({
+        resources: arr,
       });
-
-      handleClose();
     });
+    handleClose();
   };
 
   const options = {
@@ -134,6 +152,7 @@ export function Tables(props: UsersProps) {
         selectedCompanies={selectedCompanies}
         actionType={actionType}
         resourceType={resourceType}
+        onSubmit={addTables}
       />
       <MUIDataTable
         title={'Table list'}
