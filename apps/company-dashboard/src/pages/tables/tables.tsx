@@ -81,7 +81,7 @@ export function Tables(props: UsersProps) {
     setOpen(false);
   };
 
-  const addTables = async (data) => {
+  const addTableResource = async (data) => {
     const { seats, tableName } = data;
 
     const tableBookings = firestore.collection('tableBookings').doc(uidValue);
@@ -105,7 +105,7 @@ export function Tables(props: UsersProps) {
       });
     }
   };
-  const setDeleteTables = async (selectedRows) => {
+  const deleteTableResource = async (selectedRows) => {
     selectedRows.data.map(async (item) => {
       const tableResource = companyTables.resources[item.index];
       const arr = [];
@@ -148,11 +148,11 @@ export function Tables(props: UsersProps) {
       <DialogBox
         open={open}
         handleClose={handleClose}
-        setDeleteCompanies={() => setDeleteTables(selectedCompanies)}
+        deleteHandler={() => deleteTableResource(selectedCompanies)}
         selectedCompanies={selectedCompanies}
         actionType={actionType}
         resourceType={resourceType}
-        onSubmit={addTables}
+        addTableResource={addTableResource}
       />
       <MUIDataTable
         title={'Table list'}

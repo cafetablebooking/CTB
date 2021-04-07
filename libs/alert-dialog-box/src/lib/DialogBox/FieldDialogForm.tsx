@@ -20,14 +20,14 @@ const darkTheme = createMuiTheme({
 });
 interface Props {
   textFields: any;
-  onSubmit: (value: any) => void;
+  submitFunction: (value: any) => void;
   handleClose: () => void;
 }
 
 const CreateDialogForm = (props: Props) => {
   const { register, handleSubmit, watch, errors } = useForm({});
 
-  const { textFields, onSubmit, handleClose } = props;
+  const { textFields, submitFunction, handleClose } = props;
 
   const renderTextFields = textFields.map((item) => {
     return (
@@ -44,7 +44,7 @@ const CreateDialogForm = (props: Props) => {
   });
   const handleSubmitting = (data) => {
     handleClose();
-    onSubmit(data);
+    submitFunction(data);
   };
   return (
     <ThemeProvider theme={darkTheme}>

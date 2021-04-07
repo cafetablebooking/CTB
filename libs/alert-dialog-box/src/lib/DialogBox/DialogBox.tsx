@@ -10,11 +10,11 @@ export interface ConfirmDialogProps {
   handleClose: () => void;
   open: boolean;
   setActivateCompanies: () => void;
-  setDeleteCompanies: () => void;
+  deleteHandler: () => void;
   selectedCompanies: any;
   actionType: string;
   resourceType: string;
-  onSubmit?: (value: any) => void;
+  addTableResource?: (value: any) => void;
 }
 
 export function DialogBox(props: ConfirmDialogProps) {
@@ -22,11 +22,11 @@ export function DialogBox(props: ConfirmDialogProps) {
     handleClose,
     open,
     setActivateCompanies,
-    setDeleteCompanies,
+    deleteHandler,
     selectedCompanies,
     actionType,
     resourceType,
-    onSubmit,
+    addTableResource,
   } = props;
   const { docs } = useFirestore('tableBookings');
   const { uidValue } = useAuthContext();
@@ -69,7 +69,7 @@ export function DialogBox(props: ConfirmDialogProps) {
       )}
       {actionType && actionType === 'delete' && (
         <AlertDialogForm
-          submitFunction={setDeleteCompanies}
+          submitFunction={deleteHandler}
           handleClose={handleClose}
           company={company}
           title="Confirm Deletion"
@@ -79,7 +79,7 @@ export function DialogBox(props: ConfirmDialogProps) {
       {actionType && actionType === 'createTable' && (
         <FieldDialogForm
           textFields={textFields}
-          onSubmit={onSubmit}
+          submitFunction={addTableResource}
           handleClose={handleClose}
         />
       )}

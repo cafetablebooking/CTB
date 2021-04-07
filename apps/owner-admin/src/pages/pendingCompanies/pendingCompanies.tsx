@@ -122,7 +122,7 @@ export function PendingCompanies(props: UsersProps) {
         open={open}
         handleClose={handleClose}
         setActivateCompanies={() => setActivateCompanies(selectedCompanies)}
-        setDeleteCompanies={() => setDeleteCompanies(selectedCompanies)}
+        deleteHandler={() => setDeleteCompanies(selectedCompanies)}
         selectedCompanies={selectedCompanies}
         actionType={actionType}
         resourceType={resourceType}
