@@ -15,8 +15,8 @@ export interface UsersProps {}
 // export interface option {}
 const columns = [
   {
-    name: 'resourceId',
-    label: 'Id',
+    name: 'resourceTitle',
+    label: 'Name',
     options: {
       filter: true,
       sort: true,
@@ -31,8 +31,8 @@ const columns = [
     },
   },
   {
-    name: 'resourceTitle',
-    label: 'Name',
+    name: 'resourceId',
+    label: 'Id',
     options: {
       filter: true,
       sort: true,
@@ -97,22 +97,25 @@ export function Tables(props: UsersProps) {
     }
   };
   const deleteTableResource = async (selectedRows) => {
-    const arr = [];
-    selectedRows.data.map(async (item) => {
-      const eachSelectedTable = companyTables.resources[item.index];
+    const data = selectedRows.data.map((selectedTable) => {
+      const selectedTableResourceObj =
+        companyTables.resources[selectedTable.index];
 
-      console.log(eachSelectedTable);
+      let index = selectedTable.index;
+      let resources;
+      if (index > -1) {
+        resources = [...companyTables.resources];
+        resources.splice(index, 1);
+      }
 
-      //   const filteredResources = companyTables.resources.filter((item) => {
-      //     return item.resourceId !== tableResource.resourceId;
-      //   });
-      //   arr.push(...filteredResources);
-
-      //   const tableBookings = firestore.collection('tableBookings').doc(uidValue);
-      //   tableBookings.set({
-      //     resources: arr,
-      //   });
+      return resources;
     });
+    console.log(data);
+
+    //   const tableBookings = firestore.collection('tableBookings').doc(uidValue);
+    //   tableBookings.set({
+    //     resources: arr,
+    //   });
     handleClose();
   };
 
