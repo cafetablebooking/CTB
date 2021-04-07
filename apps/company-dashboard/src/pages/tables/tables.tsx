@@ -107,10 +107,9 @@ export function Tables(props: UsersProps) {
         ),
       });
     });
-
-    handleClose();
+     handleClose();
   };
-  
+
   //RAMYS CODE
   // const deleteTableResource = async (selectedRows) => {
   //   const resourceIdsToDelete = selectedRows.data.reduce((acc, curr) => {
