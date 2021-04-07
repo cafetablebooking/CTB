@@ -44,7 +44,7 @@ export function DialogBox(props: ConfirmDialogProps) {
       if (!pendingCompany) return;
       const { resourceTitle } = pendingCompany;
 
-      return <p>{resourceTitle}</p>;
+      return <p key={item.index}>{resourceTitle}</p>;
     });
 
   const textFields = [

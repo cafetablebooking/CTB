@@ -24,7 +24,7 @@ interface Props {
   handleClose: () => void;
 }
 
-const CreateDialogForm = (props: Props) => {
+const FieldDialogForm = (props: Props) => {
   const { register, handleSubmit, watch, errors } = useForm({});
 
   const { textFields, submitFunction, handleClose } = props;
@@ -32,6 +32,7 @@ const CreateDialogForm = (props: Props) => {
   const renderTextFields = textFields.map((item) => {
     return (
       <TextField
+        key={item.name}
         style={{ marginTop: 10 }}
         id="outlined-basic"
         label={item.label}
@@ -104,4 +105,4 @@ export const Form = styled.form`
   }
   flex-direction: column;
 `;
-export default CreateDialogForm;
+export default FieldDialogForm;
