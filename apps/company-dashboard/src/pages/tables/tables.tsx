@@ -38,15 +38,6 @@ const columns = [
       sort: true,
     },
   },
-  {
-    name: 'uid',
-    label: 'uid',
-    options: {
-      filter: true,
-      sort: true,
-      display: false,
-    },
-  },
 ];
 
 export function Tables(props: UsersProps) {
