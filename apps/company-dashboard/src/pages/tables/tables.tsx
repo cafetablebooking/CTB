@@ -96,7 +96,7 @@ export function Tables(props: UsersProps) {
       });
     }
   };
-  const deleteTableResource = async (selectedRows) => {
+  const deleteTableResource = (selectedRows) => {
     selectedRows.data.map((selectedTable) => {
       const selectedTableResourceObj =
         companyTables.resources[selectedTable.index];
@@ -107,7 +107,7 @@ export function Tables(props: UsersProps) {
         ),
       });
     });
-     handleClose();
+    handleClose();
   };
 
   //RAMYS CODE
