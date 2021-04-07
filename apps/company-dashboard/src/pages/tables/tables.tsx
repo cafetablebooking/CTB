@@ -97,27 +97,42 @@ export function Tables(props: UsersProps) {
     }
   };
   const deleteTableResource = async (selectedRows) => {
-    const data = selectedRows.data.map((selectedTable) => {
+    selectedRows.data.map((selectedTable) => {
       const selectedTableResourceObj =
         companyTables.resources[selectedTable.index];
-
-      let index = selectedTable.index;
-      let resources;
-      if (index > -1) {
-        resources = [...companyTables.resources];
-        resources.splice(index, 1);
-      }
-
-      return resources;
+      const tableBookings = firestore.collection('tableBookings').doc(uidValue);
+      tableBookings.update({
+        resources: firebase.firestore.FieldValue.arrayRemove(
+          selectedTableResourceObj
+        ),
+      });
     });
-    console.log(data);
 
-    //   const tableBookings = firestore.collection('tableBookings').doc(uidValue);
-    //   tableBookings.set({
-    //     resources: arr,
-    //   });
     handleClose();
   };
+  
+  //RAMYS CODE
+  // const deleteTableResource = async (selectedRows) => {
+  //   const resourceIdsToDelete = selectedRows.data.reduce((acc, curr) => {
+  //     const toDelete = companyTables.resources[curr.dataIndex]?.resourceId;
+  //     if (!acc[toDelete]) acc[toDelete] = toDelete;
+  //     return acc;
+  //   }, {});
+
+  //   console.log(resourceIdsToDelete);
+
+  //   const afterdeleteTables = companyTables.resources.filter((item) => {
+  //     return item?.resourceId !== resourceIdsToDelete[item?.resourceId];
+  //   });
+  //   console.log(afterdeleteTables);
+
+  //   const tableBookings = firestore.collection('tableBookings').doc(uidValue);
+  //   tableBookings.set({
+  //     resources: afterdeleteTables,
+  //   });
+
+  //   handleClose();
+  // };
 
   const options = {
     filter: true,
@@ -151,6 +166,7 @@ export function Tables(props: UsersProps) {
         addTableResource={addTableResource}
       />
       <MUIDataTable
+        key={open}
         title={'Table list'}
         data={tableResources}
         columns={columns}
