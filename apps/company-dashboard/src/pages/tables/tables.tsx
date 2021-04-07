@@ -97,22 +97,24 @@ export function Tables(props: UsersProps) {
     }
   };
   const deleteTableResource = async (selectedRows) => {
-    const arr = [];
-    selectedRows.data.map(async (item) => {
-      const eachSelectedTable = companyTables.resources[item.index];
+    const resourceIdsToDelete = selectedRows.data.reduce((acc, curr) => {
+      const toDelete = companyTables.resources[curr.dataIndex]?.resourceId;
+      if (!acc[toDelete]) acc[toDelete] = toDelete;
+      return acc;
+    }, {});
 
-      console.log(eachSelectedTable);
+    console.log(resourceIdsToDelete);
 
-      //   const filteredResources = companyTables.resources.filter((item) => {
-      //     return item.resourceId !== tableResource.resourceId;
-      //   });
-      //   arr.push(...filteredResources);
-
-      //   const tableBookings = firestore.collection('tableBookings').doc(uidValue);
-      //   tableBookings.set({
-      //     resources: arr,
-      //   });
+    const afterdeleteTables = companyTables.resources.filter((item) => {
+      return item?.resourceId !== resourceIdsToDelete[item?.resourceId];
     });
+    console.log(afterdeleteTables);
+
+    const tableBookings = firestore.collection('tableBookings').doc(uidValue);
+    tableBookings.set({
+      resources: afterdeleteTables,
+    });
+
     handleClose();
   };
 
