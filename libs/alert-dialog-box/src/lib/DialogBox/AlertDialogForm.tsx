@@ -22,9 +22,8 @@ const AlertDialogForm = (props: Props) => {
       </DialogTitle>
       <DialogContentText id="alert-dialog-slide-description">
         {text}
-        {company && <b>{company}</b>}
       </DialogContentText>
-
+      {company && <b>{company}</b>}
       <StyledDialogActions>
         <Button onClick={submitFunction} color="primary">
           Yes
