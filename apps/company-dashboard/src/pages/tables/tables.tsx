@@ -72,7 +72,7 @@ export function Tables(props: UsersProps) {
     setOpen(false);
   };
 
-  const addTableResource = async (data) => {
+  const addTableResource = (data) => {
     const { seats, tableName } = data;
 
     const tableBookings = firestore.collection('tableBookings').doc(uidValue);
@@ -85,7 +85,7 @@ export function Tables(props: UsersProps) {
         }),
       });
     } else {
-      await tableBookings.set({
+      tableBookings.set({
         resources: [
           {
             seats,
