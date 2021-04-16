@@ -7,7 +7,7 @@ import { useFirestore } from '@ctb/use-firestore';
 import CustomToolBarSelect from './CustomToolBarSelect';
 import { firestore } from '@ctb/firebase-auth';
 import { useAuthContext } from '@ctb/auth-context';
-import DialogBox from './DialogBox/DialogBox';
+import { DialogBox } from '@ctb/alert-dialog-box';
 /* eslint-disable-next-line */
 export interface UsersProps {}
 // export interface option {}
@@ -43,13 +43,19 @@ export function PendingCompanies(props: UsersProps) {
   const [open, setOpen] = React.useState(false);
   const [selectedCompanies, setSelectedCompanies] = useState(null);
   const [actionType, setActionType] = useState<string>('');
+  const [resourceType, setResourceType] = useState<string>('');
   const handleClickOpen = (selectedRows) => {
     setSelectedCompanies(selectedRows);
     setOpen(true);
   };
   const handleAction = (selectedRows, type) => {
     handleClickOpen(selectedRows);
-    type === 'delete' ? setActionType('delete') : setActionType('activate');
+    if (type === 'delete') {
+      setActionType('delete');
+      setResourceType('companies');
+    } else {
+      setActionType('activate');
+    }
   };
 
   const handleClose = () => {
@@ -116,9 +122,10 @@ export function PendingCompanies(props: UsersProps) {
         open={open}
         handleClose={handleClose}
         setActivateCompanies={() => setActivateCompanies(selectedCompanies)}
-        setDeleteCompanies={() => setDeleteCompanies(selectedCompanies)}
+        deleteHandler={() => setDeleteCompanies(selectedCompanies)}
         selectedCompanies={selectedCompanies}
         actionType={actionType}
+        resourceType={resourceType}
       />
       <MUIDataTable
         title={'Pending Companies list'}

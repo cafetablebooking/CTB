@@ -4,34 +4,54 @@ import Dialog from '@material-ui/core/Dialog';
 
 import { useFirestore } from '@ctb/use-firestore';
 import AlertDialogForm from './AlertDialogForm';
+import FieldDialogForm from './FieldDialogForm';
+import { useAuthContext } from '@ctb/auth-context';
 export interface ConfirmDialogProps {
   handleClose: () => void;
   open: boolean;
   setActivateCompanies: () => void;
-  setDeleteCompanies: () => void;
+  deleteHandler: () => void;
   selectedCompanies: any;
   actionType: string;
+  resourceType: string;
+  addTableResource?: (value: any) => void;
 }
 
-function DialogBox(props: ConfirmDialogProps) {
+export function DialogBox(props: ConfirmDialogProps) {
   const {
     handleClose,
     open,
     setActivateCompanies,
-    setDeleteCompanies,
+    deleteHandler,
     selectedCompanies,
     actionType,
+    resourceType,
+    addTableResource,
   } = props;
-  const { docs } = useFirestore('company_requests');
+  const { docs } = useFirestore('tableBookings');
+  const { uidValue } = useAuthContext();
+  const companyTables =
+    docs &&
+    docs.find((item) => {
+      return item.id === uidValue;
+    });
+
   const company =
     selectedCompanies &&
     selectedCompanies.data.map((item) => {
-      const pendingCompany = docs[item.index];
-      if (!pendingCompany) return;
-      const { companyName } = pendingCompany;
+      const pendingCompany = companyTables.resources[item.index];
 
-      return <p>{companyName}</p>;
+      if (!pendingCompany) return;
+      const { resourceTitle } = pendingCompany;
+
+      return <p key={item.index}>{resourceTitle}</p>;
     });
+
+  const textFields = [
+    { name: 'tableName', label: 'Table name', type: 'number' },
+    { name: 'seats', label: 'Number of seats', type: 'number' },
+  ];
+
   return (
     <Dialog
       onClose={handleClose}
@@ -49,11 +69,18 @@ function DialogBox(props: ConfirmDialogProps) {
       )}
       {actionType && actionType === 'delete' && (
         <AlertDialogForm
-          submitFunction={setDeleteCompanies}
+          submitFunction={deleteHandler}
           handleClose={handleClose}
           company={company}
           title="Confirm Deletion"
-          text="Do you really want to delete the following companies?"
+          text={`Do you really want to delete the following ${resourceType}?`}
+        />
+      )}
+      {actionType && actionType === 'createTable' && (
+        <FieldDialogForm
+          textFields={textFields}
+          submitFunction={addTableResource}
+          handleClose={handleClose}
         />
       )}
     </Dialog>

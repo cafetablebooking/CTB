@@ -36,6 +36,7 @@
     "company-dashboard-e2e": {
       "tags": [],
       "implicitDependencies": ["company-dashboard"]
-    }
+    },
+    "alert-dialog-box": { "tags": [] }
   }
 }
