@@ -58,6 +58,7 @@ export const ClientContextProvider = (props: Props) => {
         console.log(error.message);
       });
   };
+  console.log(companies);
 
   const setCompaniesData = async () => {
     const data = await getCompaniesData();

@@ -49,20 +49,22 @@ export const getCompaniesData = async () => {
     });
   }
   tempArr.map(async (item) => {
-    const response = await Geocode.fromAddress(
-      `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
-    );
+    if (item.adress) {
+      const response = await Geocode.fromAddress(
+        `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
+      );
 
-    const { lat, lng } = response && response.results[0].geometry.location;
+      const { lat, lng } = response && response.results[0].geometry.location;
 
-    const options = {
-      ...item,
-      coordinates: {
-        lat,
-        lng,
-      },
-    };
-    data.push(options);
+      const options = {
+        ...item,
+        coordinates: {
+          lat,
+          lng,
+        },
+      };
+      data.push(options);
+    }
   });
 
   return data;
