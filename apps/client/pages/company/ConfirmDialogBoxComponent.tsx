@@ -67,11 +67,11 @@ function ConfirmDialog(props: ConfirmDialogProps) {
 
       if (eventResourceId === selectedResourceId) {
         if (
-          eventStart.isBetween(selectedStart._i, selectedEnd._i) ||
-          eventEnd.isBetween(selectedStart._i, selectedEnd._i) ||
-          eventStart.isSame(selectedStart._i) ||
-          eventEnd.isSame(selectedEnd._i) ||
-          selectedStart.isBetween(eventStart._i, eventEnd._i)
+          eventStart.isBetween(selectedStart, selectedEnd) ||
+          eventEnd.isBetween(selectedStart, selectedEnd) ||
+          eventStart.isSame(selectedStart) ||
+          eventEnd.isSame(selectedEnd) ||
+          selectedStart.isBetween(eventStart, eventEnd)
         ) {
           return item;
         }
