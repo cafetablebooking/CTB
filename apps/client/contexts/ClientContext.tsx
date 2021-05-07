@@ -37,7 +37,7 @@ export const ClientContextProvider = (props: Props) => {
       console.warn(`ERROR(${err.code}): ${err.message}`);
     }
 
-    var options = {
+    const options = {
       enableHighAccuracy: true,
       timeout: 5000,
       maximumAge: 0,

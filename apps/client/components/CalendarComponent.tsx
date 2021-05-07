@@ -11,7 +11,7 @@ const localizer = momentLocalizer(moment);
 interface Props {
   companyId: string;
   setOpenConfirmBox: (value: boolean) => void;
-  setBookedInfo: (value: object) => void;
+  setBookedInfo: (value: Record<string, unknown>) => void;
   success: boolean;
   company: any;
 }
@@ -25,7 +25,7 @@ const CalendarComponent = (props: Props) => {
     company,
   } = props;
   const isDesktop = useMediaQuery('(min-width:768px)');
-  const [tableBookingsById, setTableBookingsById] = useState<object | null>(
+  const [tableBookingsById, setTableBookingsById] = useState<Record<string, unknown> | null>(
     null
   );
 
@@ -36,19 +36,13 @@ const CalendarComponent = (props: Props) => {
     setTableBookingsById(data);
   };
 
-  function roundMinutes(date) {
-    date.setHours(date.getHours() + Math.round(date.getMinutes() / 30));
-    date.setMinutes(0, 0, 0);
-
-    return date;
-  }
   useEffect(() => {
     handleBookingsById();
     checkOpeningHours(currentDateRoundTo);
   }, [success]);
 
   function eventStyle(event, start, end, isSelected) {
-    var style = {
+    const style = {
       backgroundColor: isSelected ? '#cc354e' : '#b5102c',
       borderRadius: '0px',
       opacity: 0.8,
@@ -63,7 +57,7 @@ const CalendarComponent = (props: Props) => {
   function slotStyle(date) {
     const timeHasPassed = date < currentDateRoundTo ? true : false;
 
-    var style = {
+    const style = {
       backgroundColor: timeHasPassed ? 'lightgray' : 'inherit',
       backgroundPosition: 'center',
       borderRadius: '0px',

@@ -8,7 +8,8 @@ import DialogContentText from '@material-ui/core/DialogContentText';
 import DialogActions from '@material-ui/core/DialogActions';
 import { Box, Button } from '@material-ui/core';
 import styled from 'styled-components';
-import { currentDateRoundTo } from 'apps/client/components/utils';
+import { currentDateRoundTo } from '../../components/utils';
+
 export interface ConfirmDialogProps {
   openConfirmBox: boolean;
   selectedValue: string;
@@ -52,7 +53,7 @@ function ConfirmDialog(props: ConfirmDialogProps) {
     'YYYY-MM-DD HH:mm:ss'
   ).toDate();
   //e
-  const timeHasPassed = selectedStartTime < currentDateRoundTo ? true : false;
+  const timeHasPassed = selectedStartTime < currentDateRoundTo;
 
   const isAlreadyBooked =
     tableBooking &&

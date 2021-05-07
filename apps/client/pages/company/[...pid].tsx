@@ -15,18 +15,19 @@ import {
   ImageInnerCircle,
   ImageOuterCircle,
   TitleCompany,
-} from 'apps/client/styles/companyDetailStyles';
+} from '../../styles/companyDetailStyles';
 import Image from 'next/image';
 
-import { useClientContext } from 'apps/client/contexts/ClientContext';
+import { useClientContext } from '../../contexts/ClientContext';
 
 import PaymentDialogComponent from './PaymentDialogComponent';
 import ConfirmDialogBoxComponent from './ConfirmDialogBoxComponent';
 
-import CalendarComponent from 'apps/client/components/CalendarComponent';
-import { getTableBookings } from 'apps/client/components/utils';
+import CalendarComponent from '../../components/CalendarComponent';
+import { getTableBookings } from '../../components/utils';
 
 interface Props {}
+
 type WeekDay = 'Sun' | 'Mon' | 'Tue' | 'Wed' | 'Thu' | 'Fri' | 'Sat';
 
 const ValueMap: { [value in WeekDay]: string } = {
@@ -38,7 +39,7 @@ const ValueMap: { [value in WeekDay]: string } = {
   Fri: 'Friday',
   Sat: 'Saturday',
 } as const;
-const companyDetail = (props: Props) => {
+const CompanyDetail = (props: Props) => {
   const isDesktop = useMediaQuery('(min-width:768px)');
   const { companies, bookedInfo, setBookedInfo }: any = useClientContext();
   const router = useRouter();
@@ -57,7 +58,7 @@ const companyDetail = (props: Props) => {
 
   useEffect(() => {
     setAllTableBookings();
-  }, []);
+  }, [success]);
   const handlePaymentDialog = () => {
     setPaymentDialogOpen(true);
     setOpenConfirmBox(false);
@@ -93,9 +94,9 @@ const companyDetail = (props: Props) => {
   };
 
   return (
-    <>
+    <Wrapper>
       {company && (
-        <Wrapper>
+        <>
           {company.coverImage && (
             <CoverImage coverimage={company.coverImage}></CoverImage>
           )}
@@ -162,10 +163,10 @@ const companyDetail = (props: Props) => {
               companyId={companyId}
             />
           </CompanyContent>
-        </Wrapper>
+        </>
       )}
-    </>
+    </Wrapper>
   );
 };
 
-export default companyDetail;
+export default CompanyDetail;
