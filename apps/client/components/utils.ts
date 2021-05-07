@@ -15,7 +15,7 @@ export const getTableBookingById = async (id) => {
   const tablesRef = firestore
     .collection('tableBookings')
     .where('companyId', '==', id);
-  let companyTables = await tablesRef.get();
+  const companyTables = await tablesRef.get();
 
   for (const doc of companyTables.docs) {
     data = doc.data();
@@ -40,7 +40,7 @@ export const getCompaniesData = async () => {
   const companiesRef = firestore.collection('companies');
   const tempArr = [];
   const data = [];
-  let allCompanies = await companiesRef.get();
+  const allCompanies = await companiesRef.get();
 
   for (const doc of allCompanies.docs) {
     tempArr.push({
@@ -75,8 +75,8 @@ export const getOpeningHours = (item, day) => {
   const today = item[day];
   const { open, closed } = today;
   let isOpen = false;
-  var format = 'hh:mm:ss';
-  var time = moment();
+  const format = 'hh:mm:ss';
+  const time = moment();
 
   const beforeTime = moment(`${open}:00:00`, format);
   const afterTime = moment(`${closed}:00:00`, format);
