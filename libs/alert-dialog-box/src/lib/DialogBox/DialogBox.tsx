@@ -39,7 +39,8 @@ export function DialogBox(props: ConfirmDialogProps) {
   const company =
     selectedCompanies &&
     selectedCompanies.data.map((item) => {
-      const pendingCompany = companyTables.resources[item.index];
+      const pendingCompany =
+        companyTables && companyTables.resources[item.index];
 
       if (!pendingCompany) return;
       const { resourceTitle } = pendingCompany;

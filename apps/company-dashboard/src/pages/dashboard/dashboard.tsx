@@ -17,9 +17,7 @@ allUsers().then((res) => {
 export function Dashboard(props: DashboardProps) {
   return (
     <Layout>
-      <h1>Welcome to customer Dashboard!</h1>
-      <h1>Welcome to customer Dashboard!</h1>
-      <h1>Welcome to customer Dashboard!</h1>
+      <h1>Welcome to Company Dashboard!</h1>
     </Layout>
   );
 }
