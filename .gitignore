@@ -40,3 +40,5 @@ Thumbs.db
 *.local
 apps/client/.env.local
 /server/node_modules
+*.local
+apps/client/.env.local
