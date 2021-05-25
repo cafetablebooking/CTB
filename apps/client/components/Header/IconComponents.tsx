@@ -26,10 +26,7 @@ export const Home = ({ color }) => (
         x2="50.3861"
         y2="1.46943"
         gradientUnits="userSpaceOnUse"
-      >
-        <stop stopColor={color} />
-        <stop offset="1" stopColor={color} />
-      </linearGradient>
+      ></linearGradient>
     </defs>
   </svg>
 );
@@ -60,10 +57,7 @@ export const Login = ({ color }) => (
         x2="50.3861"
         y2="1.46943"
         gradientUnits="userSpaceOnUse"
-      >
-        <stop stopColor={color} />
-        <stop offset="1" stopColor={color} />
-      </linearGradient>
+      ></linearGradient>
     </defs>
   </svg>
 );
