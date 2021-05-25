@@ -50,17 +50,17 @@ export const getCompaniesData = async () => {
   }
   tempArr.map(async (item) => {
     if (item.adress) {
-      //   const response = await Geocode.fromAddress(
-      //     `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
-      //   );
+      const response = await Geocode.fromAddress(
+        `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
+      );
 
-      //   const { lat, lng } = response && response.results[0].geometry.location;
+      const { lat, lng } = response && response.results[0].geometry.location;
 
       const options = {
         ...item,
         coordinates: {
-          lat: 17,
-          lng: 59,
+          lat,
+          lng,
         },
       };
       data.push(options);

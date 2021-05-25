@@ -5,43 +5,50 @@ import { useRouter } from 'next/router';
 import SearchBoxComponent from './SearchBoxComponent';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Image from 'next/image';
+import { Home, Login } from './IconComponents';
+
 /* eslint-disable-next-line */
 interface HeaderProps {}
+type IconType = 'Home' | 'Login';
 
+const ValueMap: { [value in IconType]: any } = {
+  Home,
+  Login,
+} as const;
 function Header(props: HeaderProps) {
   const isDesktop = useMediaQuery('(min-width:768px)');
   const router = useRouter();
-  const isActive = (string) => {
-    let isEqual: string = '';
-    if (router.pathname === string) {
-      isEqual = 'true';
-    } else {
-      isEqual = 'false';
-    }
-    return isEqual;
-  };
 
-  const renderAnchorContent = (string) => {
-    let renderAnchorContent = null;
+  const linkData = [
+    { id: 0, title: 'Home', linkHref: '/' },
+    { id: 1, title: 'Connect Business', linkHref: '/connectBusiness' },
+    { id: 2, title: 'Login', linkHref: '/signIn' },
+  ];
 
-    let imageSrc = '';
+  const renderLinks = linkData.map((item) => {
+    console.log(router.pathname);
 
-    if (!isDesktop) {
-      if (string === 'Home') {
-        isActive('/') === 'true'
-          ? (imageSrc = '/static/links/Home-active.svg')
-          : (imageSrc = '/static/links/Home.svg');
-      } else if (string === 'Login') {
-        isActive('/signIn') === 'true'
-          ? (imageSrc = '/static/links/User-active.svg')
-          : (imageSrc = '/static/links/User.svg');
-      }
-      renderAnchorContent = <LinkIcon image={imageSrc} />;
-    } else {
-      renderAnchorContent = string;
-    }
-    return renderAnchorContent;
-  };
+    const Icon = ValueMap[item.title];
+    // eslint-disable-next-line array-callback-return
+    if (!isDesktop && item.linkHref === '/connectBusiness') return;
+
+    const isActive = router.pathname === item.linkHref;
+    const renderContent = isDesktop ? (
+      item.title
+    ) : (
+      <Icon key={item.id} color={isActive ? '#A3894C' : 'white'} />
+    );
+    console.log(isActive);
+
+    return (
+      <li key={item.id}>
+        <Link href={item.linkHref}>
+          <Anchor active={isActive}>{renderContent}</Anchor>
+        </Link>
+      </li>
+    );
+  });
+
   return (
     <StyledHeader>
       <HeaderUpper>
@@ -56,31 +63,7 @@ function Header(props: HeaderProps) {
           </Logotype>
         </Link>
         <nav>
-          <ul>
-            <li>
-              <Link href="/">
-                <Anchor active={isActive('/')}>
-                  {renderAnchorContent('Home')}
-                </Anchor>
-              </Link>
-            </li>
-            {isDesktop && (
-              <li>
-                <Link href="/connectBusiness">
-                  <Anchor active={isActive('/connectBusiness')}>
-                    {renderAnchorContent('Connect')}
-                  </Anchor>
-                </Link>
-              </li>
-            )}
-            <li>
-              <Link href="/signIn">
-                <Anchor active={isActive('/signIn')}>
-                  {renderAnchorContent('Login')}
-                </Anchor>
-              </Link>
-            </li>
-          </ul>
+          <ul>{renderLinks}</ul>
         </nav>
       </HeaderUpper>
 
@@ -92,14 +75,7 @@ const Logotype = styled.div`
   margin-left: 4vw;
   cursor: pointer;
 `;
-const LinkIcon = styled.div`
-  clip-path: circle(50%);
-  padding: 6px;
-  background: ${(props) => `url(${props.image}) no-repeat center`};
-  width: 30px;
-  height: 30px;
-  object-fit: contain;
-`;
+
 const StyledHeader = styled.header`
   z-index: 100;
   position: fixed;
@@ -128,7 +104,7 @@ const StyledHeader = styled.header`
   }
 `;
 const Anchor = styled.a`
-  color: ${(props) => (props.active === 'true' ? '#A3894C' : '#f5f5f5')};
+  color: ${(props) => (props.active ? '#A3894C' : '#f5f5f5')};
   text-decoration: none;
   cursor: pointer;
 `;
