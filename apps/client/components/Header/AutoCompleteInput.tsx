@@ -10,7 +10,8 @@ import throttle from 'lodash/throttle';
 import styled from 'styled-components';
 import Paper from '@material-ui/core/Paper';
 import Image from 'next/image';
-import { ClientContext } from 'apps/client/contexts/ClientContext';
+import { ClientContext } from '../../contexts/ClientContext';
+
 function loadScript(src: string, position: HTMLElement | null, id: string) {
   if (!position) {
     return;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Wrapper } from '../styles/SearchStyles';
 import GoogleMapReact from 'google-map-react';
-import Marker from 'apps/client/components/Marker/Marker';
+import Marker from './Marker/Marker';
 
 interface Props {
   zoom: number;
@@ -35,6 +35,7 @@ const GoogleMapComponent = (props: Props) => {
           return (
             <Marker
               key={place.id}
+              id={place.id}
               companyName={place.companyName}
               phoneNumber={place.phoneNumber}
               adress={place.adress}

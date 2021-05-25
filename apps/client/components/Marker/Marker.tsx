@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import styled from 'styled-components';
 import MarkerCard from './MarkerCard';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
+import Link from 'next/link';
 
 interface Props {
   companyName: string;
@@ -13,6 +14,7 @@ interface Props {
   distance: number;
   lat: number;
   lng: number;
+  id: string;
 }
 const Marker = (props: Props) => {
   const node = React.useRef();
@@ -38,15 +40,19 @@ const Marker = (props: Props) => {
       <StyledTransitionGroup>
         {isOpen && (
           <CSSTransition timeout={300} classNames="alert" unmountOnExit>
-            <MarkerCard
-              node={node}
-              companyName={props.companyName}
-              phoneNumber={props.phoneNumber}
-              adress={props.adress}
-              image={props.image}
-              distance={props.distance}
-              openingHours={props.openingHours}
-            />
+            <Link href={`/company/${props.id}`}>
+              <a>
+                <MarkerCard
+                  node={node}
+                  companyName={props.companyName}
+                  phoneNumber={props.phoneNumber}
+                  adress={props.adress}
+                  image={props.image}
+                  distance={props.distance}
+                  openingHours={props.openingHours}
+                />
+              </a>
+            </Link>
           </CSSTransition>
         )}
       </StyledTransitionGroup>

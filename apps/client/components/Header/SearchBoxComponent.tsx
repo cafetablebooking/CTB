@@ -1,12 +1,11 @@
 import styled from 'styled-components';
-import React, { useContext } from 'react';
-import { TextField, Button, Typography, Box } from '@material-ui/core';
+import React from 'react';
+import { TextField, Button } from '@material-ui/core';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../ThemeProviders/LightThemeProvider';
 import darkTheme from '../ThemeProviders/DarkThemeProvider';
 import { useRouter } from 'next/router';
 import { useForm } from 'react-hook-form';
-import { AuthContext } from '@ctb/auth-context';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { makeStyles } from '@material-ui/core/styles';
 import AutoCompleteInput from './AutoCompleteInput';
@@ -40,16 +39,19 @@ const SearchBoxComponent = (props: Props) => {
     : 'false';
 
   const { register, handleSubmit, watch, errors } = useForm({});
-  const [inputValue, setInputValue] = React.useState('');
+  const [locationInputValue, setLocationInputValue] = React.useState('');
   const isDesktop = useMediaQuery('(min-width:768px)');
   const onSubmit = (data) => {
-    if (inputValue && data.cafe) {
+    if (locationInputValue && data.cafe) {
       router.push(`/search/[...slug]`, `/search/${data.cafe}/cafe`);
     } else {
-      if (inputValue) {
-        router.push(`/search/[...slug]`, `/search/${inputValue}/location`);
+      if (locationInputValue) {
+        router.push(
+          `/search/[...slug]`,
+          `/search/${locationInputValue}/location`
+        );
       } else {
-        setInputValue('');
+        setLocationInputValue('');
         router.push(`/search/[...slug]`, `/search/${data.cafe}/cafe`);
       }
     }
@@ -64,43 +66,41 @@ const SearchBoxComponent = (props: Props) => {
       issearch={isSearch}
       className={classes.root}
     >
-      <>
-        <Form isheader={isHeader} onSubmit={handleSubmit(onSubmit)}>
-          <TextFieldWrapper issearch={isSearch} isheader={isHeader}>
-            <TextField
-              style={{ minWidth: '242.5px' }}
-              id="outlined-basic"
-              label="Enter café or restaurant"
-              defaultValue={type === 'cafe' ? pid : ''}
-              variant="outlined"
-              name="cafe"
-              inputRef={register()}
-            />
+      <Form isheader={isHeader} onSubmit={handleSubmit(onSubmit)}>
+        <TextFieldWrapper issearch={isSearch} isheader={isHeader}>
+          <TextField
+            style={{ minWidth: '242.5px' }}
+            id="outlined-basic"
+            label="Enter café or restaurant"
+            defaultValue={type === 'cafe' ? pid : ''}
+            variant="outlined"
+            name="cafe"
+            inputRef={register()}
+          />
 
-            <AutoCompleteInput
-              pid={pid}
-              type={type}
-              inputValue={inputValue}
-              setInputValue={setInputValue}
-              isHeader={isHeader}
-            />
-          </TextFieldWrapper>
-          {/* <div style={{ color: 'red' }}>{errors.email?.message}</div> */}
+          <AutoCompleteInput
+            pid={pid}
+            type={type}
+            inputValue={locationInputValue}
+            setInputValue={setLocationInputValue}
+            isHeader={isHeader}
+          />
+        </TextFieldWrapper>
+        {/* <div style={{ color: 'red' }}>{errors.email?.message}</div> */}
 
-          <SearchBoxButton
-            style={
-              isSearch === 'false' && isHeader === 'false'
-                ? { margin: '10px 0 0 0' }
-                : { margin: 10 }
-            }
-            color="primary"
-            variant="contained"
-            type="submit"
-          >
-            Search
-          </SearchBoxButton>
-        </Form>
-      </>
+        <SearchBoxButton
+          style={
+            isSearch === 'false' && isHeader === 'false'
+              ? { margin: '10px 0 0 0' }
+              : { margin: 10 }
+          }
+          color="primary"
+          variant="contained"
+          type="submit"
+        >
+          Search
+        </SearchBoxButton>
+      </Form>
     </SearchBox>
   );
   return (

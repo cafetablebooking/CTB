@@ -22,7 +22,7 @@ function CustomApp({ Component, pageProps }: AppProps) {
         }
       `}</style>
       <Head>
-        <title>Welcome to client!</title>
+        <title>Welcome to Table Booking!</title>
       </Head>
       <AuthContextProvider>
         <ClientContextProvider>

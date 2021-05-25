@@ -1,6 +1,8 @@
 import React, { useRef } from 'react';
 import Image from 'next/image';
 import styled from 'styled-components';
+import { Typography, Box } from '@material-ui/core';
+
 interface Props {
   companyName: string;
   phoneNumber: string;
@@ -10,7 +12,7 @@ interface Props {
   distance: number;
   node: any;
 }
-import { Typography, Box } from '@material-ui/core';
+
 const MarkerCard = (props: Props) => {
   return (
     <Card ref={props.node}>

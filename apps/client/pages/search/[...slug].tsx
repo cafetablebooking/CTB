@@ -1,6 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-
-import { AuthContext } from '@ctb/auth-context';
 import {
   FormControl,
   NativeSelect,
@@ -8,7 +6,6 @@ import {
   Typography,
 } from '@material-ui/core';
 
-import SearchListItem from 'apps/client/components/SearchListItem';
 import { useRouter } from 'next/router';
 import { ThemeProvider } from '@material-ui/core/styles';
 import theme from '../../components/ThemeProviders/LightThemeProvider';
@@ -24,14 +21,15 @@ import {
   SearchListTop,
   StyledTransitionGroup,
 } from '../../styles/SearchStyles';
-import GoogleMapComponent from 'apps/client/components/GoogleMapComponent';
-
 import { getDistance, getOpeningHours } from '../../components/utils';
 import Link from 'next/link';
+
+import SearchListItem from 'apps/client/components/SearchListItem';
+import GoogleMapComponent from 'apps/client/components/GoogleMapComponent';
 import { ClientContext } from 'apps/client/contexts/ClientContext';
+
 const SearchPid = () => {
-  const { navigatorPosition }: any = useContext(AuthContext);
-  const { companies }: any = useContext(ClientContext);
+  const { companies, navigatorPosition }: any = useContext(ClientContext);
   const router = useRouter();
   const isDesktop = useMediaQuery('(min-width:768px)');
   const [filter, setFilter] = React.useState<string>('');
