@@ -26,8 +26,6 @@ function Header(props: HeaderProps) {
   ];
 
   const renderLinks = linkData.map((item) => {
-    console.log(router.pathname);
-
     const Icon = ValueMap[item.title];
     // eslint-disable-next-line array-callback-return
     if (!isDesktop && item.linkHref === '/connectBusiness') return;
@@ -38,7 +36,6 @@ function Header(props: HeaderProps) {
     ) : (
       <Icon key={item.id} color={isActive ? '#A3894C' : 'white'} />
     );
-    console.log(isActive);
 
     return (
       <li key={item.id}>

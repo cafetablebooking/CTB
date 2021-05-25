@@ -24,7 +24,7 @@ import {
 import { ClientContext } from '../contexts/ClientContext';
 interface Props {}
 
-const homePage = (props: Props) => {
+const HomePage = (props: Props) => {
   const { companies }: any = useContext(ClientContext);
 
   return (
@@ -65,9 +65,9 @@ const homePage = (props: Props) => {
         <MarqueeWrapper>
           <Marquee velocity={30} resetAfterTries={50}>
             {companies &&
-              companies.map((item) => (
-                <>
-                  {item.image && (
+              companies.map((item) => {
+                return (
+                  item.image && (
                     <Motion key={`child-${item.id}`} velocity={0} radius={100}>
                       <ImageWrapper>
                         <Image
@@ -78,9 +78,9 @@ const homePage = (props: Props) => {
                         />
                       </ImageWrapper>
                     </Motion>
-                  )}
-                </>
-              ))}
+                  )
+                );
+              })}
           </Marquee>
         </MarqueeWrapper>
       </Home>
@@ -88,4 +88,4 @@ const homePage = (props: Props) => {
   );
 };
 
-export default homePage;
+export default HomePage;

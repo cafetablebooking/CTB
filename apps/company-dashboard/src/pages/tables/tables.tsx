@@ -110,29 +110,6 @@ export function Tables(props: UsersProps) {
     handleClose();
   };
 
-  //RAMYS CODE
-  // const deleteTableResource = async (selectedRows) => {
-  //   const resourceIdsToDelete = selectedRows.data.reduce((acc, curr) => {
-  //     const toDelete = companyTables.resources[curr.dataIndex]?.resourceId;
-  //     if (!acc[toDelete]) acc[toDelete] = toDelete;
-  //     return acc;
-  //   }, {});
-
-  //   console.log(resourceIdsToDelete);
-
-  //   const afterdeleteTables = companyTables.resources.filter((item) => {
-  //     return item?.resourceId !== resourceIdsToDelete[item?.resourceId];
-  //   });
-  //   console.log(afterdeleteTables);
-
-  //   const tableBookings = firestore.collection('tableBookings').doc(uidValue);
-  //   tableBookings.set({
-  //     resources: afterdeleteTables,
-  //   });
-
-  //   handleClose();
-  // };
-
   const options = {
     filter: true,
     filterType: 'dropdown',
