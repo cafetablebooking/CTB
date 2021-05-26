@@ -181,8 +181,13 @@ const ConnectCafe = (props: Props) => {
                     flexItem={false}
                     orientation="horizontal"
                   />
+
                   <Form onSubmit={handleSubmit(onSubmit)}>
+                    <Typography style={{ marginTop: 10 }} align="left">
+                      Name
+                    </Typography>
                     <TextField
+                      style={{ marginTop: 10 }}
                       id="outlined-basic"
                       label="Company name"
                       variant="outlined"
@@ -229,8 +234,11 @@ const ConnectCafe = (props: Props) => {
                         This must be a real adress.
                       </Typography>
                     )}
+                    <Typography style={{ marginTop: 10 }} align="left">
+                      Information
+                    </Typography>
                     <TextField
-                      style={{ marginTop: 20 }}
+                      style={{ marginTop: 10 }}
                       id="outlined-basic"
                       label="VAT Nr"
                       variant="outlined"
