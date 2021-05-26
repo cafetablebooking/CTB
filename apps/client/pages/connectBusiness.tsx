@@ -19,13 +19,15 @@ import {
   TextBox,
 } from '../styles/connectBusinessStyles';
 import { firestore } from '@ctb/firebase-auth';
+import Geocode from 'react-geocode';
 
 interface Props {}
 
-const connectCafe = (props: Props) => {
+const ConnectCafe = (props: Props) => {
   const [success, setSuccess] = useState<boolean>(false);
   const { register, handleSubmit, watch, errors } = useForm({});
   const [connectInfoData, setConnectInfoData] = useState(null);
+  const [adressError, setAdressError] = useState(null);
 
   const getInfoData = async () => {
     const res = await fetch('/mock/connectInfo.json');
@@ -81,16 +83,41 @@ const connectCafe = (props: Props) => {
   };
 
   const onSubmit = async (data) => {
-    const { vatNr, email, phoneNumber, companyName } = data;
-    const companiesRef = firestore.collection('company_requests');
-
-    await companiesRef.add({
-      companyName,
+    const {
       vatNr,
       email,
       phoneNumber,
-    });
-    setSuccess(true);
+      companyName,
+      streetName,
+      zipCode,
+      city,
+    } = data;
+    const companiesRef = firestore.collection('company_requests');
+    try {
+      const response = await Geocode.fromAddress(
+        `${streetName} ${city} ${zipCode}`
+      );
+      const { lat, lng } = response && response.results[0].geometry.location;
+      await companiesRef.add({
+        companyName,
+        vatNr,
+        email,
+        phoneNumber,
+        adress: {
+          city,
+          name: streetName,
+          postalCode: zipCode,
+        },
+        coordinates: {
+          lat,
+          lng,
+        },
+      });
+      setSuccess(true);
+      setAdressError(false);
+    } catch {
+      setAdressError(true);
+    }
   };
   return (
     <Wrapper>
@@ -163,8 +190,47 @@ const connectCafe = (props: Props) => {
                       inputRef={register()}
                       required
                     />
+                    <Typography style={{ marginTop: 10 }} align="left">
+                      Adress
+                    </Typography>
                     <TextField
                       style={{ marginTop: 10 }}
+                      id="outlined-basic"
+                      label="Street name"
+                      variant="outlined"
+                      name="streetName"
+                      inputRef={register()}
+                      required
+                    />
+                    <TextField
+                      style={{ marginTop: 10 }}
+                      id="outlined-basic"
+                      label="ZIP code"
+                      variant="outlined"
+                      name="zipCode"
+                      inputRef={register()}
+                      required
+                    />
+                    <TextField
+                      style={{ marginTop: 10 }}
+                      id="outlined-basic"
+                      label="City"
+                      variant="outlined"
+                      name="city"
+                      inputRef={register()}
+                      required
+                    />
+                    {adressError && (
+                      <Typography
+                        color="secondary"
+                        style={{ marginTop: 10 }}
+                        align="center"
+                      >
+                        This must be a real adress.
+                      </Typography>
+                    )}
+                    <TextField
+                      style={{ marginTop: 20 }}
                       id="outlined-basic"
                       label="VAT Nr"
                       variant="outlined"
@@ -190,7 +256,6 @@ const connectCafe = (props: Props) => {
                       inputRef={register()}
                       required
                     />
-
                     <Button
                       style={{
                         marginTop: 24,
@@ -222,4 +287,4 @@ const connectCafe = (props: Props) => {
   );
 };
 
-export default connectCafe;
+export default ConnectCafe;

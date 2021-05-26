@@ -12,6 +12,10 @@
         "name": "Odengatan 94",
         "postalCode": "11322"
       },
+      "coordinates": {
+        "lat": 59.3407044,
+        "lng": 18.0415183
+      },
       "openingHours": [
         { "day": "Sun", "open": 9, "closed": 21, "isClosed": false },
         { "day": "Mon", "open": 13, "closed": 21, "isClosed": false },
@@ -33,6 +37,10 @@
         "city": "Stockholm",
         "name": "Teknologgatan 4",
         "postalCode": "11322"
+      },
+      "coordinates": {
+        "lat": 59.3391003,
+        "lng": 18.0541722
       },
       "openingHours": [
         { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
@@ -56,6 +64,10 @@
         "name": "Torsgatan 34",
         "postalCode": "11322"
       },
+      "coordinates": {
+        "lat": 59.3402663,
+        "lng": 18.0388254
+      },
       "openingHours": [
         { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
         { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
@@ -77,6 +89,10 @@
         "city": "Stockholm",
         "name": "Sveavägen 12",
         "postalCode": "11322"
+      },
+      "coordinates": {
+        "lat": 59.333781,
+        "lng": 18.065323
       },
       "openingHours": [
         { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
@@ -100,6 +116,10 @@
         "name": "Rörstrandsgatan 44",
         "postalCode": "11322"
       },
+      "coordinates": {
+        "lat": 59.341244,
+        "lng": 18.02775
+      },
       "openingHours": [
         { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
         { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
@@ -121,6 +141,10 @@
         "city": "Stockholm",
         "name": "Dalagatan 12",
         "postalCode": "11322"
+      },
+      "coordinates": {
+        "lat": 59.3373225,
+        "lng": 18.0501434
       },
       "openingHours": [
         { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
@@ -144,6 +168,10 @@
         "name": "Dalagatan 67",
         "postalCode": "11322"
       },
+      "coordinates": {
+        "lat": 59.3484454,
+        "lng": 18.0388954
+      },
       "openingHours": [
         { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
         { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
@@ -166,6 +194,10 @@
         "name": "Dalagatan 22",
         "postalCode": "11322"
       },
+      "coordinates": {
+        "lat": 59.3388881,
+        "lng": 18.0485932
+      },
       "openingHours": [
         { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },
         { "day": "Mon", "open": 14, "closed": 21, "isClosed": false },
@@ -187,6 +219,10 @@
         "city": "Stockholm",
         "name": "Dalagatan 12",
         "postalCode": "11322"
+      },
+      "coordinates": {
+        "lat": 59.3373225,
+        "lng": 18.0501434
       },
       "openingHours": [
         { "day": "Sun", "open": 14, "closed": 21, "isClosed": false },

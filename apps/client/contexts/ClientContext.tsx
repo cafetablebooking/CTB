@@ -71,6 +71,7 @@ export const ClientContextProvider = (props: Props) => {
     }
     setCompaniesData();
   }, []);
+
   return (
     <ClientContext.Provider
       value={{

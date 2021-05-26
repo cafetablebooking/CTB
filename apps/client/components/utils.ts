@@ -1,6 +1,6 @@
 import * as geolib from 'geolib';
 import moment from 'moment';
-import Geocode from 'react-geocode';
+
 import { firestore } from '@ctb/firebase-auth';
 const currentDate = moment()._d;
 
@@ -38,34 +38,16 @@ export const getTableBookings = async () => {
 };
 export const getCompaniesData = async () => {
   const companiesRef = firestore.collection('companies');
-  const tempArr = [];
+
   const data = [];
   const allCompanies = await companiesRef.get();
 
   for (const doc of allCompanies.docs) {
-    tempArr.push({
+    data.push({
       ...doc.data(),
       id: doc.id,
     });
   }
-  tempArr.map(async (item) => {
-    if (item.adress) {
-      const response = await Geocode.fromAddress(
-        `${item.adress.name} ${item.adress.city} ${item.adress.postalCode}`
-      );
-
-      const { lat, lng } = response && response.results[0].geometry.location;
-
-      const options = {
-        ...item,
-        coordinates: {
-          lat,
-          lng,
-        },
-      };
-      data.push(options);
-    }
-  });
 
   return data;
 };

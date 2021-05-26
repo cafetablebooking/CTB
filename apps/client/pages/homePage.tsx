@@ -62,10 +62,11 @@ const HomePage = (props: Props) => {
             </ImgWrapper>
           </OnboardingRight>
         </OnboardingContent>
+
         <MarqueeWrapper>
-          <Marquee velocity={30} resetAfterTries={50}>
-            {companies &&
-              companies.map((item) => {
+          {companies && (
+            <Marquee velocity={30} resetAfterTries={50}>
+              {companies.map((item) => {
                 return (
                   item.image && (
                     <Motion key={`child-${item.id}`} velocity={0} radius={100}>
@@ -81,7 +82,8 @@ const HomePage = (props: Props) => {
                   )
                 );
               })}
-          </Marquee>
+            </Marquee>
+          )}
         </MarqueeWrapper>
       </Home>
     </ThemeProvider>

@@ -95,6 +95,7 @@ export function PendingCompanies(props: UsersProps) {
           vatNr,
           email,
           phoneNumber,
+          coordinates
         });
         await pendingCompanies.delete();
       }
