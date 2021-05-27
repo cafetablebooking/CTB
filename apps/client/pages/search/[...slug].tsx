@@ -209,6 +209,8 @@ const SearchPid = () => {
               filteredData.map((item) => {
                 const date = new Date();
                 const getDay = date.getDay();
+                console.log(getDay);
+
                 return (
                   <CSSTransition key={item.id} timeout={500} classNames="item">
                     <Link href={`/company/${item.id}`}>
