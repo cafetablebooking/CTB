@@ -80,7 +80,14 @@ export function PendingCompanies(props: UsersProps) {
   const setActivateCompanies = (selectedRows) => {
     selectedRows.data.map(async (item) => {
       const pendingCompany = docs[item.index];
-      const { companyName, vatNr, email, phoneNumber, id } = pendingCompany;
+      const {
+        companyName,
+        vatNr,
+        email,
+        phoneNumber,
+        id,
+        coordinates,
+      } = pendingCompany;
 
       const pendingCompanies = firestore.collection('company_requests').doc(id);
 
@@ -95,7 +102,7 @@ export function PendingCompanies(props: UsersProps) {
           vatNr,
           email,
           phoneNumber,
-          coordinates
+          coordinates,
         });
         await pendingCompanies.delete();
       }
