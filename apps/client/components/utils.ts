@@ -58,10 +58,14 @@ export const getOpeningHours = (item, day) => {
   const { open, closed } = today;
   let isOpen = false;
   const format = 'hh:mm:ss';
-  const time = moment();
+  const date = moment.utc().format('YYYY-MM-DD HH:mm:ss');
+
+  const stillUtc = moment.utc(date).toDate();
+  const time = moment(stillUtc).local();
 
   const beforeTime = moment(`${open}:00:00`, format);
   const afterTime = moment(`${closed}:00:00`, format);
+  console.log(time);
 
   if (time.isBetween(beforeTime, afterTime)) {
     isOpen = true;
