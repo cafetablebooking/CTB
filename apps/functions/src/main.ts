@@ -54,6 +54,13 @@ async function sendLoginCredentialsEmail(snap) {
     html: `<h1>Welcome to CTB</h1>
              <div>
              <p>
+             Email: ${snap.data().email}
+           </p>
+             <p>
+             Here is the link to dashbaord
+             <a href="https://ctb.vercel.app/">https://ctb.vercel.app/</a>
+           </p>
+             <p>
                Here is your password:
                 <b>${snap.data().id}</b>
              </p>
