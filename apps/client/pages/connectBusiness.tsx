@@ -83,7 +83,6 @@ const ConnectCafe = (props: Props) => {
   };
 
   const onSubmit = async (data) => {
-    console.log(data);
     const {
       vatNr,
       email,
@@ -95,11 +94,10 @@ const ConnectCafe = (props: Props) => {
     } = data;
     const companiesRef = firestore.collection('company_requests');
     try {
-      // const response = await Geocode.fromAddress(
-      //   `${streetName} ${city} ${zipCode}`
-      // );
-      // const { lat, lng } = response && response.results[0].geometry.location;
-      // console.log('lan lag', lat, lng);
+      const response = await Geocode.fromAddress(
+        `${streetName} ${city} ${zipCode}`
+      );
+      const { lat, lng } = response && response.results[0].geometry.location;
       await companiesRef.add({
         companyName,
         vatNr,
@@ -110,16 +108,15 @@ const ConnectCafe = (props: Props) => {
           name: streetName,
           postalCode: zipCode,
         },
-        // coordinates: {
-        //   lat,
-        //   lng,
-        // },
+        coordinates: {
+          lat,
+          lng,
+        },
       });
       setSuccess(true);
       setAdressError(false);
     } catch {
-      console.log('what');
-      // setAdressError(true);
+      setAdressError(true);
     }
   };
   return (
