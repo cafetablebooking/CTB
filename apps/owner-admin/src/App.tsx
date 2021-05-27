@@ -10,6 +10,8 @@ import PublicRoute from './components/public-route';
 import Users from './pages/users/users';
 import PendingCompanies from './pages/pendingCompanies/pendingCompanies';
 import CreateCompanyUser from './pages/create-company-user/create-company-user';
+import CompanyUser from './pages/company-user/company-user';
+import ComingSoon from './pages/coming-soon/coming-soon';
 
 interface AppProps {}
 
@@ -22,11 +24,11 @@ export const App: React.FC<AppProps> = () => {
         <PrivateRoute path="/dashboard" component={Dashboard} />
         <PrivateRoute path="/reservation" component={Reservation} />
         <PrivateRoute path="/users" component={Users} />
-        <PrivateRoute path="/companies" component={Reservation} />
+        <PrivateRoute path="/companies" component={CompanyUser} />
         <PrivateRoute path="/pendingCompanies" component={PendingCompanies} />
-        <PrivateRoute path="/settings" component={Reservation} />
-        <PrivateRoute path="/support" component={Reservation} />
-        <PrivateRoute path="/faq" component={Reservation} />
+        <PrivateRoute path="/settings" component={ComingSoon} />
+        <PrivateRoute path="/support" component={ComingSoon} />
+        <PrivateRoute path="/faq" component={ComingSoon} />
         <PrivateRoute
           path="/create-company-user"
           component={CreateCompanyUser}

@@ -58,6 +58,7 @@ export function Header({}: HeaderProps) {
   const theme = useTheme<CTBtheme>();
   const { docs } = useFirestore('company_requests');
   // global
+  console.log('company_requests', docs);
   const layoutState = useLayoutState();
   const layoutDispatch = useLayoutDispatch();
   const { logout } = useAuthContext();

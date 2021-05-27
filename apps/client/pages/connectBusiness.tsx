@@ -83,6 +83,7 @@ const ConnectCafe = (props: Props) => {
   };
 
   const onSubmit = async (data) => {
+    console.log(data);
     const {
       vatNr,
       email,
@@ -94,29 +95,31 @@ const ConnectCafe = (props: Props) => {
     } = data;
     const companiesRef = firestore.collection('company_requests');
     try {
-      const response = await Geocode.fromAddress(
-        `${streetName} ${city} ${zipCode}`
-      );
-      const { lat, lng } = response && response.results[0].geometry.location;
+      // const response = await Geocode.fromAddress(
+      //   `${streetName} ${city} ${zipCode}`
+      // );
+      // const { lat, lng } = response && response.results[0].geometry.location;
+      // console.log('lan lag', lat, lng);
       await companiesRef.add({
         companyName,
         vatNr,
         email,
         phoneNumber,
-        adress: {
+        address: {
           city,
           name: streetName,
           postalCode: zipCode,
         },
-        coordinates: {
-          lat,
-          lng,
-        },
+        // coordinates: {
+        //   lat,
+        //   lng,
+        // },
       });
       setSuccess(true);
       setAdressError(false);
     } catch {
-      setAdressError(true);
+      console.log('what');
+      // setAdressError(true);
     }
   };
   return (
@@ -196,7 +199,7 @@ const ConnectCafe = (props: Props) => {
                       required
                     />
                     <Typography style={{ marginTop: 10 }} align="left">
-                      Adress
+                      Address
                     </Typography>
                     <TextField
                       style={{ marginTop: 10 }}
