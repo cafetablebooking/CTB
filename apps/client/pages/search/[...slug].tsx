@@ -32,7 +32,7 @@ const SearchPid = () => {
   const { companies, navigatorPosition }: any = useContext(ClientContext);
   const router = useRouter();
   const isDesktop = useMediaQuery('(min-width:768px)');
-  const [filter, setFilter] = React.useState<string>('');
+  const [filter, setFilter] = React.useState<string>('All');
   const [sortBy, setSortBy] = React.useState<string>('distance');
   const pid: any = router.query.slug && router.query.slug[0];
   const type: any = router.query.slug && router.query.slug[1];
