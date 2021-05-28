@@ -49,6 +49,7 @@ const SearchPid = () => {
     let zoom = 0;
 
     if (pid && pid.length > 0 && type === 'location' && navigatorPosition) {
+      setFilter('');
       if (pid === 'Check my position') {
         latitude = navigatorPosition.lat;
         longitude = navigatorPosition.lng;
@@ -62,6 +63,7 @@ const SearchPid = () => {
       }
     } else {
       if (pid === 'Check my position') {
+        setFilter('');
         const response = await Geocode.fromAddress(`Sweden`);
         const { lat, lng } = response && response.results[0].geometry.location;
         latitude = lat;
@@ -167,7 +169,7 @@ const SearchPid = () => {
             <FormControl>
               <InputLabel id="demo-simple-select">Filter</InputLabel>
               <NativeSelect
-                value={filter}
+                value={filter ? filter : 'All'}
                 onChange={(e) => setFilter(e.target.value)}
                 inputProps={{
                   name: 'age',
