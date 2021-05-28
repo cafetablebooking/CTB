@@ -97,9 +97,7 @@ const SearchPid = () => {
     filteredData =
       companies &&
       companies.filter((item) => {
-        const adress = `${item.adress.city} ${item.adress.name} ${item.adress.postalCode}`;
-
-        return adress.toLowerCase().includes(pid.toLowerCase());
+        return item;
       });
   } else {
     if (pid === 'Check my position') {
