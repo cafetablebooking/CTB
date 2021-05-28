@@ -9,7 +9,7 @@ import { useAuthContext } from '@ctb/auth-context';
 export interface ConfirmDialogProps {
   handleClose: () => void;
   open: boolean;
-  setActivateCompanies: () => void;
+  setActivateCompanies?: () => void;
   deleteHandler: () => void;
   selectedCompanies: any;
   actionType: string;

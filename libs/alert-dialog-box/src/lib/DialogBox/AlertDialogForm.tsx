@@ -17,9 +17,7 @@ const AlertDialogForm = (props: Props) => {
 
   return (
     <StyledDialogBox>
-      <DialogTitle align="center" id="simple-dialog-title">
-        {title}
-      </DialogTitle>
+      <DialogTitle id="simple-dialog-title">{title}</DialogTitle>
       <DialogContentText id="alert-dialog-slide-description">
         {text}
       </DialogContentText>

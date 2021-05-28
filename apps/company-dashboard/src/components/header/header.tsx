@@ -84,7 +84,7 @@ export function Header({}: HeaderProps) {
           isSidebarToggle
         />
         <Typography variant="h6" className={classes.logotype}>
-          CTB Admin
+          Cafe Admin
         </Typography>
         <div className={classes.grow} />
 

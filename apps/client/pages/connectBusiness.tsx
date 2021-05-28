@@ -103,7 +103,7 @@ const ConnectCafe = (props: Props) => {
         vatNr,
         email,
         phoneNumber,
-        adress: {
+        address: {
           city,
           name: streetName,
           postalCode: zipCode,
@@ -196,7 +196,7 @@ const ConnectCafe = (props: Props) => {
                       required
                     />
                     <Typography style={{ marginTop: 10 }} align="left">
-                      Adress
+                      Address
                     </Typography>
                     <TextField
                       style={{ marginTop: 10 }}

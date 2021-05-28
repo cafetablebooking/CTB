@@ -66,7 +66,7 @@ function HeaderDropDownMenu({
           >
             <div className={classes.messageNotificationSide}>
               <UserAvatar size="small">
-                {listItem.name ? listItem.name : 'User'}
+                {listItem?.companyName ? listItem?.companyName : 'User'}
               </UserAvatar>
               {isMessage && <Typography>{listItem.time}</Typography>}
             </div>
@@ -80,7 +80,7 @@ function HeaderDropDownMenu({
               {isMessage && (
                 <Typography variant="subtitle2">{listItem.name}</Typography>
               )}
-              <Typography color="textSecondary">{listItem.message}</Typography>
+              <Typography color="textSecondary">{listItem.email}</Typography>
             </div>
           </MenuItem>
         ))}
