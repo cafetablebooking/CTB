@@ -120,9 +120,9 @@ const SearchPid = () => {
         const date = new Date();
         const getDay = date.getDay();
         if (filter === 'open') {
-          return getOpeningHours(item.openingHours, getDay) && pidItem;
+          return getOpeningHours(item.openingHours, getDay).isOpen && pidItem;
         } else if (filter === 'closed') {
-          return !getOpeningHours(item.openingHours, getDay) && pidItem;
+          return !getOpeningHours(item.openingHours, getDay).isOpen && pidItem;
         } else {
           return pidItem;
         }
@@ -209,7 +209,6 @@ const SearchPid = () => {
               filteredData.map((item) => {
                 const date = new Date();
                 const getDay = date.getDay();
-                console.log(getDay);
 
                 return (
                   <CSSTransition key={item.id} timeout={500} classNames="item">

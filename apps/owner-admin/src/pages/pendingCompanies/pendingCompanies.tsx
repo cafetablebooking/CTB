@@ -87,6 +87,7 @@ export function PendingCompanies(props: UsersProps) {
         phoneNumber,
         id,
         coordinates,
+        adress,
       } = pendingCompany;
 
       const pendingCompanies = firestore.collection('company_requests').doc(id);
@@ -102,6 +103,7 @@ export function PendingCompanies(props: UsersProps) {
           vatNr,
           email,
           phoneNumber,
+          adress,
           coordinates,
         });
         await pendingCompanies.delete();

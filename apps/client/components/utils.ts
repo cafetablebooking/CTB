@@ -65,7 +65,6 @@ export const getOpeningHours = (item, day) => {
 
   const beforeTime = moment(`${open}:00:00`, format);
   const afterTime = moment(`${closed}:00:00`, format);
-  console.log(time);
 
   if (time.isBetween(beforeTime, afterTime)) {
     isOpen = true;
